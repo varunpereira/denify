@@ -20,5 +20,5 @@ let schema = new mongoose.Schema(
   }
 )
 
-export default mongoose.models.messages ||
-  mongoose.model('messages', schema, 'messages')
+export default mongoose.models.chat ||
+  mongoose.model('chat', schema, 'chat')
