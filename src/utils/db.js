@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-export default function connectDB() {
+export default function dbConnect() {
   if (mongoose.connections[0].readyState) {
     console.log('Already connected.')
     return

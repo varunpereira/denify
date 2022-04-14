@@ -1,9 +1,9 @@
-import connectDB from 'utils/connectDB'
-import userModel from 'models/userModel'
-import orderModel from 'models/orderModel'
+import db from '@src/utils/db'
+import userModel from '@src/models/userModel'
+import orderModel from '@src/models/orderModel'
 import jwt from 'jsonwebtoken'
 
-connectDB()
+db()
 
 export default async function (refreshToken) {
   try {
