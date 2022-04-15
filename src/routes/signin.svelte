@@ -1,0 +1,72 @@
+<script>
+	import axios from 'axios';
+	import cookie from 'js-cookie';
+	import { auth } from '@src/utils/store';
+
+	var formData = { email: '', password: '' };
+	var error = '';
+
+	function formInputs(event) {
+		var { name, value } = event.target;
+		formData = { ...formData, [name]: value };
+	}
+
+	async function formSubmit() {
+		console.log(formData)
+		var res = await axios.post('/api/signin', formData);
+		if (res.data.error) {
+			error = res.data.error;
+			return
+		}
+		$auth = {
+			accessToken: res.data.accessToken,
+			user: res.data.user,
+			cartQuantity: res.data.cartQuantity
+		};
+		cookie.set('refreshToken', res.data.refreshToken, {
+			// 7 days
+			expires: 7,
+			secure: true,
+			sameSite: 'strict'
+		});
+		window.location.replace('/')
+	}
+</script>
+
+<svelte:head><title>Sign in</title></svelte:head>
+
+<div class="container mx-auto flex max-w-sm flex-1 flex-col items-center justify-center px-2">
+	<div class="w-full rounded bg-white px-6 py-8 text-black shadow-md">
+		<h1 class="mb-8 text-center text-3xl">Sign in</h1>
+		<form on:submit|preventDefault={formSubmit}>
+			<input
+				name={"email"}
+				value={formData.email}
+				on:input|preventDefault={formInputs}
+				type="text"
+				placeholder="Email"
+				class="border-grey-light mb-4 block w-full rounded border p-3"
+			/>
+			<input
+				name={"password"}
+				value={formData.password}
+				on:input|preventDefault={formInputs}
+				type="password"
+				placeholder="Password"
+				class="border-grey-light mb-4 block w-full rounded border p-3"
+			/>
+			<button
+				type="submit"
+				class="hover:bg-green-dark my-1 w-full rounded bg-black py-3 text-center text-white focus:outline-none"
+			>
+				Sign in
+			</button>
+		</form>
+		<div class="mt-10 text-red-500">{error}</div>
+	</div>
+
+	<div class="text-grey-dark mt-6">
+		Don't have an account?
+		<a href="/signup" class="border-blue text-blue border-b no-underline">Sign up</a>
+	</div>
+</div>

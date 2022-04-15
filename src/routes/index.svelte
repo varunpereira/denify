@@ -1,12 +1,9 @@
 <script>
-	import { myName } from '@src/utils/store';
 	import { onMount } from 'svelte';
 	onMount(async function () {
-		$myName = 'Eve';
 	});
 </script>
 
-<span>My name is {$myName}.</span>
+<svelte:head><title>Home</title></svelte:head>
 
-<h1>{import.meta.env.VITE_MESSAGE}</h1>
-s
+
