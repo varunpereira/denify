@@ -2,6 +2,7 @@
 	import axios from 'axios';
 	import cookie from 'js-cookie';
 	import { auth } from '@src/utils/store';
+	import { goto } from '$app/navigation';
 
 	var formData = { email: '', password: '' };
 	var error = '';
@@ -11,24 +12,24 @@
 		formData = { ...formData, [name]: value };
 	}
 
-	async function formSubmit() {
+	async function formSubmit(event) {
 		var res = await axios.post('/api/signin', formData);
 		if (res.data.error) {
 			error = res.data.error;
-			return
+			return;
 		}
 		$auth = {
 			accessToken: res.data.accessToken,
 			user: res.data.user,
 			cartQuantity: res.data.cartQuantity
 		};
-		cookie.set('refreshToken', res.data.refreshToken, {
+		cookie.set('auth', JSON.stringify($auth), {
 			// 7 days
 			expires: 7,
 			secure: true,
 			sameSite: 'strict'
 		});
-		window.location.replace('/')
+		goto('/');
 	}
 </script>
 
@@ -39,7 +40,7 @@
 		<h1 class="mb-8 text-center text-3xl">Sign in</h1>
 		<form on:submit|preventDefault={formSubmit}>
 			<input
-				name={"email"}
+				name={'email'}
 				value={formData.email}
 				on:input|preventDefault={formInputs}
 				type="text"
@@ -47,7 +48,7 @@
 				class="border-grey-light mb-4 block w-full rounded border p-3"
 			/>
 			<input
-				name={"password"}
+				name={'password'}
 				value={formData.password}
 				on:input|preventDefault={formInputs}
 				type="password"
