@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import db from '@src/utils/db';
 import userModel from '@src/models/userModel';
 import orderModel from '@src/models/orderModel';

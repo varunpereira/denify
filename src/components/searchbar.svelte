@@ -5,12 +5,12 @@
 	var searchTerm = '';
 
 	function searchResults() {
-		goto('/searchResults?searchTerm=' + searchTerm.trim());
+		goto('/searchResults?searchTerm=' + searchTerm);
 	}
 </script>
 
 <div
-	class="sm:absolute md:relative mr-5 max-h-min w-full min-w-min pb-2 shadow-md md:flex text-black"
+	class="mr-5 max-h-min w-full min-w-min pb-2 shadow-md md:flex text-black"
 >
 	<form class=" relative w-full " on:submit|preventDefault={searchResults}>
 		<input

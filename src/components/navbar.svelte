@@ -27,12 +27,12 @@
 </script>
 
 <header
-	class="relative mb-10 min-w-min bg-black py-4  shadow-lg md:flex md:items-center md:justify-between"
+	class="relative mb-10 min-w-min bg-black py-4  md:flex md:items-center md:justify-between"
 >
-	<div class="mr-5 mb-1 flex items-center justify-between ">
+	<div class="md:mr-5 mb-1 px-0 flex items-center justify-between ">
 		<h1 class="text-xl">
 			<a href="/" class="flex font-bold no-underline hover:text-gray-400">
-				<ShoppingBagIcon class="w-6 h-6 mr-1" />
+				<ShoppingBagIcon class="w-6 h-6 mr-1 pt-1" />
 				<span class="justify-end pb-1">Denify</span>
 			</a>
 		</h1>
