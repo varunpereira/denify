@@ -12,7 +12,6 @@
 	}
 
 	async function formSubmit() {
-		console.log(formData)
 		var res = await axios.post('/api/signin', formData);
 		if (res.data.error) {
 			error = res.data.error;
