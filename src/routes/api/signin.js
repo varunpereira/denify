@@ -8,41 +8,43 @@ import jwt from 'jsonwebtoken';
 db();
 
 export async function post({ request }) {
-	return { body: { ok: true } };
-	// var { email, password } = await request.json();
-	// var user = await userModel.findOne({ email });
-	// if (user === null) {
-	// 	console.log(email);
-	// 	return {
-	// 		body: { error: 'This user does not exist.' }
-	// 	};
-	// }
+	// console.log(import.meta.env.VITE_mongodbUri)
+	// return { body: { ok: true } };
 
-	// var isMatch = bcryptjs.compareSync(password, user.password);
-	// if (!isMatch) {
-	// 	return {
-	// 		body: { error: 'Incorrect password.' }
-	// 	};
-	// }
+	var { email, password } = await request.json();
+	var user = await userModel.findOne({ email });
+	if (user === null) {
+		console.log(email);
+		return {
+			body: { error: 'This user does not exist.' }
+		};
+	}
 
-	// var accessToken = jwt.sign({ id: user.email }, import.meta.env.VITE_mongodbUri, {
-	// 	expiresIn: '15m'
-	// });
-	// var refreshToken = jwt.sign({ id: user.email }, import.meta.env.VITE_mongodbUri, {
-	// 	expiresIn: '7d'
-	// });
+	var isMatch = bcryptjs.compareSync(password, user.password);
+	if (!isMatch) {
+		return {
+			body: { error: 'Incorrect password.' }
+		};
+	}
 
-	// let cart = await orderModel.findOne({
-	// 	email: user.email,
-	// 	current: true
-	// });
+	var accessToken = jwt.sign({ id: user.email }, import.meta.env.VITE_mongodbUri, {
+		expiresIn: '15m'
+	});
+	var refreshToken = jwt.sign({ id: user.email }, import.meta.env.VITE_mongodbUri, {
+		expiresIn: '7d'
+	});
 
-	// return {
-	// 	body: {
-	// 		refreshToken,
-	// 		accessToken,
-	// 		user,
-	// 		cartQuantity: cart.quantity
-	// 	}
-	// };
+	let cart = await orderModel.findOne({
+		email: user.email,
+		current: true
+	});
+
+	return {
+		body: {
+			refreshToken,
+			accessToken,
+			user,
+			cartQuantity: cart.quantity
+		}
+	};
 }
