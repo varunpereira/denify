@@ -2,11 +2,11 @@
 /* eslint-disable no-unused-vars */
 import path from 'path'
 import adapter from '@sveltejs/adapter-auto';
-import vercel from '@sveltejs/adapter-vercel';
+// import vercel from '@sveltejs/adapter-vercel';
 const config = {
 	kit: {
-		adapter: vercel(),
-		// adapter:adapter(),
+		// adapter: vercel(),
+		adapter:adapter(),
 		vite: {
 			resolve: {
 				alias: {
