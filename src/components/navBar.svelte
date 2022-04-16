@@ -3,6 +3,7 @@
 	import { auth } from '@src/utils/store';
 	import cookie from 'js-cookie';
 	import { goto } from '$app/navigation';
+	import SearchBar from '@src/components/searchbar.svelte'
 
 	function accountOptions(event) {
 		if (event.target.value === 'signOut') {
@@ -28,7 +29,7 @@
 <header
 	class="relative mb-10 min-w-min bg-black py-4  shadow-lg md:flex md:items-center md:justify-between"
 >
-	<div class=" mb-3 flex items-center justify-between ">
+	<div class="mr-5 mb-1 flex items-center justify-between ">
 		<h1 class="text-xl">
 			<a href="/" class="flex font-bold no-underline hover:text-gray-400">
 				<ShoppingBagIcon class="w-6 h-6 mr-1" />
@@ -39,6 +40,9 @@
 			<MenuIcon class="mb-1 h-7 w-7 hover:text-gray-400 md:hidden" />
 		</button>
 	</div>
+
+	<SearchBar/>
+
 
 	<ul class=" list-reset md:flex md:items-center">
 		{#if $auth.user}

@@ -5,7 +5,7 @@
 	import NavBar from '@src/components/navbar.svelte';
 	import Footer from '@src/components/footer.svelte';
 	import cookie from 'js-cookie';
-	// async imports arent working, why?
+	// async imports adotn work so request from backend auth
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
