@@ -12,6 +12,7 @@
 			$auth = JSON.parse(cookie.get('auth'));
 		}
 	});
+	
 </script>
 
 <div>
