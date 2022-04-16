@@ -1,5 +1,3 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
 import path from 'path'
 import adapter from '@sveltejs/adapter-auto';
 const config = {

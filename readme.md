@@ -1,4 +1,4 @@
-# Merchify - ecommerce web app by Varun Pereira
+# Denify : ecommerce web app by Varun Pereira
 
 tech stack :
 code : sveltekit
