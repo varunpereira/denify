@@ -5,7 +5,7 @@ export default function db() {
 		console.log('Already connected.');
 		return;
 	}
-	mongoose.connect(import.meta.env.VITE_mongodbUri, (error) => {
+	mongoose.connect("mongodb+srv://0:0@cluster0.ufs0l.mongodb.net/dropshop?retryWrites=true&w=majority", (error) => {
 		if (error) {
 			console.log(error);
 			return;

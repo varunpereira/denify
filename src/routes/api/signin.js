@@ -7,9 +7,6 @@ import jwt from 'jsonwebtoken';
 db();
 
 export async function post({ request }) {
-	// console.log(import.meta.env.VITE_mongodbUri)
-	// return { body: { ok: true } };
-
 	var { email, password } = await request.json();
 	var user = await userModel.findOne({ email });
 	if (user === null) {

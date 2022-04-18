@@ -1,29 +1,26 @@
 <script context="module">
-	// import db from '@src/utils/db';
-	// import productModel from '@src/models/productModel';
-
+	import axios from 'axios';
 	export async function load({ url }) {
-        const searchTerm = url.searchParams.get('searchTerm').trim()
-		// db();
-		// var products = await productModel.find({
-		// 	title: { $regex: searchTerm, $options: 'i' }
-		// });
+		var props;
+		var searchTerm = url.searchParams.get('searchTerm').trim();
+		var res = await axios.post('/api/product/getManyByTitle', { searchTerm });
+		if (res.data.error) {
+			props = { ...props, error: res.data.error };
+		}
+		props = { ...props, searchResults: res.data.products };
 		return {
-			props: {
-				// searchResults: products
-				searchResults:searchTerm
-			}
+			props
 		};
 	}
 </script>
 
 <script>
 	export var searchResults;
+	export var error;
 </script>
 
 <svelte:head><title>Search Results</title></svelte:head>
 
 <div class="bg-white text-black">
-{JSON.stringify(searchResults)}
-
+	{JSON.stringify(searchResults)}
 </div>
