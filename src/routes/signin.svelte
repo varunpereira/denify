@@ -7,7 +7,7 @@
 	var formData = { email: '', password: '' };
 	var error = '';
 
-	function formInputs(event) {
+	function formInput(event) {
 		var { name, value } = event.target;
 		formData = { ...formData, [name]: value };
 	}
@@ -42,7 +42,7 @@
 			<input
 				name={'email'}
 				value={formData.email}
-				on:input|preventDefault={formInputs}
+				on:input|preventDefault={formInput}
 				type="text"
 				placeholder="Email"
 				class="border-grey-light mb-4 block w-full rounded border p-3"
@@ -50,7 +50,7 @@
 			<input
 				name={'password'}
 				value={formData.password}
-				on:input|preventDefault={formInputs}
+				on:input|preventDefault={formInput}
 				type="password"
 				placeholder="Password"
 				class="border-grey-light mb-4 block w-full rounded border p-3"
