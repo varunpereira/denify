@@ -31,6 +31,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.3.0",
     "svelte-feather-icons": "^4.0.0",
-    "svelte-navigator": "^3.1.5"
+    "svelte-navigator": "^3.1.5",
+    "stripe": "^8.205.0"
   }
 }
