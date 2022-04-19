@@ -53,7 +53,7 @@
 			items: products
 		});
 		console.log(JSON.stringify(res.data))
-		// goto(res.data.url);
+		goto(res.data.session.url);
 	}
 </script>
 
