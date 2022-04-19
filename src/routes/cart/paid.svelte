@@ -20,6 +20,7 @@
 			cartPaid = true;
 			return;
 		}
+		$auth = { ...$auth, cartQuantity: 0 };
 	});
 </script>
 
