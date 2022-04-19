@@ -4,12 +4,14 @@
 	import { auth } from '@src/utils/store';
 	import { TrashIcon } from 'svelte-feather-icons';
 	import { goto } from '$app/navigation';
+	import cookie from 'js-cookie';
+
 
 	var error = null;
 	var cart = null;
 
 	onMount(async function () {
-		var res = await axios.post('/api/order/cart/get', { email: $auth.user.email });
+		var res = await axios.post('/api/order/cart/get', { email: JSON.parse(cookie.get('auth')).user.email });
 		if (res.data.error) {
 			error = res.data.error;
 			return;
@@ -51,7 +53,8 @@
 			orderId: cart._id,
 			items: products
 		});
-		goto(res.data.url);
+		console.log(JSON.stringify(res.data))
+		// goto(res.data.url);
 	}
 </script>
 
@@ -124,7 +127,8 @@
 					<span>${cart.price}</span>
 				</div>
 				<button
-					onClick={checkout}
+					on:click={checkout}
+					type="button"
 					class="w-full rounded bg-black py-3  text-sm font-semibold uppercase text-white hover:bg-gray-600"
 				>
 					Proceed to Payment
