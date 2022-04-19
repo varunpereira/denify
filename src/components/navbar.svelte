@@ -7,7 +7,7 @@
 
 	function accountOptions(event) {
 		if (event.target.value === 'signOut') {
-			cookie.remove('refreshToken');
+			cookie.remove('auth');
 			$auth = {};
 			goto('/');
 		} else if (event.target.value === 'profile') {

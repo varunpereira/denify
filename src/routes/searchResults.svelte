@@ -1,26 +1,26 @@
-<script context="module">
+<script>
+	import { onMount } from 'svelte';
 	import axios from 'axios';
-	export async function load({ url }) {
-		var props;
-		var searchTerm = url.searchParams.get('searchTerm').trim();
+	import { auth } from '@src/utils/store';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+
+	var error = null;
+	var searchResults = null;
+
+	onMount(async function () {
+		var searchTerm = $page.url.searchParams.get('searchTerm').trim()
 		var res = await axios.post('/api/product/getManyByTitle', { searchTerm });
 		if (res.data.error) {
-			props = { ...props, error: res.data.error };
+			error = res.data.error;
 		}
-		props = { ...props, searchResults: res.data.products };
-		return {
-			props
-		};
-	}
+		searchResults = res.data.products;
+	});
 </script>
 
-<script>
-	export var searchResults;
-	export var error;
-</script>
+{#if searchResults}
+	<div class="bg-white text-black">
+		{JSON.stringify(searchResults)}
+	</div>
+{/if} 
 
-<svelte:head><title>Search Results</title></svelte:head>
-
-<div class="bg-white text-black">
-	{JSON.stringify(searchResults)}
-</div>
