@@ -13,7 +13,7 @@ export async function post({ request }) {
 			line_items: items ?? [],
 			success_url: `${
 				import.meta.env.VITE_domain
-			}/cart/paymentSuccess?orderId=${orderId}&checkoutSessionId={CHECKOUT_SESSION_ID}`,
+			}/cart/paid?orderId=${orderId}&checkoutSessionId={CHECKOUT_SESSION_ID}`,
 			cancel_url: `${import.meta.env.VITE_domain}/cart`
 		});
 		return {
