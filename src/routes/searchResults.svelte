@@ -1,5 +1,4 @@
 <script context="module">
-	import axios from 'axios';
 	export async function load({ url }) {
 		var props;
 		var searchTerm = url.searchParams.get('searchTerm').trim();
@@ -15,6 +14,7 @@
 </script>
 
 <script>
+	import axios from 'axios';
 	export var searchResults;
 	export var error;
 </script>
