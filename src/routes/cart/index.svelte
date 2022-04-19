@@ -6,7 +6,6 @@
 	import { goto } from '$app/navigation';
 	import cookie from 'js-cookie';
 
-
 	var error = null;
 	var cart = null;
 
