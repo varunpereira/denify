@@ -10,9 +10,11 @@ export async function post({ request }) {
 		var session = await stripe.checkout.sessions.create({
 			mode: 'payment',
 			payment_method_types: ['card'],
-			line_items: items,
-			success_url: `${req.headers.origin}/cart/paymentSuccess?orderId=${orderId}&checkoutSessionId={CHECKOUT_SESSION_ID}`,
-			cancel_url: `${req.headers.origin}/cart`
+			line_items: items ?? [],
+			success_url: `${
+				import.meta.env.VITE_domain
+			}/cart/paymentSuccess?orderId=${orderId}&checkoutSessionId={CHECKOUT_SESSION_ID}`,
+			cancel_url: `${import.meta.env.VITE_domain}/cart`
 		});
 		return {
 			body: {
