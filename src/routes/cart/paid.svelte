@@ -20,6 +20,7 @@
 			return;
 		}
 		$auth = { ...$auth, cartQuantity: 0 };
+		cookie.set('auth', JSON.stringify($auth));
 	});
 </script>
 
