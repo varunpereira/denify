@@ -52,8 +52,8 @@
 			orderId: cart._id,
 			items: products
 		});
-		// console.log(JSON.stringify(res.data))
-		goto(res.data.url);
+		console.log(JSON.stringify(res.data))
+		// goto(res.data.url);
 	}
 </script>
 
