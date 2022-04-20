@@ -69,7 +69,6 @@
 	}
 
 	function leftArrow() {
-		console.log(tab);
 		if (tab - 1 >= 0) {
 			tab = tab - 1;
 			return;

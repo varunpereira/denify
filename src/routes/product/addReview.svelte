@@ -1,115 +1,100 @@
-<!-- import Head from 'next/head'
-import Link from 'next/link'
-import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
-import { setGlobalState, getGlobalState } from 'utils/globalState'
-import axios from 'axios'
-import Cookie from 'js-cookie'
-import getAuth from 'utils/getAuth'
-import connectDB from 'utils/connectDB'
+<script>
+	import axios from 'axios';
+	import cookie from 'js-cookie';
+	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
+	import { auth } from '@src/utils/store';
+	import { page } from '$app/stores';
 
-import productModel from 'models/productModel'
+	var formValues = null;
+	var product = null;
+	var error = '';
+	var productId = $page.url.searchParams.get('productId').trim();
 
-export default function component(props) {
-  let { product } = JSON.parse(props.props)
+	onMount(async function () {
+		if (cookie.get('auth')) {
+			$auth = JSON.parse(cookie.get('auth'));
+		}
+		var res = await axios.post('/api/product/getOne', {
+			productId
+		});
+		if (res.data.error) {
+			error = res.data.error;
+		}
+		product = res.data.product;
+		formValues = {
+			rating: '',
+			description: '',
+			email: JSON.parse(cookie.get('auth')).user.email,
+			productId: productId
+		};
+	});
 
-  let router = useRouter()
-  let [reviewData, setUserData] = useState({
-    rating: '',
-    description: '',
-    email: '',
-    productId: product._id,
-  })
-  let { rating, description, email, productId } = reviewData
-  let [error, setError] = useState('')
+	function formInput(event) {
+		var { name, value } = event.target;
+		formValues = { ...formValues, [name]: value };
+	}
 
-  function handleChangeInput(e) {
-    let { name, value } = e.target
-    setUserData({ ...reviewData, [name]: value })
-  }
+	async function formSubmit() {
+		var numRating = Number(formValues.rating);
+		if (isNaN(numRating)) {
+			error = 'Rating can only be a number.';
+			return;
+		}
+		if (numRating > 5 || numRating < 0) {
+			error = 'Allowed rating range is 0 to 5 inclusive.';
+			return;
+		}
 
-  async function handleSubmit(e) {
-    e.preventDefault()
-    let numRating = Number(rating)
-    if (isNaN(numRating)) {
-      setError('Rating can only be a number.')
-      return
-    }
-    if (numRating > 5 || numRating < 0) {
-      setError('Allowed rating range is 0 to 5 inclusive.')
-      return
-    }
+		try {
+			var res = await axios.post('/api/review/addOne', formValues);
+			if (res.data.err) {
+				error = res.data.err;
+				return;
+			}
+			goto('/product?productId=' + product._id);
+		} catch (resError) {
+			console.log(resError);
+		}
+	}
+</script>
 
-    try {
-      reviewData = { ...reviewData, email: getGlobalState('auth').user.email }
+<svelte:head><title>Add Review</title></svelte:head>
 
-      let res = await axios.post('/api/review/add', reviewData)
-      if (res.data.err) {
-        setError(res.data.err)
-        return
-      }
-      router.push('/product?productId=' + product._id)
-    } catch (resError) {
-      console.log(resError)
-    }
-  }
-
-  return (
-    <div className="bg-grey-lighter flex flex-col">
-      <Head>
-        <title>Add Review</title>
-      </Head>
-      <div className="container mx-auto flex max-w-sm flex-1 flex-col items-center justify-center px-2">
-        <div className="w-full rounded bg-white  px-20 py-8 text-black shadow-md">
-          <h1 className="mb-8 text-center text-3xl">
-            Add a Review for {product.title}
-          </h1>
-          <p>Rating (out of 5)</p>
-          <input
-            name="rating"
-            value={rating}
-            onChange={handleChangeInput}
-            type="text"
-            className="border-grey-light mb-4 block w-full rounded border p-3"
-          />
-          <p>Description</p>
-          <input
-            name="description"
-            value={description}
-            onChange={handleChangeInput}
-            type="text"
-            className="border-grey-light mb-4 w-full rounded border p-3"
-          />
-          <button
-            onClick={handleSubmit}
-            type="button"
-            className="hover:bg-green-dark my-1 w-full rounded bg-black py-3 text-center text-white focus:outline-none"
-          >
-            Add
-          </button>
-          <div className="mt-10 text-red-500">{error}</div>
-        </div>
-      </div>
-    </div>
-  )
-}
-
-export async function getServerSideProps({ query, req }) {
-  let auth = await getAuth(req.cookies.refreshToken)
-  if (auth.error || !req.cookies.refreshToken) {
-    return {
-      redirect: {
-        destination: '/signin',
-      },
-    }
-  }
-  connectDB()
-
-  let product = await productModel.findOne({
-    _id: query.productId,
-  })
-
-  return {
-    props: { props: JSON.stringify({ auth, product }) },
-  }
-} -->
+{#if product}
+	<div class="bg-grey-lighter flex flex-col">
+		<div class="container mx-auto flex max-w-sm flex-1 flex-col items-center justify-center px-2">
+			<div class="w-full rounded bg-white  px-20 py-8 text-black shadow-md">
+				<h1 class="mb-8 text-center text-xl">
+					Add a Review for {product.title}
+				</h1>
+				<p>Rating (out of 5)</p>
+				<input
+					name="rating"
+					value={formValues.rating}
+					on:input={formInput}
+					type="text"
+					required
+					class="border-grey-light mb-4 block w-full rounded border p-3"
+				/>
+				<p>Description</p>
+				<input
+					name="description"
+					value={formValues.description}
+					on:input={formInput}
+					type="text"
+					required
+					class="border-grey-light mb-4 w-full rounded border p-3"
+				/>
+				<button
+					on:click={formSubmit}
+					type="submit"
+					class="hover:bg-green-dark my-1 w-full rounded bg-black py-3 text-center text-white focus:outline-none"
+				>
+					Add Review
+				</button>
+				<div class="mt-10 text-red-500">{error}</div>
+			</div>
+		</div>
+	</div>
+{/if}
