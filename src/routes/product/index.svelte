@@ -12,14 +12,14 @@
 	var tab = 0;
 	var error = null;
 	var orderQuantity = 1;
-	var productId = $page.url.searchParams.get('productId').trim();
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
-		var res = await axios.post('/api/product/getOneAndGetReview', { productId });
-		console.log(res.data)
+		var res = await axios.post('/api/product/getOneAndGetReview', {
+			productId: $page.url.searchParams.get('productId')
+		});
 		if (res.data.error) {
 			error = res.data.error;
 		}
@@ -95,11 +95,7 @@
 			<button on:click|preventDefault={leftArrow} class="absolute bottom-20 left-0" type="button">
 				<ChevronLeftIcon class="h-10 w-10" />
 			</button>
-			<button
-				on:click|preventDefault={rightArrow}
-				class="absolute bottom-20 right-0"
-				type="button"
-			>
+			<button on:click|preventDefault={rightArrow} class="absolute bottom-20 right-0" type="button">
 				<ChevronRightIcon class="h-10 w-10" />
 			</button>
 		</div>
