@@ -9,7 +9,7 @@
 	var formValues = null;
 	var product = null;
 	var error = '';
-	var productId = $page.url.searchParams.get('productId').trim();
+	var productId = $page.url.searchParams.get('productId');
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
@@ -97,4 +97,6 @@
 			</div>
 		</div>
 	</div>
+{:else}
+	<h1>Loading...</h1>
 {/if}

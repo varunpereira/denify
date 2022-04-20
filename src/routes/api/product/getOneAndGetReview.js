@@ -16,7 +16,7 @@ export async function post({ request }) {
 			};
 		}
 		var reviews = await reviewModel.find({
-			productId: productId
+			productId
 		});
 		return {
 			body: {
