@@ -23,6 +23,7 @@
 		var res = await axios.post('/api/product/getOneAndGetReview', {
 			productId
 		});
+		console.log(res.data)
 		if (res.data.error) {
 			error = res.data.error;
 		}
@@ -178,5 +179,5 @@
 	</div>
 
 	{:else}
-	<h1>Error. Please try again later.</h1>
+	<h1>Loading...</h1>
 {/if}
