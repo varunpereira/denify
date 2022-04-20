@@ -18,7 +18,8 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
-		var res = await axios.post('/api/product/getAndGetReview', { productId });
+		var res = await axios.post('/api/product/getOneAndGetReview', { productId });
+		console.log(res.data)
 		if (res.data.error) {
 			error = res.data.error;
 		}
