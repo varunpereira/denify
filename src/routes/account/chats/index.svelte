@@ -35,6 +35,8 @@
 		if (res.data.error) {
 			error = res.data.error;
 		}
+		messages = res.data.messages;
+		newMessage = '';
 	}
 </script>
 
@@ -79,10 +81,13 @@
 			{/each}
 		</div>
 
-		<form on:submit={sendNewMessage} class="relative w-full rounded-b-md border-2 border-gray-400">
+		<form
+			on:submit|preventDefault={sendNewMessage}
+			class="relative w-full rounded-b-md border-2 border-gray-400"
+		>
 			<input
 				value={newMessage}
-				on:input={(e) => (newMessage = e.target.value)}
+				on:input|preventDefault={(event) => (newMessage = event.target.value)}
 				type="text"
 				class="focus:shadow-outline w-full min-w-max rounded-b-md bg-white  py-2 pl-2 text-sm leading-tight text-black focus:outline-none"
 				placeholder="type message"

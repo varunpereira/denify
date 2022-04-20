@@ -5,7 +5,7 @@ db();
 
 export async function post({ request }) {
 	var { email, recipEmail, newMessage } = await request.json();
-	console.log({ email, recipEmail, newMessage });
+	// console.log({ email, recipEmail, newMessage });
 	var email1 = email;
 	var email2 = recipEmail;
 	var messages = [];
@@ -16,7 +16,7 @@ export async function post({ request }) {
 		},
 		{
 			$push: {
-				messages: newMessage
+				messages: { [email]: newMessage }
 			}
 		},
 		{ new: true }
@@ -30,18 +30,16 @@ export async function post({ request }) {
 			},
 			{
 				$push: {
-					messages: newMessage
+					messages: { [email]: newMessage }
 				}
 			},
 			{ new: true }
 		);
 		messages = update2.messages;
-		console.log(JSON.stringify(messages));
-
-		return {
-			body: {
-				messages
-			}
-		};
 	}
+	return {
+		body: {
+			messages
+		}
+	};
 }
