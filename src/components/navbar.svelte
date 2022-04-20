@@ -13,7 +13,7 @@
 		} else if (event.target.value === 'profile') {
 			goto('/account/profile?email=' + $auth.user.email);
 		} else if (event.target.value === 'contacts') {
-			goto('/account/messages/contacts');
+			goto('/account/chats/contacts');
 		} else if (event.target.value === 'info') {
 			goto('/account/info');
 		} else if (event.target.value === 'payments') {
