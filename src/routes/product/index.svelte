@@ -18,12 +18,9 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
-		console.log('HERE:');
-		console.log(productId);
 		var res = await axios.post('/api/product/getOneAndGetReview', {
 			productId
 		});
-		console.log(res.data)
 		if (res.data.error) {
 			error = res.data.error;
 		}
@@ -153,9 +150,9 @@
 	>
 		Add a Review
 	</a>
-	<div id="reviews" class="-mx-1 mt-5 flex flex-wrap lg:-mx-4">
+	<div id="reviews" class="mt-5 flex flex-wrap">
 		{#if reviews.length === 0}
-			<h2>No Reviews</h2>
+			<h1>No Reviews</h1>
 		{:else}
 			{#each reviews as review}
 				<div
@@ -177,7 +174,6 @@
 			{/each}
 		{/if}
 	</div>
-
-	{:else}
+{:else}
 	<h1>Loading...</h1>
 {/if}

@@ -13,4 +13,4 @@
 
 <svelte:head><title>Home</title></svelte:head>
 
-<img src="/homeBanner.png" alt="" />
+<img src="/homeBanner.png" alt="" class="w-full"/>
