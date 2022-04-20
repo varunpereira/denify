@@ -10,6 +10,10 @@
 	var cart = null;
 
 	onMount(async function () {
+		if (cookie.get('auth')) {
+			$auth = JSON.parse(cookie.get('auth'));
+		}
+
 		var res = await axios.post('/api/order/cart/get', { email: JSON.parse(cookie.get('auth')).user.email });
 		if (res.data.error) {
 			error = res.data.error;

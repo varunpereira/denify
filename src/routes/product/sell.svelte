@@ -8,7 +8,9 @@
 	var formData = null;
 
 	onMount(async function () {
-		$auth = JSON.parse(cookie.get('auth'));
+		if (cookie.get('auth')) {
+			$auth = JSON.parse(cookie.get('auth'));
+		}
 		formData = {
 			email: $auth.user.email,
 			title: 'test',

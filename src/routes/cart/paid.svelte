@@ -10,6 +10,10 @@
 	var cartPaid = false;
 
 	onMount(async function () {
+		if (cookie.get('auth')) {
+			$auth = JSON.parse(cookie.get('auth'));
+		}
+
 		var checkoutSessionId = $page.url.searchParams.get('checkoutSessionId');
 		var res = await axios.post('/api/order/cart/paid', {
 			email: JSON.parse(cookie.get('auth')).user.email,

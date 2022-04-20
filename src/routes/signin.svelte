@@ -1,8 +1,15 @@
 <script>
 	import axios from 'axios';
 	import cookie from 'js-cookie';
-	import { auth } from '@src/utils/store';
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
+	import { auth } from '@src/utils/store';
+
+	onMount(async function () {
+		if (cookie.get('auth')) {
+			$auth = JSON.parse(cookie.get('auth'));
+		}
+	});
 
 	var formData = { email: '', password: '' };
 	var error = '';
@@ -13,7 +20,7 @@
 	}
 
 	async function formSubmit(event) {
-		var res = await axios.post('/api/signin', formData);
+		var res = await axios.post('/api/user/signin', formData);
 		if (res.data.error) {
 			error = res.data.error;
 			return;

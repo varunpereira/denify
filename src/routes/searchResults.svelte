@@ -12,7 +12,9 @@
 	var searchTerm = $page.url.searchParams.get('searchTerm').trim();
 
 	onMount(async function () {
-		$auth = JSON.parse(cookie.get('auth'));
+		if (cookie.get('auth')) {
+			$auth = JSON.parse(cookie.get('auth'));
+		}
 		getProducts();
 	});
 
@@ -38,8 +40,6 @@
 		{#if products.length === 0}
 			<h2>No Products found.</h2>
 		{:else}
-			<!-- {$page.url.searchParams.get('searchTerm').trim()}
-			{searchTerm} -->
 			{#each products as product}
 				<Product {product} />
 			{/each}

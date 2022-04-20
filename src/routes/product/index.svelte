@@ -15,7 +15,9 @@
 	var productId = $page.url.searchParams.get('productId').trim();
 
 	onMount(async function () {
-		$auth = JSON.parse(cookie.get('auth'));
+		if (cookie.get('auth')) {
+			$auth = JSON.parse(cookie.get('auth'));
+		}
 		var res = await axios.post('/api/product/getAndGetReview', { productId });
 		if (res.data.error) {
 			error = res.data.error;
@@ -67,6 +69,7 @@
 	}
 
 	function leftArrow() {
+		console.log(tab);
 		if (tab - 1 >= 0) {
 			tab = tab - 1;
 			return;
@@ -89,10 +92,14 @@
 	<div class=" items-start justify-center py-12 md:flex ">
 		<div class="relative">
 			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
-			<button class="absolute bottom-20 left-0" type="button" onClick={() => leftArrow()}>
+			<button on:click|preventDefault={leftArrow} class="absolute bottom-20 left-0" type="button">
 				<ChevronLeftIcon class="h-10 w-10" />
 			</button>
-			<button class="absolute bottom-20 right-0" type="button" onClick={() => rightArrow()}>
+			<button
+				on:click|preventDefault={rightArrow}
+				class="absolute bottom-20 right-0"
+				type="button"
+			>
 				<ChevronRightIcon class="h-10 w-10" />
 			</button>
 		</div>
@@ -139,19 +146,17 @@
 			{/if}
 		</div>
 	</div>
+	<h1 class="mb-5 mt-20 text-xl font-semibold">Reviews</h1>
+	<a
+		href={'/product/addReview?productId=' + product._id}
+		class="text-sm font-semibold hover:text-gray-400"
+	>
+		Add a Review
+	</a>
 	<div id="reviews" class="-mx-1 mt-5 flex flex-wrap lg:-mx-4">
 		{#if reviews.length === 0}
 			<h2>No Reviews</h2>
 		{:else}
-			<div class="flex justify-start">
-				<h1 class="mb-5 mt-20 text-xl font-semibold">Reviews</h1>
-				<a
-					href={'/product/addReview?productId=' + product._id}
-					class="text-xl font-semibold hover:text-gray-400"
-				>
-					Add a Review
-				</a>
-			</div>
 			{#each reviews as review}
 				<div
 					key={review._id}
