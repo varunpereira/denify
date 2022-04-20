@@ -9,14 +9,13 @@
 	var formValues = null;
 	var product = null;
 	var error = '';
-	var productId = $page.url.searchParams.get('productId').trim();
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
 		var res = await axios.post('/api/product/getOne', {
-			productId
+			productId: $page.url.searchParams.get('productId')
 		});
 		if (res.data.error) {
 			error = res.data.error;
@@ -26,7 +25,7 @@
 			rating: '',
 			description: '',
 			email: JSON.parse(cookie.get('auth')).user.email,
-			productId: productId
+			productId: $page.url.searchParams.get('productId')
 		};
 	});
 
