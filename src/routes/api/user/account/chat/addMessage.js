@@ -21,7 +21,6 @@ export async function post({ request }) {
 		},
 		{ new: true }
 	);
-	messages = update1.messages;
 	if (update1 === null) {
 		var update2 = await chatModel.findOneAndUpdate(
 			{
@@ -36,6 +35,8 @@ export async function post({ request }) {
 			{ new: true }
 		);
 		messages = update2.messages;
+	} else {
+		messages = update1.messages;
 	}
 	return {
 		body: {

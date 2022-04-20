@@ -26,8 +26,9 @@ export async function post({ request }) {
 		}
 		if (message1 === null) {
 			messages = message2.messages;
+		} else {
+			messages = message1.messages;
 		}
-		messages = message1.messages;
 		return {
 			body: {
 				messages

@@ -66,7 +66,7 @@
 						class="custom-select text-capitalize bg-black text-white"
 						on:change|preventDefault={accountOptions}
 					>
-						<option hidden>{$auth.user.email}</option>
+						<option hidden selected>{$auth.user.email}</option>
 						<option value="profile">Profile</option>
 						<option value="contacts">Contacts</option>
 						<option value="info">Account</option>
