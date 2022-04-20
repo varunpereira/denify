@@ -3,8 +3,7 @@ import mongoose from 'mongoose'
 let schema = new mongoose.Schema(
   {
     productId: {
-      type: mongoose.Types.ObjectId,
-      ref: 'product',
+      type: String,
     },
     email: {
       type: String,
