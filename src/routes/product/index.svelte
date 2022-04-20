@@ -12,13 +12,14 @@
 	var tab = 0;
 	var error = null;
 	var orderQuantity = 1;
+	var productId = $page.url.searchParams.get('productId').trim();
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
 		var res = await axios.post('/api/product/getOneAndGetReview', {
-			productId: $page.url.searchParams.get('productId')
+			productId
 		});
 		if (res.data.error) {
 			error = res.data.error;
