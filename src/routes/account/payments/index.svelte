@@ -23,7 +23,15 @@
 		orders = res.data.orders;
 	});
 
-	async function refund() {}
+	async function refund(checkoutSessionId) {
+		var res = await axios.post('/api/stripe/refund', {
+			email: JSON.parse(cookie.get('auth')).user.email, checkoutSessionId
+		});
+		if (res.data.error) {
+			error = res.data.error;
+		}
+		orders = res.data.orders;
+	}
 </script>
 
 <svelte:head><title>Account Payments</title></svelte:head>
@@ -73,7 +81,7 @@
 										<button
 											class="hover:underline"
 											on:click={() => {
-												refund(order.checkoutSessionId, index);
+												refund(order.checkoutSessionId);
 											}}
 										>
 											refund

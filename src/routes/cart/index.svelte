@@ -45,6 +45,7 @@
 			console.log('error');
 			return;
 		}
+		// cart = res.data.cart
 		fetch = true;
 		$auth = { ...$auth, cartQuantity: $auth.cartQuantity - product.productQuantity };
 		cookie.set('auth', JSON.stringify($auth));
