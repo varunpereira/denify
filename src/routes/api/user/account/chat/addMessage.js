@@ -5,7 +5,6 @@ db();
 
 export async function post({ request }) {
 	var { email, recipEmail, newMessage } = await request.json();
-	// console.log({ email, recipEmail, newMessage });
 	var email1 = email;
 	var email2 = recipEmail;
 	var messages = [];

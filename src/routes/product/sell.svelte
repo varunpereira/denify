@@ -38,10 +38,8 @@
 		try {
 			var res = await axios.post('/api/product/add', formData);
 			if (res.data.error) {
-				console.log(res.data.error);
 				return;
 			}
-			console.log('res:' + JSON.stringify(res.data));
 			goto('/searchResults?searchTerm=');
 		} catch (resError) {
 			console.log(resError.response.data.error);

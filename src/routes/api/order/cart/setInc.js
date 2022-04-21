@@ -27,7 +27,6 @@ export async function post({ request }) {
 			}
 		}
 	);
-	// console.log(JSON.stringify(currentOrder))
 	if (currentOrder.modifiedCount === 0) {
 		currentOrder = await orderModel.updateOne(
 			{ email: email, current: true },

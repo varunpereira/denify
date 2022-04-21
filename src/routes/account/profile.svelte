@@ -25,12 +25,12 @@
 	});
 
 	async function sendMessage() {
-		var res = await axios.post('/api/user/account/setContacts', {
-			email: JSON.parse(cookie.get('auth')),
+		var res = await axios.post('/api/user/account/chat/setContacts', {
+			email: JSON.parse(cookie.get('auth')).user.email,
 			recipEmail: email
 		});
 		if (res.data.success) {
-			goto('/account/messages?recipEmail=' + email + '#latest');
+			goto('/account/chats?recipEmail=' + email + '#latest');
 		}
 	}
 </script>

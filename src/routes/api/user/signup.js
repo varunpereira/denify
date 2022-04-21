@@ -18,7 +18,7 @@ export async function post({ request }) {
 
 	var passwordHash = bcryptjs.hashSync(password, 12);
 
-	var saveUser = await new Users({
+	var saveUser = await new userModel({
 		email,
 		password: passwordHash
 	}).save();
@@ -34,7 +34,7 @@ export async function post({ request }) {
 	var refreshToken = jwt.sign({ id: email }, import.meta.env.VITE_mongodbUri, {
 		expiresIn: '7d'
 	});
-	var findCart = await orderModel.findOne({
+	var cart = await orderModel.findOne({
 		email,
 		current: true
 	});

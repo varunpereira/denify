@@ -11,6 +11,7 @@ export async function post({ request }) {
 		email: email,
 		contacts: [recipEmail]
 	});
+	// accepts contact req automatically
 	if (find === null) {
 		var update1 = await userModel.updateOne(
 			{

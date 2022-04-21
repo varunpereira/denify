@@ -10,7 +10,6 @@ export async function post({ request }) {
 	var { email, password } = await request.json();
 	var user = await userModel.findOne({ email });
 	if (user === null) {
-		console.log(email);
 		return {
 			body: { error: 'This user does not exist.' }
 		};
