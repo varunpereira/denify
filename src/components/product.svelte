@@ -1,26 +1,26 @@
 <script>
 	import axios from 'axios';
+	import { auth } from '@src/utils/store';
+	import cookie from 'js-cookie';
 
 	export var product;
 	var error = null;
 
-	function addToCart(product) {
+	function addToCart() {
 		if (product.stock === 0) {
-			setError('This product is out of stock.');
+			error = 'This product is out of stock.';
 			return;
 		}
-		axios
-			.post('/api/order/cart/setInc', {
-				email: getGlobalState('auth').user.email,
-				product: product,
-				productQuantity: 1
-			})
-			.then((res) => {
-				setGlobalState('auth', {
-					...getGlobalState('auth'),
-					cartQuantity: getGlobalState('auth').cartQuantity + 1
-				});
-			});
+		var res = axios.post('/api/order/cart/setInc', {
+			email: $auth.user.email,
+			product,
+			productQuantity: 1
+		});
+		$auth = {
+			...$auth,
+			cartQuantity: $auth.cartQuantity + 1
+		};
+		cookie.set('auth', JSON.stringify($auth));
 	}
 </script>
 
@@ -44,7 +44,7 @@
 			{product.description}
 		</p>
 		<button
-			on:click={() => addToCart(product)}
+			on:click|preventDefault={addToCart}
 			class="cursor-pointer inline-flex w-full items-center justify-center rounded-lg bg-black py-2 m font-medium text-white "
 		>
 			Add to Cart

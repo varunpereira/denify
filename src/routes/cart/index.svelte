@@ -8,19 +8,30 @@
 
 	var error = null;
 	var cart = null;
+	var fetch = false;
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
+		getCart();
+	});
 
-		var res = await axios.post('/api/order/cart/get', { email: JSON.parse(cookie.get('auth')).user.email });
+	async function getCart() {
+		var res = await axios.post('/api/order/cart/get', {
+			email: JSON.parse(cookie.get('auth')).user.email
+		});
 		if (res.data.error) {
 			error = res.data.error;
 			return;
 		}
 		cart = res.data.cart;
-	});
+	}
+
+	$: if (fetch === true) {
+		getCart();
+		fetch = false;
+	}
 
 	async function removeProduct(product) {
 		var productData = {
@@ -34,7 +45,9 @@
 			console.log('error');
 			return;
 		}
-		$auth = { ...$auth, cartQuantity: $auth.user.cartQuantity - product.productQuantity };
+		fetch = true;
+		$auth = { ...$auth, cartQuantity: $auth.cartQuantity - product.productQuantity };
+		cookie.set('auth', JSON.stringify($auth));
 	}
 
 	async function checkout() {
@@ -51,12 +64,10 @@
 				currency: 'aud'
 			};
 		});
-		// console.log(JSON.stringify(products))
 		var res = await axios.post('/api/stripe/checkoutSession', {
 			orderId: cart._id,
 			items: products
 		});
-		console.log(JSON.stringify(res.data))
 		goto(res.data.session.url);
 	}
 </script>

@@ -33,20 +33,16 @@
 			error = 'Quantity not available from current stock levels.';
 			return;
 		}
-		axios
-			.post('/api/order/cart/setInc', {
-				email: $auth.user.email,
-				product: productItem,
-				productQuantity: orderQuantity
-			})
-			.then((res) => {
-				$auth = {
-					...$auth,
-					cartQuantity: $auth.cartQuantity + orderQuantity
-				};
-				var productId = $page.url.searchParams.get('productId');
-				goto($page.url + '?productId=' + productId);
-			});
+		var res = axios.post('/api/order/cart/setInc', {
+			email: $auth.user.email,
+			product: productItem,
+			productQuantity: orderQuantity
+		});
+		$auth = {
+			...$auth,
+			cartQuantity: $auth.cartQuantity + orderQuantity
+		};
+		cookie.set('auth', JSON.stringify($auth));
 	}
 
 	function minusButton() {
