@@ -15,7 +15,7 @@ let schema = new mongoose.Schema(
       type: String,
       default: 'user',
     },
-    messageEmails: {
+    contacts: {
       type: Array,
       default: [],
     },

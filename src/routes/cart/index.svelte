@@ -41,11 +41,11 @@
 			productPrice: product.productPrice
 		};
 		var res = await axios.post('/api/order/cart/setDec', productData);
-		if (res.data.err) {
+		if (res.data.error) {
 			console.log('error');
 			return;
 		}
-		// cart = res.data.cart
+		// cart = res.data.cart;
 		fetch = true;
 		$auth = { ...$auth, cartQuantity: $auth.cartQuantity - product.productQuantity };
 		cookie.set('auth', JSON.stringify($auth));
@@ -53,7 +53,7 @@
 
 	async function checkout() {
 		if (cart.quantity <= 0) {
-			setError('Cart empty. Please add a product.');
+			error = 'Cart empty. Please add a product.';
 			return;
 		}
 		var products = cart.products.map((product) => {
@@ -113,7 +113,7 @@
 						${product.productQuantity * product.productPrice}
 					</span>
 					<button
-						on:click={() => removeProduct(product)}
+						on:click|preventDefault={() => removeProduct(product)}
 						class="w-1/5 text-center text-sm font-semibold hover:text-red-600"
 					>
 						<TrashIcon class="h-5 w-5" />

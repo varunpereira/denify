@@ -48,53 +48,56 @@
 			<div class="nav-item flow-root">
 				<div class="rounded hover:text-gray-400 md:mx-2 relative">
 					<button
-						on:click={function () {
-							dropdownSelected = !dropdownSelected;
-						}}
+						on:click={() => (dropdownSelected = !dropdownSelected)}
 						class="h-12 w-12 rounded-full "
 					>
 						{$auth.user.email}
 					</button>
 					{#if dropdownSelected}
-						<div class="absolute right-0 w-40 mt-2 py-2 bg-white border rounded ">
+						<div class="absolute md:w-40 w-full md:right-0 bg-black text-white rounded ">
 							<a
+								on:click={() => (dropdownSelected = !dropdownSelected)}
 								href={'/account/profile?email=' + $auth.user.email}
-								class="transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-500 hover:text-white"
-								>Profile</a
+								class=" block px-2 py-2   rounded hover:bg-gray-700 hover:text-white">Profile</a
 							>
 							<a
+								on:click={() => (dropdownSelected = !dropdownSelected)}
 								href="/account/chats/contacts"
-								class="transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-500 hover:text-white"
+								class=" block px-2 py-2   rounded hover:bg-gray-700 hover:text-white"
 							>
 								Contacts
 							</a>
 							<a
+								on:click={() => (dropdownSelected = !dropdownSelected)}
 								href="/account/info"
-								class="transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-500 hover:text-white"
+								class=" block px-2 py-2   rounded hover:bg-gray-700 hover:text-white"
 							>
 								Info
 							</a>
 							<a
+								on:click={() => (dropdownSelected = !dropdownSelected)}
 								href="/account/payments"
-								class="transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-500 hover:text-white"
+								class=" block px-2 py-2   rounded hover:bg-gray-700 hover:text-white"
 							>
 								Payments
 							</a>
 							<a
+								on:click={() => (dropdownSelected = !dropdownSelected)}
 								href="/account/sales"
-								class="transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-500 hover:text-white"
+								class=" block px-2 py-2   rounded hover:bg-gray-700 hover:text-white"
 							>
 								Sales
 							</a>
 							<a
+								on:click={() => (dropdownSelected = !dropdownSelected)}
 								href="/account/reviews"
-								class="transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-500 hover:text-white"
+								class=" block px-2 py-2   rounded hover:bg-gray-700 hover:text-white"
 							>
 								Reviews
 							</a>
 							<button
 								on:click={signOut}
-								class="w-full text-left transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-500 hover:text-white"
+								class="w-full text-left  block px-2 py-2   rounded hover:bg-gray-700 hover:text-white"
 							>
 								Sign out
 							</button>

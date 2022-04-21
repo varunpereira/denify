@@ -19,8 +19,8 @@ export async function post({ request }) {
 		});
 		if (message1 === null && message2 === null) {
 			return {
-				redirect: {
-					destination: '/account/messages/contacts'
+				body: {
+					error: "Link not accessible."
 				}
 			};
 		}

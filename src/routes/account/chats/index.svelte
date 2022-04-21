@@ -21,7 +21,7 @@
 			recipEmail
 		});
 		if (res.data.error) {
-			error = res.data.error;
+			goto('/account/chats/contacts');
 		}
 		messages = res.data.messages;
 	});

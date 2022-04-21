@@ -24,18 +24,22 @@
 		products = res.data.products;
 	});
 
-  async function sendMessage(){
-
-  }
+	async function sendMessage() {
+		var res = await axios.post('/api/user/account/setContacts', {
+			email: JSON.parse(cookie.get('auth')),
+			recipEmail: email
+		});
+		if (res.data.success) {
+			goto('/account/messages?recipEmail=' + email + '#latest');
+		}
+	}
 </script>
 
 <svelte:head><title>Account Profile - {email}</title></svelte:head>
 
 {#if products && email}
 	<h1 class="mb-5 text-lg font-semibold">{email}'s Products</h1>
-	<button on:click={sendMessage} class=" mb-5 hover:text-gray-400 cursor-pointer">
-		Message
-  </button>
+	<button on:click={sendMessage} class=" mb-5 hover:text-gray-400 cursor-pointer"> Message </button>
 	<div class="flex flex-wrap text-white">
 		{#if products.length === 0}
 			<h2>No Products found.</h2>

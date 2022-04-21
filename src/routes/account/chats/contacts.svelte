@@ -29,10 +29,10 @@
 {#if user}
 	<div class="rounded-lg bg-white pb-2  text-black">
 		<h1 class="mb-5 pt-4 pl-2 text-lg font-semibold">Your Messages</h1>
-		{#each user.messageEmails as messageEmail, index}
-			<a key={index} href={'/account/chats?recipEmail=' + messageEmail + '#latest'}>
+		{#each user.contacts as contact, index}
+			<a key={index} href={'/account/chats?recipEmail=' + contact + '#latest'}>
 				<div class="mx-2 mb-2 rounded-md border-2 border-gray-600 hover:bg-gray-200">
-					{messageEmail}
+					{contact}
 				</div>
 			</a>
 		{/each}
