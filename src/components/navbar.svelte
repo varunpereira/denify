@@ -3,32 +3,18 @@
 	import { auth } from '@src/utils/store';
 	import cookie from 'js-cookie';
 	import { goto } from '$app/navigation';
-	import SearchBar from '@src/components/searchbar.svelte'
+	import SearchBar from '@src/components/searchbar.svelte';
 
-	function accountOptions(event) {
-		if (event.target.value === 'signOut') {
-			cookie.remove('auth');
-			$auth = {};
-			goto('/');
-		} else if (event.target.value === 'profile') {
-			goto('/account/profile?email=' + $auth.user.email);
-		} else if (event.target.value === 'contacts') {
-			goto('/account/chats/contacts');
-		} else if (event.target.value === 'info') {
-			goto('/account/info');
-		} else if (event.target.value === 'payments') {
-			goto('/account/payments');
-		} else if (event.target.value === 'sales') {
-			goto('/account/sales');
-		} else if (event.target.value === 'reviews') {
-			goto('/account/reviews');
-		}
+	var dropdownSelected = false;
+
+	function signOut() {
+		cookie.remove('auth');
+		$auth = {};
+		goto('/');
 	}
 </script>
 
-<header
-	class="relative mb-10 min-w-min bg-black py-4  md:flex md:items-center md:justify-between"
->
+<header class="relative mb-10 min-w-min bg-black py-4  md:flex md:items-center md:justify-between">
 	<div class="md:mr-5 mb-1 px-0 flex items-center justify-between ">
 		<h1 class="text-xl">
 			<a href="/" class="flex font-bold no-underline hover:text-gray-400">
@@ -41,8 +27,7 @@
 		</button>
 	</div>
 
-	<SearchBar/>
-
+	<SearchBar />
 
 	<ul class=" list-reset md:flex md:items-center">
 		{#if $auth.user}
@@ -61,20 +46,60 @@
 				</a>
 			</li>
 			<div class="nav-item flow-root">
-				<div class="rounded hover:font-medium hover:text-gray-400 md:mx-2">
-					<select
-						class="custom-select text-capitalize bg-black text-white"
-						on:change|preventDefault={accountOptions}
+				<div class="rounded hover:text-gray-400 md:mx-2 relative">
+					<button
+						on:click={function () {
+							dropdownSelected = !dropdownSelected;
+						}}
+						class="h-12 w-12 rounded-full "
 					>
-						<option hidden selected>{$auth.user.email}</option>
-						<option value="profile">Profile</option>
-						<option value="contacts">Contacts</option>
-						<option value="info">Account</option>
-						<option value="payments">Payments</option>
-						<option value="sales">Sales</option>
-						<option value="reviews">Reviews</option>
-						<option value="signOut">Sign Out</option>
-					</select>
+						{$auth.user.email}
+					</button>
+					{#if dropdownSelected}
+						<div class="absolute right-0 w-40 mt-2 py-2 bg-white border rounded ">
+							<a
+								href={'/account/profile?email=' + $auth.user.email}
+								class="transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-500 hover:text-white"
+								>Profile</a
+							>
+							<a
+								href="/account/chats/contacts"
+								class="transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-500 hover:text-white"
+							>
+								Contacts
+							</a>
+							<a
+								href="/account/info"
+								class="transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-500 hover:text-white"
+							>
+								Info
+							</a>
+							<a
+								href="/account/payments"
+								class="transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-500 hover:text-white"
+							>
+								Payments
+							</a>
+							<a
+								href="/account/sales"
+								class="transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-500 hover:text-white"
+							>
+								Sales
+							</a>
+							<a
+								href="/account/reviews"
+								class="transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-500 hover:text-white"
+							>
+								Reviews
+							</a>
+							<button
+								on:click={signOut}
+								class="w-full text-left transition-colors duration-200 block px-4 py-2 text-normal text-gray-900 rounded hover:bg-gray-500 hover:text-white"
+							>
+								Sign out
+							</button>
+						</div>
+					{/if}
 				</div>
 			</div>
 		{:else}
