@@ -6,7 +6,6 @@
 	import cookie from 'js-cookie';
 	import { goto } from '$app/navigation';
 	import { ArrowUpCircleIcon } from 'svelte-feather-icons';
-	// import { websocketFrontend } from '@src/utils/websocketFrontend';
 
 	var messages = null;
 	var recipEmail = $page.url.searchParams.get('recipEmail');
@@ -17,21 +16,26 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
-		// var res = await axios.post('/api/user/account/chat/getMessages', {
-		// 	email: JSON.parse(cookie.get('auth')).user.email,
-		// 	recipEmail
-		// });
-		// if (res.data.error) {
-		// 	goto('/account/chats/contacts');
-		// }
-		// messages = res.data.messages;
-		// websocketFrontend.on('messages', function (updatedMessages) {
-		// 	messages = updatedMessages;
-		// });
+		var res = await axios.post('/api/user/account/chat/getMessages', {
+			email: JSON.parse(cookie.get('auth')).user.email,
+			recipEmail
+		});
+		if (res.data.error) {
+			goto('/account/chats/contacts');
+		}
+		messages = res.data.messages;
 	});
 
 	async function sendNewMessage() {
-		// websocketFrontend.emit('newMessage', newMessage);
+		var res = await axios.post('/api/user/account/chat/addMessage', {
+			email: JSON.parse(cookie.get('auth')).user.email,
+			recipEmail,
+			newMessage
+		});
+		if (res.data.error) {
+			goto('/account/chats/contacts');
+		}
+		messages = res.data.messages;
 		newMessage = '';
 	}
 </script>

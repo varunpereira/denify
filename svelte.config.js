@@ -13,6 +13,7 @@ const config = {
 				}
 			},
 			plugins: [
+				// only works locally not on vercel
 				// websocketBackend,
 				{
 					name: 'sveltekit-socket-io',
@@ -32,6 +33,7 @@ const config = {
 							});
 							// // chat api
 							// websocket.on('newMessage', function (newMessage) {
+							// db query here
 							// 	var messages = []
 							// 	io.emit('messages', messages);
 							// });
