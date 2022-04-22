@@ -6,7 +6,7 @@
 	import cookie from 'js-cookie';
 	import { goto } from '$app/navigation';
 	import { ArrowUpCircleIcon } from 'svelte-feather-icons';
-	import { websocketFrontend } from '@src/utils/websocketFrontend';
+	// import { websocketFrontend } from '@src/utils/websocketFrontend';
 
 	var messages = null;
 	var recipEmail = $page.url.searchParams.get('recipEmail');
@@ -25,13 +25,13 @@
 		// 	goto('/account/chats/contacts');
 		// }
 		// messages = res.data.messages;
-		websocketFrontend.on('messages', function (updatedMessages) {
-			messages = updatedMessages;
-		});
+		// websocketFrontend.on('messages', function (updatedMessages) {
+		// 	messages = updatedMessages;
+		// });
 	});
 
 	async function sendNewMessage() {
-		websocketFrontend.emit('newMessage', newMessage);
+		// websocketFrontend.emit('newMessage', newMessage);
 		newMessage = '';
 	}
 </script>

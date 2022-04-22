@@ -30,11 +30,11 @@ const config = {
 									time: new Date().toLocaleString()
 								});
 							});
-							// chat api
-							websocket.on('newMessage', function (newMessage) {
-								var messages = []
-								io.emit('messages', messages);
-							});
+							// // chat api
+							// websocket.on('newMessage', function (newMessage) {
+							// 	var messages = []
+							// 	io.emit('messages', messages);
+							// });
 						});
 						// done
 						console.log('SocketIO injected');
