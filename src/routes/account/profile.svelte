@@ -29,9 +29,7 @@
 			email: JSON.parse(cookie.get('auth')).user.email,
 			recipEmail: email
 		});
-		if (res.data.success) {
-			goto('/account/chats?recipEmail=' + email + '#latest');
-		}
+		goto('/account/chats?recipEmail=' + email + '#latest');
 	}
 </script>
 

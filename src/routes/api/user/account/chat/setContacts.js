@@ -8,8 +8,8 @@ db();
 export async function post({ request }) {
 	var { email, recipEmail } = await request.json();
 	var find = await userModel.findOne({
-		email: email,
-		contacts: [recipEmail]
+		email,
+		contacts : { $all: [recipEmail] } 
 	});
 	// accepts contact req automatically
 	if (find === null) {
@@ -40,7 +40,7 @@ export async function post({ request }) {
 	}
 	return {
 		body: {
-			success: true
 		}
 	};
+	
 }
