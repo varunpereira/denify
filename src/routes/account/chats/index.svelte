@@ -43,7 +43,7 @@
 <svelte:head><title>Account Chat</title></svelte:head>
 
 {#if messages}
-	<div class="rounded-md bg-white text-black ">
+	<div class="rounded-md bg-white text-black md:mx-40 ">
 		<h1
 			class=" flex justify-center rounded-t-md border-2 border-gray-400 py-2 text-xl font-semibold"
 		>

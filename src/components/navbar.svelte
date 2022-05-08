@@ -54,50 +54,50 @@
 						{$auth.user.email}
 					</button>
 					{#if dropdownSelected}
-						<div class="absolute md:w-40 w-full md:right-0 bg-black text-white rounded ">
+						<div class="absolute md:w-36 w-full md:right-0 bg-black text-white rounded md:pl-0">
 							<a
 								on:click={() => (dropdownSelected = !dropdownSelected)}
 								href={'/account/profile?email=' + $auth.user.email}
-								class=" block px-2 py-2   rounded hover:bg-gray-700 hover:text-white">Profile</a
+								class=" block px-2 py-2   rounded hover:text-gray-400">Profile</a
 							>
 							<a
 								on:click={() => (dropdownSelected = !dropdownSelected)}
 								href="/account/chats/contacts"
-								class=" block px-2 py-2   rounded hover:bg-gray-700 hover:text-white"
+								class=" block px-2 py-2   rounded hover:text-gray-400"
 							>
 								Contacts
 							</a>
 							<a
 								on:click={() => (dropdownSelected = !dropdownSelected)}
 								href="/account/info"
-								class=" block px-2 py-2   rounded hover:bg-gray-700 hover:text-white"
+								class=" block px-2 py-2   rounded hover:text-gray-400"
 							>
 								Info
 							</a>
 							<a
 								on:click={() => (dropdownSelected = !dropdownSelected)}
 								href="/account/payments"
-								class=" block px-2 py-2   rounded hover:bg-gray-700 hover:text-white"
+								class=" block px-2 py-2   rounded hover:text-gray-400"
 							>
 								Payments
 							</a>
 							<a
 								on:click={() => (dropdownSelected = !dropdownSelected)}
 								href="/account/sales"
-								class=" block px-2 py-2   rounded hover:bg-gray-700 hover:text-white"
+								class=" block px-2 py-2   rounded hover:text-gray-400"
 							>
 								Sales
 							</a>
 							<a
 								on:click={() => (dropdownSelected = !dropdownSelected)}
 								href="/account/reviews"
-								class=" block px-2 py-2   rounded hover:bg-gray-700 hover:text-white"
+								class=" block px-2 py-2   rounded hover:text-gray-400"
 							>
 								Reviews
 							</a>
 							<button
 								on:click={signOut}
-								class="w-full text-left  block px-2 py-2   rounded hover:bg-gray-700 hover:text-white"
+								class="w-full text-left  block px-2 py-2   rounded hover:text-gray-400"
 							>
 								Sign out
 							</button>
