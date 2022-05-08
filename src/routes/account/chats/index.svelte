@@ -49,22 +49,11 @@
 		>
 			{recipEmail}
 		</h1>
+
 		<div class="grid h-80 gap-3 overflow-auto py-3 text-white">
 			{#each messages as message, index}
 				<div key={index} class="">
-					{#if messages.length - 1 === index && Object.keys(message)[0] === $auth.user.email}
-						<div id="latest" class="flex justify-end">
-							<div class="mr-2 max-w-max rounded-t-3xl rounded-l-3xl bg-green-600 px-3 py-1">
-								{message[$auth.user.email]}
-							</div>
-						</div>
-					{:else if messages.length - 1 === index}
-						<div id="latest" class="flex justify-start">
-							<div class="ml-2 max-w-max rounded-t-3xl rounded-r-3xl  bg-blue-600 px-3 py-1">
-								{message[recipEmail]}
-							</div>
-						</div>
-					{:else if Object.keys(message)[0] === $auth.user.email}
+					{#if Object.keys(message)[0] === $auth.user.email}
 						<div class="flex justify-end">
 							<div class="mr-2 max-w-max rounded-t-3xl rounded-l-3xl bg-green-600 px-3 py-1">
 								{message[$auth.user.email]}
@@ -77,6 +66,7 @@
 							</div>
 						</div>
 					{/if}
+					<!-- <div id="#latest">hh</div> -->
 				</div>
 			{/each}
 		</div>
