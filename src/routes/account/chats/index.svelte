@@ -10,7 +10,7 @@
 	var messages = null;
 	var recipEmail = $page.url.searchParams.get('recipEmail');
 	var error = null;
-	var newMessage = '';
+	var message = '';
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
@@ -23,20 +23,20 @@
 		if (res.data.error) {
 			goto('/account/chats/contacts');
 		}
-		messages = res.data.messages;
+		messages = res.data.messages.reverse();
 	});
 
-	async function sendNewMessage() {
+	async function sendMessage() {
 		var res = await axios.post('/api/user/account/chat/addMessage', {
 			email: JSON.parse(cookie.get('auth')).user.email,
 			recipEmail,
-			newMessage
+			message
 		});
 		if (res.data.error) {
 			goto('/account/chats/contacts');
 		}
-		messages = res.data.messages;
-		newMessage = '';
+		messages = res.data.messages.reverse();
+		message = '';
 	}
 </script>
 
@@ -45,12 +45,16 @@
 {#if messages}
 	<div class="rounded-md bg-white text-black md:mx-40 ">
 		<h1
-			class=" flex justify-center rounded-t-md border-2 border-gray-400 py-2 text-xl font-semibold"
+			class="flex justify-center rounded-t-md border-2 border-gray-400 py-2 text-xl font-semibold"
 		>
 			{recipEmail}
 		</h1>
 
-		<div class="grid h-80 gap-3 overflow-auto py-3 text-white">
+		<div
+			class="grid h-80 gap-3 overflow-auto py-3 text-white"
+			style="display: flex;
+			flex-direction: column-reverse;"
+		>
 			{#each messages as message, index}
 				<div key={index} class="">
 					{#if Object.keys(message)[0] === $auth.user.email}
@@ -66,18 +70,17 @@
 							</div>
 						</div>
 					{/if}
-					<!-- <div id="#latest">hh</div> -->
 				</div>
 			{/each}
 		</div>
 
 		<form
-			on:submit|preventDefault={sendNewMessage}
+			on:submit|preventDefault={sendMessage}
 			class="relative w-full rounded-b-md border-2 border-gray-400"
 		>
 			<input
-				value={newMessage}
-				on:input|preventDefault={(event) => (newMessage = event.target.value)}
+				value={message}
+				on:input|preventDefault={(event) => (message = event.target.value)}
 				type="text"
 				class="focus:shadow-outline w-full min-w-max rounded-b-md bg-white  py-2 pl-2 text-sm leading-tight text-black focus:outline-none"
 				placeholder="type message"

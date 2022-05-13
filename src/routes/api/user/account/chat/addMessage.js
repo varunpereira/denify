@@ -4,7 +4,7 @@ import chatModel from '@src/models/chatModel';
 db();
 
 export async function post({ request }) {
-	var { email, recipEmail, newMessage } = await request.json();
+	var { email, recipEmail, message } = await request.json();
 	var email1 = email;
 	var email2 = recipEmail;
 	var messages = [];
@@ -15,7 +15,7 @@ export async function post({ request }) {
 		},
 		{
 			$push: {
-				messages: { [email]: newMessage }
+				messages: { [email]: message }
 			}
 		},
 		{ new: true }
@@ -28,7 +28,7 @@ export async function post({ request }) {
 			},
 			{
 				$push: {
-					messages: { [email]: newMessage }
+					messages: { [email]: message }
 				}
 			},
 			{ new: true }
