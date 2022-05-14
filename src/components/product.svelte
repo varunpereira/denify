@@ -2,11 +2,17 @@
 	import axios from 'axios';
 	import { auth } from '@src/utils/store';
 	import cookie from 'js-cookie';
+	import { goto } from '$app/navigation';
 
 	export var product;
 	var error = null;
 
 	function addToCart() {
+		if(!$auth.user){
+			goto('/signin');
+			return
+		}
+
 		if (product.stock === 0) {
 			error = 'This product is out of stock.';
 			return;

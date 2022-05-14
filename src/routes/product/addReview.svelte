@@ -10,6 +10,8 @@
 	var product = null;
 	var error = '';
 	var productId = $page.url.searchParams.get('productId');
+	var formOptions = [1, 2, 3, 4, 5];
+	var selected = null;
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
@@ -34,15 +36,13 @@
 		var { name, value } = event.target;
 		formValues = { ...formValues, [name]: value };
 	}
+	function formChange() {
+		formValues = { ...formValues, rating: selected };
+	}
 
 	async function formSubmit() {
-		var numRating = Number(formValues.rating);
-		if (isNaN(numRating)) {
-			error = 'Rating can only be a number.';
-			return;
-		}
-		if (numRating > 5 || numRating < 0) {
-			error = 'Allowed rating range is 0 to 5 inclusive.';
+		if (formValues.rating === '') {
+			error = 'Must select rating.';
 			return;
 		}
 
@@ -69,14 +69,11 @@
 					Add a Review for {product.title}
 				</h1>
 				<p>Rating (out of 5)</p>
-				<input
-					name="rating"
-					value={formValues.rating}
-					on:input={formInput}
-					type="text"
-					required
-					class="border-grey-light mb-4 block w-full rounded border p-3"
-				/>
+				<select bind:value={selected} on:change={formChange}>
+					{#each formOptions as formOption}
+						<option>{formOption}</option>
+					{/each}
+				</select>
 				<p>Description</p>
 				<input
 					name="description"

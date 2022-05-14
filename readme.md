@@ -1,4 +1,4 @@
-# Denify : ecommerce web app by Varun Pereira
+# Denify : ecom web app by Varun Pereira
 
 tech stack :
 code : sveltekit

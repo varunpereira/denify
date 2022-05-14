@@ -29,6 +29,10 @@
 	});
 
 	function addToCart(productItem) {
+		if (!$auth.user) {
+			goto('/signin');
+			return;
+		}
 		if (orderQuantity < 1 || orderQuantity > product.stock) {
 			error = 'Quantity not available from current stock levels.';
 			return;
@@ -80,6 +84,15 @@
 			return;
 		}
 		tab = 0;
+	}
+
+	function addReview() {
+		if (!$auth.user) {
+			console.log(JSON.stringify($auth));
+			goto('/signin');
+			return;
+		}
+		goto('/product/addReview?productId=' + product._id);
 	}
 </script>
 
@@ -140,12 +153,9 @@
 		</div>
 	</div>
 	<h1 class="mb-5 mt-20 text-xl font-semibold">Reviews</h1>
-	<a
-		href={'/product/addReview?productId=' + product._id}
-		class="text-sm font-semibold hover:text-gray-400"
-	>
+	<button on:click|preventDefault={addReview} class="text-sm font-semibold hover:text-gray-400">
 		Add a Review
-	</a>
+	</button>
 	<div id="reviews" class="mt-5 flex flex-wrap">
 		{#if reviews.length === 0}
 			<h1>No Reviews</h1>
