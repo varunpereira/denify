@@ -6,6 +6,7 @@
 	import { onMount } from 'svelte';
 
 	var formData = null;
+	var error = null;
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
@@ -27,7 +28,6 @@
 		};
 	});
 
-	var error = null;
 
 	function formInput(event) {
 		let { name, value } = event.target;
@@ -82,14 +82,6 @@
 		<input
 			name="stock"
 			value={formData.stock}
-			on:input={formInput}
-			type="text"
-			class="border-grey-light mb-4 block w-full rounded border p-3"
-		/>
-		<p>Sold</p>
-		<input
-			name="sold"
-			value={formData.sold}
 			on:input={formInput}
 			type="text"
 			class="border-grey-light mb-4 block w-full rounded border p-3"

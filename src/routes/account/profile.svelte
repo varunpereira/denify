@@ -25,8 +25,12 @@
 	});
 
 	async function sendMessage() {
+		if(email === $auth.user.email){
+			alert('Cant message yourself.')
+			return
+		}
 		var res = await axios.post('/api/user/account/chat/setContacts', {
-			email: JSON.parse(cookie.get('auth')).user.email,
+			email: $auth.user.email,
 			recipEmail: email
 		});
 		goto('/account/chats?recipEmail=' + email);
