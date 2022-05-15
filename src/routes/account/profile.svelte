@@ -25,7 +25,7 @@
 	});
 
 	async function sendMessage() {
-		if (!$auth.user.email) {
+		if (!$auth.user) {
 			goto('/signin');
 			return;
 		}
