@@ -1,5 +1,5 @@
 <script>
-	import { ShoppingBagIcon, ShoppingCartIcon, MenuIcon } from 'svelte-feather-icons';
+	import { ShoppingBagIcon, ShoppingCartIcon, MenuIcon, UserIcon } from 'svelte-feather-icons';
 	import { auth } from '@src/utils/store';
 	import cookie from 'js-cookie';
 	import { goto } from '$app/navigation';
@@ -56,17 +56,18 @@
 						</sup>
 					</a>
 				</li>
-				<div class="nav-item flow-root">
+				<div class="nav-item flow-root md:pb-3">
 					<div class="rounded hover:text-gray-400 md:mx-2 relative">
 						<button
 							on:click={() => (dropdownSelected = !dropdownSelected)}
-							class="h-8 rounded-full pb-1"
+							class="h-8 rounded-full pt-2 md:pt-0 md:flex md:flex-wrap md:justify-center"
 						>
-							{$auth.user.email}
+							<UserIcon class="h-5 w-5 border border-1 rounded-full" />
+							{$auth.user.email} 
 						</button>
 						{#if dropdownSelected}
 							<div
-								class="absolute md:w-40 md:pl-2 w-full md:right-0 bg-black text-white rounded-b-md "
+								class="absolute md:w-40 md:pl-2 w-full md:right-0 bg-black text-white rounded-b-md md:mt-2"
 							>
 								<a
 									on:click={() => (dropdownSelected = !dropdownSelected)}
