@@ -36,9 +36,11 @@
 	</div>
 
 	{#if menuStatus === true || width >= 768}
-		<SearchBar />
+		<ul
+			class="absolute bg-black w-full md:static list-reset md:flex md:items-center md:justify-end"
+		>
+			<SearchBar />
 
-		<ul class=" list-reset md:flex md:items-center">
 			{#if $auth.user}
 				<li class="nav-item mr-5">
 					<a href="/product/sell" class="block py-2  no-underline hover:text-gray-400 "> Sell </a>
@@ -63,7 +65,9 @@
 							{$auth.user.email}
 						</button>
 						{#if dropdownSelected}
-							<div class="absolute md:w-36 w-full md:right-0 bg-black text-white rounded md:pl-0">
+							<div
+								class="absolute md:w-36 w-full md:right-0 bg-black text-white rounded-b-md md:pl-0"
+							>
 								<a
 									on:click={() => (dropdownSelected = !dropdownSelected)}
 									href={'/account/profile?email=' + $auth.user.email}
