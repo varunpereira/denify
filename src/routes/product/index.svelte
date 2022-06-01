@@ -103,10 +103,10 @@
 		<div class="relative">
 			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
 			<button on:click={leftArrow} class="absolute inset-y-0 left-0" type="button">
-				<ChevronLeftIcon class="h-8 w-8 text-white bg-black rounded-full" />
+				<ChevronLeftIcon class="h-6 w-6 text-white bg-black rounded-full" />
 			</button> 
 			<button on:click={rightArrow} class="absolute inset-y-0 right-0" type="button">
-				<ChevronRightIcon class="h-8 w-8 text-white bg-black rounded-full" />
+				<ChevronRightIcon class="h-6 w-6 text-white bg-black rounded-full" />
 			</button>
 		</div>
 		<div class="mt-6 md:ml-6 md:mt-0 md:w-1/2 lg:ml-8 xl:w-2/5">

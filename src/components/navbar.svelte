@@ -66,7 +66,7 @@
 						</button>
 						{#if dropdownSelected}
 							<div
-								class="absolute md:w-36 w-full md:right-0 bg-black text-white rounded-b-md md:pl-0"
+								class="absolute md:w-40 md:pl-2 w-full md:right-0 bg-black text-white rounded-b-md "
 							>
 								<a
 									on:click={() => (dropdownSelected = !dropdownSelected)}
