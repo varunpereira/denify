@@ -60,7 +60,7 @@
 					<div class="rounded hover:text-gray-400 md:mx-2 relative">
 						<button
 							on:click={() => (dropdownSelected = !dropdownSelected)}
-							class="h-12 w-12 rounded-full "
+							class="h-8 rounded-full pb-1"
 						>
 							{$auth.user.email}
 						</button>
@@ -119,7 +119,7 @@
 					</div>
 				</div>
 			{:else}
-				<li class="nav-item">
+				<li class="nav-item pb-1 rounded-b">
 					<a href="/signin" class="hover:text-gray-400">
 						<span class="pr-1">Sign</span>in
 					</a>
