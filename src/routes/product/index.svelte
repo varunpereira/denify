@@ -99,14 +99,14 @@
 <svelte:head><title>Product Details</title></svelte:head>
 
 {#if product && reviews}
-	<div class=" items-start justify-center py-12 md:flex ">
+	<div class=" items-start justify-center  md:flex ">
 		<div class="relative">
 			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
-			<button on:click|preventDefault={leftArrow} class="absolute bottom-20 left-0" type="button">
-				<ChevronLeftIcon class="h-10 w-10" />
-			</button>
-			<button on:click|preventDefault={rightArrow} class="absolute bottom-20 right-0" type="button">
-				<ChevronRightIcon class="h-10 w-10" />
+			<button on:click={leftArrow} class="absolute inset-y-0 left-0" type="button">
+				<ChevronLeftIcon class="h-8 w-8 text-white bg-black rounded-full" />
+			</button> 
+			<button on:click={rightArrow} class="absolute inset-y-0 right-0" type="button">
+				<ChevronRightIcon class="h-8 w-8 text-white bg-black rounded-full" />
 			</button>
 		</div>
 		<div class="mt-6 md:ml-6 md:mt-0 md:w-1/2 lg:ml-8 xl:w-2/5">
