@@ -17,7 +17,7 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
-		var res = await axios.post($page.url.pathname + '/getProduct', {
+		var res = await axios.post($page.url.pathname, {
 			productId
 		});
 		if (res.data.error) {

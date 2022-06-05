@@ -15,7 +15,7 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
-		var res = await axios.post('/api/user/account/getProfile', {
+		var res = await axios.post($page.url.pathname, {
 			email
 		});
 		if (res.data.error) {
@@ -33,7 +33,7 @@
 			alert('Cant message yourself.');
 			return;
 		}
-		var res = await axios.post('/api/user/account/chat/setContacts', {
+		var res = await axios.post($page.url.pathname + '/setContacts', {
 			email: $auth.user.email,
 			recipEmail: email
 		});

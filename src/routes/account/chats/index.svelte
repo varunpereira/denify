@@ -16,7 +16,7 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
-		var res = await axios.post('/api/user/account/chat/getMessages', {
+		var res = await axios.post($page.url.pathname, {
 			email: JSON.parse(cookie.get('auth')).user.email,
 			recipEmail
 		});
@@ -27,7 +27,7 @@
 	});
 
 	async function sendMessage() {
-		var res = await axios.post('/api/user/account/chat/addMessage', {
+		var res = await axios.post('/api/user/account/chat/putMessage', {
 			email: JSON.parse(cookie.get('auth')).user.email,
 			recipEmail,
 			message

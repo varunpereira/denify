@@ -14,7 +14,7 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
-		var res = await axios.post('/api/user/account/getReviews', {
+		var res = await axios.post($page.url.pathname, {
 			email: JSON.parse(cookie.get('auth')).user.email
 		});
 		if (res.data.error) {

@@ -19,7 +19,7 @@
 	});
 
 	async function getCart() {
-		var res = await axios.post($page.url.pathname + '/get', {
+		var res = await axios.post($page.url.pathname, {
 			email: JSON.parse(cookie.get('auth')).user.email
 		});
 		if (res.data.error) {
