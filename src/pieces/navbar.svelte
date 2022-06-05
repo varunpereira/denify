@@ -3,7 +3,7 @@
 	import { auth } from '@src/utils/store';
 	import cookie from 'js-cookie';
 	import { goto } from '$app/navigation';
-	import SearchBar from '@src/components/searchbar.svelte';
+	import SearchBar from '@src/pieces/searchbar.svelte';
 
 	var dropdownSelected = false;
 	var menuStatus = false;

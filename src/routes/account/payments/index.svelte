@@ -1,6 +1,6 @@
 <script>
 	import axios from 'axios';
-	import Product from '@src/components/product.svelte';
+	import Product from '@src/pieces/product.svelte';
 	import { auth } from '@src/utils/store';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
@@ -14,7 +14,7 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
-		var res = await axios.post('/api/user/account/getPayments', {
+		var res = await axios.post($page.url.pathname, {
 			email: JSON.parse(cookie.get('auth')).user.email
 		});
 		if (res.data.error) {
@@ -25,7 +25,8 @@
 
 	async function refund(checkoutSessionId) {
 		var res = await axios.post($page.url.pathname + '/getStripeRefund', {
-			email: JSON.parse(cookie.get('auth')).user.email, checkoutSessionId
+			email: JSON.parse(cookie.get('auth')).user.email,
+			checkoutSessionId
 		});
 		if (res.data.error) {
 			error = res.data.error;

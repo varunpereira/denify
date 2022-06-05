@@ -27,7 +27,7 @@
 	});
 
 	async function sendMessage() {
-		var res = await axios.post('/api/user/account/chat/putMessage', {
+		var res = await axios.post($page.url.pathname + '/putMessage', {
 			email: JSON.parse(cookie.get('auth')).user.email,
 			recipEmail,
 			message

@@ -3,21 +3,22 @@
 	import { auth } from '@src/utils/store';
 	import cookie from 'js-cookie';
 	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
 	export var product;
 	var error = null;
 
 	function addToCart() {
-		if(!$auth.user){
+		if (!$auth.user) {
 			goto('/signin');
-			return
+			return;
 		}
 
 		if (product.stock === 0) {
 			error = 'This product is out of stock.';
 			return;
 		}
-		var res = axios.post('/api/order/cart/setInc', {
+		var res = axios.post($page.url.pathname + '/setInc', {
 			email: $auth.user.email,
 			product,
 			productQuantity: 1
