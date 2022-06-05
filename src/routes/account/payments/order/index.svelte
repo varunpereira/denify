@@ -15,7 +15,7 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
-		var res = await axios.post('/api/user/account/getPayments/getOrder', {
+		var res = await axios.post($page.url.pathname + '/getOrder', {
 			orderId
 		});
 		if (res.data.error) {
