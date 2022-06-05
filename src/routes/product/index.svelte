@@ -18,7 +18,7 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
-		var res = await axios.post('/api/product/getOneAndGetReview', {
+		var res = await axios.post($page.url.pathname, {
 			productId
 		});
 		if (res.data.error) {
@@ -37,7 +37,7 @@
 			error = 'Quantity not available from current stock levels.';
 			return;
 		}
-		var res = axios.post('/api/order/cart/setInc', {
+		var res = axios.post($page.url.pathname + '/setInc', {
 			email: $auth.user.email,
 			product: productItem,
 			productQuantity: orderQuantity
@@ -104,7 +104,7 @@
 			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
 			<button on:click={leftArrow} class="absolute inset-y-0 left-0" type="button">
 				<ChevronLeftIcon class="h-6 w-6 text-white bg-black rounded-full" />
-			</button> 
+			</button>
 			<button on:click={rightArrow} class="absolute inset-y-0 right-0" type="button">
 				<ChevronRightIcon class="h-6 w-6 text-white bg-black rounded-full" />
 			</button>

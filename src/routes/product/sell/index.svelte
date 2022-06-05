@@ -4,6 +4,7 @@
 	import { goto } from '$app/navigation';
 	import cookie from 'js-cookie';
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 
 	var formData = null;
 	var error = null;
@@ -36,7 +37,7 @@
 
 	async function formSubmit() {
 		try {
-			var res = await axios.post('/api/product/add', formData);
+			var res = await axios.post($page.url.pathname, formData);
 			if (res.data.error) {
 				return;
 			}

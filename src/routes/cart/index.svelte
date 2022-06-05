@@ -5,6 +5,7 @@
 	import { TrashIcon } from 'svelte-feather-icons';
 	import { goto } from '$app/navigation';
 	import cookie from 'js-cookie';
+	import { page } from '$app/stores';
 
 	var error = null;
 	var cart = null;
@@ -18,7 +19,7 @@
 	});
 
 	async function getCart() {
-		var res = await axios.post('/api/order/cart/get', {
+		var res = await axios.post($page.url.pathname + '/get', {
 			email: JSON.parse(cookie.get('auth')).user.email
 		});
 		if (res.data.error) {
@@ -40,7 +41,7 @@
 			productQuantity: product.productQuantity,
 			productPrice: product.productPrice
 		};
-		var res = await axios.post('/api/order/cart/setDec', productData);
+		var res = await axios.post($page.url.pathname + '/setDec', productData);
 		if (res.data.error) {
 			console.log('error');
 			return;
@@ -65,7 +66,7 @@
 				currency: 'aud'
 			};
 		});
-		var res = await axios.post('/api/stripe/checkoutSession', {
+		var res = await axios.post($page.url.pathname + '/getStripeCheckoutSession', {
 			orderId: cart._id,
 			items: products
 		});

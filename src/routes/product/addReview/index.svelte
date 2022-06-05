@@ -17,7 +17,7 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
-		var res = await axios.post('/api/product/getOne', {
+		var res = await axios.post($page.url.pathname + '/getProduct', {
 			productId
 		});
 		if (res.data.error) {
@@ -47,7 +47,7 @@
 		}
 
 		try {
-			var res = await axios.post('/api/review/addOne', formValues);
+			var res = await axios.post($page.url.pathname + '/putReview', formValues);
 			if (res.data.err) {
 				error = res.data.err;
 				return;

@@ -15,7 +15,7 @@
 		}
 
 		var checkoutSessionId = $page.url.searchParams.get('checkoutSessionId');
-		var res = await axios.post('/api/order/cart/paid', {
+		var res = await axios.post($page.url.pathname, {
 			email: JSON.parse(cookie.get('auth')).user.email,
 			checkoutSessionId
 		});

@@ -24,7 +24,7 @@
 	});
 
 	async function refund(checkoutSessionId) {
-		var res = await axios.post('/api/stripe/refund', {
+		var res = await axios.post($page.url.pathname + '/getStripeRefund', {
 			email: JSON.parse(cookie.get('auth')).user.email, checkoutSessionId
 		});
 		if (res.data.error) {

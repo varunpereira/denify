@@ -19,7 +19,7 @@
 	});
 
 	async function getProducts() {
-		var res = await axios.post('/api/product/getManyByTitle', {
+		var res = await axios.post($page.url.pathname + '/getProducts', {
 			searchTerm: $page.url.searchParams.get('searchTerm').trim()
 		});
 		if (res.data.error) {
