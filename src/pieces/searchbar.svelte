@@ -9,7 +9,7 @@
 	}
 </script>
 
-<div class="mr-5 max-h-min w-full min-w-min pb-2 shadow-md md:flex text-black">
+<div class="mr-5 max-h-min w-full min-w-min pb-1 md:pb-0 shadow-md md:flex text-black">
 	<form class=" relative w-full " on:submit|preventDefault={searchResults}>
 		<input
 			value={searchTerm}
