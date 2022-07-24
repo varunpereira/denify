@@ -18,7 +18,7 @@
 
 <svelte:window bind:innerWidth={width} />
 
-<header class="relative min-w-min bg-black py-4  md:flex md:items-center md:justify-between">
+<header class="relative min-w-min bg-black py-2  md:flex md:items-center md:justify-between">
 	<div class="md:mr-5 mb-1 px-0 flex items-center justify-between ">
 		<h1 class="text-xl">
 			<a href="/" class="flex font-bold no-underline hover:text-gray-400">
@@ -67,7 +67,7 @@
 						</button>
 						{#if dropdownSelected}
 							<div
-								class="absolute md:w-40 md:pl-3 w-full md:right-0 bg-black text-white rounded-b-md md:mt-2"
+								class="absolute md:w-40 md:pl-2 w-full md:right-0 bg-black text-white rounded-b-md md:mt-2"
 							>
 								<a
 									on:click={() => (dropdownSelected = !dropdownSelected)}

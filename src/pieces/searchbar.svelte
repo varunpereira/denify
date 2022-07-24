@@ -18,7 +18,7 @@
 			placeholder="search"
 			class="focus:shadow-outline w-full min-w-max bg-white py-2  pl-3 text-sm leading-tight text-black focus:outline-none rounded-md"
 		/>
-		{#if searchTerm !== ''}
+		{#if searchTerm.trim() !== ''}
 			<button
 				on:click={() => (searchTerm = '')}
 				class="absolute inset-y-0 right-8 w-10  max-w-min items-center justify-center"
