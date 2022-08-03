@@ -1,5 +1,5 @@
 import db from '@src/utils/db';
-import userModel from '@src/models/userModel';
+import userModel from '@src/models/user';
 import sgMail from '@sendgrid/mail';
 
 db();

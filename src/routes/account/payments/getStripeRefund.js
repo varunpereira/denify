@@ -1,5 +1,5 @@
 import Stripe from 'stripe';
-import orderModel from '@src/models/orderModel';
+import orderModel from '@src/models/order';
 
 var stripe = new Stripe(import.meta.env.VITE_stripeSecretKey, {
 	apiVersion: '2020-08-27'

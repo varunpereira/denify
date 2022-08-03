@@ -1,5 +1,5 @@
 import db from '@src/utils/db';
-import productModel from '@src/models/productModel';
+import productModel from '@src/models/product';
 
 db();
 

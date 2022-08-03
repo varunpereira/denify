@@ -1,6 +1,6 @@
 import db from '@src/utils/db';
-import userModel from '@src/models/userModel';
-import orderModel from '@src/models/orderModel';
+import userModel from '@src/models/user';
+import orderModel from '@src/models/order';
 import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 

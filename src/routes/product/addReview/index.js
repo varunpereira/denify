@@ -1,6 +1,6 @@
 import db from '@src/utils/db';
-import productModel from '@src/models/productModel';
-import reviewModel from '@src/models/reviewModel';
+import productModel from '@src/models/product';
+import reviewModel from '@src/models/review';
 
 db();
 

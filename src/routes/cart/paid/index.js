@@ -1,5 +1,5 @@
 import db from '@src/utils/db';
-import orderModel from '@src/models/orderModel';
+import orderModel from '@src/models/order';
 
 db();
 

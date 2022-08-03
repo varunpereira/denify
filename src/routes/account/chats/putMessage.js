@@ -1,5 +1,5 @@
 import db from '@src/utils/db';
-import chatModel from '@src/models/chatModel';
+import chatModel from '@src/models/chat';
 
 db();
 
