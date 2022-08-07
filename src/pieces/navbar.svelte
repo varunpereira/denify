@@ -7,7 +7,7 @@
 
 	var dropdownSelected = false;
 	var menuStatus = false;
-	var width;
+	var width = null;
 
 	function signOut() {
 		cookie.remove('auth');
@@ -21,7 +21,7 @@
 <header class="relative min-w-min bg-black py-2  md:flex md:items-center md:justify-between">
 	<div class="md:mr-5 mb-1 px-0 flex items-center justify-between ">
 		<h1 class="text-xl">
-			<a href="/" class="flex font-bold no-underline hover:text-gray-400">
+			<a href="/" class="flex font-bold no-underline hover:text-gray-400 pt-1">
 				<ShoppingBagIcon class="w-6 h-6 mr-1 pt-1" />
 				<span class="justify-end pb-1">Denify</span>
 			</a>
@@ -111,7 +111,7 @@
 								</a>
 								<button
 									on:click={signOut}
-									class="w-full text-left  block py-2 rounded hover:text-gray-400"
+									class="w-full text-left block py-2 rounded hover:text-gray-400"
 								>
 									Sign out
 								</button>
@@ -120,11 +120,9 @@
 					</div>
 				</div>
 			{:else}
-				<li class="nav-item pb-1 rounded-b">
-					<a href="/signin" class="hover:text-gray-400">
-						<span class="pr-1">Sign</span>in
-					</a>
-				</li>
+				<a href="/signin" class="nav-item pb-1 pt-1 rounded-b hover:text-gray-400 flex-none">
+					Sign in
+				</a>
 			{/if}
 		</ul>
 	{/if}
