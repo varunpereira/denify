@@ -17,8 +17,9 @@
 		var res = await axios.post($page.url.pathname, {
 			email: JSON.parse(cookie.get('auth')).user.email
 		});
-		if (res.data.error) {
+		if (res.data.error != null) {
 			error = res.data.error;
+			goto('error/noUser')
 		}
 		user = res.data.user;
 	});
