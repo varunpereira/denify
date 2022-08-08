@@ -81,17 +81,17 @@
 		<div class="rounded-lg bg-white px-10 py-10">
 			<div class="flex justify-between border-b pb-8">
 				<p class="text-2xl font-semibold">Shopping Cart</p>
-				<h2 class="text-2xl font-semibold">{cart.quantity} Items</h2>
+				<p class="text-2xl font-semibold">{cart.quantity} Items</p>
 			</div>
 			<div class="mt-10 mb-5 flex">
-				<h3 class="w-2/5 text-xs font-semibold uppercase text-gray-600">Product Details</h3>
-				<h3 class="w-1/5 text-center text-center text-xs font-semibold uppercase text-gray-600">
+				<p class="w-2/5 text-xs font-semibold uppercase text-gray-600">Product Details</p>
+				<p class="w-1/5 text-center text-center text-xs font-semibold uppercase text-gray-600">
 					Quantity
-				</h3>
-				<h3 class="w-1/5 text-center text-center text-xs font-semibold uppercase text-gray-600">
+				</p>
+				<p class="w-1/5 text-center text-center text-xs font-semibold uppercase text-gray-600">
 					Total
-				</h3>
-				<h3 class="w-1/5 text-center text-center text-xs font-semibold uppercase text-gray-600" />
+				</p>
+				<p class="w-1/5 text-center text-center text-xs font-semibold uppercase text-gray-600" />
 			</div>
 
 			{#each cart.products as product}
@@ -114,7 +114,9 @@
 						${product.productQuantity * product.productPrice}
 					</span>
 					<button
-						on:click|preventDefault={function () removeProduct(product)}
+						on:click|preventDefault={function () {
+							removeProduct(product);
+						}}
 						class="w-1/5 text-center text-sm font-semibold hover:text-red-600"
 					>
 						<TrashIcon class="h-5 w-5" />

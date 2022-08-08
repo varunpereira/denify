@@ -165,14 +165,14 @@
 					key={review._id}
 					class="mr-10 mb-10 h-40 w-40 max-w-sm rounded-lg border border-gray-200 bg-white p-3 shadow-md dark:border-gray-700 dark:bg-gray-800"
 				>
-					<h5 class="mb-2  font-bold tracking-tight text-gray-900 dark:text-white">
+					<p class="mb-2  font-bold tracking-tight text-gray-900 dark:text-white">
 						<a href={'/account/profile?email=' + review.email} class="hover:text-gray-600"
 							>{review.email}</a
 						>
-					</h5>
-					<h5 class="mb-2  font-bold tracking-tight text-gray-900 dark:text-white">
+					</p>
+					<p class="mb-2  font-bold tracking-tight text-gray-900 dark:text-white">
 						{review.rating} / 5 stars
-					</h5>
+					</p>
 					<p class="mb-3 min-h-full text-xs font-normal text-gray-700 dark:text-gray-400">
 						{review.description}
 					</p>

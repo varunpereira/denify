@@ -48,7 +48,7 @@
 	<button on:click={sendMessage} class=" mb-5 hover:text-gray-400 cursor-pointer"> Message </button>
 	<div class="flex flex-wrap text-white">
 		{#if products.length == 0}
-			<h2>No Products found.</h2>
+			<p>No Products found.</p>
 		{:else}
 			{#each products as product}
 				<Product {product} />

@@ -41,12 +41,12 @@
 		alt={product.images[0].url}
 	/>
 	<div class="mb-5 px-5 pt-5">
-		<h5 class="h-16  font-bold tracking-tight text-gray-900 ">
+		<p class="h-16  font-bold tracking-tight text-gray-900 ">
 			{product.title}
-		</h5>
-		<h5 class="mb-2 font-bold tracking-tight text-gray-900 ">
+		</p>
+		<p class="mb-2 font-bold tracking-tight text-gray-900 ">
 			${product.price}
-		</h5>
+		</p>
 		<p class="h-28 font-normal text-gray-700">
 			{product.description}
 		</p>
