@@ -80,7 +80,7 @@
 		>
 			<input
 				value={message}
-				on:input|preventDefault={function (event) (message = event.target.value)}
+				on:input|preventDefault={function (event) {message = event.target.value}}
 				type="text"
 				class="focus:shadow-outline w-full min-w-max rounded-b-md bg-white  py-2 pl-2 text-sm leading-tight text-black focus:outline-none"
 				placeholder="type message"
