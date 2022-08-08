@@ -44,11 +44,11 @@
 
 {#if messages}
 	<div class="rounded-md bg-white text-black md:mx-40 ">
-		<h1
+		<p
 			class="flex justify-center rounded-t-md border-2 border-gray-400 py-2 text-xl font-semibold"
 		>
 			{recipEmail}
-		</h1>
+		</p>
 
 		<div
 			class="grid h-80 gap-3 overflow-auto py-3 text-white"
@@ -57,7 +57,7 @@
 		>
 			{#each messages as message, index}
 				<div key={index} class="">
-					{#if Object.keys(message)[0] === $auth.user.email}
+					{#if Object.keys(message)[0] == $auth.user.email}
 						<div class="flex justify-end">
 							<div class="mr-2 max-w-max rounded-t-3xl rounded-l-3xl bg-green-600 px-3 py-1">
 								{message[$auth.user.email]}
@@ -80,7 +80,7 @@
 		>
 			<input
 				value={message}
-				on:input|preventDefault={(event) => (message = event.target.value)}
+				on:input|preventDefault={function (event) (message = event.target.value)}
 				type="text"
 				class="focus:shadow-outline w-full min-w-max rounded-b-md bg-white  py-2 pl-2 text-sm leading-tight text-black focus:outline-none"
 				placeholder="type message"
@@ -94,5 +94,5 @@
 		</form>
 	</div>
 {:else}
-	<h1>Loading...</h1>
+	<p>Loading...</p>
 {/if}

@@ -29,7 +29,7 @@
 			goto('/signin');
 			return;
 		}
-		if (email === $auth.user.email) {
+		if (email == $auth.user.email) {
 			alert('Cant message yourself.');
 			return;
 		}
@@ -44,10 +44,10 @@
 <svelte:head><title>Account Profile - {email}</title></svelte:head>
 
 {#if products && email}
-	<h1 class="mb-5 text-lg font-semibold">{email}'s Products</h1>
+	<p class="mb-5 text-lg font-semibold">{email}'s Products</p>
 	<button on:click={sendMessage} class=" mb-5 hover:text-gray-400 cursor-pointer"> Message </button>
 	<div class="flex flex-wrap text-white">
-		{#if products.length === 0}
+		{#if products.length == 0}
 			<h2>No Products found.</h2>
 		{:else}
 			{#each products as product}
@@ -56,5 +56,5 @@
 		{/if}
 	</div>
 {:else}
-	<h1>Loading...</h1>
+	<p>Loading...</p>
 {/if}

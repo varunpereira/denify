@@ -20,7 +20,7 @@ export async function post({ request }) {
 		},
 		{ new: true }
 	);
-	if (update1 === null) {
+	if (update1 == null) {
 		var update2 = await chatModel.findOneAndUpdate(
 			{
 				email1: email2,

@@ -29,7 +29,7 @@
 
 {#if order}
 	<div class="rounded-lg bg-white text-black ">
-		<h1 class="text-lg font-semibold">Past Order Details</h1>
+		<p class="text-lg font-semibold">Past Order Details</p>
 		<p>Order ID: {order._id}</p>
 		<p>Order Quantity: {order.quantity}</p>
 		<p>Order Price: ${order.price}</p>
@@ -69,5 +69,5 @@
 		</div>
 	</div>
 {:else}
-	<h1>Loading...</h1>
+	<p>Loading...</p>
 {/if}

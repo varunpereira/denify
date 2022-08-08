@@ -28,7 +28,7 @@
 		products = res.data.products;
 	}
 
-	$: if (searchTerm !== $page.url.searchParams.get('searchTerm').trim()) {
+	$: if (searchTerm != $page.url.searchParams.get('searchTerm').trim()) {
 		getProducts();
 	}
 </script>
@@ -37,7 +37,7 @@
 
 {#if products}
 	<div class="flex flex-wrap text-white">
-		{#if products.length === 0}
+		{#if products.length == 0}
 			<h2>No Products found.</h2>
 		{:else}
 			{#each products as product}
@@ -46,5 +46,5 @@
 		{/if}
 	</div>
 {:else}
-	<h1>Loading...</h1>
+	<p>Loading...</p>
 {/if}

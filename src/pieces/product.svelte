@@ -14,7 +14,7 @@
 			return;
 		}
 
-		if (product.stock === 0) {
+		if (product.stock == 0) {
 			error = 'This product is out of stock.';
 			return;
 		}

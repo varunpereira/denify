@@ -12,7 +12,7 @@ export async function post({ request }) {
 		contacts : { $all: [recipEmail] } 
 	});
 	// accepts contact req automatically
-	if (find === null) {
+	if (find == null) {
 		var update1 = await userModel.updateOne(
 			{
 				email: email

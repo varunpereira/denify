@@ -22,7 +22,7 @@ export async function post({ request }) {
 			}
 		}
 	);
-	if (cart.modifiedCount === 0) {
+	if (cart.modifiedCount == 0) {
 		return {
 			body: {
 				err: 'No current order found for that email.'

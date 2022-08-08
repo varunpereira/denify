@@ -29,7 +29,7 @@
 		cart = res.data.cart;
 	}
 
-	$: if (fetch === true) {
+	$: if (fetch == true) {
 		getCart();
 		fetch = false;
 	}
@@ -57,7 +57,7 @@
 			error = 'Cart empty. Please add a product.';
 			return;
 		}
-		var products = cart.products.map((product) => {
+		var products = cart.products.map(function (product) {
 			return {
 				name: product.productTitle,
 				description: product.productId,
@@ -80,7 +80,7 @@
 	<div class="mx-auto my-10 rounded-lg bg-white text-black shadow-md">
 		<div class="rounded-lg bg-white px-10 py-10">
 			<div class="flex justify-between border-b pb-8">
-				<h1 class="text-2xl font-semibold">Shopping Cart</h1>
+				<p class="text-2xl font-semibold">Shopping Cart</p>
 				<h2 class="text-2xl font-semibold">{cart.quantity} Items</h2>
 			</div>
 			<div class="mt-10 mb-5 flex">
@@ -114,7 +114,7 @@
 						${product.productQuantity * product.productPrice}
 					</span>
 					<button
-						on:click|preventDefault={() => removeProduct(product)}
+						on:click|preventDefault={function () removeProduct(product)}
 						class="w-1/5 text-center text-sm font-semibold hover:text-red-600"
 					>
 						<TrashIcon class="h-5 w-5" />
@@ -124,7 +124,7 @@
 		</div>
 
 		<div id="summary" class="px-8 py-10">
-			<h1 class="border-b pb-8 text-2xl font-semibold">Order Summary</h1>
+			<p class="border-b pb-8 text-2xl font-semibold">Order Summary</p>
 			<div class="mt-10 mb-5 flex justify-between">
 				<span class="text-sm font-semibold uppercase">
 					Items {cart.quantity}
@@ -132,7 +132,7 @@
 				<span class="text-sm font-semibold">${cart.price}</span>
 			</div>
 			<div>
-				<h1 class="mb-3 inline-block text-sm font-medium uppercase">Shipping</h1>
+				<p class="mb-3 inline-block text-sm font-medium uppercase">Shipping</p>
 				<select class="block w-full p-2 text-sm text-gray-600">
 					<option>Standard shipping - Free</option>
 				</select>
@@ -156,5 +156,5 @@
 		</div>
 	</div>
 {:else}
-	<h1>Loading...</h1>
+	<p>Loading...</p>
 {/if}

@@ -13,14 +13,14 @@
 	<form class=" relative w-full " on:submit|preventDefault={searchResults}>
 		<input
 			value={searchTerm}
-			on:input={(event) => (searchTerm = event.target.value)}
+			on:input={function (event) (searchTerm = event.target.value)}
 			type="text"
 			placeholder="search"
 			class="focus:shadow-outline w-full min-w-max bg-white py-2  pl-3 text-sm leading-tight text-black focus:outline-none rounded-md"
 		/>
-		{#if searchTerm.trim() !== ''}
+		{#if searchTerm.trim() != ''}
 			<button
-				on:click={() => (searchTerm = '')}
+				on:click={function () (searchTerm = '')}
 				class="absolute inset-y-0 right-8 w-10  max-w-min items-center justify-center"
 				type="button"
 			>

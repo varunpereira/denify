@@ -28,7 +28,7 @@
 
 {#if user}
 	<div class="rounded-lg bg-white pl-2 text-black">
-		<h1 class=" text-lg font-semibold">Account Details</h1>
+		<p class=" text-lg font-semibold">Account Details</p>
 		<div>
 			<p>
 				<b>Email:</b>
@@ -41,5 +41,5 @@
 		</div>
 	</div>
 {:else}
-	<h1>Loading...</h1>
+	<p>Loading...</p>
 {/if}

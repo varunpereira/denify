@@ -8,7 +8,7 @@ export async function post({ request }) {
 	try {
 		var { productId } = await request.json();
 		var product = await productModel.findOne({ _id: productId });
-		if (product === null) {
+		if (product == null) {
 			return {
 				body: {
 					error: 'Product do not exist.'

@@ -5,7 +5,7 @@ export default function db() {
 		console.log('Already connected.');
 		return;
 	}
-	mongoose.connect(import.meta.env.VITE_mongodbUri, (error) => {
+	mongoose.connect(import.meta.env.VITE_mongodbUri, function (error) {
 		if (error) {
 			console.log(error);
 			return;

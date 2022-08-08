@@ -41,7 +41,7 @@
 	<div
 		class="flex h-full w-full flex-col justify-center  rounded-sm border border-gray-200 bg-white pl-2 text-black shadow-lg"
 	>
-		<h1 class="text-lg font-semibold">Order History</h1>
+		<p class="text-lg font-semibold">Order History</p>
 		<div class="p-3">
 			<div class="overflow-x-auto">
 				<table class="w-full table-auto">
@@ -81,7 +81,7 @@
 									{:else}
 										<button
 											class="hover:underline"
-											on:click={() => {
+											on:click={function () {
 												refund(order.checkoutSessionId);
 											}}
 										>
@@ -97,5 +97,5 @@
 		</div>
 	</div>
 {:else}
-	<h1>Loading...</h1>
+	<p>Loading...</p>
 {/if}

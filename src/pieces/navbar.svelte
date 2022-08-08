@@ -20,14 +20,14 @@
 
 <header class="relative min-w-min bg-black py-2  md:flex md:items-center md:justify-between">
 	<div class="md:mr-5 mb-1 px-0 flex items-center justify-between ">
-		<h1 class="text-xl">
+		<p class="text-xl">
 			<a href="/" class="flex font-bold no-underline hover:text-gray-400 pt-1">
 				<ShoppingBagIcon class="w-6 h-6 mr-1 pt-1" />
 				<span class="justify-end pb-1">Denify</span>
 			</a>
-		</h1>
+		</p>
 		<button
-			on:click={() => {
+			on:click={function () {
 				menuStatus = !menuStatus;
 			}}
 		>
@@ -35,7 +35,7 @@
 		</button>
 	</div>
 
-	{#if menuStatus === true || width >= 768}
+	{#if menuStatus == true || width >= 768}
 		<ul
 			class="absolute bg-black w-full md:static list-reset md:flex md:items-center md:justify-end"
 		>
@@ -59,7 +59,7 @@
 				<div class="nav-item flow-root md:pb-3">
 					<div class="rounded hover:text-gray-400 md:mx-2 relative">
 						<button
-							on:click={() => (dropdownSelected = !dropdownSelected)}
+							on:click={function () (dropdownSelected = !dropdownSelected)}
 							class="h-8 rounded-full pt-2 md:pt-0 md:flex md:flex-wrap md:justify-center"
 						>
 							<UserIcon class="h-5 w-5 border border-1 rounded-full" />
@@ -70,40 +70,40 @@
 								class="absolute md:w-40 md:pl-2 w-full md:right-0 bg-black text-white rounded-b-md md:mt-2"
 							>
 								<a
-									on:click={() => (dropdownSelected = !dropdownSelected)}
+									on:click={function () (dropdownSelected = !dropdownSelected)}
 									href={'/account/profile?email=' + $auth.user.email}
 									class=" block py-2 rounded hover:text-gray-400">Profile</a
 								>
 								<a
-									on:click={() => (dropdownSelected = !dropdownSelected)}
+									on:click={function () (dropdownSelected = !dropdownSelected)}
 									href="/account/chats/contacts"
 									class=" block py-2 rounded hover:text-gray-400"
 								>
 									Contacts
 								</a>
 								<a
-									on:click={() => (dropdownSelected = !dropdownSelected)}
+									on:click={function () (dropdownSelected = !dropdownSelected)}
 									href="/account/info"
 									class=" block py-2 rounded hover:text-gray-400"
 								>
 									Info
 								</a>
 								<a
-									on:click={() => (dropdownSelected = !dropdownSelected)}
+									on:click={function () (dropdownSelected = !dropdownSelected)}
 									href="/account/payments"
 									class=" block py-2 rounded hover:text-gray-400"
 								>
 									Payments
 								</a>
 								<a
-									on:click={() => (dropdownSelected = !dropdownSelected)}
+									on:click={function () (dropdownSelected = !dropdownSelected)}
 									href="/account/sales"
 									class=" block py-2 rounded hover:text-gray-400"
 								>
 									Sales
 								</a>
 								<a
-									on:click={() => (dropdownSelected = !dropdownSelected)}
+									on:click={function () (dropdownSelected = !dropdownSelected)}
 									href="/account/reviews"
 									class=" block py-2 rounded hover:text-gray-400"
 								>

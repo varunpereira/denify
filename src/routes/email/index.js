@@ -16,10 +16,10 @@ export async function post({ request }) {
 	};
 	sgMail
 		.send(msg)
-		.then(() => {
+		.then(function () {
 			console.log('Email sent');
 		})
-		.catch((error) => {
+		.catch(function (error) {
 			console.error(error);
 		});
 	return {

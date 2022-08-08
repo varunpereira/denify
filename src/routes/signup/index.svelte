@@ -22,7 +22,7 @@
 	}
 
 	async function formSubmit() {
-		if (formValues.password !== formValues.confirmPassword) {
+		if (formValues.password != formValues.confirmPassword) {
 			error = 'Passwords dont match';
 			return;
 		}
@@ -51,7 +51,7 @@
 
 <div class="container mx-auto flex max-w-sm flex-1 flex-col items-center justify-center px-2">
 	<div class="w-full rounded bg-white px-6 py-8 text-black shadow-md">
-		<h1 class="mb-8 text-center text-3xl">Sign up</h1>
+		<p class="mb-8 text-center text-3xl">Sign up</p>
 		<form on:submit|preventDefault={formSubmit}>
 			<input
 				name={'email'}

@@ -17,14 +17,14 @@ export async function post({ request }) {
 			email1: email2,
 			email2: email1
 		});
-		if (message1 === null && message2 === null) {
+		if (message1 == null && message2 == null) {
 			return {
 				body: {
 					error: "Link not accessible."
 				}
 			};
 		}
-		if (message1 === null) {
+		if (message1 == null) {
 			messages = message2.messages;
 		} else {
 			messages = message1.messages;

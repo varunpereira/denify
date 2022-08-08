@@ -41,7 +41,7 @@
 	}
 
 	async function formSubmit() {
-		if (formValues.rating === '') {
+		if (formValues.rating == '') {
 			error = 'Must select rating.';
 			return;
 		}
@@ -65,9 +65,9 @@
 	<div class="bg-grey-lighter flex flex-col">
 		<div class="container mx-auto flex max-w-sm flex-1 flex-col items-center justify-center px-2">
 			<div class="w-full rounded bg-white  px-20 py-8 text-black shadow-md">
-				<h1 class="mb-8 text-center text-xl">
+				<p class="mb-8 text-center text-xl">
 					Add a Review for {product.title}
-				</h1>
+				</p>
 				<p>Rating (out of 5)</p>
 				<select bind:value={selected} on:change={formChange}>
 					{#each formOptions as formOption}
@@ -95,5 +95,5 @@
 		</div>
 	</div>
 {:else}
-	<h1>Loading...</h1>
+	<p>Loading...</p>
 {/if}

@@ -10,7 +10,7 @@ export async function post({ request }) {
 		current: false,
 		checkoutSessionId: checkoutSessionId
 	});
-	if (cartPaid === null) {
+	if (cartPaid == null) {
 		// update cart to paid + add csId
 		let cartPay = await orderModel.updateOne(
 			{ email: email, current: true },

@@ -28,7 +28,7 @@
 
 {#if products}
 	<div class="rounded-lg bg-white pl-2 text-black ">
-		<h1 class="text-2xl font-semibold">Your Products</h1>
+		<p class="text-2xl font-semibold">Your Products</p>
 
 		<div class="p-3">
 			<div class="overflow-x-auto">
@@ -76,5 +76,5 @@
 		</div>
 	</div>
 {:else}
-	<h1>Loading...</h1>
+	<p>Loading...</p>
 {/if}

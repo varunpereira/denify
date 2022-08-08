@@ -111,9 +111,9 @@
 		</div>
 		<div class="mt-6 md:ml-6 md:mt-0 md:w-1/2 lg:ml-8 xl:w-2/5">
 			<div class="border-gray-200 pb-6">
-				<h1 class="text-xl font-semibold leading-7 lg:text-2xl lg:leading-6">
+				<p class="text-xl font-semibold leading-7 lg:text-2xl lg:leading-6">
 					{product.title}
-				</h1>
+				</p>
 			</div>
 			<a href="#reviews" class="hover:text-gray-400 "> View Reviews </a>
 			<div>
@@ -152,13 +152,13 @@
 			{/if}
 		</div>
 	</div>
-	<h1 class="mb-5 mt-20 text-xl font-semibold">Reviews</h1>
+	<p class="mb-5 mt-20 text-xl font-semibold">Reviews</p>
 	<button on:click|preventDefault={addReview} class="text-sm font-semibold hover:text-gray-400">
 		Add a Review
 	</button>
 	<div id="reviews" class="mt-5 flex flex-wrap">
-		{#if reviews.length === 0}
-			<h1>No Reviews</h1>
+		{#if reviews.length == 0}
+			<p>No Reviews</p>
 		{:else}
 			{#each reviews as review}
 				<div
@@ -181,5 +181,5 @@
 		{/if}
 	</div>
 {:else}
-	<h1>Loading...</h1>
+	<p>Loading...</p>
 {/if}
