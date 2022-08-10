@@ -70,7 +70,7 @@
 					</a>
 				</li>
 				<div class="nav-item flow-root md:pb-3">
-					<div class="rounded hover:text-gray-400 md:mx-2 relative">
+					<div class="rounded-sm hover:text-gray-400 md:mx-2 relative">
 						<button
 							on:click|preventDefault={function () {
 								dropdownSelected = !dropdownSelected;
@@ -82,7 +82,7 @@
 						</button>
 						{#if dropdownSelected}
 							<div
-								class="absolute md:w-40 md:pl-2 w-full md:right-0 bg-black text-white rounded-b-md md:mt-2"
+								class="absolute w-[16rem] w-full md:right-0 md:mt-2 md:pl-4 bg-black text-white rounded-b-md"
 							>
 								{#each accountList as account}
 									<a
