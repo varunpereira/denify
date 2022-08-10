@@ -3,6 +3,7 @@
 	import { SearchIcon, XIcon } from 'svelte-feather-icons';
 
 	var searchTerm = '';
+	var dropdownSelected = false;
 </script>
 
 <div class="mr-5 max-h-min w-full min-w-min pb-1 md:pb-0 shadow-md md:flex text-black">
@@ -13,7 +14,9 @@
 		}}
 	>
 		<button
-			on:click|preventDefault={function () {}}
+			on:click|preventDefault={function () {
+				dropdownSelected = !dropdownSelected;
+			}}
 			type="button"
 			class="absolute inset-y-0 w-10 bg-gray-100 py-2 px-4 rounded-l-md"
 		>
@@ -47,4 +50,11 @@
 			<SearchIcon class="h-4 w-4 text-black" />
 		</button>
 	</form>
+	{#if dropdownSelected}<button
+			type="button"
+			class="absolute inset-y-0 right-0 w-10 max-w-min  cursor-pointer items-center justify-center bg-white pr-3 rounded-r-md"
+		>
+			##
+		</button>
+	{/if}
 </div>
