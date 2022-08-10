@@ -51,7 +51,7 @@
 
 		<form
 			action="#"
-			on:submit|preventDefault={sendMessage}
+			on:submit|preventDefault={function (){sendMessage()}}
 			class="px-6 py-4 border-t border-zinc-800 bg-zinc-700 text-white shrink-0 flex items-center"
 		>
 			<input

@@ -75,7 +75,7 @@
 		</div>
 
 		<form
-			on:submit|preventDefault={sendMessage}
+			on:submit|preventDefault={function (){sendMessage()}}
 			class="relative w-full rounded-b-md border-2 border-gray-400"
 		>
 			<input
