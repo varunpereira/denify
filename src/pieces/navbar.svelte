@@ -11,7 +11,7 @@
 	var accountList = null;
 	var accountList = [];
 
-	if ($auth.user) {
+	$: if ($auth.user) {
 		accountList = [
 			{ href: '/account/profile?email=' + $auth.user.email, title: 'Profile' },
 			{ href: '/account/chats', title: 'Contacts' },
