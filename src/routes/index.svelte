@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import { auth } from '@src/utils/store';
+	import { auth } from '@src/utils/store.js';
 	import cookie from 'js-cookie';
 	import { goto } from '$app/navigation';
 

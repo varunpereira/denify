@@ -1,6 +1,6 @@
 <script>
 	import { ShoppingBagIcon, ShoppingCartIcon, MenuIcon, UserIcon } from 'svelte-feather-icons';
-	import { auth } from '@src/utils/store';
+	import { auth } from '@src/utils/store.js';
 	import cookie from 'js-cookie';
 	import { goto } from '$app/navigation';
 	import SearchBar from '@src/pieces/searchbar.svelte';
@@ -8,14 +8,19 @@
 	var dropdownSelected = false;
 	var menuStatus = false;
 	var width = null;
-	var accountList = [
-		{ href: '/account/profile?email=' + '$auth.user.email', title: 'Profile' },
-		{ href: '/account/contacts', title: 'Contacts' },
-		{ href: '/account/info', title: 'Info' },
-		{ href: '/account/payments', title: 'Payments' },
-		{ href: '/account/sales', title: 'Sales' },
-		{ href: '/account/reviews', title: 'Reviews' }
-	];
+	var accountList = null;
+	var accountList = [];
+
+	if ($auth.user) {
+		accountList = [
+			{ href: '/account/profile?email=' + $auth.user.email, title: 'Profile' },
+			{ href: '/account/chats', title: 'Contacts' },
+			{ href: '/account/info', title: 'Info' },
+			{ href: '/account/payments', title: 'Payments' },
+			{ href: '/account/sales', title: 'Sales' },
+			{ href: '/account/reviews', title: 'Reviews' }
+		];
+	}
 
 	function signOut() {
 		cookie.remove('auth');
@@ -35,7 +40,7 @@
 			</a>
 		</p>
 		<button
-			on:click={function () {
+			on:click|preventDefault={function () {
 				menuStatus = !menuStatus;
 			}}
 		>
@@ -67,7 +72,7 @@
 				<div class="nav-item flow-root md:pb-3">
 					<div class="rounded hover:text-gray-400 md:mx-2 relative">
 						<button
-							on:click={function () {
+							on:click|preventDefault={function () {
 								dropdownSelected = !dropdownSelected;
 							}}
 							class="h-8 rounded-full pt-2 md:pt-0 md:flex md:flex-wrap md:justify-center"
@@ -89,7 +94,7 @@
 									>
 								{/each}
 								<button
-									on:click={function () {
+									on:click|preventDefault={function () {
 										signOut();
 									}}
 									class="w-full text-left block py-2 rounded hover:text-gray-400"

@@ -1,6 +1,6 @@
 <script>
 	import { ChevronLeftIcon, ChevronRightIcon, PlusIcon, MinusIcon } from 'svelte-feather-icons';
-	import { auth } from '@src/utils/store';
+	import { auth } from '@src/utils/store.js';
 	import axios from 'axios';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -102,10 +102,10 @@
 	<div class=" items-start justify-center  md:flex ">
 		<div class="relative">
 			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
-			<button on:click={function () {leftArrow()}} class="absolute inset-y-0 left-0" type="button">
+			<button on:click|preventDefault={function () {leftArrow()}} class="absolute inset-y-0 left-0" type="button">
 				<ChevronLeftIcon class="h-6 w-6 text-white bg-black rounded-full" />
 			</button>
-			<button on:click={function () {rightArrow()}} class="absolute inset-y-0 right-0" type="button">
+			<button on:click|preventDefault={function () {rightArrow()}} class="absolute inset-y-0 right-0" type="button">
 				<ChevronRightIcon class="h-6 w-6 text-white bg-black rounded-full" />
 			</button>
 		</div>
@@ -139,7 +139,7 @@
 				<button on:click|preventDefault={plusButton}><PlusIcon class="h-6 w-6 pt-2" /></button>
 			</div>
 			<button
-				on:click={function () {
+				on:click|preventDefault={function () {
 					addToCart(product);
 				}}
 				type="button"

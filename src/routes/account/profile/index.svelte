@@ -1,7 +1,7 @@
 <script>
 	import axios from 'axios';
 	import Product from '@src/pieces/product.svelte';
-	import { auth } from '@src/utils/store';
+	import { auth } from '@src/utils/store.js';
 	import { onMount } from 'svelte';
 	import { page } from '$app/stores';
 	import cookie from 'js-cookie';
@@ -46,7 +46,7 @@
 {#if products && email}
 	<p class="mb-5 text-lg font-semibold">{email}'s Products</p>
 	<button
-		on:click={function () {
+		on:click|preventDefault={function () {
 			sendMessage();
 		}}
 		class=" mb-5 hover:text-gray-400 cursor-pointer"

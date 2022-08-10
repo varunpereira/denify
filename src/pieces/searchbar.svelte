@@ -20,7 +20,7 @@
 		/>
 		{#if searchTerm.trim() != ''}
 			<button
-				on:click={function () {searchTerm = ''}}
+				on:click|preventDefault={function () {searchTerm = ''}}
 				class="absolute inset-y-0 right-8 w-10  max-w-min items-center justify-center"
 				type="button"
 			>

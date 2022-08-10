@@ -1,6 +1,6 @@
 <script>
 	import axios from 'axios';
-	import { auth } from '@src/utils/store';
+	import { auth } from '@src/utils/store.js';
 	import cookie from 'js-cookie';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -51,7 +51,9 @@
 			{product.description}
 		</p>
 		<button
-			on:click|preventDefault={addToCart}
+			on:click|preventDefault={function () {
+				addToCart();
+			}}
 			class="cursor-pointer inline-flex w-full items-center justify-center rounded-lg bg-black py-2 m font-medium text-white "
 		>
 			Add to Cart

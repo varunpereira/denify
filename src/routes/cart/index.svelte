@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
 	import axios from 'axios';
-	import { auth } from '@src/utils/store';
+	import { auth } from '@src/utils/store.js';
 	import { TrashIcon } from 'svelte-feather-icons';
 	import { goto } from '$app/navigation';
 	import cookie from 'js-cookie';
@@ -145,7 +145,7 @@
 					<span>${cart.price}</span>
 				</div>
 				<button
-					on:click={function () {
+					on:click|preventDefault={function () {
 						checkout();
 					}}
 					type="button"
