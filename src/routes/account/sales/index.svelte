@@ -24,7 +24,7 @@
 	});
 </script>
 
-<svelte:head><title>Account Sales</title></svelte:head>
+<svelte:head><title>Account Sales - Denify</title></svelte:head>
 
 {#if products}
 	<div class="rounded-lg bg-white pl-2 text-black ">

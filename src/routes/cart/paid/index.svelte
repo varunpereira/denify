@@ -28,7 +28,7 @@
 	});
 </script>
 
-<svelte:head><title>Payment Success</title></svelte:head>
+<svelte:head><title>Payment Success - Denify</title></svelte:head>
 
 {#if !cartPaid}
 	<div class="rounded-lg bg-white pl-2 text-black">

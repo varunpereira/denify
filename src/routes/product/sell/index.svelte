@@ -48,7 +48,7 @@
 	}
 </script>
 
-<svelte:head><title>Sell</title></svelte:head>
+<svelte:head><title>Sell - Denify</title></svelte:head>
 
 {#if formData}
 	<form

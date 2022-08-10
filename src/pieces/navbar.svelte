@@ -31,7 +31,7 @@
 
 <svelte:window bind:innerWidth={width} />
 
-<div class="relative min-w-min bg-black py-2  md:flex md:items-center md:justify-between">
+<div class="relative min-w-min bg-black py-2 text-xs md:flex md:items-center md:justify-between">
 	<div class="md:mr-5 mb-1 px-0 flex items-center justify-between ">
 		<p class="text-xl">
 			<a href="/" class="flex font-bold no-underline hover:text-gray-400 pt-1">

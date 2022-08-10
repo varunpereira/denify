@@ -11,6 +11,6 @@
 	});
 </script>
 
-<svelte:head><title>Home</title></svelte:head>
+<svelte:head><title>Home - Denify</title></svelte:head>
 
 <img src="/homeBanner.png" alt="" class="w-full rounded-md"/>

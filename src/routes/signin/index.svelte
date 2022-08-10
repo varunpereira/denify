@@ -42,7 +42,7 @@
 	}
 </script>
 
-<svelte:head><title>Sign in</title></svelte:head>
+<svelte:head><title>Sign in - Denify</title></svelte:head>
 
 <div class="container mx-auto flex max-w-sm flex-1 flex-col items-center justify-center px-2">
 	<div class="w-full rounded bg-white px-6 py-8 text-black shadow-md">

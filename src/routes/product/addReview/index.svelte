@@ -59,7 +59,7 @@
 	}
 </script>
 
-<svelte:head><title>Add Review</title></svelte:head>
+<svelte:head><title>Add Review - Denify</title></svelte:head>
 
 {#if product}
 	<div class="bg-grey-lighter flex flex-col">

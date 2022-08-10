@@ -33,7 +33,7 @@
 	}
 </script>
 
-<svelte:head><title>Search Results</title></svelte:head>
+<svelte:head><title>Search Results - Denify</title></svelte:head>
 
 {#if products}
 	<div class="flex flex-wrap text-white">

@@ -35,7 +35,7 @@
 	}
 </script>
 
-<svelte:head><title>Account Payments</title></svelte:head>
+<svelte:head><title>Account Payments - Denify</title></svelte:head>
 
 {#if orders}
 	<div

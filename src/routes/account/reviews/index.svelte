@@ -24,7 +24,7 @@
 	});
 </script>
 
-<svelte:head><title>Account Reviews</title></svelte:head>
+<svelte:head><title>Account Reviews - Denify</title></svelte:head>
 
 {#if reviews}
 	<div class="pl-2 rounded-lg bg-white text-black ">

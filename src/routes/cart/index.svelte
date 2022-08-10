@@ -74,7 +74,7 @@
 	}
 </script>
 
-<svelte:head><title>Cart</title></svelte:head>
+<svelte:head><title>Cart - Denify</title></svelte:head>
 
 {#if cart}
 	<div class="mx-auto my-10 rounded-lg bg-white text-black shadow-md">

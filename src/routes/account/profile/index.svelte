@@ -41,7 +41,7 @@
 	}
 </script>
 
-<svelte:head><title>Account Profile - {email}</title></svelte:head>
+<svelte:head><title>Account Profile - {email} - Denify</title></svelte:head>
 
 {#if products && email}
 	<p class="mb-5 text-lg font-semibold">{email}'s Products</p>

@@ -24,7 +24,7 @@
 	});
 </script>
 
-<svelte:head><title>Account Info</title></svelte:head>
+<svelte:head><title>Account Info - Denify</title></svelte:head>
 
 {#if user}
 	<div class="rounded-lg bg-white pl-2 text-black">

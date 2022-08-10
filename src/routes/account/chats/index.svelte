@@ -40,7 +40,7 @@
 	}
 </script>
 
-<svelte:head><title>Account Chat</title></svelte:head>
+<svelte:head><title>Account Chat - Denify</title></svelte:head>
 
 {#if messages}
 	<div class="rounded-md bg-white text-black md:mx-40 ">

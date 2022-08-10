@@ -96,7 +96,7 @@
 	}
 </script>
 
-<svelte:head><title>Product Details</title></svelte:head>
+<svelte:head><title>Product Details - Denify</title></svelte:head>
 
 {#if product && reviews}
 	<div class=" items-start justify-center  md:flex ">
