@@ -82,7 +82,7 @@
 						</button>
 						{#if dropdownSelected}
 							<div
-								class="absolute w-[16rem] w-full md:right-0 md:mt-2 md:pl-4 bg-black text-white rounded-b-md"
+								class="absolute md:w-[16rem] w-full md:right-0 md:mt-2 md:pl-4 bg-black text-white rounded-b-md"
 							>
 								{#each accountList as account}
 									<a
