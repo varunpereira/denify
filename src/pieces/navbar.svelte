@@ -8,6 +8,14 @@
 	var dropdownSelected = false;
 	var menuStatus = false;
 	var width = null;
+	var accountList = [
+		{ href: '/account/profile?email=' + '$auth.user.email', title: 'Profile' },
+		{ href: '/account/contacts', title: 'Contacts' },
+		{ href: '/account/info', title: 'Info' },
+		{ href: '/account/payments', title: 'Payments' },
+		{ href: '/account/sales', title: 'Sales' },
+		{ href: '/account/reviews', title: 'Reviews' }
+	];
 
 	function signOut() {
 		cookie.remove('auth');
@@ -18,7 +26,7 @@
 
 <svelte:window bind:innerWidth={width} />
 
-<header class="relative min-w-min bg-black py-2  md:flex md:items-center md:justify-between">
+<div class="relative min-w-min bg-black py-2  md:flex md:items-center md:justify-between">
 	<div class="md:mr-5 mb-1 px-0 flex items-center justify-between ">
 		<p class="text-xl">
 			<a href="/" class="flex font-bold no-underline hover:text-gray-400 pt-1">
@@ -59,7 +67,9 @@
 				<div class="nav-item flow-root md:pb-3">
 					<div class="rounded hover:text-gray-400 md:mx-2 relative">
 						<button
-							on:click={function () {dropdownSelected = !dropdownSelected}}
+							on:click={function () {
+								dropdownSelected = !dropdownSelected;
+							}}
 							class="h-8 rounded-full pt-2 md:pt-0 md:flex md:flex-wrap md:justify-center"
 						>
 							<UserIcon class="h-5 w-5 border border-1 rounded-full" />
@@ -69,48 +79,19 @@
 							<div
 								class="absolute md:w-40 md:pl-2 w-full md:right-0 bg-black text-white rounded-b-md md:mt-2"
 							>
-								<a
-									on:click={function () {dropdownSelected = !dropdownSelected}}
-									href={'/account/profile?email=' + $auth.user.email}
-									class=" block py-2 rounded hover:text-gray-400">Profile</a
-								>
-								<a
-									on:click={function () {dropdownSelected = !dropdownSelected}}
-									href="/account/chats/contacts"
-									class=" block py-2 rounded hover:text-gray-400"
-								>
-									Contacts
-								</a>
-								<a
-									on:click={function () {dropdownSelected = !dropdownSelected}}
-									href="/account/info"
-									class=" block py-2 rounded hover:text-gray-400"
-								>
-									Info
-								</a>
-								<a
-									on:click={function () {dropdownSelected = !dropdownSelected}}
-									href="/account/payments"
-									class=" block py-2 rounded hover:text-gray-400"
-								>
-									Payments
-								</a>
-								<a
-									on:click={function () {dropdownSelected = !dropdownSelected}}
-									href="/account/sales"
-									class=" block py-2 rounded hover:text-gray-400"
-								>
-									Sales
-								</a>
-								<a
-									on:click={function () {dropdownSelected = !dropdownSelected}}
-									href="/account/reviews"
-									class=" block py-2 rounded hover:text-gray-400"
-								>
-									Reviews
-								</a>
+								{#each accountList as account}
+									<a
+										on:click={function () {
+											dropdownSelected = !dropdownSelected;
+										}}
+										href={account.href}
+										class=" block py-2 rounded hover:text-gray-400">{account.title}</a
+									>
+								{/each}
 								<button
-									on:click={signOut}
+									on:click={function () {
+										signOut();
+									}}
 									class="w-full text-left block py-2 rounded hover:text-gray-400"
 								>
 									Sign out
@@ -126,4 +107,4 @@
 			{/if}
 		</ul>
 	{/if}
-</header>
+</div>

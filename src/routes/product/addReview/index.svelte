@@ -84,7 +84,9 @@
 					class="border-grey-light mb-4 w-full rounded border p-3"
 				/>
 				<button
-					on:click={formSubmit}
+					on:click={function () {
+						formSubmit();
+					}}
 					type="submit"
 					class="hover:bg-green-dark my-1 w-full rounded bg-black py-3 text-center text-white focus:outline-none"
 				>

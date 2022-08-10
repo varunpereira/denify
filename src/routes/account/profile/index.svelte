@@ -45,7 +45,14 @@
 
 {#if products && email}
 	<p class="mb-5 text-lg font-semibold">{email}'s Products</p>
-	<button on:click={sendMessage} class=" mb-5 hover:text-gray-400 cursor-pointer"> Message </button>
+	<button
+		on:click={function () {
+			sendMessage();
+		}}
+		class=" mb-5 hover:text-gray-400 cursor-pointer"
+	>
+		Message
+	</button>
 	<div class="flex flex-wrap text-white">
 		{#if products.length == 0}
 			<p>No Products found.</p>

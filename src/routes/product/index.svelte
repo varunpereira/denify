@@ -102,10 +102,10 @@
 	<div class=" items-start justify-center  md:flex ">
 		<div class="relative">
 			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
-			<button on:click={leftArrow} class="absolute inset-y-0 left-0" type="button">
+			<button on:click={function () {leftArrow()}} class="absolute inset-y-0 left-0" type="button">
 				<ChevronLeftIcon class="h-6 w-6 text-white bg-black rounded-full" />
 			</button>
-			<button on:click={rightArrow} class="absolute inset-y-0 right-0" type="button">
+			<button on:click={function () {rightArrow()}} class="absolute inset-y-0 right-0" type="button">
 				<ChevronRightIcon class="h-6 w-6 text-white bg-black rounded-full" />
 			</button>
 		</div>

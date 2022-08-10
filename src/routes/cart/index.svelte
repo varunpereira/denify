@@ -145,7 +145,9 @@
 					<span>${cart.price}</span>
 				</div>
 				<button
-					on:click={checkout}
+					on:click={function () {
+						checkout();
+					}}
 					type="button"
 					class="w-full rounded bg-black py-3  text-sm font-semibold uppercase text-white hover:bg-gray-600"
 				>
