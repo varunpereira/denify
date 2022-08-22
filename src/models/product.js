@@ -30,6 +30,10 @@ let schema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
+    approved: {
+      type: String,
+      default: 'false',
+    },
   },
   {
     timestamps: true,
