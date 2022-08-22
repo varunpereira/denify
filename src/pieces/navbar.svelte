@@ -8,7 +8,6 @@
 	var dropdownSelected = false;
 	var menuStatus = false;
 	var width = null;
-	var accountList = null;
 	var accountList = [];
 
 	$: if ($auth.user) {

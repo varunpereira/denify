@@ -4,6 +4,7 @@
 
 	var searchTerm = '';
 	var dropdownSelected = false;
+	var filterList = ['All', 'Clothes','Tech'];
 </script>
 
 <div class="mr-5 max-h-min w-full min-w-min pb-1 md:pb-0 shadow-md md:flex text-black">
@@ -20,7 +21,7 @@
 			type="button"
 			class="absolute inset-y-0 w-10 bg-gray-100 py-2 px-4 rounded-l-md"
 		>
-			All
+			{filterList[0]}
 		</button>
 		<input
 			value={searchTerm}
@@ -50,11 +51,15 @@
 			<SearchIcon class="h-4 w-4 text-black" />
 		</button>
 	</form>
-	{#if dropdownSelected}<button
-			type="button"
-			class="absolute inset-y-0 right-0 w-10 max-w-min  cursor-pointer items-center justify-center bg-white pr-3 rounded-r-md"
-		>
-			##
-		</button>
+	{#if dropdownSelected}
+	<div class="inset-y-0 "></div>
+		{#each filterList as filter}
+			<button
+				type="button"
+				class="bg-white block py-2 rounded hover:bg-gray-300"
+			>
+				{filter}
+			</button>
+		{/each}
 	{/if}
 </div>
