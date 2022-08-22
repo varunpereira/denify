@@ -1,5 +1,5 @@
-import db from '@src/utils/db';
-import userModel from '@src/models/user';
+import db from '@src/provs/db';
+import userModel from '@src/prots/user';
 
 db();
 

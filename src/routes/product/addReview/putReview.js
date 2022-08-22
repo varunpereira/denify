@@ -1,5 +1,5 @@
-import db from '@src/utils/db';
-import reviewModel from '@src/models/review';
+import db from '@src/provs/db';
+import reviewModel from '@src/prots/review';
 
 db();
 
