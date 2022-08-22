@@ -1,5 +1,5 @@
 <script>
-	import { websocketFrontend } from '@src/utils/websocketFrontend';
+	import { websocketFrontend } from '@src/provs/websocketFrontend';
 	import { onMount } from 'svelte';
 
 	var textfield = '';

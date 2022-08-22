@@ -3,7 +3,7 @@
 	import cookie from 'js-cookie';
 	import { goto } from '$app/navigation';
 	import { onMount } from 'svelte';
-	import { auth } from '@src/utils/store.js';
+	import { auth } from '@src/provs/store.js';
 	import { page } from '$app/stores';
 
 	var formValues = null;

@@ -1,6 +1,6 @@
 <script>
 	import { ShoppingBagIcon, ShoppingCartIcon, MenuIcon, UserIcon } from 'svelte-feather-icons';
-	import { auth } from '@src/utils/store.js';
+	import { auth } from '@src/provs/store.js';
 	import cookie from 'js-cookie';
 	import { goto } from '$app/navigation';
 	import SearchBar from '@src/pieces/searchbar.svelte';

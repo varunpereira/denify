@@ -1,6 +1,6 @@
 <script>
 	import { ChevronLeftIcon, ChevronRightIcon, PlusIcon, MinusIcon } from 'svelte-feather-icons';
-	import { auth } from '@src/utils/store.js';
+	import { auth } from '@src/provs/store.js';
 	import axios from 'axios';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';

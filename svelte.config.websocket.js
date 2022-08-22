@@ -1,6 +1,6 @@
 import path from 'path';
 import adapter from '@sveltejs/adapter-auto';
-// import {websocketBackend}  from './src/utils/websocketBackend';
+// import {websocketBackend}  from './src/provs/websocketBackend';
 import { Server } from 'socket.io';
 
 const config = {
