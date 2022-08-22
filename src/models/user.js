@@ -13,7 +13,7 @@ let schema = new mongoose.Schema(
     },
     role: {
       type: String,
-      default: 'user',
+      default: 'customer',
     },
     contacts: {
       type: Array,
