@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-let schema = new mongoose.Schema(
+var schema = new mongoose.Schema(
   {
     email: {
       type: String,
