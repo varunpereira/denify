@@ -6,21 +6,21 @@
 	var searchTerm = '';
 	var categoryList = ['All', 'Tech'];
 	var category = categoryList[0];
-	var searchResults = 'loading';
+	var suggestionResults = 'loading';
 
-	$: {
-		searchResults = 'loading';
-		axios
-			.post('/searchResults', {
-				searchTerm: searchTerm.trim()
-			})
-			.then(function (res) {
-				if (res.data.error) {
-					error = res.data.error;
-				}
-				searchResults = res.data.searchResults;
-			});
-	}
+	// $: {
+	// 	suggestionResults = 'loading';
+	// 	axios
+	// 		.post('/searchResults', {
+	// 			searchTerm: searchTerm.trim()
+	// 		})
+	// 		.then(function (res) {
+	// 			if (res.data.error) {
+	// 				error = res.data.error;
+	// 			}
+	// 			suggestionResults = res.data.searchResults;
+	// 		});
+	// }
 </script>
 
 <div class="mr-5 max-h-min w-full min-w-min pb-1 md:pb-0 shadow-md md:flex text-black">
