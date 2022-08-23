@@ -20,8 +20,8 @@
 
 	async function getProducts() {
 		var res = await axios.post($page.url.pathname, {
-			searchTerm: $page.url.searchParams.get('searchTerm'),
-			category: $page.url.searchParams.get('category')
+			searchTerm: $page.url.searchParams.get('searchTerm').trim(),
+			category: $page.url.searchParams.get('category').trim()
 		});
 		if (res.data.error) {
 			error = res.data.error;
