@@ -6,7 +6,7 @@
 	var searchTerm = '';
 	var categoryList = ['All', 'Tech'];
 	var category = categoryList[0];
-	var searchResults = [];
+	var searchResults = 'loading';
 
 	$: {
 		searchResults = 'loading';
@@ -56,6 +56,35 @@
 			>
 				<XIcon class="h-4 w-4 text-black" />
 			</button>
+			<div class="absolute bg-white rounded-b-md ml-12">
+				{JSON.stringify(searchResults)}
+				{#if searchResults === 'loading'}
+					<p>Loading...</p>
+				{:else if searchResults.length == 0}
+					<p>No results found.</p>
+				{:else if searchResults.length > 0}
+					{#each searchResults as searchResult}
+						<a
+							href={searchResult.showIds
+								? '/celeb?celebId=' + searchResult._id
+								: '/show?showId=' + searchResult._id}
+							on:click={function () {
+								searchTerm = '';
+							}}
+							class="block hover:bg-gray-800 py-2 px-2"
+						>
+							<div class="items-start justify-start  md:flex ">
+								<img
+									alt={searchResult.title}
+									src={searchResult.pics[0]}
+									class="object-cover h-20 mr-2 rounded-sm"
+								/>
+								<p>{searchResult.title}</p>
+							</div>
+						</a>
+					{/each}
+				{/if}
+			</div>
 		{/if}
 
 		<button
