@@ -1,10 +1,26 @@
 <script>
 	import { goto } from '$app/navigation';
 	import { SearchIcon, XIcon } from 'svelte-feather-icons';
+	import axios from 'axios';
 
 	var searchTerm = '';
 	var categoryList = ['All', 'Tech'];
 	var category = categoryList[0];
+	var searchResults = [];
+
+	$: {
+		searchResults = 'loading';
+		axios
+			.post('/searchResults', {
+				searchTerm: searchTerm.trim()
+			})
+			.then(function (res) {
+				if (res.data.error) {
+					error = res.data.error;
+				}
+				searchResults = res.data.searchResults;
+			});
+	}
 </script>
 
 <div class="mr-5 max-h-min w-full min-w-min pb-1 md:pb-0 shadow-md md:flex text-black">

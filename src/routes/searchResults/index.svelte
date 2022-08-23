@@ -9,7 +9,7 @@
 
 	var products = null;
 	var error = null;
-	var searchTerm = $page.url.searchParams.get('searchTerm').trim();
+	$searchTerm = $page.url.searchParams.get('searchTerm').trim();
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
