@@ -57,9 +57,7 @@
 			>
 				<XIcon class="h-4 w-4 text-black" />
 			</button>
-
 			<div class="absolute bg-white rounded-b-md ml-12">
-				{JSON.stringify(suggestions)}
 				{#if suggestions === 'loading'}
 					<p>Loading...</p>
 				{:else if suggestions.length == 0}
@@ -71,7 +69,7 @@
 							on:click={function () {
 								searchTerm = '';
 							}}
-							class="block hover:bg-gray-800 py-2 px-2"
+							class="block hover:bg-gray-300 py-2 px-2"
 						>
 							{suggestion.title}
 						</a>
