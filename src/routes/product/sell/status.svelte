@@ -30,8 +30,8 @@
 	<div
 		class="container mx-auto flex max-w-md flex-1 flex-col  px-2 w-full rounded bg-white  px-20 py-8 text-black"
 	>
-		<p class="mb-8 text-center text-xl">Sell Status for Product {product._id}:</p>
-		<p class="mb-8 text-center text-xl">{product.approved}</p>
+		<p class="mb-8 text-xl">Sell Status for Product {product._id}:</p>
+		<p class="mb-8 text-xl">{product.approved}</p>
 		<p>You can view status of all your sales in your account's sales page.</p>
 	</div>
 {:else}
