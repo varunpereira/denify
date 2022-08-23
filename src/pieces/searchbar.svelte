@@ -66,9 +66,6 @@
 					{#each suggestions as suggestion}
 						<a
 							href={'/searchResults?searchTerm=' + suggestion.title + '&category=' + category}
-							on:click={function () {
-								searchTerm = '';
-							}}
 							class="block hover:bg-gray-300 py-2 px-2"
 						>
 							{suggestion.title}
