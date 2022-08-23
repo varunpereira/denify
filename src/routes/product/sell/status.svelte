@@ -31,10 +31,10 @@
 	<div
 		class="container mx-auto flex max-w-md flex-1 flex-col  px-2 w-full rounded bg-white  px-20 py-8 text-black"
 	>
-		<p class="mb-8 text-center text-2xl">Sell Status for Product {productId}</p>
-		<p>Pending.</p>
+		<p class="mb-8 text-center text-2xl">Sell Status for Product {product._id}</p>
+		<p>{product.approved}</p>
 		<p>You can view status of all your sales in your account's sales page.</p>
 	</div>
 {:else}
-	<p>Product does not exist.</p>
+	<p>Loading...</p>
 {/if}
