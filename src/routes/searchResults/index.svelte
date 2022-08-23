@@ -9,7 +9,8 @@
 
 	var products = null;
 	var error = null;
-	$searchTerm = $page.url.searchParams.get('searchTerm').trim();
+	var searchTerm = $page.url.searchParams.get('searchTerm').trim();
+	var category = $page.url.searchParams.get('category').trim();
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
@@ -29,7 +30,10 @@
 		products = res.data.products;
 	}
 
-	$: if (searchTerm != $page.url.searchParams.get('searchTerm').trim()) {
+	$: if (
+		searchTerm != $page.url.searchParams.get('searchTerm').trim() ||
+		category != $page.url.searchParams.get('category').trim()
+	) {
 		getProducts();
 	}
 </script>
