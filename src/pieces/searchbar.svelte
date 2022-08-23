@@ -19,7 +19,7 @@
 				if (res.data.error) {
 					error = res.data.error;
 				}
-				suggestionResults = res.data.searchResults;
+				suggestionResults = res.data.products;
 			});
 	}
 </script>
