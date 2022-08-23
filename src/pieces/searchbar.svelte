@@ -58,13 +58,13 @@
 			</button>
 			
 			<div class="absolute bg-white rounded-b-md ml-12">
-				{JSON.stringify(searchResults)}
-				{#if searchResults === 'loading'}
+				{JSON.stringify(suggestionResults)}
+				{#if suggestionResults === 'loading'}
 					<p>Loading...</p>
-				{:else if searchResults.length == 0}
+				{:else if suggestionResults.length == 0}
 					<p>No results found.</p>
-				{:else if searchResults.length > 0}
-					{#each searchResults as searchResult}
+				{:else if suggestionResults.length > 0}
+					{#each suggestionResults as searchResult}
 						<a
 							href={searchResult.showIds
 								? '/celeb?celebId=' + searchResult._id
