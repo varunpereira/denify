@@ -4,27 +4,23 @@
 
 	var searchTerm = '';
 	var dropdownSelected = false;
-	var filterList = ['All', 'Clothes', 'Tech'];
-	var selected = null;
+	var categoryList = ['All', 'Clothes', 'Tech'];
+	var category = categoryList[0];
 </script>
 
 <div class="mr-5 max-h-min w-full min-w-min pb-1 md:pb-0 shadow-md md:flex text-black">
 	<form
 		class="relative w-full"
 		on:submit|preventDefault={function () {
-			goto('/searchResults?searchTerm=' + searchTerm);
+			goto('/searchResults?searchTerm=' + searchTerm + 'category=' + category);
 		}}
 	>
-		<select
-			bind:value={selected}
-			class="absolute inset-y-0 w-10 bg-gray-100 py-2 px-4 rounded-l-md"
-		>
-			{#each filterList as filter}
-				<option value={filter} >
-					{filter}
+		<select bind:value={category} class="absolute inset-y-0 rounded-l-md ">
+			{#each categoryList as category}
+				<option value={category} class="w-10 bg-gray-100 py-2 px-4">
+					{category}
 				</option>
 			{/each}
-			
 		</select>
 		<input
 			value={searchTerm}
@@ -32,8 +28,8 @@
 				searchTerm = event.target.value;
 			}}
 			type="text"
-			placeholder={selected}
-			class="focus:shadow-outline w-full min-w-max bg-white py-2 pl-12 text-sm leading-tight text-black focus:outline-none rounded-md"
+			placeholder="search"
+			class="focus:shadow-outline w-full min-w-max bg-white py-2 pl-16 text-sm leading-tight text-black focus:outline-none rounded-md"
 		/>
 		{#if searchTerm.trim() != ''}
 			<button
