@@ -7,9 +7,14 @@ var config = {
 		vite: {
 			resolve: {
 				alias: {
-					'@src': path.resolve('./src')
+					'@program': path.resolve('./program')
 				}
 			}
+		},
+		files: {
+			assets: 'program/public',
+			routes: 'program/pages',
+			template: 'program/app.html'
 		}
 	}
 };
