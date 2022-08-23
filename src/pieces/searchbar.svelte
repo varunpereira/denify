@@ -6,10 +6,10 @@
 	var searchTerm = '';
 	var categoryList = ['All', 'Tech'];
 	var category = categoryList[0];
-	var suggestionResults = 'loading';
+	var suggestions = 'loading';
 
 	$: {
-		suggestionResults = 'loading';
+		suggestions = 'loading';
 		axios
 			.post('/searchResults', {
 				searchTerm: searchTerm.trim(),
@@ -19,7 +19,7 @@
 				if (res.data.error) {
 					error = res.data.error;
 				}
-				suggestionResults = res.data.products;
+				suggestions = res.data.products;
 			});
 	}
 </script>
@@ -59,30 +59,21 @@
 			</button>
 
 			<div class="absolute bg-white rounded-b-md ml-12">
-				{JSON.stringify(suggestionResults)}
-				{#if suggestionResults === 'loading'}
+				{JSON.stringify(suggestions)}
+				{#if suggestions === 'loading'}
 					<p>Loading...</p>
-				{:else if suggestionResults.length == 0}
+				{:else if suggestions.length == 0}
 					<p>No results found.</p>
-				{:else if suggestionResults.length > 0}
-					{#each suggestionResults as searchResult}
+				{:else if suggestions.length > 0}
+					{#each suggestions as suggestion}
 						<a
-							href={searchResult.showIds
-								? '/celeb?celebId=' + searchResult._id
-								: '/show?showId=' + searchResult._id}
+							href={'/searchResults?searchTerm=' + suggestion.title + '&category=' + category}
 							on:click={function () {
 								searchTerm = '';
 							}}
 							class="block hover:bg-gray-800 py-2 px-2"
 						>
-							<div class="items-start justify-start  md:flex ">
-								<img
-									alt={searchResult.title}
-									src={searchResult.pics[0]}
-									class="object-cover h-20 mr-2 rounded-sm"
-								/>
-								<p>{searchResult.title}</p>
-							</div>
+							{suggestion.title}
 						</a>
 					{/each}
 				{/if}
