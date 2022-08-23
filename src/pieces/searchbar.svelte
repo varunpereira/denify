@@ -3,8 +3,7 @@
 	import { SearchIcon, XIcon } from 'svelte-feather-icons';
 
 	var searchTerm = '';
-	var dropdownSelected = false;
-	var categoryList = ['All', 'Clothes', 'Tech'];
+	var categoryList = ['All', 'Tech'];
 	var category = categoryList[0];
 </script>
 
@@ -12,7 +11,7 @@
 	<form
 		class="relative w-full"
 		on:submit|preventDefault={function () {
-			goto('/searchResults?searchTerm=' + searchTerm + 'category=' + category);
+			goto('/searchResults?searchTerm=' + searchTerm + '&category=' + category);
 		}}
 	>
 		<select bind:value={category} class="absolute inset-y-0 rounded-l-md ">
