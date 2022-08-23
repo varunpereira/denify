@@ -8,19 +8,19 @@
 	var category = categoryList[0];
 	var suggestionResults = 'loading';
 
-	// $: {
-	// 	suggestionResults = 'loading';
-	// 	axios
-	// 		.post('/searchResults', {
-	// 			searchTerm: searchTerm.trim()
-	// 		})
-	// 		.then(function (res) {
-	// 			if (res.data.error) {
-	// 				error = res.data.error;
-	// 			}
-	// 			suggestionResults = res.data.searchResults;
-	// 		});
-	// }
+	$: {
+		suggestionResults = 'loading';
+		axios
+			.post('/searchResults', {
+				searchTerm: searchTerm.trim()
+			})
+			.then(function (res) {
+				if (res.data.error) {
+					error = res.data.error;
+				}
+				suggestionResults = res.data.searchResults;
+			});
+	}
 </script>
 
 <div class="mr-5 max-h-min w-full min-w-min pb-1 md:pb-0 shadow-md md:flex text-black">
@@ -57,7 +57,7 @@
 				<XIcon class="h-4 w-4 text-black" />
 			</button>
 			
-			<!-- <div class="absolute bg-white rounded-b-md ml-12">
+			<div class="absolute bg-white rounded-b-md ml-12">
 				{JSON.stringify(searchResults)}
 				{#if searchResults === 'loading'}
 					<p>Loading...</p>
@@ -85,7 +85,7 @@
 						</a>
 					{/each}
 				{/if}
-			</div> -->
+			</div>
 		{/if}
 
 		<button
