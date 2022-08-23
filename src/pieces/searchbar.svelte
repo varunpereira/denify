@@ -12,7 +12,8 @@
 		suggestionResults = 'loading';
 		axios
 			.post('/searchResults', {
-				searchTerm: searchTerm.trim()
+				searchTerm: searchTerm.trim(),
+				category: category.trim()
 			})
 			.then(function (res) {
 				if (res.data.error) {
@@ -56,7 +57,7 @@
 			>
 				<XIcon class="h-4 w-4 text-black" />
 			</button>
-			
+
 			<div class="absolute bg-white rounded-b-md ml-12">
 				{JSON.stringify(suggestionResults)}
 				{#if suggestionResults === 'loading'}
