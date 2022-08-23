@@ -56,7 +56,8 @@
 			>
 				<XIcon class="h-4 w-4 text-black" />
 			</button>
-			<div class="absolute bg-white rounded-b-md ml-12">
+			
+			<!-- <div class="absolute bg-white rounded-b-md ml-12">
 				{JSON.stringify(searchResults)}
 				{#if searchResults === 'loading'}
 					<p>Loading...</p>
@@ -84,7 +85,7 @@
 						</a>
 					{/each}
 				{/if}
-			</div>
+			</div> -->
 		{/if}
 
 		<button
