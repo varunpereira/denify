@@ -6,7 +6,7 @@ db();
 export async function post({ request }) {
 	try {
 		var { productId } = await request.json();
-		var product = await productModel.find({
+		var product = await productModel.findOne({
 			_id: productId
 		});
 		return {

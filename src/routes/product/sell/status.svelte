@@ -26,7 +26,6 @@
 </script>
 
 <svelte:head><title>Sell Status - Denify</title></svelte:head>
-{JSON.stringify(product)}
 {#if product}
 	<div
 		class="container mx-auto flex max-w-md flex-1 flex-col  px-2 w-full rounded bg-white  px-20 py-8 text-black"
