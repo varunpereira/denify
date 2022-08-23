@@ -34,11 +34,7 @@
 		<select bind:value={category} class="absolute inset-y-0 rounded-l-md ">
 			{#each categoryList as category}
 				<option value={category} class="w-10 bg-gray-100 py-2 px-4">
-					<button
-						on:click={function () {
-							searchTerm = '';
-						}}>{category}</button
-					>
+					{category}
 				</option>
 			{/each}
 		</select>
@@ -70,6 +66,9 @@
 					{#each suggestions as suggestion}
 						<a
 							href={'/searchResults?searchTerm=' + suggestion.title + '&category=' + category}
+							on:click={function () {
+								searchTerm = '';
+							}}
 							class="block hover:bg-gray-300 py-2 px-2"
 						>
 							{suggestion.title}
