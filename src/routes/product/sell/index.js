@@ -7,10 +7,10 @@ export async function post({ request }) {
 	try {
 		var formData = await request.json();
 		formData['approved'] = 'pending';
-		var addProduct = await new productModel(formData).save();
+		var product = await new productModel(formData).save();
 		return {
 			body: {
-				success: true
+				product
 			}
 		};
 	} catch (error) {

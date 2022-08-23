@@ -29,7 +29,6 @@
 		};
 	});
 
-
 	function formInput(event) {
 		let { name, value } = event.target;
 		formData = { ...formData, [name]: value };
@@ -41,7 +40,7 @@
 			if (res.data.error) {
 				return;
 			}
-			goto('/searchResults?searchTerm=');
+			goto('/product/sell/status?productId=' + res.data.product._id);
 		} catch (resError) {
 			console.log(resError.response.data.error);
 		}
