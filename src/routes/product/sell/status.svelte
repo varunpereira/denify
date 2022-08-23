@@ -14,6 +14,7 @@
 			$auth = JSON.parse(cookie.get('auth'));
 		}
 		productId = $page.url.searchParams.get('productId').trim();
+		
 	});
 </script>
 

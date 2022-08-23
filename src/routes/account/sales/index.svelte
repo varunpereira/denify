@@ -42,7 +42,7 @@
 								<div class="text-left font-semibold">Title</div>
 							</th>
 							<th class="whitespace-nowrap ">
-								<div class="text-left font-semibold">Description</div>
+								<div class="text-left font-semibold">Approved Status</div>
 							</th>
 							<th class="whitespace-nowrap ">
 								<div class="text-left font-semibold">Category</div>
@@ -63,7 +63,7 @@
 							<tr key={product._id} class="my-4 text-black">
 								<td>{product._id}</td>
 								<td> {product.title}</td>
-								<td>{product.description}</td>
+								<td>{product.approved}</td>
 								<td>{product.category}</td>
 								<td>${product.price}</td>
 								<td>{product.sold}</td>
