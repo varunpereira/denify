@@ -29,6 +29,7 @@
 		class="relative w-full"
 		on:submit|preventDefault={function () {
 			goto('/searchResults?searchTerm=' + searchTerm + '&category=' + category);
+			searchTerm = '';
 		}}
 	>
 		<select bind:value={category} class="absolute inset-y-0 rounded-l-md ">
