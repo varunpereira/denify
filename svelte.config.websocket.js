@@ -9,7 +9,7 @@ const config = {
 		vite: {
 			resolve: {
 				alias: {
-					'@program': path.resolve('./src')
+					'@src': path.resolve('./src')
 				}
 			},
 			plugins: [
