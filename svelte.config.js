@@ -14,7 +14,7 @@ var config = {
 		files: {
 			assets: 'program/public',
 			routes: 'program/pages',
-			template: 'program/app.html'
+			template: 'program/program.html'
 		}
 	}
 };
