@@ -82,7 +82,7 @@
 				{/if} -->
 			</datalist>
 
-			<!-- <div class="absolute bg-white rounded-b-md ml-12">
+			<div class="absolute bg-white rounded-b-md ml-12">
 				{#if suggestions == 'loading'}
 					<p>Loading...</p>
 				{:else if suggestions.length == 0}
@@ -103,7 +103,7 @@
 						</a>
 					{/each}
 				{/if}
-			</div> -->
+			</div>
 		{/if}
 
 		<button
