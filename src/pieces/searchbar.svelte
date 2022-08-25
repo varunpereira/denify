@@ -44,7 +44,7 @@
 			on:input={function (event) {
 				searchTerm = event.target.value;
 			}}
-			list="example"
+			list="suggestionList"
 			type="text"
 			placeholder="search"
 			class="focus:shadow-outline w-full min-w-max bg-white py-2 pl-16 text-sm leading-tight text-black focus:outline-none rounded-md"
@@ -59,7 +59,8 @@
 			>
 				<XIcon class="h-4 w-4 text-black" />
 			</button>
-			<datalist id="example" class="absolute bg-white rounded-b-md ml-12">
+
+			<!-- <datalist id="suggestionList" class="absolute bg-white rounded-b-md ml-12">
 				{#if suggestions == 'loading'}
 					<option>Loading...</option>
 				{:else if suggestions.length == 0}
@@ -67,8 +68,7 @@
 				{:else if suggestions.length > 0}
 					{#each suggestions as suggestion}
 						<option>
-							s
-							<!-- <a
+							<a
 								href={'/searchResults?searchTerm=' + suggestion.title + '&category=' + category}
 								on:click={function () {
 									searchTerm = '';
@@ -76,11 +76,11 @@
 								class="block hover:bg-gray-300 py-2 px-2 hover:rounded-b-md"
 							>
 								{suggestion.title}
-							</a> -->
+							</a>
 						</option>
 					{/each}
 				{/if}
-			</datalist>
+			</datalist> -->
 
 			<!-- <div class="absolute bg-white rounded-b-md ml-12">
 				{#if suggestions == 'loading'}
