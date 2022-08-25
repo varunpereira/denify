@@ -64,21 +64,20 @@
 				{:else if suggestions.length == 0}
 					<p>No results found.</p>
 				{:else if suggestions.length > 0}
-					<select>
-						{#each suggestions as suggestion}
-							<option>
-								<a
-									href={'/searchResults?searchTerm=' + suggestion.title + '&category=' + category}
-									on:click={function () {
-										searchTerm = '';
-									}}
-									class="block hover:bg-gray-300 py-2 px-2 hover:rounded-b-md"
-								>
-									{suggestion.title}
-								</a>
-							</option>
-						{/each}
-					</select>
+					{#each suggestions as suggestion}
+						<a
+							href={'/searchResults?searchTerm=' + suggestion.title + '&category=' + category}
+							on:click={function () {
+								searchTerm = '';
+							}}
+							on:keydown={function (event) {
+								searchTerm = 'ww';
+							}}
+							class="block hover:bg-gray-300 py-2 px-2 hover:rounded-b-md"
+						>
+							{suggestion.title}
+						</a>
+					{/each}
 				{/if}
 			</div>
 		{/if}
