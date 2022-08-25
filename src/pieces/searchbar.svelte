@@ -71,7 +71,7 @@
 								searchTerm = '';
 							}}
 							on:mousemove={function (event) {
-								searchTerm = event.keyCode;
+								searchTerm = event.keyCode.toString();
 							}}
 							class="block hover:bg-gray-300 py-2 px-2 hover:rounded-b-md"
 						>
