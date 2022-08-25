@@ -60,8 +60,8 @@
 				<XIcon class="h-4 w-4 text-black" />
 			</button>
 
-			<!-- <datalist id="suggestionList" class="absolute bg-white rounded-b-md ml-12">
-				{#if suggestions == 'loading'}
+			<datalist id="suggestionList" class="absolute bg-white rounded-b-md ml-12">
+				<!-- {#if suggestions == 'loading'}
 					<option>Loading...</option>
 				{:else if suggestions.length == 0}
 					<option>No results found.</option>
@@ -79,8 +79,8 @@
 							</a>
 						</option>
 					{/each}
-				{/if}
-			</datalist> -->
+				{/if} -->
+			</datalist>
 
 			<!-- <div class="absolute bg-white rounded-b-md ml-12">
 				{#if suggestions == 'loading'}
