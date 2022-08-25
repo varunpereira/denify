@@ -67,7 +67,8 @@
 				{:else if suggestions.length > 0}
 					{#each suggestions as suggestion}
 						<option>
-							<a
+							s
+							<!-- <a
 								href={'/searchResults?searchTerm=' + suggestion.title + '&category=' + category}
 								on:click={function () {
 									searchTerm = '';
@@ -75,7 +76,7 @@
 								class="block hover:bg-gray-300 py-2 px-2 hover:rounded-b-md"
 							>
 								{suggestion.title}
-							</a>
+							</a> -->
 						</option>
 					{/each}
 				{/if}
