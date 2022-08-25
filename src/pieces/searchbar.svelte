@@ -59,13 +59,13 @@
 				<XIcon class="h-4 w-4 text-black" />
 			</button>
 			<div class="absolute bg-white rounded-b-md ml-12">
-				{#if suggestions === 'loading'}
+				{#if suggestions == 'loading'}
 					<p>Loading...</p>
 				{:else if suggestions.length == 0}
 					<p>No results found.</p>
 				{:else if suggestions.length > 0}
 					{#each suggestions as suggestion}
-						<option>
+						<!-- <option> -->
 							<a
 								href={'/searchResults?searchTerm=' + suggestion.title + '&category=' + category}
 								on:click={function () {
@@ -75,7 +75,7 @@
 							>
 								{suggestion.title}
 							</a>
-						</option>
+						<!-- </option> -->
 					{/each}
 				{/if}
 			</div>
