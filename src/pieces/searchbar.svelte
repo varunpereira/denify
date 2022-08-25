@@ -70,8 +70,10 @@
 							on:click={function () {
 								searchTerm = '';
 							}}
-							on:keydown={function (event) {
-								searchTerm = 'ww';
+							on:mousemove={function (event) {
+								if (event.keyCode == 40) {
+									searchTerm = 'ww';
+								}
 							}}
 							class="block hover:bg-gray-300 py-2 px-2 hover:rounded-b-md"
 						>
