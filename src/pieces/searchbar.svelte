@@ -71,9 +71,7 @@
 								searchTerm = '';
 							}}
 							on:mousemove={function (event) {
-								if (event.keyCode == 40) {
-									searchTerm = 'ww';
-								}
+								searchTerm = 'ww';
 							}}
 							class="block hover:bg-gray-300 py-2 px-2 hover:rounded-b-md"
 						>
