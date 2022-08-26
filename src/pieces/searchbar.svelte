@@ -60,12 +60,12 @@
 				<XIcon class="h-4 w-4 text-black" />
 			</button>
 
-			<input list="browsers" name="browser" id="browser" />
+			<!-- <input list="browsers" name="browser" id="browser" />
 			<datalist id="browsers">
 				<option value="Edge" /><option value="Firefox" /><option value="Chrome" /><option
 					value="Opera"
 				/><option value="Safari" /></datalist
-			>
+			> -->
 
 			<datalist id="suggestions" class="absolute bg-white rounded-b-md ml-12">
 				{#if suggestions == 'loading'}
