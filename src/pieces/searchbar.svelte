@@ -44,7 +44,7 @@
 			on:input={function (event) {
 				searchTerm = event.target.value;
 			}}
-			list="suggestionList"
+			list="suggestions"
 			type="text"
 			placeholder="search"
 			class="focus:shadow-outline w-full min-w-max bg-white py-2 pl-16 text-sm leading-tight text-black focus:outline-none rounded-md"
@@ -60,7 +60,14 @@
 				<XIcon class="h-4 w-4 text-black" />
 			</button>
 
-			<datalist id="suggestionList" class="absolute bg-white rounded-b-md ml-12">
+			<input list="browsers" name="browser" id="browser" />
+			<datalist id="browsers">
+				<option value="Edge" /><option value="Firefox" /><option value="Chrome" /><option
+					value="Opera"
+				/><option value="Safari" /></datalist
+			>
+
+			<datalist id="suggestions" class="absolute bg-white rounded-b-md ml-12">
 				{#if suggestions == 'loading'}
 					<option>Loading...</option>
 				{:else if suggestions.length == 0}
