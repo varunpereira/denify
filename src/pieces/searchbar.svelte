@@ -61,11 +61,11 @@
 			</button>
 
 			<datalist id="suggestionList" class="absolute bg-white rounded-b-md ml-12">
-				<!-- {#if suggestions == 'loading'}
+				{#if suggestions == 'loading'}
 					<option>Loading...</option>
 				{:else if suggestions.length == 0}
 					<option>No results found.</option>
-				{:else if suggestions.length > 0}
+					<!-- {:else if suggestions.length > 0}
 					{#each suggestions as suggestion}
 						<option>
 							<a
@@ -78,8 +78,8 @@
 								{suggestion.title}
 							</a>
 						</option>
-					{/each}
-				{/if} -->
+					{/each} -->
+				{/if}
 			</datalist>
 
 			<div class="absolute bg-white rounded-b-md ml-12">
