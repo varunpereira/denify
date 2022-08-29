@@ -6,7 +6,7 @@ db();
 export async function post({ request }) {
 	var { email } = await request.json();
 	var products = await productModel.find({
-		email
+		email, approved: 'true'
 	});
 	return {
 		body: {
