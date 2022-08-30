@@ -68,7 +68,7 @@
 				{:else if suggestions.length > 0}
 					{#each suggestions as suggestion}
 						<a
-							href={'/searchResults?searchTerm=' + suggestion.title + '&category=' + category}
+							href={'/searchResults?searchTerm=' + suggestion.title + '&category=' + category + '&pagination=1'}
 							on:click={function () {
 								searchTerm = '';
 							}}
