@@ -92,7 +92,7 @@
 					{/each}
 					<button
 						on:click={function () {
-							if (pagination < products.length) {
+							if (pagination < pages) {
 								pagination += 1;
 							}
 						}}
