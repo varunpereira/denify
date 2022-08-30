@@ -19,7 +19,8 @@
 	async function getProducts() {
 		var res = await axios.post('/searchResults', {
 			searchTerm: '',
-			category: 'All'
+			category: 'All',
+			pagination: 1
 		});
 		if (res.data.error) {
 			error = res.data.error;

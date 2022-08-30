@@ -54,7 +54,7 @@
 			{#each products as product}
 				<Product {product} />
 			{/each}
-			<div class="flex">
+			<div class="">
 				<div
 					class="relative z-0 inline-flex -space-x-px rounded-md shadow-sm"
 					aria-label="Pagination"
