@@ -56,26 +56,26 @@
 					aria-label="Pagination"
 				>
 					<a
-						href="#"
+						href="/"
 						class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
 					>
 						<span class="sr-only">Previous</span>
-						<a href="#"><ArrowLeftIcon class="w-5 h-5" /></a>
+						<a href="/"><ArrowLeftIcon class="w-5 h-5" /></a>
 					</a>
 					<!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
 					<a
-						href="#"
+						href="/"
 						aria-current="page"
 						class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600"
 						>1</a
 					>
 					<a
-						href="#"
+						href="/"
 						class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
 						>2</a
 					>
 					<a
-						href="#"
+						href="/"
 						class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 md:inline-flex"
 						>3</a
 					>
@@ -84,26 +84,26 @@
 						>...</span
 					>
 					<a
-						href="#"
+						href="/"
 						class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 md:inline-flex"
 						>8</a
 					>
 					<a
-						href="#"
+						href="/"
 						class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
 						>9</a
 					>
 					<a
-						href="#"
+						href="/"
 						class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
 						>10</a
 					>
 					<a
-						href="#"
+						href="/"
 						class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
 					>
 						<span class="sr-only">Next</span>
-						<a href="#"><ArrowRightIcon class="w-5 h-5" /></a>
+						<a href="/"><ArrowRightIcon class="w-5 h-5" /></a>
 					</a>
 				</nav>
 			</div>
