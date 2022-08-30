@@ -81,7 +81,8 @@
 								suggestion.title +
 								'&category=' +
 								category +
-								'&pagination=1'}
+								'&pagination=' +
+								pagination}
 							on:click={function () {
 								searchTerm = '';
 							}}
