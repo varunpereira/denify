@@ -13,6 +13,7 @@
 	var searchTerm = $page.url.searchParams.get('searchTerm').trim();
 	var category = $page.url.searchParams.get('category').trim();
 	var pagination = $page.url.searchParams.get('pagination').trim();
+	var pages = null;
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
@@ -30,6 +31,7 @@
 		if (res.data.error) {
 			error = res.data.error;
 		}
+		pages = res.data.pages;
 		products = res.data.products;
 	}
 
@@ -68,7 +70,7 @@
 						<span class="sr-only">Previous</span>
 						<ArrowLeftIcon class="w-5 h-5" />
 					</button>
-					{#each Array(7) as _, index}
+					{#each Array(pages) as _, index}
 						{#if pagination == index + 1}
 							<button
 								on:click={function () {

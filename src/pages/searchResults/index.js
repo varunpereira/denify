@@ -19,12 +19,14 @@ export async function post({ request }) {
 		});
 	}
 	var productsPerPage = 20;
+	var pages = Math.ceil(products.length / productsPerPage);
 	var lower = productsPerPage * (pagination - 1);
 	var upper = productsPerPage * pagination + 1;
 	products = products.slice(lower, upper);
 
 	return {
 		body: {
+			pages,
 			products
 		}
 	};
