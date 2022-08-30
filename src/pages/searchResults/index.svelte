@@ -65,11 +65,20 @@
 						<a href="/"><ArrowLeftIcon class="w-5 h-5" /></a>
 					</a>
 					{#each products as product, index}
-						<a
-							href="/"
-							class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
-							>{index + 1}</a
-						>
+						{#if pagination == index + 1}
+							<a
+								href="/"
+								aria-current="page"
+								class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600"
+								>{index + 1}</a
+							>
+						{:else}
+							<a
+								href="/"
+								class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
+								>{index + 1}</a
+							>
+						{/if}
 					{/each}
 					<a
 						href="/"
@@ -78,14 +87,6 @@
 						<span class="sr-only">Next</span>
 						<a href="/"><ArrowRightIcon class="w-5 h-5" /></a>
 					</a>
-
-					<!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
-					<!-- <a
-						href="/"
-						aria-current="page"
-						class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600"
-						>1</a
-					> -->
 				</div>
 			</div>
 		{/if}
