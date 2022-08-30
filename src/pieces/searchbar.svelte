@@ -7,7 +7,7 @@
 	var categoryList = ['All', 'Tech'];
 	var category = categoryList[0];
 	var suggestions = 'loading';
-	var pagination = '1';
+	var pagination = 1;
 
 	$: {
 		suggestions = 'loading';
