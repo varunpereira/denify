@@ -4,7 +4,7 @@ import productModel from '@src/prots/product';
 db();
 
 export async function post({ request }) {
-	var { searchTerm, category } = await request.json();
+	var { searchTerm, category, pagination } = await request.json();
 	var products = [];
 	if (category == 'All') {
 		products = await productModel.find({
@@ -18,6 +18,7 @@ export async function post({ request }) {
 			approved: 'true'
 		});
 	}
+	
 	return {
 		body: {
 			products

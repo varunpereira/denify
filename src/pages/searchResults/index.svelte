@@ -24,7 +24,8 @@
 	async function getProducts() {
 		var res = await axios.post($page.url.pathname, {
 			searchTerm: $page.url.searchParams.get('searchTerm').trim(),
-			category: $page.url.searchParams.get('category').trim()
+			category: $page.url.searchParams.get('category').trim(),
+			pagination: $page.url.searchParams.get('pagination').trim()
 		});
 		if (res.data.error) {
 			error = res.data.error;
@@ -34,7 +35,8 @@
 
 	$: if (
 		searchTerm != $page.url.searchParams.get('searchTerm').trim() ||
-		category != $page.url.searchParams.get('category').trim()
+		category != $page.url.searchParams.get('category').trim() ||
+		pagination != $page.url.searchParams.get('pagination').trim()
 	) {
 		getProducts();
 	}
@@ -50,8 +52,8 @@
 			{#each products as product}
 				<Product {product} />
 			{/each}
-			<div>
-				<nav
+			<div class="flex flex-row">
+				<div
 					class="relative z-0 inline-flex -space-x-px rounded-md shadow-sm"
 					aria-label="Pagination"
 				>
@@ -62,42 +64,13 @@
 						<span class="sr-only">Previous</span>
 						<a href="/"><ArrowLeftIcon class="w-5 h-5" /></a>
 					</a>
-					<!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
-					<a
-						href="/"
-						aria-current="page"
-						class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600"
-						>1</a
-					>
-					<a
-						href="/"
-						class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
-						>2</a
-					>
-					<a
-						href="/"
-						class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 md:inline-flex"
-						>3</a
-					>
-					<span
-						class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700"
-						>...</span
-					>
-					<a
-						href="/"
-						class="relative hidden items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 md:inline-flex"
-						>8</a
-					>
-					<a
-						href="/"
-						class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
-						>9</a
-					>
-					<a
-						href="/"
-						class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
-						>10</a
-					>
+					{#each products as product, index}
+						<a
+							href="/"
+							class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
+							>{index + 1}</a
+						>
+					{/each}
 					<a
 						href="/"
 						class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
@@ -105,7 +78,15 @@
 						<span class="sr-only">Next</span>
 						<a href="/"><ArrowRightIcon class="w-5 h-5" /></a>
 					</a>
-				</nav>
+
+					<!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
+					<!-- <a
+						href="/"
+						aria-current="page"
+						class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600"
+						>1</a
+					> -->
+				</div>
 			</div>
 		{/if}
 	</div>
