@@ -51,9 +51,11 @@
 		{#if products.length == 0}
 			<p>No Products found.</p>
 		{:else}
-			{#each products as product}
-				<Product {product} />
-			{/each}
+			<div class="flex-row">
+				{#each products as product}
+					<Product {product} />
+				{/each}
+			</div>
 			<div class="flex-row">
 				<div
 					class="relative z-0 inline-flex -space-x-px rounded-md shadow-sm"
