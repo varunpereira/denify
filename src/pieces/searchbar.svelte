@@ -30,7 +30,14 @@
 	<form
 		class="relative w-full"
 		on:submit|preventDefault={function () {
-			goto('/searchResults?searchTerm=' + searchTerm + '&category=' + category);
+			goto(
+				'/searchResults?searchTerm=' +
+					searchTerm +
+					'&category=' +
+					category +
+					'&pagination=' +
+					pagination
+			);
 			searchTerm = '';
 		}}
 	>
