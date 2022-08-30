@@ -5,6 +5,7 @@ db();
 
 export async function post({ request }) {
 	var { searchTerm, category, pagination } = await request.json();
+	pagination = Number(pagination);
 	var products = [];
 	if (category == 'All') {
 		products = await productModel.find({

@@ -20,7 +20,7 @@
 		var res = await axios.post('/searchResults', {
 			searchTerm: '',
 			category: 'All',
-			pagination: 1
+			pagination: '1'
 		});
 		if (res.data.error) {
 			error = res.data.error;
