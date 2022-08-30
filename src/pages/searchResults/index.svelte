@@ -47,7 +47,7 @@
 <svelte:head><title>Search Results - Denify</title></svelte:head>
 
 {#if products}
-	<div class="flex flex-col w-full text-white">
+	<div class="flex flex-wrap w-full text-white">
 		{#if products.length == 0}
 			<p>No Products found.</p>
 		{:else}
