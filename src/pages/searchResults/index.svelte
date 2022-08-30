@@ -68,7 +68,7 @@
 						<span class="sr-only">Previous</span>
 						<ArrowLeftIcon class="w-5 h-5" />
 					</button>
-					{#each products as product, index}
+					{#each Array(7) as _, index}
 						{#if pagination == index + 1}
 							<button
 								on:click={function () {
