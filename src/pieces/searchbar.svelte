@@ -7,13 +7,15 @@
 	var categoryList = ['All', 'Tech'];
 	var category = categoryList[0];
 	var suggestions = 'loading';
+	var pagination = 1;
 
 	$: {
 		suggestions = 'loading';
 		axios
 			.post('/searchResults', {
 				searchTerm: searchTerm.trim(),
-				category: category.trim()
+				category: category.trim(),
+				pagination: pagination.trim()
 			})
 			.then(function (res) {
 				if (res.data.error) {
@@ -68,7 +70,11 @@
 				{:else if suggestions.length > 0}
 					{#each suggestions as suggestion}
 						<a
-							href={'/searchResults?searchTerm=' + suggestion.title + '&category=' + category + '&pagination=1'}
+							href={'/searchResults?searchTerm=' +
+								suggestion.title +
+								'&category=' +
+								category +
+								'&pagination=1'}
 							on:click={function () {
 								searchTerm = '';
 							}}
