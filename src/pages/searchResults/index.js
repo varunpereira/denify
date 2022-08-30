@@ -18,7 +18,11 @@ export async function post({ request }) {
 			approved: 'true'
 		});
 	}
-	
+	var productsPerPage = 20;
+	var lower = productsPerPage * (pagination - 1);
+	var upper = productsPerPage * pagination + 1;
+	products = products.slice(lower, upper);
+
 	return {
 		body: {
 			products
