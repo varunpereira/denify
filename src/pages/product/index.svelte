@@ -166,7 +166,7 @@
 					addToCart(product);
 				}}
 				type="button"
-				class="mt-5 flex w-full items-center justify-center rounded bg-white py-4 text-black hover:bg-gray-400"
+				class="mt-5 flex w-24 items-center justify-center rounded bg-white py-4 text-black hover:bg-gray-400"
 			>
 				Add to Cart
 			</button>
