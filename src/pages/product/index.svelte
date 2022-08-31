@@ -100,12 +100,12 @@
 
 {#if product && reviews}
 	<div class="items-start justify-center  md:flex ">
-		<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
+		<img class="w-10/12 rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
 		<button
 			on:click|preventDefault={function () {
 				leftArrow();
 			}}
-			class="absolute inset-y-0 left-0"
+			class=""
 			type="button"
 		>
 			<ChevronLeftIcon class="h-6 w-6 text-white bg-black rounded-full" />
@@ -114,7 +114,7 @@
 			on:click|preventDefault={function () {
 				rightArrow();
 			}}
-			class="absolute inset-y-0 right-0"
+			class=""
 			type="button"
 		>
 			<ChevronRightIcon class="h-6 w-6 text-white bg-black rounded-full" />
