@@ -108,7 +108,7 @@
 							on:click={function () {
 								tab = index;
 							}}
-							class={'w-full w-12 h-12 mb-4 object-cover rounded-lg border-2 border-orange-400'}
+							class={'w-12 h-12 mb-4 object-cover rounded-lg border-2 border-orange-400'}
 							src={image.url}
 							alt={image.url}
 						/>
@@ -117,7 +117,7 @@
 							on:click={function () {
 								tab = index;
 							}}
-							class={'w-12 mb-4 rounded-lg'}
+							class={'w-12 h-12 mb-4 object-cover rounded-lg'}
 							src={image.url}
 							alt={image.url}
 						/>
