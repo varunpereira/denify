@@ -67,11 +67,11 @@
 		>
 			<XIcon class="h-4 w-4 text-black" />
 		</button>
-		<div class="absolute md:top-6 w-full bg-white rounded-b-md pl-2">
+		<div class="absolute md:top-6 w-full bg-white rounded-md pt-2">
 			{#if suggestions == 'loading'}
-				<p>Loading...</p>
+				<p class="pl-2">Loading...</p>
 			{:else if suggestions.length == 0}
-				<p>No results found.</p>
+				<p class="pl-2">No results found.</p>
 			{:else if suggestions.length > 0}
 				{#each suggestions as suggestion}
 					<a
