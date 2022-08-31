@@ -101,13 +101,13 @@
 {#if product && reviews}
 	<div class="items-start justify-center md:flex ">
 		<div class="flex justify-start">
-			<div>
+			<div class="mr-0">
 				{#each product.images as image, index}
 					<img
 						on:click={function () {
 							tab = index;
 						}}
-						class="w-2/12 mb-4 rounded-lg"
+						class="w-12 mb-4 rounded-lg"
 						src={image.url}
 						alt={image.url}
 					/>
