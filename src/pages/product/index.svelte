@@ -101,7 +101,7 @@
 {#if product && reviews}
 	<div class="items-start justify-center md:flex ">
 		<div class="flex justify-start">
-			<div class="mr-4">
+			<div class="mr-4 flex-none">
 				{#each product.images as image, index}
 					{#if index == tab}
 						<img
