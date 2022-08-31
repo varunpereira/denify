@@ -124,7 +124,7 @@
 					{/if}
 				{/each}
 			</div>
-			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[tab].url} />
+			<img class="w-6/12 rounded-lg" src={product.images[tab].url} alt={product.images[tab].url} />
 		</div>
 		<div class="mt-6 md:ml-6 md:w-1/2 lg:ml-8 xl:w-2/5">
 			<p class="mb-6 text-xl font-semibold">
