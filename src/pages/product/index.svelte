@@ -100,25 +100,27 @@
 
 {#if product && reviews}
 	<div class="items-start justify-center  md:flex ">
-		<img class="w-8/12 rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
-		<button
-			on:click|preventDefault={function () {
-				leftArrow();
-			}}
-			class=""
-			type="button"
-		>
-			<ChevronLeftIcon class="h-6 w-6 text-white bg-black rounded-full" />
-		</button>
-		<button
-			on:click|preventDefault={function () {
-				rightArrow();
-			}}
-			class=""
-			type="button"
-		>
-			<ChevronRightIcon class="h-6 w-6 text-white bg-black rounded-full" />
-		</button>
+		<div>
+			<img class="w-8/12 rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
+			<button
+				on:click|preventDefault={function () {
+					leftArrow();
+				}}
+				class=""
+				type="button"
+			>
+				<ChevronLeftIcon class="h-6 w-6 text-white bg-black rounded-full" />
+			</button>
+			<button
+				on:click|preventDefault={function () {
+					rightArrow();
+				}}
+				class=""
+				type="button"
+			>
+				<ChevronRightIcon class="h-6 w-6 text-white bg-black rounded-full" />
+			</button>
+		</div>
 		<div class="mt-6 md:ml-6 md:mt-0 md:w-1/2 lg:ml-8 xl:w-2/5">
 			<div class="border-gray-200 pb-6">
 				<p class="text-xl font-semibold leading-7 lg:text-2xl lg:leading-6">
