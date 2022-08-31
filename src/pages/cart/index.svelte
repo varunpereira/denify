@@ -104,9 +104,9 @@
 								}}
 								class="flex hover:underline"
 							>
-								<span class="justify-start text-sm font-bold">
+								<p class="justify-start text-sm font-bold">
 									{product.productTitle + ' (' + product.productId + ')'}
-								</span>
+								</p>
 							</button>
 						</div>
 					</div>
@@ -115,9 +115,9 @@
 						{product.productQuantity}
 						<i class="fa fa-plus ml-3 font-thin" aria-hidden="true" />
 					</div>
-					<span class="w-1/5 text-center text-sm font-semibold">
+					<p class="w-1/5 text-center text-sm font-semibold">
 						${product.productQuantity * product.productPrice}
-					</span>
+					</p>
 					<button
 						on:click|preventDefault={function () {
 							removeProduct(product);
@@ -133,10 +133,10 @@
 		<div id="summary" class="px-8 py-10">
 			<p class="border-b pb-8 text-2xl font-semibold">Order Summary</p>
 			<div class="mt-10 mb-5 flex justify-between">
-				<span class="text-sm font-semibold uppercase">
+				<p class="text-sm font-semibold uppercase">
 					Items {cart.quantity}
-				</span>
-				<span class="text-sm font-semibold">${cart.price}</span>
+				</p>
+				<p class="text-sm font-semibold">${cart.price}</p>
 			</div>
 			<div>
 				<p class="mb-3 inline-block text-sm font-medium uppercase">Shipping</p>
@@ -146,8 +146,8 @@
 			</div>
 			<div class="mt-8 border-t">
 				<div class="flex justify-between py-6 text-sm font-semibold uppercase">
-					<span>Total cost</span>
-					<span>${cart.price}</span>
+					<p>Total cost</p>
+					<p>${cart.price}</p>
 				</div>
 				<button
 					on:click|preventDefault={function () {

@@ -42,8 +42,8 @@
 		src={product.images[0].url}
 		alt={product.images[0].url}
 	/>
-	<div class="mb-5 px-5 pt-5">
-		<p class="h-16  font-bold tracking-tight text-gray-900 ">
+	<div class="mb-5 px-5 pt-5 flex justify-start">
+		<p class="h-16 font-bold tracking-tight text-gray-900 ">
 			{product.title}
 		</p>
 		<p class="mb-2 font-bold tracking-tight text-gray-900 ">

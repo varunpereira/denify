@@ -40,7 +40,7 @@
 				class="flex font-bold no-underline hover:text-gray-400 pt-1"
 			>
 				<ShoppingBagIcon class="w-6 h-6 mr-1 pt-1" />
-				<span class="justify-end pb-1">Denify</span>
+				<p class="justify-end pb-1">Denify</p>
 			</button>
 		</p>
 		<button

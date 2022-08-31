@@ -33,17 +33,17 @@
 		<header
 			class="px-6 py-4 border-b border-zinc-800 bg-zinc-700 text-white shrink-0 flex items-center justify-between"
 		>
-			<span class="font-bold text-xl">My Chat app</span>
-			<span>{username}</span>
+			<p class="font-bold text-xl">My Chat app</p>
+			<p>{username}</p>
 		</header>
 
 		<div class="h-full w-full p-4">
 			{#each messages as message}
 				<div class="bg-zinc-300 rounded-xl rounded-tl-none px-4 py-3 my-4 w-fit">
-					<span class="flex items-center space-between gap-4">
+					<p class="flex items-center space-between gap-4">
 						<b>{message.from}</b>
 						<i>{message.time}</i>
-					</span>
+					</p>
 					{message.message}
 				</div>
 			{/each}
