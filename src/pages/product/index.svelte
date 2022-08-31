@@ -102,8 +102,8 @@
 	<div class="items-start justify-center md:flex ">
 		<div class="flex justify-start">
 			<div>
-				<img class="w-1/12 rounded-lg" src={product.images[0].url} alt={product.images[0].url} />
-				<img class="w-1/12 rounded-lg" src={product.images[0].url} alt={product.images[0].url} />
+				<img class="w-2/12 mb-4 rounded-lg" src={product.images[0].url} alt={product.images[0].url} />
+				<img class="w-2/12 rounded-lg" src={product.images[0].url} alt={product.images[0].url} />
 				
 				<!-- <button
 					on:click|preventDefault={function () {
