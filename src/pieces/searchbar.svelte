@@ -63,11 +63,11 @@
 				searchTerm = '';
 			}}
 			type="button"
-			class="absolute inset-y-0 right-8 w-10  max-w-min items-center justify-center"
+			class="absolute inset-y-0 right-8 w-10 max-w-min items-center justify-center"
 		>
 			<XIcon class="h-4 w-4 text-black" />
 		</button>
-		<div class="absolute md:top-6 w-full bg-white rounded-md pt-2">
+		<div class="absolute md:top-6 w-full bg-white rounded-md pt-4">
 			{#if suggestions == 'loading'}
 				<p class="pl-2">Loading...</p>
 			{:else if suggestions.length == 0}
