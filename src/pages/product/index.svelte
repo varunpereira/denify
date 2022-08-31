@@ -101,16 +101,27 @@
 {#if product && reviews}
 	<div class="items-start justify-center md:flex ">
 		<div class="flex justify-start">
-			<div class="mr-0">
+			<div class="mr-4">
 				{#each product.images as image, index}
-					<img
-						on:click={function () {
-							tab = index;
-						}}
-						class="w-12 mb-4 rounded-lg"
-						src={image.url}
-						alt={image.url}
-					/>
+					{#if index == tab}
+						<img
+							on:click={function () {
+								tab = index;
+							}}
+							class={'w-12 mb-4 rounded-lg border-orange-400'}
+							src={image.url}
+							alt={image.url}
+						/>
+					{:else}
+						<img
+							on:click={function () {
+								tab = index;
+							}}
+							class={'w-12 mb-4 rounded-lg'}
+							src={image.url}
+							alt={image.url}
+						/>
+					{/if}
 				{/each}
 			</div>
 			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[tab].url} />
