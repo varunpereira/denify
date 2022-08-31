@@ -102,29 +102,18 @@
 	<div class="items-start justify-center md:flex ">
 		<div class="flex justify-start">
 			<div>
-				<img class="w-2/12 mb-4 rounded-lg" src={product.images[0].url} alt={product.images[0].url} />
-				<img class="w-2/12 rounded-lg" src={product.images[0].url} alt={product.images[0].url} />
-				
-				<!-- <button
-					on:click|preventDefault={function () {
-						leftArrow();
-					}}
-					class=""
-					type="button"
-				>
-					<ChevronLeftIcon class="h-6 w-6 text-white bg-black rounded-full" />
-				</button>
-				<button
-					on:click|preventDefault={function () {
-						rightArrow();
-					}}
-					class=""
-					type="button"
-				>
-					<ChevronRightIcon class="h-6 w-6 text-white bg-black rounded-full" />
-				</button> -->
+				{#each product.images as image, index}
+					<img
+						on:click={function () {
+							tab = index;
+						}}
+						class="w-2/12 mb-4 rounded-lg"
+						src={image.url}
+						alt={image.url}
+					/>
+				{/each}
 			</div>
-			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
+			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[tab].url} />
 		</div>
 		<div class="mt-6 md:ml-6 md:w-1/2 lg:ml-8 xl:w-2/5">
 			<p class="mb-6 text-xl font-semibold leading-7 lg:text-2xl lg:leading-6">
