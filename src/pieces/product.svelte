@@ -49,7 +49,7 @@
 		<p class="mb-2 font-bold tracking-tight text-gray-900 flex justify-start">
 			${product.price}
 		</p>
-		<p class="h-28 font-normal text-gray-700 flex justify-start">
+		<p class="h-28 font-normal text-gray-700 flex justify-start text-left">
 			{product.description}
 		</p>
 		<button
