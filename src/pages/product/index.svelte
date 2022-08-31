@@ -108,7 +108,7 @@
 							on:click={function () {
 								tab = index;
 							}}
-							class={'w-12 h-12 min-w-full mb-4 object-cover rounded-lg border-2 border-orange-400'}
+							class={'w-12 h-12 flex-shrink-0 mb-4 object-cover rounded-lg border-2 border-orange-400'}
 							src={image.url}
 							alt={image.url}
 						/>
@@ -117,14 +117,14 @@
 							on:click={function () {
 								tab = index;
 							}}
-							class={'w-12 h-12 min-w-full mb-4 object-cover rounded-lg'}
+							class={'w-12 h-12 flex-shrink-0 mb-4 object-cover rounded-lg'}
 							src={image.url}
 							alt={image.url}
 						/>
 					{/if}
 				{/each}
 			</div>
-			<img class="min-w-max rounded-lg" src={product.images[tab].url} alt={product.images[tab].url} />
+			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[tab].url} />
 		</div>
 		<div class="mt-6 md:ml-6 md:w-1/2 lg:ml-8 xl:w-2/5">
 			<p class="mb-6 text-xl font-semibold">
