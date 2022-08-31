@@ -105,7 +105,7 @@
 			on:click|preventDefault={function () {
 				leftArrow();
 			}}
-			class=""
+			class="md:none"
 			type="button"
 		>
 			<ChevronLeftIcon class="h-6 w-6 text-white bg-black rounded-full" />
@@ -114,7 +114,7 @@
 			on:click|preventDefault={function () {
 				rightArrow();
 			}}
-			class=""
+			class="md:none"
 			type="button"
 		>
 			<ChevronRightIcon class="h-6 w-6 text-white bg-black rounded-full" />
