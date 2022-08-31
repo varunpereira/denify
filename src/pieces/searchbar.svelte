@@ -90,7 +90,7 @@
 						on:mousemove={function (event) {
 							// searchTerm = 'h';
 						}}
-						class="block hover:bg-gray-300 py-2 px-2 hover:rounded-b-md"
+						class="block py-2 px-2 hover:bg-gray-300 hover:rounded-md hover:w-full"
 					>
 						{suggestion.title}
 					</button>
