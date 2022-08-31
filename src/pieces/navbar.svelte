@@ -48,7 +48,7 @@
 				menuStatus = !menuStatus;
 			}}
 		>
-			<MenuIcon class="mb-1 h-7 w-7 hover:text-gray-300 md:hidden" />
+			<MenuIcon class="mb-1 mr-0 h-7 w-7 hover:text-gray-300 md:hidden" />
 		</button>
 	</div>
 
