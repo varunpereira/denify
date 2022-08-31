@@ -117,7 +117,7 @@
 							on:click={function () {
 								tab = index;
 							}}
-							class={'w-12 h-12 mb-4 object-cover rounded-lg'}
+							class={'w-12 h-12 mb-2 object-cover rounded-lg'}
 							src={image.url}
 							alt={image.url}
 						/>
