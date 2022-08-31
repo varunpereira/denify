@@ -1,6 +1,6 @@
 import Stripe from 'stripe';
 
-let stripe = new Stripe(import.meta.env.VITE_stripeSecretKey, {
+varstripe = new Stripe(import.meta.env.VITE_stripeSecretKey, {
 	apiVersion: '2020-08-27'
 });
 

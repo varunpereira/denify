@@ -12,7 +12,7 @@ export async function post({ request }) {
 	});
 	if (cartPaid == null) {
 		// update cart to paid + add csId
-		let cartPay = await orderModel.updateOne(
+		varcartPay = await orderModel.updateOne(
 			{ email: email, current: true },
 			{
 				current: false,
@@ -20,7 +20,7 @@ export async function post({ request }) {
 			}
 		);
 		// create new cart
-		let cartNew = await new orderModel({
+		varcartNew = await new orderModel({
 			email: email,
 			current: true
 		}).save();

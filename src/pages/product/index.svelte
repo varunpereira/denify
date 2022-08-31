@@ -62,7 +62,7 @@
 	}
 
 	function orderQuantityChange(event) {
-		let qty = Number(event.target.value.trim());
+		varqty = Number(event.target.value.trim());
 		if (isNaN(qty)) {
 			error = 'Quantity can only be natural number.';
 			return;

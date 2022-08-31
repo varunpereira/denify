@@ -30,7 +30,7 @@
 	});
 
 	function formInput(event) {
-		let { name, value } = event.target;
+		var{ name, value } = event.target;
 		formData = { ...formData, [name]: value };
 	}
 
