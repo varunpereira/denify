@@ -42,14 +42,14 @@
 		src={product.images[0].url}
 		alt={product.images[0].url}
 	/>
-	<div class="mb-5 px-5 pt-5 flex justify-start">
-		<p class="h-16 font-bold tracking-tight text-gray-900 ">
+	<div class="mb-5 px-5 pt-5">
+		<p class="h-16 font-bold tracking-tight text-gray-900 flex justify-start">
 			{product.title}
 		</p>
-		<p class="mb-2 font-bold tracking-tight text-gray-900 ">
+		<p class="mb-2 font-bold tracking-tight text-gray-900 flex justify-start">
 			${product.price}
 		</p>
-		<p class="h-28 font-normal text-gray-700">
+		<p class="h-28 font-normal text-gray-700 flex justify-start">
 			{product.description}
 		</p>
 		<button
