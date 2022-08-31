@@ -135,17 +135,19 @@
 			</button>
 			<p class="text-xl font-semibold">${product.price}</p>
 			<div>
-				<p class="mb-5 mt-5">Description: {product.description}</p>
+				<p class="mb-5 mt-5">Description: <br />{product.description}</p>
 				<p class="">Sold: {product.sold}</p>
 				<p class="">Stock: {product.stock}</p>
-				<p class="">Seller:</p>
-				<button
-					on:click={function () {
-						goto('/account/profile?email=' + product.email);
-					}}
-					class="hover:text-gray-300"
-					>{product.email}
-				</button>
+				<div class="flex justify-start">
+					<p class="">Seller:</p>
+					<button
+						on:click={function () {
+							goto('/account/profile?email=' + product.email);
+						}}
+						class="hover:text-gray-300"
+						>{product.email}
+					</button>
+				</div>
 			</div>
 			<div class="mt-5 mb-3">
 				<button on:click|preventDefault={minusButton}><MinusIcon class="h-6 w-6 pt-2" /></button>
