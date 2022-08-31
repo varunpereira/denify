@@ -101,7 +101,7 @@
 {#if product && reviews}
 	<div class="items-start justify-center  md:flex ">
 		<div>
-			<img class="w-8/12 rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
+			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
 			<button
 				on:click|preventDefault={function () {
 					leftArrow();
