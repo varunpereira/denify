@@ -99,7 +99,7 @@
 <svelte:head><title>Product Details - Denify</title></svelte:head>
 
 {#if product && reviews}
-	<div class="items-start justify-center md:flex ">
+	<div class="items-start justify-center md:flex ml-0 ">
 		<div class="flex justify-start">
 			<div class="mr-4 flex-none">
 				{#each product.images as image, index}
@@ -108,7 +108,7 @@
 							on:click={function () {
 								tab = index;
 							}}
-							class={'flex-none w-12 h-12 w-full mb-4 object-cover rounded-lg border-2 border-orange-400'}
+							class={'w-12 h-12 mb-4 object-cover rounded-lg border-2 border-orange-400'}
 							src={image.url}
 							alt={image.url}
 						/>
@@ -117,7 +117,7 @@
 							on:click={function () {
 								tab = index;
 							}}
-							class={'flex-none w-12 h-12 w-full mb-4 object-cover rounded-lg'}
+							class={'w-12 h-12 mb-4 object-cover rounded-lg'}
 							src={image.url}
 							alt={image.url}
 						/>
