@@ -47,8 +47,9 @@
 			on:click|preventDefault={function () {
 				menuStatus = !menuStatus;
 			}}
+			class="mr-0"
 		>
-			<MenuIcon class="mb-1 mr-0 h-7 w-7 hover:text-gray-300 md:hidden" />
+			<MenuIcon class="mb-1 pr-0 h-7 w-7 hover:text-gray-300 md:hidden" />
 		</button>
 	</div>
 
