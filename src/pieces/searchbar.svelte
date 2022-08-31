@@ -26,83 +26,79 @@
 	}
 </script>
 
-<div class="mr-5 max-h-min w-full min-w-min pb-1 md:pb-0 shadow-md md:flex text-black">
-	<form
-		class="relative w-full"
-		on:submit|preventDefault={function () {
-			goto(
-				'/searchResults?searchTerm=' +
-					searchTerm +
-					'&category=' +
-					category +
-					'&pagination=' +
-					pagination
-			);
-			searchTerm = '';
+<form
+	class="relative w-full mr-5 w-full min-w-min md:flex text-black"
+	on:submit|preventDefault={function () {
+		goto(
+			'/searchResults?searchTerm=' +
+				searchTerm +
+				'&category=' +
+				category +
+				'&pagination=' +
+				pagination
+		);
+		searchTerm = '';
+	}}
+>
+	<select bind:value={category} class="absolute inset-y-0 rounded-l-md ">
+		{#each categoryList as category}
+			<option value={category} class="w-10 bg-gray-100 py-2 px-4">
+				{category}
+			</option>
+		{/each}
+	</select>
+	<input
+		value={searchTerm}
+		on:input={function (event) {
+			searchTerm = event.target.value;
 		}}
-	>
-		<select bind:value={category} class="absolute inset-y-0 rounded-l-md ">
-			{#each categoryList as category}
-				<option value={category} class="w-10 bg-gray-100 py-2 px-4">
-					{category}
-				</option>
-			{/each}
-		</select>
-		<input
-			value={searchTerm}
-			on:input={function (event) {
-				searchTerm = event.target.value;
-			}}
-			list="suggestions"
-			type="text"
-			placeholder="search"
-			class="focus:shadow-outline w-full min-w-max bg-white py-2 pl-16 text-sm leading-tight text-black focus:outline-none rounded-md"
-		/>
-		{#if searchTerm.trim() != ''}
-			<button
-				on:click|preventDefault={function () {
-					searchTerm = '';
-				}}
-				type="button"
-				class="absolute inset-y-0 right-8 w-10  max-w-min items-center justify-center"
-			>
-				<XIcon class="h-4 w-4 text-black" />
-			</button>
-
-			<div class="absolute bg-white rounded-b-md ml-12">
-				{#if suggestions == 'loading'}
-					<p>Loading...</p>
-				{:else if suggestions.length == 0}
-					<p>No results found.</p>
-				{:else if suggestions.length > 0}
-					{#each suggestions as suggestion}
-						<a
-							href={'/searchResults?searchTerm=' +
-								suggestion.title +
-								'&category=' +
-								category +
-								'&pagination=' +
-								pagination}
-							on:click={function () {
-								searchTerm = '';
-							}}
-							on:mousemove={function (event) {
-								// searchTerm = 'h';
-							}}
-							class="block hover:bg-gray-300 py-2 px-2 hover:rounded-b-md"
-						>
-							{suggestion.title}
-						</a>
-					{/each}
-				{/if}
-			</div>
-		{/if}
-
+		list="suggestions"
+		type="text"
+		placeholder="search"
+		class="focus:shadow-outline w-full min-w-max bg-white py-2 pl-16 text-sm leading-tight text-black focus:outline-none rounded-md"
+	/>
+	{#if searchTerm.trim() != ''}
 		<button
-			type="submit"
-			class="absolute inset-y-0 right-0 w-10 max-w-min  cursor-pointer items-center justify-center bg-white pr-3 rounded-r-md"
+			on:click|preventDefault={function () {
+				searchTerm = '';
+			}}
+			type="button"
+			class="absolute inset-y-0 right-8 w-10  max-w-min items-center justify-center"
 		>
-			<SearchIcon class="h-4 w-4 text-black" />
+			<XIcon class="h-4 w-4 text-black" />
 		</button>
-	</form>
-</div>
+		<div class="absolute md:top-6 w-full bg-white rounded-b-md pl-2">
+			{#if suggestions == 'loading'}
+				<p>Loading...</p>
+			{:else if suggestions.length == 0}
+				<p>No results found.</p>
+			{:else if suggestions.length > 0}
+				{#each suggestions as suggestion}
+					<a
+						href={'/searchResults?searchTerm=' +
+							suggestion.title +
+							'&category=' +
+							category +
+							'&pagination=' +
+							pagination}
+						on:click={function () {
+							searchTerm = '';
+						}}
+						on:mousemove={function (event) {
+							// searchTerm = 'h';
+						}}
+						class="block hover:bg-gray-300 py-2 px-2 hover:rounded-b-md"
+					>
+						{suggestion.title}
+					</a>
+				{/each}
+			{/if}
+		</div>
+	{/if}
+	<button
+		type="submit"
+		class="absolute inset-y-0 right-0 w-10 max-w-min  cursor-pointer items-center justify-center bg-white pr-3 rounded-r-md"
+	>
+		<SearchIcon class="h-4 w-4 text-black" />
+	</button>
+</form>
