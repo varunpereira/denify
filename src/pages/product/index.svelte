@@ -122,27 +122,23 @@
 			</button>
 		</div>
 		<div class="mt-6 md:ml-6 md:mt-0 md:w-1/2 lg:ml-8 xl:w-2/5">
-			<div class="border-gray-200 pb-6">
-				<p class="text-xl font-semibold leading-7 lg:text-2xl lg:leading-6">
-					{product.title}
-				</p>
-			</div>
+			<p class="mb-6 text-xl font-semibold leading-7 lg:text-2xl lg:leading-6">
+				{product.title}
+			</p>
 			<button
 				on:click={function () {
 					goto('#reviews');
 				}}
-				class="hover:text-gray-300 "
+				class="hover:text-gray-300 mb-6"
 			>
 				View Reviews
 			</button>
-			<p class="">${product.price}</p>
+			<p class="text-xl font-semibold">${product.price}</p>
 			<div>
 				<p class="mb-5 mt-5">Description: {product.description}</p>
 				<p class="">Sold: {product.sold}</p>
 				<p class="">Stock: {product.stock}</p>
-				<p class="">
-					Seller:
-				</p>
+				<p class="">Seller:</p>
 				<button
 					on:click={function () {
 						goto('/account/profile?email=' + product.email);
