@@ -99,7 +99,7 @@
 <svelte:head><title>Product Details - Denify</title></svelte:head>
 
 {#if product && reviews}
-	<div class="items-start justify-center  md:flex ">
+	<div class="items-start justify-center md:flex ">
 		<div>
 			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
 			<button
@@ -135,21 +135,21 @@
 			>
 				View Reviews
 			</button>
+			<p class="">${product.price}</p>
 			<div>
 				<p class="mb-5 mt-5">Description: {product.description}</p>
-				<p class="">Price: ${product.price}</p>
 				<p class="">Sold: {product.sold}</p>
-				<p class="">In Stock: {product.stock}</p>
+				<p class="">Stock: {product.stock}</p>
 				<p class="">
-					Seller:{' '}
-					<button
-						on:click={function () {
-							goto('/account/profile?email=' + product.email);
-						}}
-						class="hover:text-gray-300"
-						>{product.email}
-					</button>
+					Seller:
 				</p>
+				<button
+					on:click={function () {
+						goto('/account/profile?email=' + product.email);
+					}}
+					class="hover:text-gray-300"
+					>{product.email}
+				</button>
 			</div>
 			<div class="mt-5 mb-3">
 				<button on:click|preventDefault={minusButton}><MinusIcon class="h-6 w-6 pt-2" /></button>
