@@ -102,7 +102,10 @@
 	<div class="items-start justify-center md:flex ">
 		<div class="flex justify-start">
 			<div>
-				<button
+				<img class="w-1/12 rounded-lg" src={product.images[0].url} alt={product.images[0].url} />
+				<img class="w-1/12 rounded-lg" src={product.images[0].url} alt={product.images[0].url} />
+				
+				<!-- <button
 					on:click|preventDefault={function () {
 						leftArrow();
 					}}
@@ -119,11 +122,11 @@
 					type="button"
 				>
 					<ChevronRightIcon class="h-6 w-6 text-white bg-black rounded-full" />
-				</button>
+				</button> -->
 			</div>
 			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
 		</div>
-		<div class="mt-6 md:ml-6 md:mt-0 md:w-1/2 lg:ml-8 xl:w-2/5">
+		<div class="mt-6 md:ml-6 md:w-1/2 lg:ml-8 xl:w-2/5">
 			<p class="mb-6 text-xl font-semibold leading-7 lg:text-2xl lg:leading-6">
 				{product.title}
 			</p>
