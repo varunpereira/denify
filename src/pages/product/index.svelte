@@ -131,7 +131,7 @@
 				on:click={function () {
 					goto('#reviews');
 				}}
-				class="hover:text-gray-400 "
+				class="hover:text-gray-300 "
 			>
 				View Reviews
 			</button>
@@ -146,7 +146,7 @@
 						on:click={function () {
 							goto('/account/profile?email=' + product.email);
 						}}
-						class="hover:text-gray-400"
+						class="hover:text-gray-300"
 						>{product.email}
 					</button>
 				</p>
@@ -176,7 +176,7 @@
 		</div>
 	</div>
 	<p class="mb-5 mt-20 text-xl font-semibold">Reviews</p>
-	<button on:click|preventDefault={addReview} class="text-sm font-semibold hover:text-gray-400">
+	<button on:click|preventDefault={addReview} class="text-sm font-semibold hover:text-gray-300">
 		Add a Review
 	</button>
 	<div id="reviews" class="mt-5 flex flex-wrap">

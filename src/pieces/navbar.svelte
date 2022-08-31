@@ -37,7 +37,7 @@
 				on:click={function () {
 					goto('/');
 				}}
-				class="flex font-bold no-underline hover:text-gray-400 pt-1"
+				class="flex font-bold no-underline hover:text-gray-300 pt-1"
 			>
 				<ShoppingBagIcon class="w-6 h-6 mr-1 pt-1" />
 				<p class="justify-end pb-1">Denify</p>
@@ -48,7 +48,7 @@
 				menuStatus = !menuStatus;
 			}}
 		>
-			<MenuIcon class="mb-1 h-7 w-7 hover:text-gray-400 md:hidden" />
+			<MenuIcon class="mb-1 h-7 w-7 hover:text-gray-300 md:hidden" />
 		</button>
 	</div>
 
@@ -64,7 +64,7 @@
 						on:click={function () {
 							goto('/product/sell');
 						}}
-						class="block py-2  no-underline hover:text-gray-400 "
+						class="block py-2  no-underline hover:text-gray-300 "
 					>
 						Sell
 					</button>
@@ -74,7 +74,7 @@
 						on:click={function () {
 							goto('/cart');
 						}}
-						class="block flex py-2  no-underline hover:text-gray-400 md:border-none md:p-0"
+						class="block flex py-2  no-underline hover:text-gray-300 md:border-none md:p-0"
 					>
 						<ShoppingCartIcon class="h-5 w-5" />
 						<sup class="justify-end font-bold">
@@ -83,7 +83,7 @@
 					</button>
 				</li>
 				<div class="nav-item flow-root md:pb-3">
-					<div class="rounded-sm hover:text-gray-400 md:mx-2 relative">
+					<div class="rounded-sm hover:text-gray-300 md:mx-2 relative">
 						<button
 							on:click|preventDefault={function () {
 								dropdownSelected = !dropdownSelected;
@@ -103,14 +103,14 @@
 											goto(account.href);
 											dropdownSelected = !dropdownSelected;
 										}}
-										class=" block py-2 rounded hover:text-gray-400">{account.title}</button
+										class=" block py-2 rounded hover:text-gray-300">{account.title}</button
 									>
 								{/each}
 								<button
 									on:click|preventDefault={function () {
 										signOut();
 									}}
-									class="w-full text-left block py-2 rounded hover:text-gray-400"
+									class="w-full text-left block py-2 rounded hover:text-gray-300"
 								>
 									Sign out
 								</button>
@@ -123,7 +123,7 @@
 					on:click={function () {
 						goto('/signin');
 					}}
-					class="nav-item pb-1 pt-1 rounded-b hover:text-gray-400 flex-none"
+					class="nav-item pb-1 pt-1 rounded-b hover:text-gray-300 flex-none"
 				>
 					Sign in
 				</button>

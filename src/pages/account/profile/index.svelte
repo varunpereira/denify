@@ -49,7 +49,7 @@
 		on:click|preventDefault={function () {
 			sendMessage();
 		}}
-		class=" mb-5 hover:text-gray-400 cursor-pointer"
+		class=" mb-5 hover:text-gray-300 cursor-pointer"
 	>
 		Message
 	</button>
