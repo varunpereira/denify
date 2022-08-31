@@ -99,7 +99,7 @@
 <svelte:head><title>Product Details - Denify</title></svelte:head>
 
 {#if product && reviews}
-	<div class=" items-start justify-center  md:flex ">
+	<div class="static items-start justify-center  md:flex ">
 		<div class="relative">
 			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
 			<button
