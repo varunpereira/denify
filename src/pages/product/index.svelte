@@ -126,7 +126,7 @@
 			</div>
 			<img class="w-10/12 rounded-lg" src={product.images[tab].url} alt={product.images[tab].url} />
 		</div>
-		<div class="mt-6 md:ml-0 md:w-1/2 lg:ml-8 xl:w-2/5">
+		<div class="mt-6 md:ml-0 md:w-1/2 xl:w-2/5">
 			<p class="mb-6 text-xl font-semibold">
 				{product.title}
 			</p>
