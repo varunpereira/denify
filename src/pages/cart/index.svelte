@@ -98,11 +98,16 @@
 				<div key={product.productId} class="-mx-8 flex items-center px-6 py-5 hover:bg-gray-100">
 					<div class="flex w-2/5">
 						<div class="ml-4 flex flex-grow flex-col justify-between">
-							<a href={'/product?productId=' + product.productId} class="flex hover:underline">
+							<button
+								on:click={function () {
+									goto('/product?productId=' + product.productId);
+								}}
+								class="flex hover:underline"
+							>
 								<span class="justify-start text-sm font-bold">
 									{product.productTitle + ' (' + product.productId + ')'}
 								</span>
-							</a>
+							</button>
 						</div>
 					</div>
 					<div class="text-sm3 w-1/5 text-center font-semibold">

@@ -68,9 +68,13 @@
 						{#each orders as order, index}
 							<tr key={order._id} class="my-4 text-black">
 								<td>
-									<a href={'/account/payments/order?orderId=' + order._id} class="hover:underline"
-										>{order._id}</a
-									>
+									<button
+										on:click={function () {
+											goto('/account/payments/order?orderId=' + order._id);
+										}}
+										class="hover:underline"
+										>{order._id}
+									</button>
 								</td>
 								<td>{order.quantity}</td>
 								<td>${order.price}</td>

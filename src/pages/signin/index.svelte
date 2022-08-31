@@ -6,7 +6,6 @@
 	import { auth } from '@src/provs/store.js';
 	import { page } from '$app/stores';
 
-
 	onMount(async function () {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
@@ -47,7 +46,11 @@
 <div class="container mx-auto flex max-w-sm flex-1 flex-col items-center justify-center px-2">
 	<div class="w-full rounded bg-white px-6 py-8 text-black shadow-md">
 		<p class="mb-8 text-center text-3xl">Sign in</p>
-		<form on:submit|preventDefault={function (){formSubmit()}}>
+		<form
+			on:submit|preventDefault={function () {
+				formSubmit();
+			}}
+		>
 			<input
 				name={'email'}
 				value={formData.email}
@@ -76,6 +79,11 @@
 
 	<div class="text-grey-dark mt-6">
 		Don't have an account?
-		<a href="/signup" class="border-blue text-blue border-b no-underline">Sign up</a>
+		<button
+			on:click={function () {
+				goto('/signup');
+			}}
+			class="border-blue text-blue border-b no-underline">Sign up</button
+		>
 	</div>
 </div>

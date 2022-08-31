@@ -19,7 +19,7 @@
 		});
 		if (res.data.error != null) {
 			error = res.data.error;
-			goto('error/noUser')
+			goto('error/noUser');
 		}
 		user = res.data.user;
 	});
@@ -31,11 +31,16 @@
 	<div class="rounded-lg bg-white pb-2  text-black">
 		<p class="mb-5 pt-4 pl-2 text-lg font-semibold">Your Messages</p>
 		{#each user.contacts as contact, index}
-			<a key={index} href={'/account/chats?recipEmail=' + contact}>
+			<button
+				key={index}
+				on:click={function () {
+					goto('/account/chats?recipEmail=' + contact);
+				}}
+			>
 				<div class="mx-2 mb-2 rounded-md border-2 border-gray-600 hover:bg-gray-200">
 					{contact}
 				</div>
-			</a>
+			</button>
 		{/each}
 	</div>
 {:else}

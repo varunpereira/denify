@@ -74,14 +74,17 @@
 				<p class="pl-2">No results found.</p>
 			{:else if suggestions.length > 0}
 				{#each suggestions as suggestion}
-					<a
-						href={'/searchResults?searchTerm=' +
-							suggestion.title +
-							'&category=' +
-							category +
-							'&pagination=' +
-							pagination}
+					<button
 						on:click={function () {
+							goto(
+								'/searchResults?searchTerm=' +
+									suggestion.title +
+									'&category=' +
+									category +
+									'&pagination=' +
+									pagination,
+								'_self'
+							);
 							searchTerm = '';
 						}}
 						on:mousemove={function (event) {
@@ -90,7 +93,7 @@
 						class="block hover:bg-gray-300 py-2 px-2 hover:rounded-b-md"
 					>
 						{suggestion.title}
-					</a>
+					</button>
 				{/each}
 			{/if}
 		</div>

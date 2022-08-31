@@ -31,8 +31,10 @@
 	}
 </script>
 
-<a
-	href={'/product?productId=' + product._id}
+<button
+	on:click={function () {
+		goto('/product?productId=' + product._id);
+	}}
 	class="mb-4 mr-4 max-w-[16rem] max-h-[32rem] text-sm rounded-lg bg-white hover:bg-gray-300 "
 >
 	<img
@@ -59,4 +61,4 @@
 			Add to Cart
 		</button>
 	</div>
-</a>
+</button>

@@ -102,10 +102,22 @@
 	<div class=" items-start justify-center  md:flex ">
 		<div class="relative">
 			<img class="w-full rounded-lg" src={product.images[tab].url} alt={product.images[0].url} />
-			<button on:click|preventDefault={function () {leftArrow()}} class="absolute inset-y-0 left-0" type="button">
+			<button
+				on:click|preventDefault={function () {
+					leftArrow();
+				}}
+				class="absolute inset-y-0 left-0"
+				type="button"
+			>
 				<ChevronLeftIcon class="h-6 w-6 text-white bg-black rounded-full" />
 			</button>
-			<button on:click|preventDefault={function () {rightArrow()}} class="absolute inset-y-0 right-0" type="button">
+			<button
+				on:click|preventDefault={function () {
+					rightArrow();
+				}}
+				class="absolute inset-y-0 right-0"
+				type="button"
+			>
 				<ChevronRightIcon class="h-6 w-6 text-white bg-black rounded-full" />
 			</button>
 		</div>
@@ -115,7 +127,14 @@
 					{product.title}
 				</p>
 			</div>
-			<a href="#reviews" class="hover:text-gray-400 "> View Reviews </a>
+			<button
+				on:click={function () {
+					goto('#reviews');
+				}}
+				class="hover:text-gray-400 "
+			>
+				View Reviews
+			</button>
 			<div>
 				<p class="mb-5 mt-5">Description: {product.description}</p>
 				<p class="">Price: ${product.price}</p>
@@ -123,9 +142,13 @@
 				<p class="">In Stock: {product.stock}</p>
 				<p class="">
 					Seller:{' '}
-					<a href={'/account/profile?email=' + product.email} class="hover:text-gray-400"
-						>{product.email}</a
-					>
+					<button
+						on:click={function () {
+							goto('/account/profile?email=' + product.email);
+						}}
+						class="hover:text-gray-400"
+						>{product.email}
+					</button>
 				</p>
 			</div>
 			<div class="mt-5 mb-3">
@@ -166,9 +189,13 @@
 					class="mr-10 mb-10 h-40 w-40 max-w-sm rounded-lg border border-gray-200 bg-white p-3 shadow-md dark:border-gray-700 dark:bg-gray-800"
 				>
 					<p class="mb-2  font-bold tracking-tight text-gray-900 dark:text-white">
-						<a href={'/account/profile?email=' + review.email} class="hover:text-gray-600"
-							>{review.email}</a
-						>
+						<button
+							on:click={function () {
+								goto('/account/profile?email=' + review.email);
+							}}
+							class="hover:text-gray-600"
+							>{review.email}
+						</button>
 					</p>
 					<p class="mb-2  font-bold tracking-tight text-gray-900 dark:text-white">
 						{review.rating} / 5 stars
