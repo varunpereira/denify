@@ -23,11 +23,14 @@
 	});
 
 	async function getProducts() {
+		var pagin = pagination;
+		if (!pagin) {
+			pagin = $page.url.searchParams.get('category').trim();
+		}
 		var res = await axios.post($page.url.pathname, {
 			searchTerm: $page.url.searchParams.get('searchTerm').trim(),
 			category: $page.url.searchParams.get('category').trim(),
-			pagination
-			// pagination: $page.url.searchParams.get('pagination').trim()
+			pagination: pagin
 		});
 		if (res.data.error) {
 			error = res.data.error;
