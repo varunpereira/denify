@@ -18,15 +18,24 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
+		getProducts();
+	});
+
+	async function getProducts() {
 		var res = await axios.post($page.url.pathname, {
-			email, pagination
+			email,
+			pagination
 		});
 		if (res.data.error) {
 			error = res.data.error;
 		}
 		pages = res.data.pages;
 		products = res.data.products;
-	});
+	}
+
+	$: {
+		getProducts();
+	}
 
 	async function sendMessage() {
 		if (!$auth.user) {
