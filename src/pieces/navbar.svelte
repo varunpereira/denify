@@ -1,5 +1,11 @@
 <script>
-	import { ShoppingBagIcon, ShoppingCartIcon, MenuIcon, UserIcon } from 'svelte-feather-icons';
+	import {
+		ShoppingBagIcon,
+		ShoppingCartIcon,
+		MenuIcon,
+		UserIcon,
+		ChevronDownIcon
+	} from 'svelte-feather-icons';
 	import { auth } from '@src/provs/store.js';
 	import cookie from 'js-cookie';
 	import { goto } from '$app/navigation';
@@ -92,7 +98,10 @@
 							class="h-8 rounded-full pt-2 md:pt-0 md:flex md:flex-wrap md:justify-center"
 						>
 							<UserIcon class="h-5 w-5 border border-1 rounded-full" />
-							{$auth.user.email}
+							<div class="flex justify-start">
+								{$auth.user.email}
+								<ChevronDownIcon class="w-1 h-1"/>
+							</div>
 						</button>
 						{#if dropdownSelected}
 							<div
