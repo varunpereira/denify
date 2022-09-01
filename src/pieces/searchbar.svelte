@@ -87,10 +87,7 @@
 							);
 							searchTerm = '';
 						}}
-						on:mousemove={function (event) {
-							// searchTerm = 'h';
-						}}
-						class="block py-2 px-2 hover:bg-gray-300 hover:rounded-md hover:w-full text-left"
+						class="block py-2 px-2 hover:bg-gray-300 hover:rounded-md w-full text-left"
 					>
 						{suggestion.title}
 					</button>
