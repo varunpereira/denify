@@ -19,14 +19,10 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
-		getProducts();
+		getProducts1();
 	});
 
-	async function getProducts() {
-		// var pagin = pagination;
-		// if (!pagin) {
-		// 	pagin = $page.url.searchParams.get('pagin').trim();
-		// }
+	async function getProducts1() {
 		var res = await axios.post($page.url.pathname, {
 			searchTerm: $page.url.searchParams.get('searchTerm').trim(),
 			category: $page.url.searchParams.get('category').trim(),
@@ -39,12 +35,26 @@
 		products = res.data.products;
 	}
 
+	async function getProducts2() {
+		var res = await axios.post($page.url.pathname, {
+			searchTerm: $page.url.searchParams.get('searchTerm').trim(),
+			category: $page.url.searchParams.get('category').trim(),
+			pagination
+		});
+		if (res.data.error) {
+			error = res.data.error;
+		}
+		pages = res.data.pages;
+		products = res.data.products;
+	}
+
 	$: if (
 		searchTerm != $page.url.searchParams.get('searchTerm').trim() ||
-		category != $page.url.searchParams.get('category').trim() ||
-		pagination != $page.url.searchParams.get('pagination').trim()
+		category != $page.url.searchParams.get('category').trim()
 	) {
-		getProducts();
+		getProducts1();
+	} else if (pagination != $page.url.searchParams.get('pagination').trim()) {
+		getProducts2();
 	}
 </script>
 
