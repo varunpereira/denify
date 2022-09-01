@@ -29,7 +29,7 @@ export async function post({ request }) {
 		expiresIn: '7d'
 	});
 
-	varcart = await orderModel.findOne({
+	var cart = await orderModel.findOne({
 		email: user.email,
 		current: true
 	});
