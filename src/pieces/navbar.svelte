@@ -98,7 +98,7 @@
 							class="h-8 rounded-full pt-2 md:pt-0 md:flex md:flex-wrap md:justify-center"
 						>
 							<UserIcon class="h-5 w-5 border border-1 rounded-full" />
-							<div class="grid gap-x-2">
+							<div class="flex justify-start">
 								{$auth.user.email}
 								<ChevronDownIcon class="w-4 h-4"/>
 							</div>
