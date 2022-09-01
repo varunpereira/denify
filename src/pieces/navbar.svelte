@@ -100,7 +100,7 @@
 							<UserIcon class="h-5 w-5 border border-1 rounded-full" />
 							<div class="flex justify-start">
 								{$auth.user.email}
-								<ChevronDownIcon class="w-1 h-1"/>
+								<ChevronDownIcon class="w-2 h-2"/>
 							</div>
 						</button>
 						{#if dropdownSelected}
