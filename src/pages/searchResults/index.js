@@ -19,7 +19,7 @@ export async function post({ request }) {
 			approved: 'true'
 		});
 	}
-	var productsPerPage = 20;
+	var productsPerPage = 8;
 	var pages = Math.ceil(products.length / productsPerPage);
 	var lower = productsPerPage * (pagination - 1);
 	var upper = productsPerPage * pagination + 1;
