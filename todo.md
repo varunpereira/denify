@@ -7,6 +7,7 @@
 - stripe notfifcations done with webhooks
 - voice input for search
 - fix style based on web design principles
+- category should be array
 
 
 

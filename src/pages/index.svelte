@@ -25,7 +25,7 @@
 		if (res.data.error) {
 			error = res.data.error;
 		}
-		products = res.data.products.slice(0, 9);
+		products = res.data.products.slice(0, 8);
 	}
 </script>
 
