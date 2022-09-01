@@ -56,10 +56,7 @@
 			{/each}
 		{/if}
 	</div>
-	<div
-		class="w-full relative z-0 inline-flex -space-x-px rounded-md shadow-sm"
-		aria-label="Pagination"
-	>
+	<div class="w-full relative z-0 inline-flex -space-x-px rounded-md shadow-sm">
 		<button
 			on:click={function () {
 				if (pagination > 1) {
@@ -76,7 +73,6 @@
 					on:click={function () {
 						pagination = index + 1;
 					}}
-					aria-current="page"
 					class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600"
 					>{index + 1}
 				</button>
