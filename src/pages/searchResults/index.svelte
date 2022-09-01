@@ -35,11 +35,12 @@
 		products = res.data.products;
 	}
 
-	$: if (
-		searchTerm != $page.url.searchParams.get('searchTerm').trim() ||
-		category != $page.url.searchParams.get('category').trim() ||
-		pagination != $page.url.searchParams.get('pagination').trim()
-	) {
+	// if (
+	// 	searchTerm != $page.url.searchParams.get('searchTerm').trim() ||
+	// 	category != $page.url.searchParams.get('category').trim() ||
+	// 	pagination != $page.url.searchParams.get('pagination').trim()
+	// )
+	$: {
 		getProducts();
 	}
 </script>
