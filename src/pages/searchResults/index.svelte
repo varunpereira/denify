@@ -10,9 +10,9 @@
 
 	var products = null;
 	var error = null;
-	var searchTerm = null;
-	var category = null;
-	var pagination = null;
+	var searchTerm = $page.url.searchParams.get('searchTerm').trim();
+	var category = $page.url.searchParams.get('category').trim();
+	var pagination = $page.url.searchParams.get('pagination').trim();
 	var pages = null;
 
 	onMount(async function () {
@@ -23,13 +23,10 @@
 	});
 
 	async function getProducts() {
-		searchTerm = $page.url.searchParams.get('searchTerm').trim();
-		category = $page.url.searchParams.get('searchTerm').trim();
-		pagination = $page.url.searchParams.get('pagination').trim();
 		var res = await axios.post($page.url.pathname, {
-			searchTerm,
-			category,
-			pagination
+			searchTerm: $page.url.searchParams.get('searchTerm').trim(),
+			category: $page.url.searchParams.get('category').trim(),
+			pagination: $page.url.searchParams.get('pagination').trim()
 		});
 		if (res.data.error) {
 			error = res.data.error;
@@ -63,7 +60,6 @@
 
 <svelte:head><title>Search Results - Denify</title></svelte:head>
 
-<p class="bg-white text-black">{searchTerm}</p>
 {#if products}
 	<div class="flex flex-wrap w-full text-white">
 		{#if products.length == 0}
