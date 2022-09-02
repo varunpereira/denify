@@ -22,30 +22,36 @@
 		getProducts();
 	});
 
-	async function getProducts() {
-		var res = await axios.post($page.url.pathname, {
-			searchTerm: $page.url.searchParams.get('searchTerm').trim(),
-			category: $page.url.searchParams.get('category').trim(),
-			pagination: $page.url.searchParams.get('pagination').trim()
-		});
-		if (res.data.error) {
-			error = res.data.error;
-		}
-		pages = res.data.pages;
-		products = res.data.products;
+	function getProducts() {
+		axios
+			.post($page.url.pathname, {
+				searchTerm: $page.url.searchParams.get('searchTerm').trim(),
+				category: $page.url.searchParams.get('category').trim(),
+				pagination: $page.url.searchParams.get('pagination').trim()
+			})
+			.then(function (res) {
+				if (res.data.error) {
+					error = res.data.error;
+				}
+				pages = res.data.pages;
+				products = res.data.products;
+			});
 	}
 
-	async function getProducts2() {
-		var res = await axios.post($page.url.pathname, {
-			searchTerm: $page.url.searchParams.get('searchTerm').trim(),
-			category: $page.url.searchParams.get('category').trim(),
-			pagination
-		});
-		if (res.data.error) {
-			error = res.data.error;
-		}
-		pages = res.data.pages;
-		products = res.data.products;
+	function getProducts2() {
+		axios
+			.post($page.url.pathname, {
+				searchTerm: $page.url.searchParams.get('searchTerm').trim(),
+				category: $page.url.searchParams.get('category').trim(),
+				pagination
+			})
+			.then(function (res) {
+				if (res.data.error) {
+					error = res.data.error;
+				}
+				pages = res.data.pages;
+				products = res.data.products;
+			});
 	}
 
 	$: if (
