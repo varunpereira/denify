@@ -8,6 +8,7 @@
 	var category = categoryList[0];
 	var suggestions = 'loading';
 	var pagination = '1';
+	var suggestionsOff = false;
 
 	$: {
 		suggestions = 'loading';
@@ -37,6 +38,7 @@
 				'&pagination=' +
 				pagination
 		);
+		suggestionsOff = true;
 		searchTerm = '';
 	}}
 >
