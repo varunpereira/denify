@@ -38,21 +38,21 @@
 			});
 	}
 
-	// function getProducts2() {
-	// 	axios
-	// 		.post($page.url.pathname, {
-	// 			searchTerm: $page.url.searchParams.get('searchTerm').trim(),
-	// 			category: $page.url.searchParams.get('category').trim(),
-	// 			pagination
-	// 		})
-	// 		.then(function (res) {
-	// 			if (res.data.error) {
-	// 				error = res.data.error;
-	// 			}
-	// 			pages = res.data.pages;
-	// 			products = res.data.products;
-	// 		});
-	// }
+	function getProducts2() {
+		axios
+			.post($page.url.pathname, {
+				searchTerm: $page.url.searchParams.get('searchTerm').trim(),
+				category: $page.url.searchParams.get('category').trim(),
+				pagination
+			})
+			.then(function (res) {
+				if (res.data.error) {
+					error = res.data.error;
+				}
+				pages = res.data.pages;
+				products = res.data.products;
+			});
+	}
 
 	$: if (
 		searchTerm != $page.url.searchParams.get('searchTerm').trim() ||
@@ -60,10 +60,9 @@
 		pagination != $page.url.searchParams.get('pagination').trim()
 	) {
 		getProducts();
+	} else if (pagination != $page.url.searchParams.get('pagination').trim()) {
+		getProducts2();
 	}
-	// else if (pagination != $page.url.searchParams.get('pagination').trim()) {
-	// 	getProducts2();
-	// }
 </script>
 
 <svelte:head><title>Search Results - Denify</title></svelte:head>
