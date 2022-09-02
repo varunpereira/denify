@@ -8,6 +8,7 @@
 - voice input for search
 - fix style based on web design principles
 - category should be array
+- reactivity search results cant be async only sync
 
 
 

@@ -10,18 +10,21 @@
 	var pagination = '1';
 	var suggestionsOff = false;
 
-	async function getSuggestions() {
+	function getSuggestions() {
 		suggestionsOff = false;
 		suggestions = 'loading';
-		var res = axios.post('/searchResults', {
-			searchTerm: searchTerm.trim(),
-			category: category.trim(),
-			pagination: pagination.trim()
-		});
-		if (res.data.error) {
-			error = res.data.error;
-		}
-		suggestions = res.data.products;
+		axios
+			.post('/searchResults', {
+				searchTerm: searchTerm.trim(),
+				category: category.trim(),
+				pagination: pagination.trim()
+			})
+			.then(function (res) {
+				if (res.data.error) {
+					error = res.data.error;
+				}
+				suggestions = res.data.products;
+			});
 	}
 
 	$: {
