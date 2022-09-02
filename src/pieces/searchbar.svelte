@@ -87,6 +87,7 @@
 									pagination,
 								'_self'
 							);
+							searchTerm = suggestion.title;
 							suggestionsOff = true;
 						}}
 						type="button"
