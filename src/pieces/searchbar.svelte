@@ -10,8 +10,10 @@
 	var pagination = '1';
 	var suggestionsOff = false;
 
-	$: if (suggestionsOff == true) {
-		suggestionsOff = false;
+	$: {
+		if (suggestionsOff == true) {
+			suggestionsOff = false;
+		}
 		suggestions = 'loading';
 		axios
 			.post('/searchResults', {
