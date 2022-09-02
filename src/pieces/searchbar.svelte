@@ -31,15 +31,17 @@
 <form
 	class="relative w-full mr-5 w-full min-w-min md:flex text-black"
 	on:submit|preventDefault={function () {
-		goto(
-			'/searchResults?searchTerm=' +
-				searchTerm +
-				'&category=' +
-				category +
-				'&pagination=' +
-				pagination
-		);
-		suggestionsOff = true;
+		if (searchTerm.trim() != '') {
+			goto(
+				'/searchResults?searchTerm=' +
+					searchTerm +
+					'&category=' +
+					category +
+					'&pagination=' +
+					pagination
+			);
+			suggestionsOff = true;
+		}
 	}}
 >
 	<select bind:value={category} class="absolute inset-y-0 rounded-l-sm ">
@@ -79,17 +81,18 @@
 				{#each suggestions as suggestion}
 					<button
 						on:click={function () {
-							goto(
-								'/searchResults?searchTerm=' +
-									suggestion.title +
-									'&category=' +
-									category +
-									'&pagination=' +
-									pagination,
-								'_self'
-							);
-							suggestionsOff = true;
-							// searchTerm = suggestion.title;
+							if (searchTerm.trim() != '') {
+								goto(
+									'/searchResults?searchTerm=' +
+										suggestion.title +
+										'&category=' +
+										category +
+										'&pagination=' +
+										pagination
+								);
+								suggestionsOff = true;
+								// searchTerm = suggestion.title;
+							}
 						}}
 						type="button"
 						class="block py-2 px-2 hover:bg-gray-300 hover:rounded-sm w-full text-left"
