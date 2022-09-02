@@ -12,7 +12,7 @@
 	var error = null;
 	var searchTerm = $page.url.searchParams.get('searchTerm').trim();
 	var category = $page.url.searchParams.get('category').trim();
-	var pagination = $page.url.searchParams.get('pagination').trim();
+	var pagination = Number($page.url.searchParams.get('pagination').trim());
 	var pages = null;
 
 	onMount(async function () {
