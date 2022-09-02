@@ -11,6 +11,7 @@
 	var suggestionsOff = false;
 
 	$: {
+		suggestionsOff = false;
 		suggestions = 'loading';
 		axios
 			.post('/searchResults', {
