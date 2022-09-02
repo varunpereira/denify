@@ -75,6 +75,7 @@
 			{:else if suggestions.length == 0 && suggestionsOff == false}
 				<p class="pl-2">No results found.</p>
 			{:else if suggestions.length > 0 && suggestionsOff == false}
+				<div class="pb-1" />
 				{#each suggestions as suggestion}
 					<button
 						on:click={function () {
@@ -87,8 +88,8 @@
 									pagination,
 								'_self'
 							);
-							searchTerm = suggestion.title;
 							suggestionsOff = true;
+							searchTerm = suggestion.title;
 						}}
 						type="button"
 						class="block py-2 px-2 hover:bg-gray-300 hover:rounded-sm w-full text-left"
