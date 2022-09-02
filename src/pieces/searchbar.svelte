@@ -41,7 +41,6 @@
 				pagination
 		);
 		suggestionsOff = true;
-		// searchTerm = '';
 	}}
 >
 	<select bind:value={category} class="absolute inset-y-0 rounded-l-md ">
@@ -72,9 +71,9 @@
 			<XIcon class="h-4 w-4 text-black" />
 		</button>
 		<div class="absolute top-7 w-full bg-white rounded-md pt-4">
-			{#if suggestions == 'loading'}
+			{#if suggestions == 'loading' && suggestionsOff == false}
 				<p class="pl-2">Loading...</p>
-			{:else if suggestions.length == 0}
+			{:else if suggestions.length == 0 && suggestionsOff == false}
 				<p class="pl-2">No results found.</p>
 			{:else if suggestions.length > 0 && suggestionsOff == false}
 				{#each suggestions as suggestion}
@@ -90,7 +89,6 @@
 								'_self'
 							);
 							suggestionsOff = true;
-							// searchTerm = '';
 						}}
 						type="button"
 						class="block py-2 px-2 hover:bg-gray-300 hover:rounded-md w-full text-left"
