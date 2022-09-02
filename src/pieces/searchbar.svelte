@@ -67,7 +67,7 @@
 		>
 			<XIcon class="h-4 w-4 text-black" />
 		</button>
-		<div class="absolute top-6 w-full bg-white rounded-md pt-4">
+		<div class="absolute top-8 w-full bg-white rounded-md pt-4">
 			{#if suggestions == 'loading'}
 				<p class="pl-2">Loading...</p>
 			{:else if suggestions.length == 0}
