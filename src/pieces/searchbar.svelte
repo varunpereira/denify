@@ -39,7 +39,7 @@
 				pagination
 		);
 		suggestionsOff = true;
-		searchTerm = '';
+		// searchTerm = '';
 	}}
 >
 	<select bind:value={category} class="absolute inset-y-0 rounded-l-md ">
@@ -74,7 +74,7 @@
 				<p class="pl-2">Loading...</p>
 			{:else if suggestions.length == 0}
 				<p class="pl-2">No results found.</p>
-			{:else if suggestions.length > 0}
+			{:else if suggestions.length > 0 && suggestionsOff == false}
 				{#each suggestions as suggestion}
 					<button
 						on:click={function () {
@@ -87,7 +87,8 @@
 									pagination,
 								'_self'
 							);
-							searchTerm = '';
+							suggestionsOff = true;
+							// searchTerm = '';
 						}}
 						type="button"
 						class="block py-2 px-2 hover:bg-gray-300 hover:rounded-md w-full text-left"
