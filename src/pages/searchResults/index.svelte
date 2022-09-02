@@ -53,9 +53,10 @@
 		category != $page.url.searchParams.get('category').trim()
 	) {
 		getProducts1();
-	} else if (pagination != $page.url.searchParams.get('pagination').trim()) {
-		getProducts2();
 	}
+	// else if (pagination != $page.url.searchParams.get('pagination').trim()) {
+	// 	getProducts2();
+	// }
 </script>
 
 <svelte:head><title>Search Results - Denify</title></svelte:head>
@@ -75,6 +76,14 @@
 			on:click={function () {
 				if (pagination > 1) {
 					pagination -= 1;
+					goto(
+						'/searchResults?searchTerm=' +
+							searchTerm +
+							'&category=' +
+							category +
+							'&pagination=' +
+							pagination
+					);
 				}
 			}}
 			class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
@@ -86,6 +95,14 @@
 				<button
 					on:click={function () {
 						pagination = index + 1;
+						goto(
+							'/searchResults?searchTerm=' +
+								searchTerm +
+								'&category=' +
+								category +
+								'&pagination=' +
+								pagination
+						);
 					}}
 					class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600"
 					>{index + 1}
@@ -94,6 +111,14 @@
 				<button
 					on:click={function () {
 						pagination = index + 1;
+						goto(
+							'/searchResults?searchTerm=' +
+								searchTerm +
+								'&category=' +
+								category +
+								'&pagination=' +
+								pagination
+						);
 					}}
 					class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
 					>{index + 1}
@@ -104,6 +129,14 @@
 			on:click={function () {
 				if (pagination < pages) {
 					pagination += 1;
+					goto(
+						'/searchResults?searchTerm=' +
+							searchTerm +
+							'&category=' +
+							category +
+							'&pagination=' +
+							pagination
+					);
 				}
 			}}
 			class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
