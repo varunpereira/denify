@@ -40,10 +40,9 @@
 				pagination
 		);
 		suggestionsOff = true;
-		// searchTerm = '';
 	}}
 >
-	<select bind:value={category} class="absolute inset-y-0 rounded-l-md ">
+	<select bind:value={category} class="absolute inset-y-0 rounded-l-sm ">
 		{#each categoryList as category}
 			<option value={category} class="w-10 bg-gray-100 py-2 px-4">
 				{category}
@@ -58,7 +57,7 @@
 		list="suggestions"
 		type="text"
 		placeholder="search"
-		class="focus:shadow-outline w-full min-w-max bg-white py-2 pl-16 text-sm leading-tight text-black focus:outline-none rounded-md"
+		class="focus:shadow-outline w-full min-w-max bg-white py-2 pl-16 text-sm leading-tight text-black focus:outline-none rounded-sm"
 	/>
 	{#if searchTerm.trim() != ''}
 		<button
@@ -70,7 +69,7 @@
 		>
 			<XIcon class="h-4 w-4 text-black" />
 		</button>
-		<div class="absolute top-7 w-full bg-white rounded-md pt-4">
+		<div class="absolute top-7 w-full bg-white rounded-sm">
 			{#if suggestions == 'loading' && suggestionsOff == false}
 				<p class="pl-2">Loading...</p>
 			{:else if suggestions.length == 0 && suggestionsOff == false}
@@ -89,10 +88,9 @@
 								'_self'
 							);
 							suggestionsOff = true;
-							// searchTerm = '';
 						}}
 						type="button"
-						class="block py-2 px-2 hover:bg-gray-300 hover:rounded-md w-full text-left"
+						class="block py-2 px-2 hover:bg-gray-300 hover:rounded-sm w-full text-left"
 					>
 						{suggestion.title}
 					</button>
@@ -102,7 +100,7 @@
 	{/if}
 	<button
 		type="submit"
-		class="absolute inset-y-0 right-0 w-10 max-w-min  cursor-pointer items-center justify-center bg-white pr-3 rounded-r-md"
+		class="absolute inset-y-0 right-0 w-10 max-w-min  cursor-pointer items-center justify-center bg-white pr-3 rounded-r-sm"
 	>
 		<SearchIcon class="h-4 w-4 text-black" />
 	</button>
