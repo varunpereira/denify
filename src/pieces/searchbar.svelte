@@ -10,7 +10,7 @@
 	var pagination = '1';
 	var suggestionsOff = false;
 
-	function getSuggestions() {
+	$: {
 		suggestionsOff = false;
 		suggestions = 'loading';
 		axios
@@ -26,10 +26,6 @@
 				suggestions = res.data.products;
 			});
 	}
-
-	$: {
-		getSuggestions();
-	}
 </script>
 
 <form
@@ -44,6 +40,7 @@
 				pagination
 		);
 		suggestionsOff = true;
+		// searchTerm = '';
 	}}
 >
 	<select bind:value={category} class="absolute inset-y-0 rounded-l-md ">
@@ -92,6 +89,7 @@
 								'_self'
 							);
 							suggestionsOff = true;
+							// searchTerm = '';
 						}}
 						type="button"
 						class="block py-2 px-2 hover:bg-gray-300 hover:rounded-md w-full text-left"
