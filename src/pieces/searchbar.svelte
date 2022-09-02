@@ -87,6 +87,7 @@
 							);
 							searchTerm = '';
 						}}
+						type="button"
 						class="block py-2 px-2 hover:bg-gray-300 hover:rounded-md w-full text-left"
 					>
 						{suggestion.title}
