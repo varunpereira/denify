@@ -60,6 +60,7 @@
 
 <svelte:head><title>Search Results - Denify</title></svelte:head>
 
+<p class="bg-white text-black">{searchTerm}</p>
 {#if products}
 	<div class="flex flex-wrap w-full text-white">
 		{#if products.length == 0}
