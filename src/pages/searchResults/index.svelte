@@ -19,10 +19,10 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
-		getProducts1();
+		getProducts();
 	});
 
-	async function getProducts1() {
+	async function getProducts() {
 		var res = await axios.post($page.url.pathname, {
 			searchTerm: $page.url.searchParams.get('searchTerm').trim(),
 			category: $page.url.searchParams.get('category').trim(),
@@ -35,28 +35,13 @@
 		products = res.data.products;
 	}
 
-	async function getProducts2() {
-		var res = await axios.post($page.url.pathname, {
-			searchTerm: $page.url.searchParams.get('searchTerm').trim(),
-			category: $page.url.searchParams.get('category').trim(),
-			pagination
-		});
-		if (res.data.error) {
-			error = res.data.error;
-		}
-		pages = res.data.pages;
-		products = res.data.products;
-	}
-
 	$: if (
 		searchTerm != $page.url.searchParams.get('searchTerm').trim() ||
-		category != $page.url.searchParams.get('category').trim()
+		category != $page.url.searchParams.get('category').trim() ||
+		pagination != $page.url.searchParams.get('pagination').trim()
 	) {
-		getProducts1();
+		getProducts();
 	}
-	// else if (pagination != $page.url.searchParams.get('pagination').trim()) {
-	// 	getProducts2();
-	// }
 </script>
 
 <svelte:head><title>Search Results - Denify</title></svelte:head>
