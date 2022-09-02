@@ -38,10 +38,6 @@
 			});
 	}
 
-	$: {
-		getProducts();
-	}
-
 	// function getProducts2() {
 	// 	axios
 	// 		.post($page.url.pathname, {
@@ -58,12 +54,14 @@
 	// 		});
 	// }
 
-	// $: if (
-	// 	searchTerm != $page.url.searchParams.get('searchTerm').trim() ||
-	// 	category != $page.url.searchParams.get('category').trim()
-	// ) {
-	// 	getProducts();
-	// } else if (pagination != $page.url.searchParams.get('pagination').trim()) {
+	$: if (
+		searchTerm != $page.url.searchParams.get('searchTerm').trim() ||
+		category != $page.url.searchParams.get('category').trim() ||
+		pagination != $page.url.searchParams.get('pagination').trim()
+	) {
+		getProducts();
+	}
+	// else if (pagination != $page.url.searchParams.get('pagination').trim()) {
 	// 	getProducts2();
 	// }
 </script>
