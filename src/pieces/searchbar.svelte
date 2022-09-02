@@ -11,9 +11,7 @@
 	var suggestionsOff = false;
 
 	$: {
-		if (suggestionsOff == true) {
-			suggestionsOff = false;
-		}
+		suggestionsOff = false;
 		suggestions = 'loading';
 		axios
 			.post('/searchResults', {
@@ -91,7 +89,7 @@
 								'_self'
 							);
 							suggestionsOff = true;
-							searchTerm = suggestion.title;
+							// searchTerm = suggestion.title;
 						}}
 						type="button"
 						class="block py-2 px-2 hover:bg-gray-300 hover:rounded-sm w-full text-left"
