@@ -13,6 +13,7 @@
 	var pagination = 1;
 	var error = null;
 	var email = $page.url.searchParams.get('email');
+	var newPagination = false;
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
@@ -33,8 +34,9 @@
 		products = res.data.products;
 	}
 
-	$: {
+	$: if (newPagination == true) {
 		getProducts();
+		newPagination = false;
 	}
 
 	async function sendMessage() {
@@ -80,6 +82,7 @@
 			on:click={function () {
 				if (pagination > 1) {
 					pagination -= 1;
+					newPagination = true;
 				}
 			}}
 			class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
@@ -91,6 +94,7 @@
 				<button
 					on:click={function () {
 						pagination = index + 1;
+						newPagination = true;
 					}}
 					class="relative z-10 inline-flex items-center border border-indigo-500 bg-indigo-50 px-4 py-2 text-sm font-medium text-indigo-600"
 					>{index + 1}
@@ -99,6 +103,7 @@
 				<button
 					on:click={function () {
 						pagination = index + 1;
+						newPagination = true;
 					}}
 					class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
 					>{index + 1}
@@ -109,6 +114,7 @@
 			on:click={function () {
 				if (pagination < pages) {
 					pagination += 1;
+					newPagination = true;
 				}
 			}}
 			class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
