@@ -39,7 +39,7 @@
 				suggestionsOn = false;
 				searchTerm = e.results[0][0].transcript;
 				recognition.stop();
-				goto('/searchResults?searchTerm=' + searchTerm + '&category=1&pagination=1');
+				goto('/searchResults?searchTerm=' + searchTerm + '&category=All&pagination=1');
 			};
 			recognition.onerror = function (e) {
 				recognition.stop();
