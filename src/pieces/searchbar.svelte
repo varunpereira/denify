@@ -73,7 +73,7 @@
 	<input
 		value={$page.url.searchParams.get('searchTerm') || searchTerm}
 		on:input={function (event) {
-			searchTerm = $page.url.searchParams.get('searchTerm') || event.target.value;
+			searchTerm = event.target.value;
 		}}
 		list="suggestions"
 		type="text"
@@ -101,6 +101,7 @@
 					<button
 						on:click={function () {
 							if (searchTerm.trim() != '') {
+								searchTerm = $page.url.searchParams.get('searchTerm') || searchTerm;
 								goto(
 									'/searchResults?searchTerm=' +
 										suggestion.title +
