@@ -73,7 +73,7 @@
 	<input
 		value={$page.url.searchParams.get('searchTerm') || searchTerm}
 		on:input={function (event) {
-			searchTerm = event.target.value;
+			searchTerm = $page.url.searchParams.get('searchTerm') || event.target.value;
 		}}
 		list="suggestions"
 		type="text"
