@@ -60,7 +60,6 @@
 					pagination
 			);
 			suggestionsOff = true;
-			searchTerm = $page.url.searchParams.get('searchTerm');
 		}
 	}}
 >
