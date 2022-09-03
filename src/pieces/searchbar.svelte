@@ -2,6 +2,7 @@
 	import { goto } from '$app/navigation';
 	import { SearchIcon, XIcon, MicIcon } from 'svelte-feather-icons';
 	import axios from 'axios';
+	import { page } from '$app/stores';
 
 	var searchTerm = '';
 	var categoryList = ['All', 'Tech'];
@@ -11,6 +12,7 @@
 	var suggestionsOff = false;
 
 	$: {
+		console.table($page.url.searchParams.get('searchTerm').trim());
 		suggestionsOff = false;
 		suggestions = 'loading';
 		axios
