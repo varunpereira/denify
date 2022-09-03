@@ -77,7 +77,7 @@
 		list="suggestions"
 		type="text"
 		placeholder="search"
-		class="focus:shadow-outline w-full min-w-max bg-white py-2 pl-16 text-sm leading-tight text-black focus:outline-none rounded-sm"
+		class="focus:shadow-outline w-full min-w-max bg-white py-2 pl-16 text-sm leading-tight text-black focus:outline-none"
 	/>
 	{#if searchTerm.trim() != ''}
 		<button
@@ -127,15 +127,14 @@
 	>
 		<SearchIcon class="h-4 w-4 text-black" />
 	</button>
-</form>
-
-<form id="voiceForm" method="get" action="http://denify.vercel.app/searchResults">
-	<div class="flex justify-start mr-6">
-		<input id="voiceInput" type="text" name="searchTerm" hidden />
-		<input type="text" name="category" value="All" hidden />
-		<input type="text" name="pagination" value="1" hidden />
-		<button on:click|preventDefault={startDictation}>
-			<MicIcon class="h-4 w-4 text-white" />
-		</button>
-	</div>
+	<form id="voiceForm" method="get" action="http://denify.vercel.app/searchResults">
+		<div class="flex justify-start mr-6">
+			<input id="voiceInput" type="text" name="searchTerm" hidden />
+			<input type="text" name="category" value="All" hidden />
+			<input type="text" name="pagination" value="1" hidden />
+			<button on:click|preventDefault={startDictation}>
+				<MicIcon class="h-9 w-9 text-black bg-white py-2 pr-2" />
+			</button>
+		</div>
+	</form>
 </form>
