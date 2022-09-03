@@ -71,7 +71,7 @@
 							'&category=' +
 							$page.url.searchParams.get('category').trim() +
 							'&pagination=' +
-							$page.url.searchParams.get('pagination').trim()
+							pagination
 					);
 				}
 			}}
@@ -113,7 +113,7 @@
 							'&category=' +
 							$page.url.searchParams.get('category').trim() +
 							'&pagination=' +
-							$page.url.searchParams.get('pagination').trim()
+							pagination
 					);
 				}
 			}}
