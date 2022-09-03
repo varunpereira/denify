@@ -31,6 +31,7 @@
 		$page.url.searchParams.get('searchTerm') &&
 		searchTerm != $page.url.searchParams.get('searchTerm').trim()
 	) {
+		suggestionsOn = false;
 		searchTerm = $page.url.searchParams.get('searchTerm').trim();
 	}
 
