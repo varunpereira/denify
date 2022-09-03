@@ -4,7 +4,7 @@
 	import axios from 'axios';
 	import { page } from '$app/stores';
 
-	var searchTerm = '';
+	var searchTerm = $page.url.searchParams.get('searchTerm') || '';
 	var categoryList = ['All', 'Tech'];
 	var category = categoryList[0];
 	var suggestions = 'loading';
@@ -39,8 +39,6 @@
 				document.getElementById('voiceInput').value = e.results[0][0].transcript;
 				recognition.stop();
 				document.getElementById('voiceForm').submit();
-				suggestionsOn = false;
-				searchTerm = 'www' + document.getElementById('voiceInput').value;
 			};
 			recognition.onerror = function (e) {
 				recognition.stop();
