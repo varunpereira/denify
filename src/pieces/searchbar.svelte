@@ -10,7 +10,6 @@
 	var suggestions = 'loading';
 	var pagination = '1';
 	var suggestionsOn = true;
-	var voiceDone = false;
 
 	// suggestions
 	$: if (suggestionsOn == true) {
@@ -29,15 +28,8 @@
 			});
 	}
 
-	// voice input
-	$: if (voiceDone == true) {
-		suggestionsOn = false;
-		searchTerm = $page.url.searchParams.get('searchTerm').trim();
-	}
-
 	function startDictation() {
 		if (window.hasOwnProperty('webkitSpeechRecognition')) {
-			voiceDone = false;
 			var recognition = new webkitSpeechRecognition();
 			recognition.continuous = false;
 			recognition.interimResults = false;
@@ -46,7 +38,8 @@
 			recognition.onresult = function (e) {
 				document.getElementById('voiceInput').value = e.results[0][0].transcript;
 				recognition.stop();
-				voiceDone = true;
+				suggestionsOn = false;
+				searchTerm = document.getElementById('voiceInput').value;
 				document.getElementById('voiceForm').submit();
 			};
 			recognition.onerror = function (e) {
