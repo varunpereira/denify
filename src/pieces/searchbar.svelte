@@ -101,6 +101,7 @@
 					<button
 						on:click={function () {
 							if (searchTerm.trim() != '') {
+								searchTerm = suggestion.title;
 								goto(
 									'/searchResults?searchTerm=' +
 										suggestion.title +
@@ -110,7 +111,6 @@
 										pagination
 								);
 								suggestionsOff = true;
-								// searchTerm = suggestion.title;
 							}
 						}}
 						type="button"
