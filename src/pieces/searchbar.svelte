@@ -46,8 +46,8 @@
 			recognition.onresult = function (e) {
 				document.getElementById('voiceInput').value = e.results[0][0].transcript;
 				recognition.stop();
-				document.getElementById('voiceForm').submit();
 				voiceDone = true;
+				document.getElementById('voiceForm').submit();
 			};
 			recognition.onerror = function (e) {
 				recognition.stop();
