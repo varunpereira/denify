@@ -59,7 +59,7 @@
 					'&pagination=' +
 					pagination
 			);
-			suggestionsOn = true;
+			suggestionsOn = false;
 		}
 	}}
 >
@@ -109,7 +109,7 @@
 										'&pagination=' +
 										pagination
 								);
-								suggestionsOn = true;
+								suggestionsOn = false;
 								// searchTerm = suggestion.title;
 							}
 						}}
