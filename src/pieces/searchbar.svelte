@@ -23,7 +23,7 @@
 				if (res.data.error) {
 					error = res.data.error;
 				}
-				suggestions = res.data.products;
+				suggestions = res.data.products.slice(0,8);
 			});
 	}
 </script>
