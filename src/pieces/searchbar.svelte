@@ -9,10 +9,10 @@
 	var category = categoryList[0];
 	var suggestions = 'loading';
 	var pagination = '1';
-	var suggestionsOff = true;
+	var suggestionsOn = true;
 
-	$: if (suggestionsOff == true) {
-		suggestionsOff = false;
+	$: if (suggestionsOn == true) {
+		suggestionsOn = false;
 		suggestions = 'loading';
 		axios
 			.post('/searchResults', {
@@ -59,7 +59,7 @@
 					'&pagination=' +
 					pagination
 			);
-			suggestionsOff = true;
+			suggestionsOn = true;
 		}
 	}}
 >
@@ -91,11 +91,11 @@
 			<XIcon class="h-4 w-4 text-black" />
 		</button>
 		<div class="absolute top-7 w-full bg-white rounded-sm">
-			{#if suggestions == 'loading' && suggestionsOff == false}
+			{#if suggestions == 'loading' && suggestionsOn == true}
 				<p class="pl-2">Loading...</p>
-			{:else if suggestions.length == 0 && suggestionsOff == false}
+			{:else if suggestions.length == 0 && suggestionsOn == true}
 				<p class="pl-2">No results found.</p>
-			{:else if suggestions.length > 0 && suggestionsOff == false}
+			{:else if suggestions.length > 0 && suggestionsOn == true}
 				<div class="pb-2" />
 				{#each suggestions as suggestion}
 					<button
@@ -109,7 +109,7 @@
 										'&pagination=' +
 										pagination
 								);
-								suggestionsOff = true;
+								suggestionsOn = true;
 								// searchTerm = suggestion.title;
 							}
 						}}
