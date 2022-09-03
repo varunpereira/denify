@@ -12,7 +12,9 @@
 	var suggestionsOff = false;
 
 	$: {
-		console.table($page.url.searchParams.get('searchTerm').trim());
+		if ($page.url.searchParams.get('searchTerm')) {
+			searchTerm = $page.url.searchParams.get('searchTerm').trim();
+		}
 		suggestionsOff = false;
 		suggestions = 'loading';
 		axios
