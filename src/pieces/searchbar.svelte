@@ -52,10 +52,6 @@
 			};
 		}
 	}
-
-	function voiceForm() {
-		goto('/searchResults');
-	}
 </script>
 
 <form
@@ -141,7 +137,7 @@
 		<SearchIcon class="h-4 w-4 text-black" />
 	</button>
 	<form
-		on:submit|preventDefault={voiceForm}
+		action="/searchResults"
 		id="voiceForm"
 		class="absolute inset-y-0 right-0 flex justify-start rounded-r-sm"
 	>
