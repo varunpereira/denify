@@ -12,7 +12,6 @@
 	var suggestionsOn = true;
 
 	$: if (suggestionsOn == true) {
-		suggestionsOn = false;
 		suggestions = 'loading';
 		axios
 			.post('/searchResults', {
@@ -26,6 +25,7 @@
 				}
 				suggestions = res.data.products.slice(0, 8);
 			});
+		suggestionsOn = false;
 	}
 
 	function startDictation() {
@@ -74,6 +74,7 @@
 		value={searchTerm}
 		on:input={function (event) {
 			searchTerm = event.target.value;
+			suggestionsOn = true;
 		}}
 		list="suggestions"
 		type="text"
