@@ -141,8 +141,8 @@
 		<SearchIcon class="h-4 w-4 text-black" />
 	</button>
 	<form
+		on:submit|preventDefault={voiceForm}
 		id="voiceForm"
-		on:submit={voiceForm}
 		class="absolute inset-y-0 right-0 flex justify-start rounded-r-sm"
 	>
 		<input id="voiceInput" type="text" name="searchTerm" hidden />
