@@ -12,13 +12,6 @@
 	var suggestionsOff = false;
 
 	$: {
-		suggestionsOff = true;
-		if (
-			$page.url.searchParams.get('searchTerm') &&
-			searchTerm != $page.url.searchParams.get('searchTerm')
-		) {
-			searchTerm = $page.url.searchParams.get('searchTerm').trim();
-		}
 		suggestionsOff = false;
 		suggestions = 'loading';
 		axios
@@ -78,7 +71,7 @@
 		{/each}
 	</select>
 	<input
-		value={searchTerm}
+		value={$page.url.searchParams.get('searchTerm') || searchTerm}
 		on:input={function (event) {
 			searchTerm = event.target.value;
 		}}
