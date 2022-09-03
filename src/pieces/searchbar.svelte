@@ -4,7 +4,7 @@
 	import axios from 'axios';
 	import { page } from '$app/stores';
 
-	var searchTerm = $page.url.searchParams.get('searchTerm') || '';
+	var searchTerm = '';
 	var categoryList = ['All', 'Tech'];
 	var category = categoryList[0];
 	var suggestions = 'loading';
