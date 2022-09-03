@@ -9,7 +9,7 @@
 	var category = categoryList[0];
 	var suggestions = 'loading';
 	var pagination = '1';
-	var suggestionsOff = false;
+	var suggestionsOff = true;
 
 	$: if (suggestionsOff == true) {
 		suggestionsOff = false;
