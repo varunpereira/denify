@@ -62,6 +62,12 @@
 	} else if (pagination != $page.url.searchParams.get('pagination').trim()) {
 		getProducts2();
 	}
+
+	$: {
+		console.table($page.url.searchParams.get('searchTerm').trim());
+		console.table($page.url.searchParams.get('category').trim());
+		console.table($page.url.searchParams.get('pagination').trim());
+	}
 </script>
 
 <svelte:head><title>Search Results - Denify</title></svelte:head>
