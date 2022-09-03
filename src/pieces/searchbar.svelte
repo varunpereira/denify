@@ -1,6 +1,6 @@
 <script>
 	import { goto } from '$app/navigation';
-	import { SearchIcon, XIcon } from 'svelte-feather-icons';
+	import { SearchIcon, XIcon, MicIcon } from 'svelte-feather-icons';
 	import axios from 'axios';
 
 	var searchTerm = '';
@@ -23,8 +23,26 @@
 				if (res.data.error) {
 					error = res.data.error;
 				}
-				suggestions = res.data.products.slice(0,8);
+				suggestions = res.data.products.slice(0, 8);
 			});
+	}
+
+	function startDictation() {
+		if (window.hasOwnProperty('webkitSpeechRecognition')) {
+			var recognition = new webkitSpeechRecognition();
+			recognition.continuous = false;
+			recognition.interimResults = false;
+			recognition.lang = 'en-US';
+			recognition.start();
+			recognition.onresult = function (e) {
+				document.getElementById('voiceInput').value = e.results[0][0].transcript;
+				recognition.stop();
+				document.getElementById('voiceForm').submit();
+			};
+			recognition.onerror = function (e) {
+				recognition.stop();
+			};
+		}
 	}
 </script>
 
@@ -109,4 +127,15 @@
 	>
 		<SearchIcon class="h-4 w-4 text-black" />
 	</button>
+</form>
+
+<form id="voiceForm" method="get" action="http://denify.vercel.app/searchResults">
+	<div class="flex justify-start mr-6">
+		<input id="voiceInput" type="text" name="searchTerm" hidden />
+		<input type="text" name="category" value="All" hidden />
+		<input type="text" name="pagination" value="1" hidden />
+		<button on:click|preventDefault={startDictation}>
+			<MicIcon class="h-4 w-4 text-white" />
+		</button>
+	</div>
 </form>
