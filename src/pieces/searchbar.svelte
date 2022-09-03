@@ -10,6 +10,7 @@
 	var suggestions = 'loading';
 	var pagination = '1';
 	var suggestionsOn = true;
+	var voice = '';
 
 	// suggestions
 	$: if (suggestionsOn == true) {
@@ -36,9 +37,9 @@
 			recognition.lang = 'en-US';
 			recognition.start();
 			recognition.onresult = function (e) {
-				document.getElementById('voiceInput').value = e.results[0][0].transcript;
+				voice = e.results[0][0].transcript;
 				recognition.stop();
-				document.getElementById('voiceForm').submit();
+				goto('/searchResults?searchTerm=' + voice + '&category=1&pagination=1');
 			};
 			recognition.onerror = function (e) {
 				recognition.stop();
@@ -130,14 +131,11 @@
 		<SearchIcon class="h-4 w-4 text-black" />
 	</button>
 	<form
-		action="/searchResults"
-		id="voiceForm"
+		on:click|preventDefault={startDictation}
 		class="absolute inset-y-0 right-0 flex justify-start rounded-r-sm"
 	>
-		<input id="voiceInput" type="text" name="searchTerm" hidden />
-		<input type="text" name="category" value="All" hidden />
-		<input type="text" name="pagination" value="1" hidden />
-		<button on:click|preventDefault={startDictation}>
+		<input bind:value={voice} type="text" name="searchTerm" hidden />
+		<button type="submit">
 			<MicIcon class="h-8 w-8 text-black bg-white py-2 pr-2 rounded-r-sm" />
 		</button>
 	</form>
