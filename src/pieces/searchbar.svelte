@@ -11,10 +11,14 @@
 	var pagination = '1';
 	var suggestionsOff = false;
 
+	$: if (
+		$page.url.searchParams.get('searchTerm') &&
+		searchTerm != $page.url.searchParams.get('searchTerm')
+	) {
+		searchTerm = $page.url.searchParams.get('searchTerm').trim();
+	}
+
 	$: {
-		if ($page.url.searchParams.get('searchTerm')) {
-			searchTerm = $page.url.searchParams.get('searchTerm').trim();
-		}
 		suggestionsOff = false;
 		suggestions = 'loading';
 		axios
