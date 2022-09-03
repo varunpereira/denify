@@ -60,6 +60,7 @@
 					pagination
 			);
 			suggestionsOff = true;
+			searchTerm = $page.url.searchParams.get('searchTerm');
 		}
 	}}
 >
@@ -101,7 +102,6 @@
 					<button
 						on:click={function () {
 							if (searchTerm.trim() != '') {
-								searchTerm = $page.url.searchParams.get('searchTerm') || searchTerm;
 								goto(
 									'/searchResults?searchTerm=' +
 										suggestion.title +
