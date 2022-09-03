@@ -38,12 +38,12 @@
 			});
 	}
 
-	function getProducts2() {
+	$: {
 		axios
 			.post($page.url.pathname, {
 				searchTerm: $page.url.searchParams.get('searchTerm').trim(),
 				category: $page.url.searchParams.get('category').trim(),
-				pagination
+				pagination: $page.url.searchParams.get('pagination').trim()
 			})
 			.then(function (res) {
 				if (res.data.error) {
@@ -52,18 +52,6 @@
 				pages = res.data.pages;
 				products = res.data.products;
 			});
-	}
-
-	$: if (
-		searchTerm != $page.url.searchParams.get('searchTerm').trim() ||
-		category != $page.url.searchParams.get('category').trim()
-	) {
-		getProducts();
-	} else if (pagination != $page.url.searchParams.get('pagination').trim()) {
-		getProducts2();
-	}
-
-	$: {
 		console.table($page.url.searchParams.get('searchTerm').trim());
 		console.table($page.url.searchParams.get('category').trim());
 		console.table($page.url.searchParams.get('pagination').trim());
@@ -85,15 +73,14 @@
 	<div class="w-full relative z-0 inline-flex -space-x-px rounded-md shadow-sm">
 		<button
 			on:click={function () {
-				if (pagination > 1) {
-					pagination -= 1;
+				if (Number($page.url.searchParams.get('pagination').trim()) > 1) {
 					goto(
 						'/searchResults?searchTerm=' +
-							searchTerm +
+							$page.url.searchParams.get('searchTerm').trim() +
 							'&category=' +
-							category +
+							$page.url.searchParams.get('category').trim() +
 							'&pagination=' +
-							pagination
+							$page.url.searchParams.get('pagination').trim()
 					);
 				}
 			}}
@@ -102,31 +89,20 @@
 			<ArrowLeftIcon class="w-5 h-5" />
 		</button>
 		{#each Array(pages) as _, index}
-			{#if pagination == index + 1}
+			{#if Number($page.url.searchParams.get('pagination').trim()) == index + 1}
 				<button
-					on:click={function () {
-						pagination = index + 1;
-						goto(
-							'/searchResults?searchTerm=' +
-								searchTerm +
-								'&category=' +
-								category +
-								'&pagination=' +
-								pagination
-						);
-					}}
 					class="relative z-10 inline-flex items-center border border-gray-500 bg-gray-300 px-4 py-2 text-sm font-medium text-indigo-600"
 					>{index + 1}
 				</button>
 			{:else}
 				<button
 					on:click={function () {
-						pagination = index + 1;
+						var pagination = String(index + 1);
 						goto(
 							'/searchResults?searchTerm=' +
-								searchTerm +
+								$page.url.searchParams.get('searchTerm').trim() +
 								'&category=' +
-								category +
+								$page.url.searchParams.get('category').trim() +
 								'&pagination=' +
 								pagination
 						);
@@ -138,15 +114,14 @@
 		{/each}
 		<button
 			on:click={function () {
-				if (pagination < pages) {
-					pagination += 1;
+				if (Number($page.url.searchParams.get('pagination').trim()) < pages) {
 					goto(
 						'/searchResults?searchTerm=' +
-							searchTerm +
+							$page.url.searchParams.get('searchTerm').trim() +
 							'&category=' +
-							category +
+							$page.url.searchParams.get('category').trim() +
 							'&pagination=' +
-							pagination
+							$page.url.searchParams.get('pagination').trim()
 					);
 				}
 			}}
