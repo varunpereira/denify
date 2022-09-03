@@ -38,9 +38,9 @@
 			recognition.onresult = function (e) {
 				document.getElementById('voiceInput').value = e.results[0][0].transcript;
 				recognition.stop();
-				suggestionsOn = false;
-				searchTerm = document.getElementById('voiceInput').value;
 				document.getElementById('voiceForm').submit();
+				suggestionsOn = false;
+				searchTerm = 'www' + document.getElementById('voiceInput').value;
 			};
 			recognition.onerror = function (e) {
 				recognition.stop();
