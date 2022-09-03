@@ -27,6 +27,8 @@
 			});
 	}
 
+	// $: if(searchTerm != $page.url.searchParams.get('searchTerm').trim()){}
+
 	function startDictation() {
 		if (window.hasOwnProperty('webkitSpeechRecognition')) {
 			var recognition = new webkitSpeechRecognition();
@@ -134,7 +136,7 @@
 		action="http://denify.vercel.app/searchResults"
 		class="absolute inset-y-0 right-0 flex justify-start rounded-r-sm"
 	>
-		<input id="voiceInput" type="text" name="searchTerm" hidden />
+		<input id="voiceInput" type="text" name="searchTerm" hidden value={searchTerm}/>
 		<input type="text" name="category" value="All" hidden />
 		<input type="text" name="pagination" value="1" hidden />
 		<button on:click|preventDefault={startDictation}>
