@@ -138,6 +138,7 @@
 	</button>
 	<form
 		action="/searchResults"
+		method="get"
 		id="voiceForm"
 		class="absolute inset-y-0 right-0 flex justify-start rounded-r-sm"
 	>
