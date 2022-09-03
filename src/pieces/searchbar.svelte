@@ -11,7 +11,7 @@
 	var pagination = '1';
 	var suggestionsOff = false;
 
-	$: {
+	$: if (suggestionsOff == true) {
 		suggestionsOff = false;
 		suggestions = 'loading';
 		axios
@@ -71,7 +71,7 @@
 		{/each}
 	</select>
 	<input
-		value={$page.url.searchParams.get('searchTerm') || searchTerm}
+		value={searchTerm}
 		on:input={function (event) {
 			searchTerm = event.target.value;
 		}}
