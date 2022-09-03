@@ -102,7 +102,7 @@
 						on:click={function () {
 							if (searchTerm.trim() != '') {
 								searchTerm = suggestion.title;
-								suggestionsOff = true;
+								suggestionsOff = false;
 								goto(
 									'/searchResults?searchTerm=' +
 										suggestion.title +
