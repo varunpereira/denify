@@ -25,7 +25,6 @@
 				}
 				suggestions = res.data.products.slice(0, 8);
 			});
-		suggestionsOn = false;
 	}
 
 	function startDictation() {
