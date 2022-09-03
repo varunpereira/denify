@@ -64,6 +64,7 @@
 		<button
 			on:click={function () {
 				if (Number($page.url.searchParams.get('pagination').trim()) > 1) {
+					var pagination = String(Number($page.url.searchParams.get('pagination').trim()) - 1);
 					goto(
 						'/searchResults?searchTerm=' +
 							$page.url.searchParams.get('searchTerm').trim() +
@@ -105,6 +106,7 @@
 		<button
 			on:click={function () {
 				if (Number($page.url.searchParams.get('pagination').trim()) < pages) {
+					var pagination = String(Number($page.url.searchParams.get('pagination').trim()) + 1);
 					goto(
 						'/searchResults?searchTerm=' +
 							$page.url.searchParams.get('searchTerm').trim() +
