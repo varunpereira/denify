@@ -85,7 +85,7 @@
 				searchTerm = '';
 			}}
 			type="button"
-			class="absolute inset-y-0 right-8 w-10 max-w-min items-center justify-center"
+			class="absolute inset-y-0 right-16 w-10 max-w-min items-center justify-center"
 		>
 			<XIcon class="h-4 w-4 text-black" />
 		</button>
@@ -123,18 +123,21 @@
 	{/if}
 	<button
 		type="submit"
-		class="absolute inset-y-0 right-0 w-10 max-w-min  cursor-pointer items-center justify-center bg-white pr-3 rounded-r-sm"
+		class="absolute inset-y-0 right-8 w-10 max-w-min mr-2 cursor-pointer items-center justify-center bg-white"
 	>
 		<SearchIcon class="h-4 w-4 text-black" />
 	</button>
-	<form id="voiceForm" method="get" action="http://denify.vercel.app/searchResults">
-		<div class="flex justify-start mr-6">
-			<input id="voiceInput" type="text" name="searchTerm" hidden />
-			<input type="text" name="category" value="All" hidden />
-			<input type="text" name="pagination" value="1" hidden />
-			<button on:click|preventDefault={startDictation}>
-				<MicIcon class="h-9 w-9 text-black bg-white py-2 pr-2" />
-			</button>
-		</div>
+	<form
+		id="voiceForm"
+		method="get"
+		action="http://denify.vercel.app/searchResults"
+		class="absolute inset-y-0 right-0 flex justify-start rounded-r-sm"
+	>
+		<input id="voiceInput" type="text" name="searchTerm" hidden />
+		<input type="text" name="category" value="All" hidden />
+		<input type="text" name="pagination" value="1" hidden />
+		<button on:click|preventDefault={startDictation}>
+			<MicIcon class="h-8 w-8 text-black bg-white py-2 pr-2 rounded-r-sm" />
+		</button>
 	</form>
 </form>
