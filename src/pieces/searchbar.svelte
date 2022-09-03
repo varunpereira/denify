@@ -110,7 +110,7 @@
 										pagination
 								);
 								suggestionsOn = false;
-								// searchTerm = suggestion.title;
+								searchTerm = suggestion.title;
 							}
 						}}
 						type="button"
