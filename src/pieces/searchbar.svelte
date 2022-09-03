@@ -4,12 +4,16 @@
 	import axios from 'axios';
 	import { page } from '$app/stores';
 
-	var searchTerm = '';
+	var searchTerm = $page.url.searchParams.get('searchTerm') || '';
+	// if($page.url.searchParams.get('searchTerm')){
+	// 	suggestion = false;
+	// 	$page.url.searchParams.get('searchTerm').trim()
+	// }
 	var categoryList = ['All', 'Tech'];
 	var category = categoryList[0];
 	var suggestions = 'loading';
 	var pagination = '1';
-	var suggestionsOn = true;
+	var suggestionsOn = false;
 
 	// suggestions
 	$: if (suggestionsOn == true) {
