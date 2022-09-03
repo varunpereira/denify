@@ -56,8 +56,7 @@
 
 	$: if (
 		searchTerm != $page.url.searchParams.get('searchTerm').trim() ||
-		category != $page.url.searchParams.get('category').trim() ||
-		pagination != $page.url.searchParams.get('pagination').trim()
+		category != $page.url.searchParams.get('category').trim()
 	) {
 		getProducts();
 	} else if (pagination != $page.url.searchParams.get('pagination').trim()) {
