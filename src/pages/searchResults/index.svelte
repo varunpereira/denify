@@ -10,9 +10,6 @@
 
 	var products = null;
 	var error = null;
-	var searchTerm = $page.url.searchParams.get('searchTerm').trim();
-	var category = $page.url.searchParams.get('category').trim();
-	var pagination = Number($page.url.searchParams.get('pagination').trim());
 	var pages = null;
 
 	onMount(async function () {
@@ -39,22 +36,7 @@
 	}
 
 	$: {
-		axios
-			.post($page.url.pathname, {
-				searchTerm: $page.url.searchParams.get('searchTerm').trim(),
-				category: $page.url.searchParams.get('category').trim(),
-				pagination: $page.url.searchParams.get('pagination').trim()
-			})
-			.then(function (res) {
-				if (res.data.error) {
-					error = res.data.error;
-				}
-				pages = res.data.pages;
-				products = res.data.products;
-			});
-		console.table($page.url.searchParams.get('searchTerm').trim());
-		console.table($page.url.searchParams.get('category').trim());
-		console.table($page.url.searchParams.get('pagination').trim());
+		getProducts();
 	}
 </script>
 
