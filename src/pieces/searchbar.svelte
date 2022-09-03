@@ -54,7 +54,7 @@
 	}
 
 	function voiceForm() {
-		goto('');
+		goto('/searchResults');
 	}
 </script>
 
