@@ -5,10 +5,6 @@
 	import { page } from '$app/stores';
 
 	var searchTerm = $page.url.searchParams.get('searchTerm') || '';
-	// if($page.url.searchParams.get('searchTerm')){
-	// 	suggestion = false;
-	// 	$page.url.searchParams.get('searchTerm').trim()
-	// }
 	var categoryList = ['All', 'Tech'];
 	var category = categoryList[0];
 	var suggestions = 'loading';
