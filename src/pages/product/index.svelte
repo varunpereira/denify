@@ -1,5 +1,5 @@
 <script>
-	import { ChevronLeftIcon, ChevronRightIcon, PlusIcon, MinusIcon } from 'svelte-feather-icons';
+	import { StarIcon, PlusIcon, MinusIcon } from 'svelte-feather-icons';
 	import { auth } from '@src/provs/store.js';
 	import axios from 'axios';
 	import { goto } from '$app/navigation';
@@ -99,7 +99,7 @@
 <svelte:head><title>Product Details - Denify</title></svelte:head>
 
 {#if product && reviews}
-	<div class="items-start justify-center md:flex ml-0 ">
+	<div class="md:flex justify-start ">
 		<div class="flex justify-start">
 			<div class="mr-2 flex-none">
 				{#each product.images as image, index}
@@ -124,9 +124,9 @@
 					{/if}
 				{/each}
 			</div>
-			<img class="w-10/12 rounded-lg" src={product.images[tab].url} alt={product.images[tab].url} />
+			<img class="w-10/12 md:w-11/12 rounded-lg" src={product.images[tab].url} alt={product.images[tab].url} />
 		</div>
-		<div class="md:ml-0 md:w-1/2 xl:w-2/5">
+		<div class="md:ml-4">
 			<p class="mb-6 text-xl font-semibold">
 				{product.title}
 			</p>
@@ -189,9 +189,9 @@
 			{#each reviews as review}
 				<div
 					key={review._id}
-					class="mr-10 mb-10 h-40 w-40 max-w-sm rounded-lg border border-gray-200 bg-white p-3 shadow-md dark:border-gray-700 dark:bg-gray-800"
+					class="mr-10 mb-10 h-40 w-40 max-w-sm rounded-lg border border-gray-200 bg-white p-3"
 				>
-					<p class="mb-2  font-bold tracking-tight text-gray-900 dark:text-white">
+					<p class="mb-2 font-bold tracking-tight text-gray-900 dark:text-white">
 						<button
 							on:click={function () {
 								goto('/account/profile?email=' + review.email);
@@ -200,10 +200,15 @@
 							>{review.email}
 						</button>
 					</p>
-					<p class="mb-2  font-bold tracking-tight text-gray-900 dark:text-white">
-						{review.rating} / 5 stars
-					</p>
-					<p class="mb-3 min-h-full text-xs font-normal text-gray-700 dark:text-gray-400">
+					<div class="flex justify-start mb-2">
+						{#each Array(review.rating) as _}
+							<StarIcon class="w-4 h-4 stroke-black fill-black" />
+						{/each}
+						{#each Array(5 - review.rating) as _}
+							<StarIcon class="w-4 h-4 stroke-black" />
+						{/each}
+					</div>
+					<p class="mb-2 min-h-full text-xs font-normal text-gray-700">
 						{review.description}
 					</p>
 				</div>
