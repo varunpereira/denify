@@ -124,7 +124,7 @@
 					{/if}
 				{/each}
 			</div>
-			<img class="w-10/12 md:w-11/12 rounded-lg" src={product.images[tab].url} alt={product.images[tab].url} />
+			<img class="w-80 h-80 lg:w-[500px] lg:h-[500px] object-contain rounded-lg border border-white" src={product.images[tab].url} alt={product.images[tab].url} />
 		</div>
 		<div class="md:ml-4">
 			<p class="mb-6 text-xl font-semibold">
@@ -155,14 +155,14 @@
 				</div>
 			</div>
 			<div class="mt-5 mb-3">
-				<button on:click|preventDefault={minusButton}><MinusIcon class="h-6 w-6 pt-2" /></button>
+				<button on:click|preventDefault={minusButton}><MinusIcon class="h-6 w-6 pt-[10px]" /></button>
 				<input
 					on:input={orderQuantityChange}
 					value={orderQuantity}
-					class="mx-2 w-10 rounded text-center text-black"
+					class="mx-2 w-10 h-8 rounded text-center text-black flex-justify-start"
 					type="text"
 				/>
-				<button on:click|preventDefault={plusButton}><PlusIcon class="h-6 w-6 pt-2" /></button>
+				<button on:click|preventDefault={plusButton}><PlusIcon class="h-6 w-6 pt-[10px]" /></button>
 			</div>
 			<button
 				on:click|preventDefault={function () {
