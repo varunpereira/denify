@@ -159,7 +159,7 @@
 				<input
 					on:input={orderQuantityChange}
 					value={orderQuantity}
-					class="mx-2 w-10 h-8 rounded text-center text-black flex-justify-start"
+					class="mx-2 w-10 h-8 rounded-sm text-center text-black flex-justify-start"
 					type="text"
 				/>
 				<button on:click|preventDefault={plusButton}><PlusIcon class="h-6 w-6 pt-[10px]" /></button>
