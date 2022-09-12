@@ -16,19 +16,19 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'));
 		}
-		// axios
-		// 	.post($page.url.pathname, {
-		// 		searchTerm: $page.url.searchParams.get('searchTerm').trim(),
-		// 		category: $page.url.searchParams.get('category').trim(),
-		// 		pagination: $page.url.searchParams.get('pagination').trim()
-		// 	})
-		// 	.then(function (res) {
-		// 		if (res.data.error) {
-		// 			error = res.data.error;
-		// 		}
-		// 		pages = res.data.pages;
-		// 		products = res.data.products;
-		// 	});
+		axios
+			.post($page.url.pathname, {
+				searchTerm: $page.url.searchParams.get('searchTerm').trim(),
+				category: $page.url.searchParams.get('category').trim(),
+				pagination: $page.url.searchParams.get('pagination').trim()
+			})
+			.then(function (res) {
+				if (res.data.error) {
+					error = res.data.error;
+				}
+				pages = res.data.pages;
+				products = res.data.products;
+			});
 	});
 
 	$: {
