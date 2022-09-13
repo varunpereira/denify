@@ -6,7 +6,7 @@
 	import { page } from '$app/stores';
 	import cookie from 'js-cookie';
 	import { goto } from '$app/navigation';
-	import { ArrowLeftIcon, ArrowRightIcon } from 'svelte-feather-icons';
+	import { ArrowLeftIcon, ArrowRightIcon, MessageCircleIcon } from 'svelte-feather-icons';
 
 	var products = null;
 	var pages = null;
@@ -59,15 +59,17 @@
 <svelte:head><title>Account Profile - {email} - Denify</title></svelte:head>
 
 {#if products && email}
-	<p class="mb-5 text-lg font-semibold">{email}'s Products</p>
+	<p class="mb-5 text-lg font-semibold">{email}</p>
 	<button
 		on:click|preventDefault={function () {
 			sendMessage();
 		}}
-		class=" mb-5 hover:text-gray-300 cursor-pointer"
+		class="flex justify-start mb-5 hover:text-gray-300 cursor-pointer"
 	>
-		Message
+		<MessageCircleIcon class="w-[20px] h-[20px] mr-1 mb-1" />
+		<p>Message</p>
 	</button>
+
 	<div class="flex flex-wrap text-white">
 		{#if products.length == 0}
 			<p>No Products found.</p>
