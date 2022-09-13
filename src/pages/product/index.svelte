@@ -99,11 +99,11 @@
 <svelte:head><title>Product Details - Denify</title></svelte:head>
 
 {#if product && reviews}
-	<div class="md:flex justify-start ">
+	<div class="lg:flex justify-start ">
 		<div class="flex justify-start">
 			<div class="mr-2 flex-none">
 				{#each product.images as image, index}
-					{#if index == tab}
+					{#if index == tab && index <= 6}
 						<img
 							on:click={function () {
 								tab = index;
@@ -112,7 +112,7 @@
 							src={image.url}
 							alt={image.url}
 						/>
-					{:else}
+					{:else if index != tab && index <= 6}
 						<img
 							on:click={function () {
 								tab = index;
@@ -124,7 +124,11 @@
 					{/if}
 				{/each}
 			</div>
-			<img class="w-80 h-80 lg:w-[500px] lg:h-[500px] object-contain rounded-lg border border-white" src={product.images[tab].url} alt={product.images[tab].url} />
+			<img
+				class="w-[328px] h-[328px] md:w-[496px] md:h-[496px] object-contain rounded-lg border border-white"
+				src={product.images[tab].url}
+				alt={product.images[tab].url}
+			/>
 		</div>
 		<div class="md:ml-4">
 			<p class="mb-6 text-xl font-semibold">
@@ -155,7 +159,9 @@
 				</div>
 			</div>
 			<div class="mt-5 mb-3">
-				<button on:click|preventDefault={minusButton}><MinusIcon class="h-6 w-6 pt-[10px]" /></button>
+				<button on:click|preventDefault={minusButton}
+					><MinusIcon class="h-6 w-6 pt-[10px]" /></button
+				>
 				<input
 					on:input={orderQuantityChange}
 					value={orderQuantity}

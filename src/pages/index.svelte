@@ -5,6 +5,7 @@
 	import cookie from 'js-cookie';
 	import { goto } from '$app/navigation';
 	import Product from '@src/pieces/product.svelte';
+	import { TrendingUpIcon } from 'svelte-feather-icons';
 
 	var products = null;
 	var error = null;
@@ -17,15 +18,11 @@
 	});
 
 	async function getProducts() {
-		var res = await axios.post('/searchResults', {
-			searchTerm: '',
-			category: 'All',
-			pagination: '1'
-		});
+		var res = await axios.post('/');
 		if (res.data.error) {
 			error = res.data.error;
 		}
-		products = res.data.products.slice(0, 8);
+		products = res.data.trendingProducts;
 	}
 </script>
 
@@ -33,7 +30,11 @@
 
 <img src="/homeBanner.png" alt="" class="w-full rounded-md mb-4" />
 
-<p class="mb-5 text-xl font-semibold flex justify-center">Trending</p>
+<div class="flex justify-center">
+	<TrendingUpIcon class="w-6 h-6 mr-2 mt-1" />
+	<p class="mb-5 text-xl font-semibold flex justify-center">Trending</p>
+</div>
+
 
 {#if products}
 	<div class="flex flex-wrap text-white">
