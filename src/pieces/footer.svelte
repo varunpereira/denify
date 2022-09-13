@@ -1,21 +1,71 @@
 <script>
-	import { InstagramIcon, MailIcon } from 'svelte-feather-icons';
+	import { InstagramIcon, MailIcon, ShoppingBagIcon } from 'svelte-feather-icons';
 	import { goto } from '$app/navigation';
 </script>
 
-<div class="grid flex justify-center pt-10 pb-10 ">
-	<div class="flex justify-center mb-5">
-		<button
-			on:click={function () {
-				window.open('https://www.instagram.com/denify.shop/');
-			}}
-			class="mr-2"><InstagramIcon class="w-6 h-6" /></button
-		>
-		<button
-			on:click={function () {
-				goto('/email');
-			}}><MailIcon class="w-6 h-6" /></button
-		>
+<div class="p-4 sm:p-6">
+	<div class="md:flex md:justify-between mb-6">
+		<div class="mb-6 md:mb-0">
+			<a href="/" class="flex items-center">
+				<ShoppingBagIcon class="w-6 h-6 mr-1" />
+				<span class="self-center text-2xl font-semibold whitespace-nowrap ">Denify</span>
+			</a>
+		</div>
+		<div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
+			<div>
+				<p class="mb-6 text-sm font-semibold  uppercase ">Pages</p>
+				<ul class=" ">
+					<li class="mb-4">
+						<a href="/about" class="hover:underline">About</a>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<p class="mb-6 text-sm font-semibold  uppercase ">Contact</p>
+				<div class=" ">
+					<div class="mb-[10px]">
+						<button
+							on:click={function () {
+								window.open('https://www.instagram.com/denify.shop/');
+							}}
+							class="hover:text-gray-300"><InstagramIcon class="w-[20px] h-[20px]" /></button
+						>
+					</div>
+					<div>
+						<button
+							on:click={function () {
+								window.open('https://www.instagram.com/denify.shop/');
+							}}
+							class="hover:text-gray-300"><MailIcon class="w-[20px] h-[20px]" /></button
+						>
+					</div>
+				</div>
+			</div>
+			<div>
+				<p class="mb-6 text-sm font-semibold  uppercase ">Legal</p>
+				<div class=" ">
+					<div class="mb-4">
+						<button
+							on:click={function () {
+								window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+							}}
+							class="hover:underline">Privacy Policy</button
+						>
+					</div>
+					<div>
+						<button
+							on:click={function () {
+								window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+							}}
+							class="hover:underline"
+							>Terms &amp; Conditions
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
-	<div class="font-bold">© 2022 Denify</div>
+	<div class="sm:flex sm:items-center sm:justify-center">
+		<p class="text-sm sm:text-center ">© 2022 Denify All Rights Reserved.</p>
+	</div>
 </div>
