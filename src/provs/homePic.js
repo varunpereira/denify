@@ -1,5 +1,6 @@
 export var pic = [
 	'/home/0.png',
+	'/home/1.jpg',
 	'/home/2.jpg',
 	'/home/3.jpg',
 	'/home/4.jpg',
