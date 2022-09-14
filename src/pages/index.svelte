@@ -6,9 +6,11 @@
 	import { goto } from '$app/navigation';
 	import Product from '@src/pieces/product.svelte';
 	import { TrendingUpIcon } from 'svelte-feather-icons';
+	import { pic } from '@src/provs/homePic.js';
 
 	var products = null;
 	var error = null;
+	var picIndex = 0;
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
@@ -24,17 +26,26 @@
 		}
 		products = res.data.trendingProducts;
 	}
+
+	$: {
+		setTimeout(function () {
+			if (picIndex == pic.length - 1) {
+				picIndex = 0;
+			} else {
+				picIndex += 1;
+			}
+		}, 2000);
+	}
 </script>
 
 <svelte:head><title>Home - Denify</title></svelte:head>
 
-<img src="/homeBanner.png" alt="" class="w-full rounded-md mb-4" />
+<img src={pic[picIndex]} alt="" class="w-full rounded-md mb-4" />
 
 <div class="flex justify-center">
 	<TrendingUpIcon class="w-6 h-6 mr-2 mt-1" />
 	<p class="mb-5 text-xl font-semibold flex justify-center">Trending</p>
 </div>
-
 
 {#if products}
 	<div class="flex flex-wrap text-white">
