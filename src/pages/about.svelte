@@ -18,6 +18,9 @@
 
 <svelte:head><title>About - Denify</title></svelte:head>
 
+<div class="flex justify-center">
+	<p class="mb-5 text-xl font-semibold flex justify-center">Our Mission</p>
+</div>
 
 <div class="flex justify-center">
 	<p class="mb-5 text-xl font-semibold flex justify-center">Our Story</p>
