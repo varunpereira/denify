@@ -28,7 +28,21 @@
 		reviews = res.data.reviews;
 	});
 
-	function addToCart(productItem) {
+	$: {
+		axios
+			.post($page.url.pathname, {
+				productId
+			})
+			.then(function (res) {
+				if (res.data.error) {
+					error = res.data.error;
+				}
+				product = res.data.product;
+				reviews = res.data.reviews;
+			});
+	}
+
+	async function addToCart(productItem) {
 		if (!$auth.user) {
 			goto('/signin');
 			return;
@@ -37,7 +51,7 @@
 			error = 'Quantity not available from current stock levels.';
 			return;
 		}
-		var res = axios.post($page.url.pathname + '/setInc', {
+		var res = await axios.post($page.url.pathname + '/setInc', {
 			email: $auth.user.email,
 			product: productItem,
 			productQuantity: orderQuantity
@@ -62,12 +76,12 @@
 	}
 
 	function orderQuantityChange(event) {
-		varqty = Number(event.target.value.trim());
+		var qty = Number(event.target.value.trim());
 		if (isNaN(qty)) {
 			error = 'Quantity can only be natural number.';
-			return;
+		} else {
+			orderQuantity = qty;
 		}
-		orderQuantity = qty;
 	}
 
 	function leftArrow() {
@@ -163,7 +177,7 @@
 					><MinusIcon class="h-6 w-6 pt-[10px]" /></button
 				>
 				<input
-					on:input={orderQuantityChange}
+					on:input|preventDefault={orderQuantityChange}
 					value={orderQuantity}
 					class="mx-2 w-10 h-8 rounded-sm text-center text-black flex-justify-start"
 					type="text"
