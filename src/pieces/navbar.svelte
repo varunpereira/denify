@@ -36,7 +36,7 @@
 
 <svelte:window bind:innerWidth={width} />
 
-<div class="relative min-w-min bg-black py-2 text-xs md:flex md:items-center md:justify-between">
+<div class="relative bg-inherit min-w-min py-2 text-xs md:flex md:items-center md:justify-between">
 	<div class="md:mr-5 mb-1 px-0 flex items-center justify-between ">
 		<p class="text-xl">
 			<button
@@ -61,7 +61,7 @@
 
 	{#if menuStatus == true || width >= 768}
 		<ul
-			class="absolute bg-black w-full md:static list-reset md:flex md:items-center md:justify-end"
+			class="absolute bg-inherit w-full md:static list-reset md:flex md:items-center md:justify-end"
 		>
 			<SearchBar />
 
@@ -105,7 +105,7 @@
 						</button>
 						{#if dropdownSelected}
 							<div
-								class="absolute md:w-[16rem] w-full md:right-0 md:mt-2 md:pl-4 bg-black text-white rounded-b-md"
+								class="absolute bg-inherit md:w-[16rem] w-full md:right-0 md:mt-2 md:pl-4 text-white rounded-b-md"
 							>
 								{#each accountList as account}
 									<button
