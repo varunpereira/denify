@@ -82,14 +82,14 @@
 				value={message}
 				on:input|preventDefault={function (event) {message = event.target.value}}
 				type="text"
-				class="border border-gray-400 w-full min-w-max rounded-full bg-white py-2 pl-4 text-sm text-black focus:outline-none"
+				class="border border-gray-400 w-full min-w-max rounded-full bg-white py-2 px-4 text-sm text-black focus:outline-none"
 				placeholder="type message"
 			/>
 			<button
 				type="submit"
 				class="absolute inset-y-0 right-0 w-10 max-w-min items-center justify-center"
 			>
-				<ArrowUpCircleIcon class="h-6 w-6 rounded-full fill-green-500 stroke-white mr-2" />
+				<ArrowUpCircleIcon class="h-6 w-6 rounded-full fill-green-500 stroke-white" />
 			</button>
 		</form>
 	</div>
