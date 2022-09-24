@@ -76,13 +76,13 @@
 
 		<form
 			on:submit|preventDefault={function (){sendMessage()}}
-			class="relative w-full rounded-b-full border-2 border-gray-400"
+			class="relative rounded-b-full p-2"
 		>
 			<input
 				value={message}
 				on:input|preventDefault={function (event) {message = event.target.value}}
 				type="text"
-				class="focus:shadow-outline w-full min-w-max rounded-b-full bg-white  py-2 pl-2 text-sm leading-tight text-black focus:outline-none"
+				class="border border-gray-400 w-full min-w-max rounded-full bg-white py-2 pl-4 text-sm text-black focus:outline-none"
 				placeholder="type message"
 			/>
 			<button
