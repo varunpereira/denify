@@ -87,9 +87,9 @@
 			/>
 			<button
 				type="submit"
-				class="absolute inset-y-0 right-0 w-10 max-w-min items-center justify-center pr-2"
+				class="absolute inset-y-0 right-0 w-10 max-w-min items-center justify-center"
 			>
-				<ArrowUpCircleIcon class="h-6 w-6 rounded-full fill-green-500 stroke-white" />
+				<ArrowUpCircleIcon class="h-6 w-6 rounded-full fill-green-500 stroke-white mr-2" />
 			</button>
 		</form>
 	</div>
