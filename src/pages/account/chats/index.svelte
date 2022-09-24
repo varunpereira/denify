@@ -43,9 +43,9 @@
 <svelte:head><title>Account Chat - Denify</title></svelte:head>
 
 {#if messages}
-	<div class="rounded-md bg-white text-black md:mx-40 ">
+	<div class="rounded-3xl bg-white text-black md:mx-40 ">
 		<p
-			class="flex justify-center rounded-t-md border-2 border-gray-400 py-2 text-xl font-semibold"
+			class="flex justify-center rounded-t-3xl border-b border-gray-400 py-2 text-xl font-semibold"
 		>
 			{recipEmail}
 		</p>
@@ -59,13 +59,13 @@
 				<div key={index} class="">
 					{#if Object.keys(message)[0] == $auth.user.email}
 						<div class="flex justify-end">
-							<div class="mr-2 max-w-max rounded-t-3xl rounded-l-3xl bg-green-600 px-3 py-1">
+							<div class="mr-2 max-w-max rounded-t-full rounded-l-full bg-green-600 px-3 py-1">
 								{message[$auth.user.email]}
 							</div>
 						</div>
 					{:else}
 						<div class="flex justify-start">
-							<div class="ml-2 max-w-max rounded-t-3xl rounded-r-3xl  bg-blue-600 px-3 py-1">
+							<div class="ml-2 max-w-max rounded-t-full rounded-r-full bg-blue-600 px-3 py-1">
 								{message[recipEmail]}
 							</div>
 						</div>
@@ -76,20 +76,20 @@
 
 		<form
 			on:submit|preventDefault={function (){sendMessage()}}
-			class="relative w-full rounded-b-md border-2 border-gray-400"
+			class="relative w-full rounded-b-full border-2 border-gray-400"
 		>
 			<input
 				value={message}
 				on:input|preventDefault={function (event) {message = event.target.value}}
 				type="text"
-				class="focus:shadow-outline w-full min-w-max rounded-b-md bg-white  py-2 pl-2 text-sm leading-tight text-black focus:outline-none"
+				class="focus:shadow-outline w-full min-w-max rounded-b-full bg-white  py-2 pl-2 text-sm leading-tight text-black focus:outline-none"
 				placeholder="type message"
 			/>
 			<button
 				type="submit"
-				class="absolute inset-y-0 right-0 w-10  max-w-min items-center justify-center rounded-b-md bg-white pr-2"
+				class="absolute inset-y-0 right-0 w-10 max-w-min items-center justify-center rounded-b-full bg-white pr-2"
 			>
-				<ArrowUpCircleIcon class="h-6 w-6 rounded-lg fill-green-500 text-white" />
+				<ArrowUpCircleIcon class="h-6 w-6 rounded-full fill-green-500 text-white" />
 			</button>
 		</form>
 	</div>

@@ -10,6 +10,7 @@
 	var suggestions = 'loading';
 	var pagination = '1';
 	var suggestionsOn = false;
+	var micOn = false;
 
 	// suggestions
 	$: if (suggestionsOn == true) {
@@ -34,15 +35,18 @@
 			recognition.continuous = false;
 			recognition.interimResults = false;
 			recognition.lang = 'en-US';
+			micOn = true;
 			recognition.start();
 			recognition.onresult = function (e) {
 				suggestionsOn = false;
 				searchTerm = e.results[0][0].transcript;
 				recognition.stop();
+				micOn = false;
 				goto('/searchResults?searchTerm=' + searchTerm + '&category=All&pagination=1');
 			};
 			recognition.onerror = function (e) {
 				recognition.stop();
+				micOn = false;
 			};
 		}
 	}
@@ -128,7 +132,7 @@
 		type="submit"
 		class="absolute inset-y-0 right-8 w-10 max-w-min mr-2 cursor-pointer items-center justify-center bg-white"
 	>
-		<SearchIcon class="h-4 w-4 text-black" />
+		<SearchIcon class="h-4 w-4 stroke-black" />
 	</button>
 	<form
 		on:submit|preventDefault={startDictation}
@@ -136,7 +140,11 @@
 	>
 		<input type="text" name="searchTerm" hidden />
 		<button type="submit">
-			<MicIcon class="h-8 w-8 text-black bg-white py-2 pr-2 rounded-r-lg" />
+			<MicIcon
+				class={`${
+					micOn ? 'stroke-red-800' : 'stroke-black'
+				} h-8 w-8 bg-white py-2 pr-2 rounded-3xl hover:stroke-red-800`}
+			/>
 		</button>
 	</form>
 </form>
