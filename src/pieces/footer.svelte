@@ -6,9 +6,9 @@
 <div class="p-4 sm:p-6">
 	<div class="md:flex md:justify-between mb-6">
 		<div class="mb-6 md:mb-0">
-			<a href="/" class="flex items-center">
+			<a href="/" class="flex items-center hover:text-gray-300">
 				<ShoppingBagIcon class="w-6 h-6 mr-1" />
-				<span class="self-center text-2xl font-semibold whitespace-nowrap ">Denify</span>
+				<span class="self-center text-2xl font-semibold whitespace-nowrap">Denify</span>
 			</a>
 		</div>
 		<div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
@@ -16,7 +16,7 @@
 				<p class="mb-6 text-sm font-semibold  uppercase ">Pages</p>
 				<ul class=" ">
 					<li class="mb-4">
-						<a href="/about" class="hover:underline">About</a>
+						<a href="/about" class="hover:text-gray-300">About</a>
 					</li>
 				</ul>
 			</div>
@@ -49,7 +49,7 @@
 							on:click={function () {
 								window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 							}}
-							class="hover:underline">Privacy Policy</button
+							class="hover:text-gray-300">Privacy Policy</button
 						>
 					</div>
 					<div>
@@ -57,7 +57,7 @@
 							on:click={function () {
 								window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
 							}}
-							class="hover:underline"
+							class="hover:text-gray-300"
 							>Terms &amp; Conditions
 						</button>
 					</div>
@@ -66,6 +66,6 @@
 		</div>
 	</div>
 	<div class="sm:flex sm:items-center sm:justify-center">
-		<p class="text-sm sm:text-center ">© 2022 Denify All Rights Reserved.</p>
+		<p class="text-sm sm:text-center ">© 2022 Denify All Rights Reserved</p>
 	</div>
 </div>

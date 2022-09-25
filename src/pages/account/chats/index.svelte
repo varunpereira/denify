@@ -82,7 +82,7 @@
 				value={message}
 				on:input|preventDefault={function (event) {message = event.target.value}}
 				type="text"
-				class="border border-gray-400 w-full min-w-max rounded-full bg-white py-2 pl-4 text-sm text-black focus:outline-none"
+				class="border border-gray-400 w-full min-w-max rounded-full bg-white py-2 pl-4 text-sm text-black outline-none"
 				placeholder="type message"
 			/>
 			<button

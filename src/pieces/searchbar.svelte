@@ -68,7 +68,7 @@
 		}
 	}}
 >
-	<select bind:value={category} class="absolute inset-y-0 rounded-l-lg">
+	<select bind:value={category} class="absolute inset-y-0 rounded-l-lg outline-none">
 		{#each categoryList as category}
 			<option value={category} class="w-10 bg-gray-100 py-2 px-4">
 				{category}
@@ -84,7 +84,7 @@
 		list="suggestions"
 		type="text"
 		placeholder="search"
-		class="rounded-l-lg rounded-r-lg w-full min-w-max bg-white py-2 pl-16 text-sm leading-tight text-black focus:outline-none"
+		class="rounded-l-lg rounded-r-lg w-full min-w-max bg-white py-2 pl-16 text-sm leading-tight text-black outline-none"
 	/>
 	{#if searchTerm.trim() != ''}
 		<button

@@ -88,7 +88,7 @@
 						formSubmit();
 					}}
 					type="submit"
-					class="hover:bg-green-dark my-1 w-full rounded bg-black py-3 text-center text-white focus:outline-none"
+					class="hover:bg-green-dark my-1 w-full rounded bg-black py-3 text-center text-white outline-none"
 				>
 					Add Review
 				</button>
