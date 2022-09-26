@@ -60,13 +60,13 @@
 	</div>
 
 	{#if menuStatus == true || width >= 768}
-		<ul
+		<div
 			class="absolute bg-black w-full md:static list-reset md:flex md:items-center md:justify-end"
 		>
 			<SearchBar />
 
 			{#if $auth.user}
-				<li class="nav-item mr-5">
+				<div class="nav-item mr-5">
 					<button
 						on:click={function () {
 							goto('/product/sell');
@@ -75,8 +75,8 @@
 					>
 						Sell
 					</button>
-				</li>
-				<li class="nav-item mr-3">
+				</div>
+				<div class="nav-item mr-3">
 					<button
 						on:click={function () {
 							goto('/cart');
@@ -88,7 +88,7 @@
 							{$auth.cartQuantity}
 						</sup>
 					</button>
-				</li>
+				</div>
 				<div class="nav-item flow-root md:pb-3">
 					<div class="rounded-sm hover:text-gray-300 md:mx-2 relative">
 						<button
@@ -100,7 +100,7 @@
 							<UserIcon class="h-5 w-5 border border-1 rounded-full" />
 							<div class="flex justify-start">
 								{$auth.user.email}
-								<ChevronDownIcon class="w-4 h-4 mt-1"/>
+								<ChevronDownIcon class="w-4 h-4 mt-1" />
 							</div>
 						</button>
 						{#if dropdownSelected}
@@ -113,7 +113,7 @@
 											goto(account.href);
 											dropdownSelected = !dropdownSelected;
 										}}
-										class=" block py-2 rounded hover:text-gray-300">{account.title}</button
+										class="block py-2 rounded hover:text-gray-300">{account.title}</button
 									>
 								{/each}
 								<button
@@ -138,6 +138,6 @@
 					Sign in
 				</button>
 			{/if}
-		</ul>
+		</div>
 	{/if}
 </div>
