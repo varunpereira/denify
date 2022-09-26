@@ -1,7 +1,7 @@
 <script>
-	import '@src/app.css';
-	import NavBar from '@src/pieces/navbar.svelte';
-	import Footer from '@src/pieces/footer.svelte';
+	import '@src/app.css'
+	import NavBar from '@src/pieces/navbar.svelte'
+	import Footer from '@src/pieces/footer.svelte'
 </script>
 
 <div>

@@ -1,28 +1,28 @@
 <script>
-	import axios from 'axios';
-	import Product from '@src/pieces/product.svelte';
-	import { auth } from '@src/provs/store.js';
-	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
-	import cookie from 'js-cookie';
-	import { goto } from '$app/navigation';
+	import axios from 'axios'
+	import Product from '@src/pieces/product.svelte'
+	import { auth } from '@src/provs/store.js'
+	import { onMount } from 'svelte'
+	import { page } from '$app/stores'
+	import cookie from 'js-cookie'
+	import { goto } from '$app/navigation'
 
-	var order = null;
-	var error = null;
-	var orderId = $page.url.searchParams.get('orderId');
+	var order = null
+	var error = null
+	var orderId = $page.url.searchParams.get('orderId')
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
-			$auth = JSON.parse(cookie.get('auth'));
+			$auth = JSON.parse(cookie.get('auth'))
 		}
 		var res = await axios.post($page.url.pathname, {
-			orderId
-		});
+			orderId,
+		})
 		if (res.data.error) {
-			error = res.data.error;
+			error = res.data.error
 		}
-		order = res.data.order;
-	});
+		order = res.data.order
+	})
 </script>
 
 <svelte:head><title>Account Payment Order Details - Denify</title></svelte:head>

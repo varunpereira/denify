@@ -1,21 +1,21 @@
-import db from '@src/provs/db';
-import userModel from '@src/prots/user';
+import db from '@src/provs/db'
+import userModel from '@src/prots/user'
 
-db();
+db()
 
 export async function post({ request }) {
-	var { email } = await request.json();
-	var error = null;
+	var { email } = await request.json()
+	var error = null
 	var user = await userModel.findOne({
-		email
-	});
+		email,
+	})
 	if (user == null) {
-		error = 'User does not exist.';
+		error = 'User does not exist.'
 	}
 	return {
 		body: {
 			error,
-			user
-		}
-	};
+			user,
+		},
+	}
 }

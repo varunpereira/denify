@@ -1,24 +1,24 @@
-import db from '@src/provs/db';
-import productModel from '@src/prots/product';
+import db from '@src/provs/db'
+import productModel from '@src/prots/product'
 
-db();
+db()
 
 export async function post({ request }) {
 	try {
-		var { productId } = await request.json();
+		var { productId } = await request.json()
 		var product = await productModel.findOne({
-			_id: productId
-		});
+			_id: productId,
+		})
 		return {
 			body: {
-				product
-			}
-		};
+				product,
+			},
+		}
 	} catch (error) {
 		return {
 			body: {
-				error: error.message
-			}
-		};
+				error: error.message,
+			},
+		}
 	}
 }

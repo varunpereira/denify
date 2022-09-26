@@ -1,16 +1,16 @@
-import db from '@src/provs/db';
-import userModel from '@src/prots/user';
+import db from '@src/provs/db'
+import userModel from '@src/prots/user'
 
-db();
+db()
 
 export async function post({ request }) {
-	var { email } = await request.json();
+	var { email } = await request.json()
 	var user = await userModel.findOne({
-		email
-	});
+		email,
+	})
 	return {
 		body: {
-			user
-		}
-	};
+			user,
+		},
+	}
 }

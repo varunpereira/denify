@@ -1,37 +1,37 @@
 <script>
-	import axios from 'axios';
-	import Product from '@src/pieces/product.svelte';
-	import { auth } from '@src/provs/store.js';
-	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
-	import cookie from 'js-cookie';
-	import { goto } from '$app/navigation';
+	import axios from 'axios'
+	import Product from '@src/pieces/product.svelte'
+	import { auth } from '@src/provs/store.js'
+	import { onMount } from 'svelte'
+	import { page } from '$app/stores'
+	import cookie from 'js-cookie'
+	import { goto } from '$app/navigation'
 
-	var orders = null;
-	var error = null;
+	var orders = null
+	var error = null
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
-			$auth = JSON.parse(cookie.get('auth'));
+			$auth = JSON.parse(cookie.get('auth'))
 		}
 		var res = await axios.post($page.url.pathname, {
-			email: JSON.parse(cookie.get('auth')).user.email
-		});
+			email: JSON.parse(cookie.get('auth')).user.email,
+		})
 		if (res.data.error) {
-			error = res.data.error;
+			error = res.data.error
 		}
-		orders = res.data.orders;
-	});
+		orders = res.data.orders
+	})
 
 	async function refund(checkoutSessionId) {
 		var res = await axios.post($page.url.pathname + '/getStripeRefund', {
 			email: JSON.parse(cookie.get('auth')).user.email,
-			checkoutSessionId
-		});
+			checkoutSessionId,
+		})
 		if (res.data.error) {
-			error = res.data.error;
+			error = res.data.error
 		}
-		orders = res.data.orders;
+		orders = res.data.orders
 	}
 </script>
 
@@ -70,7 +70,7 @@
 								<td>
 									<button
 										on:click={function () {
-											goto('/account/payments/order?orderId=' + order._id);
+											goto('/account/payments/order?orderId=' + order._id)
 										}}
 										class="hover:underline"
 										>{order._id}
@@ -86,7 +86,7 @@
 										<button
 											class="hover:underline"
 											on:click|preventDefault={function () {
-												refund(order.checkoutSessionId);
+												refund(order.checkoutSessionId)
 											}}
 										>
 											refund

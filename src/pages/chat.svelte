@@ -1,30 +1,30 @@
 <script>
-	import { websocketFrontend } from '@src/provs/websocketFrontend';
-	import { onMount } from 'svelte';
+	import { websocketFrontend } from '@src/provs/websocketFrontend'
+	import { onMount } from 'svelte'
 
-	var textfield = '';
-	var username = '';
-	var messages = [];
+	var textfield = ''
+	var username = ''
+	var messages = []
 
 	onMount(function () {
 		websocketFrontend.on('name', function (name) {
-			username = name;
-		});
+			username = name
+		})
 		websocketFrontend.on('message', function (message) {
 			// Listen to the message event
-			messages = [...messages, message];
-		});
-	});
+			messages = [...messages, message]
+		})
+	})
 
 	function sendMessage() {
-		var message = textfield.trim();
+		var message = textfield.trim()
 		if (!message) {
-			return;
+			return
 		}
 
-		textfield = '';
+		textfield = ''
 		// Send the message
-		websocketFrontend.emit('message', message);
+		websocketFrontend.emit('message', message)
 	}
 </script>
 
@@ -51,7 +51,9 @@
 
 		<form
 			action="#"
-			on:submit|preventDefault={function (){sendMessage()}}
+			on:submit|preventDefault={function () {
+				sendMessage()
+			}}
 			class="px-6 py-4 border-t border-zinc-800 bg-zinc-700 text-white shrink-0 flex items-center"
 		>
 			<input

@@ -1,16 +1,16 @@
-import db from '@src/provs/db';
-import productModel from '@src/prots/product';
+import db from '@src/provs/db'
+import productModel from '@src/prots/product'
 
-db();
+db()
 
 export async function post({ request }) {
-	var { email } = await request.json();
+	var { email } = await request.json()
 	var products = await productModel.find({
-		email
-	});
+		email,
+	})
 	return {
 		body: {
-			products
-		}
-	};
+			products,
+		},
+	}
 }

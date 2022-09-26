@@ -1,51 +1,51 @@
-import db from '@src/provs/db';
-import userModel from '@src/prots/user';
-import orderModel from '@src/prots/order';
-import bcryptjs from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import db from '@src/provs/db'
+import userModel from '@src/prots/user'
+import orderModel from '@src/prots/order'
+import bcryptjs from 'bcryptjs'
+import jwt from 'jsonwebtoken'
 
-db();
+db()
 
 export async function post({ request }) {
-	var { email, password } = await request.json();
+	var { email, password } = await request.json()
 
-	var findUser = await userModel.findOne({ email });
+	var findUser = await userModel.findOne({ email })
 	if (findUser) {
 		return {
-			body: { error: 'This email already exists.' }
-		};
+			body: { error: 'This email already exists.' },
+		}
 	}
 
-	var passwordHash = bcryptjs.hashSync(password, 12);
+	var passwordHash = bcryptjs.hashSync(password, 12)
 
 	var saveUser = await new userModel({
 		email,
-		password: passwordHash
-	}).save();
+		password: passwordHash,
+	}).save()
 	var saveCart = await new orderModel({
 		email,
-		current: true
-	}).save();
+		current: true,
+	}).save()
 
 	// sign in
 	var accessToken = jwt.sign({ id: email }, import.meta.env.VITE_mongodbUri, {
-		expiresIn: '15m'
-	});
+		expiresIn: '15m',
+	})
 	var refreshToken = jwt.sign({ id: email }, import.meta.env.VITE_mongodbUri, {
-		expiresIn: '7d'
-	});
+		expiresIn: '7d',
+	})
 	var cart = await orderModel.findOne({
 		email,
-		current: true
-	});
-	var user = await userModel.findOne({ email });
+		current: true,
+	})
+	var user = await userModel.findOne({ email })
 
 	return {
 		body: {
 			refreshToken,
 			accessToken,
 			cartQuantity: cart.quantity,
-			user
-		}
-	};
+			user,
+		},
+	}
 }

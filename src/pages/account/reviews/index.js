@@ -1,16 +1,16 @@
-import db from '@src/provs/db';
-import reviewModel from '@src/prots/review';
+import db from '@src/provs/db'
+import reviewModel from '@src/prots/review'
 
-db();
+db()
 
 export async function post({ request }) {
-	var { email } = await request.json();
+	var { email } = await request.json()
 	var reviews = await reviewModel.find({
-		email
-	});
+		email,
+	})
 	return {
 		body: {
-			reviews
-		}
-	};
+			reviews,
+		},
+	}
 }

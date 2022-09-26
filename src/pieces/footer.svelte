@@ -1,6 +1,6 @@
 <script>
-	import { InstagramIcon, MailIcon, ShoppingBagIcon } from 'svelte-feather-icons';
-	import { goto } from '$app/navigation';
+	import { InstagramIcon, MailIcon, ShoppingBagIcon } from 'svelte-feather-icons'
+	import { goto } from '$app/navigation'
 </script>
 
 <div class="p-4 sm:p-6">
@@ -8,7 +8,7 @@
 		<div class="mb-6 md:mb-0">
 			<button
 				on:click={function () {
-					goto('/');
+					goto('/')
 				}}
 				class="flex items-center hover:text-gray-300"
 			>
@@ -23,7 +23,7 @@
 					<div class="mb-4">
 						<button
 							on:click={function () {
-								goto('/about');
+								goto('/about')
 							}}
 							class="hover:text-gray-300">About</button
 						>
@@ -31,12 +31,12 @@
 				</div>
 			</div>
 			<div>
-				<p class="mb-6 text-sm font-semibold  uppercase ">Contact</p>
+				<p class="mb-6 text-sm font-semibold uppercase ">Contact</p>
 				<div class=" ">
 					<div class="mb-[10px]">
 						<button
 							on:click={function () {
-								window.open('https://www.instagram.com/denify.shop/');
+								window.open('https://www.instagram.com/denify.shop/')
 							}}
 							class="hover:text-gray-300"><InstagramIcon class="w-[20px] h-[20px]" /></button
 						>
@@ -44,7 +44,7 @@
 					<div>
 						<button
 							on:click={function () {
-								window.open('https://www.instagram.com/denify.shop/');
+								window.open('https://www.instagram.com/denify.shop/')
 							}}
 							class="hover:text-gray-300"
 						>
@@ -59,7 +59,7 @@
 					<div class="mb-4">
 						<button
 							on:click={function () {
-								window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+								window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 							}}
 							class="hover:text-gray-300">Privacy Policy</button
 						>
@@ -67,7 +67,7 @@
 					<div>
 						<button
 							on:click={function () {
-								window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+								window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 							}}
 							class="hover:text-gray-300"
 							>Terms &amp; Conditions

@@ -1,15 +1,15 @@
-import mongoose from 'mongoose';
+import mongoose from 'mongoose'
 
 export default function db() {
 	if (mongoose.connections[0].readyState) {
-		console.log('Already connected.');
-		return;
+		console.log('Already connected.')
+		return
 	}
 	mongoose.connect(import.meta.env.VITE_mongodbUri, function (error) {
 		if (error) {
-			console.log(error);
-			return;
+			console.log(error)
+			return
 		}
-		console.log('Connected to mongodb.');
-	});
+		console.log('Connected to mongodb.')
+	})
 }

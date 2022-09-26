@@ -1,112 +1,112 @@
 <script>
-	import { StarIcon, PlusIcon, MinusIcon } from 'svelte-feather-icons';
-	import { auth } from '@src/provs/store.js';
-	import axios from 'axios';
-	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
-	import cookie from 'js-cookie';
+	import { StarIcon, PlusIcon, MinusIcon } from 'svelte-feather-icons'
+	import { auth } from '@src/provs/store.js'
+	import axios from 'axios'
+	import { goto } from '$app/navigation'
+	import { page } from '$app/stores'
+	import { onMount } from 'svelte'
+	import cookie from 'js-cookie'
 
-	var product = null;
-	var reviews = null;
-	var tab = 0;
-	var error = null;
-	var orderQuantity = 1;
-	var productId = $page.url.searchParams.get('productId');
+	var product = null
+	var reviews = null
+	var tab = 0
+	var error = null
+	var orderQuantity = 1
+	var productId = $page.url.searchParams.get('productId')
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
-			$auth = JSON.parse(cookie.get('auth'));
+			$auth = JSON.parse(cookie.get('auth'))
 		}
 		var res = await axios.post($page.url.pathname, {
-			productId
-		});
+			productId,
+		})
 		if (res.data.error) {
-			error = res.data.error;
+			error = res.data.error
 		}
-		product = res.data.product;
-		reviews = res.data.reviews;
-	});
+		product = res.data.product
+		reviews = res.data.reviews
+	})
 
 	$: {
 		axios
 			.post($page.url.pathname, {
-				productId
+				productId,
 			})
 			.then(function (res) {
 				if (res.data.error) {
-					error = res.data.error;
+					error = res.data.error
 				}
-				product = res.data.product;
-				reviews = res.data.reviews;
-			});
+				product = res.data.product
+				reviews = res.data.reviews
+			})
 	}
 
 	async function addToCart(productItem) {
 		if (!$auth.user) {
-			goto('/signin');
-			return;
+			goto('/signin')
+			return
 		}
 		if (orderQuantity < 1 || orderQuantity > product.stock) {
-			error = 'Quantity not available from current stock levels.';
-			return;
+			error = 'Quantity not available from current stock levels.'
+			return
 		}
 		var res = await axios.post($page.url.pathname + '/setInc', {
 			email: $auth.user.email,
 			product: productItem,
-			productQuantity: orderQuantity
-		});
+			productQuantity: orderQuantity,
+		})
 		$auth = {
 			...$auth,
-			cartQuantity: $auth.cartQuantity + orderQuantity
-		};
-		cookie.set('auth', JSON.stringify($auth));
+			cartQuantity: $auth.cartQuantity + orderQuantity,
+		}
+		cookie.set('auth', JSON.stringify($auth))
 	}
 
 	function minusButton() {
 		if (orderQuantity >= 2) {
-			orderQuantity = orderQuantity - 1;
+			orderQuantity = orderQuantity - 1
 		}
 	}
 
 	function plusButton() {
 		if (orderQuantity < product.stock) {
-			orderQuantity = orderQuantity + 1;
+			orderQuantity = orderQuantity + 1
 		}
 	}
 
 	function orderQuantityChange(event) {
-		var qty = Number(event.target.value.trim());
+		var qty = Number(event.target.value.trim())
 		if (isNaN(qty)) {
-			error = 'Quantity can only be natural number.';
+			error = 'Quantity can only be natural number.'
 		} else {
-			orderQuantity = qty;
+			orderQuantity = qty
 		}
 	}
 
 	function leftArrow() {
 		if (tab - 1 >= 0) {
-			tab = tab - 1;
-			return;
+			tab = tab - 1
+			return
 		}
-		tab = product.images.length - 1;
+		tab = product.images.length - 1
 	}
 
 	function rightArrow() {
 		if (tab + 1 < product.images.length) {
-			tab = tab + 1;
-			return;
+			tab = tab + 1
+			return
 		}
-		tab = 0;
+		tab = 0
 	}
 
 	function addReview() {
 		if (!$auth.user) {
-			console.log(JSON.stringify($auth));
-			goto('/signin');
-			return;
+			console.log(JSON.stringify($auth))
+			goto('/signin')
+			return
 		}
-		goto('/product/addReview?productId=' + product._id);
+		goto('/product/addReview?productId=' + product._id)
 	}
 </script>
 
@@ -120,7 +120,7 @@
 					{#if index == tab && index <= 6}
 						<img
 							on:click={function () {
-								tab = index;
+								tab = index
 							}}
 							class={'w-12 h-12 mb-2 object-cover rounded-lg border-2 border-orange-400'}
 							src={image.url}
@@ -129,7 +129,7 @@
 					{:else if index != tab && index <= 6}
 						<img
 							on:click={function () {
-								tab = index;
+								tab = index
 							}}
 							class={'w-12 h-12 mb-2 object-cover rounded-lg'}
 							src={image.url}
@@ -150,7 +150,7 @@
 			</p>
 			<button
 				on:click={function () {
-					goto('#reviews');
+					goto('#reviews')
 				}}
 				class="hover:text-gray-300 mb-6"
 			>
@@ -165,7 +165,7 @@
 					<p class="mr-1">Seller:</p>
 					<button
 						on:click={function () {
-							goto('/account/profile?email=' + product.email);
+							goto('/account/profile?email=' + product.email)
 						}}
 						class="hover:text-gray-300"
 						>{product.email}
@@ -186,7 +186,7 @@
 			</div>
 			<button
 				on:click|preventDefault={function () {
-					addToCart(product);
+					addToCart(product)
 				}}
 				type="button"
 				class="mt-5 flex w-24 items-center justify-center rounded bg-white py-4 text-black hover:bg-gray-400"
@@ -214,7 +214,7 @@
 					<p class="mb-2 font-bold tracking-tight text-gray-900 dark:text-white">
 						<button
 							on:click={function () {
-								goto('/account/profile?email=' + review.email);
+								goto('/account/profile?email=' + review.email)
 							}}
 							class="hover:text-gray-600"
 							>{review.email}

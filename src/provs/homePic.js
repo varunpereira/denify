@@ -8,4 +8,4 @@ export var pic = [
 	'/home/6.jpg',
 	'/home/7.jpg',
 	// '/home/8.jpg'
-];
+]

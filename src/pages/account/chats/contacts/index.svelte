@@ -1,28 +1,28 @@
 <script>
-	import axios from 'axios';
-	import Product from '@src/pieces/product.svelte';
-	import { auth } from '@src/provs/store.js';
-	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
-	import cookie from 'js-cookie';
-	import { goto } from '$app/navigation';
+	import axios from 'axios'
+	import Product from '@src/pieces/product.svelte'
+	import { auth } from '@src/provs/store.js'
+	import { onMount } from 'svelte'
+	import { page } from '$app/stores'
+	import cookie from 'js-cookie'
+	import { goto } from '$app/navigation'
 
-	var user = null;
-	var error = null;
+	var user = null
+	var error = null
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
-			$auth = JSON.parse(cookie.get('auth'));
+			$auth = JSON.parse(cookie.get('auth'))
 		}
 		var res = await axios.post($page.url.pathname, {
-			email: JSON.parse(cookie.get('auth')).user.email
-		});
+			email: JSON.parse(cookie.get('auth')).user.email,
+		})
 		if (res.data.error != null) {
-			error = res.data.error;
-			goto('error/noUser');
+			error = res.data.error
+			goto('error/noUser')
 		}
-		user = res.data.user;
-	});
+		user = res.data.user
+	})
 </script>
 
 <svelte:head><title>Account Contacts - Denify</title></svelte:head>
@@ -34,7 +34,7 @@
 			<button
 				key={index}
 				on:click={function () {
-					goto('/account/chats?recipEmail=' + contact);
+					goto('/account/chats?recipEmail=' + contact)
 				}}
 			>
 				<div class="mx-2 mb-2 rounded-md border-2 border-gray-600 hover:bg-gray-200">

@@ -1,39 +1,39 @@
 <script>
-	import axios from 'axios';
-	import { auth } from '@src/provs/store.js';
-	import cookie from 'js-cookie';
-	import { goto } from '$app/navigation';
-	import { page } from '$app/stores';
+	import axios from 'axios'
+	import { auth } from '@src/provs/store.js'
+	import cookie from 'js-cookie'
+	import { goto } from '$app/navigation'
+	import { page } from '$app/stores'
 
-	export var product;
-	var error = null;
+	export var product
+	var error = null
 
 	function addToCart() {
 		if (!$auth.user) {
-			goto('/signin');
-			return;
+			goto('/signin')
+			return
 		}
 
 		if (product.stock == 0) {
-			error = 'This product is out of stock.';
-			return;
+			error = 'This product is out of stock.'
+			return
 		}
 		var res = axios.post($page.url.pathname + '/setInc', {
 			email: $auth.user.email,
 			product,
-			productQuantity: 1
-		});
+			productQuantity: 1,
+		})
 		$auth = {
 			...$auth,
-			cartQuantity: $auth.cartQuantity + 1
-		};
-		cookie.set('auth', JSON.stringify($auth));
+			cartQuantity: $auth.cartQuantity + 1,
+		}
+		cookie.set('auth', JSON.stringify($auth))
 	}
 </script>
 
 <button
 	on:click={function () {
-		goto('/product?productId=' + product._id);
+		goto('/product?productId=' + product._id)
 	}}
 	class="mb-4 mr-4 max-w-[16rem] max-h-[32rem] text-sm rounded-lg bg-white hover:bg-gray-300 "
 >
@@ -54,7 +54,7 @@
 		</p>
 		<button
 			on:click|preventDefault={function () {
-				addToCart();
+				addToCart()
 			}}
 			class="cursor-pointer inline-flex w-full items-center justify-center rounded-lg bg-black py-2 m font-medium text-white "
 		>

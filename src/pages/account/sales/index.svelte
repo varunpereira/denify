@@ -1,27 +1,27 @@
 <script>
-	import axios from 'axios';
-	import Product from '@src/pieces/product.svelte';
-	import { auth } from '@src/provs/store.js';
-	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
-	import cookie from 'js-cookie';
-	import { goto } from '$app/navigation';
+	import axios from 'axios'
+	import Product from '@src/pieces/product.svelte'
+	import { auth } from '@src/provs/store.js'
+	import { onMount } from 'svelte'
+	import { page } from '$app/stores'
+	import cookie from 'js-cookie'
+	import { goto } from '$app/navigation'
 
-	var products = null;
-	var error = null;
+	var products = null
+	var error = null
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
-			$auth = JSON.parse(cookie.get('auth'));
+			$auth = JSON.parse(cookie.get('auth'))
 		}
 		var res = await axios.post($page.url.pathname, {
-			email: JSON.parse(cookie.get('auth')).user.email
-		});
+			email: JSON.parse(cookie.get('auth')).user.email,
+		})
 		if (res.data.error) {
-			error = res.data.error;
+			error = res.data.error
 		}
-		products = res.data.products;
-	});
+		products = res.data.products
+	})
 </script>
 
 <svelte:head><title>Account Sales - Denify</title></svelte:head>

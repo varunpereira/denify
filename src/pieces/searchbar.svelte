@@ -1,53 +1,53 @@
 <script>
-	import { goto } from '$app/navigation';
-	import { SearchIcon, XIcon, MicIcon } from 'svelte-feather-icons';
-	import axios from 'axios';
-	import { page } from '$app/stores';
+	import { goto } from '$app/navigation'
+	import { SearchIcon, XIcon, MicIcon } from 'svelte-feather-icons'
+	import axios from 'axios'
+	import { page } from '$app/stores'
 
-	var searchTerm = $page.url.searchParams.get('searchTerm') || '';
-	var categoryList = ['All', 'Tech'];
-	var category = categoryList[0];
-	var suggestions = 'loading';
-	var pagination = '1';
-	var suggestionsOn = false;
-	var micOn = false;
+	var searchTerm = $page.url.searchParams.get('searchTerm') || ''
+	var categoryList = ['All', 'Tech']
+	var category = categoryList[0]
+	var suggestions = 'loading'
+	var pagination = '1'
+	var suggestionsOn = false
+	var micOn = false
 
 	// suggestions
 	$: if (suggestionsOn == true) {
-		suggestions = 'loading';
+		suggestions = 'loading'
 		axios
 			.post('/searchResults', {
 				searchTerm: searchTerm.trim(),
 				category: category.trim(),
-				pagination: pagination.trim()
+				pagination: pagination.trim(),
 			})
 			.then(function (res) {
 				if (res.data.error) {
-					error = res.data.error;
+					error = res.data.error
 				}
-				suggestions = res.data.products.slice(0, 8);
-			});
+				suggestions = res.data.products.slice(0, 8)
+			})
 	}
 
 	function startDictation() {
 		if (window.hasOwnProperty('webkitSpeechRecognition')) {
-			var recognition = new webkitSpeechRecognition();
-			recognition.continuous = false;
-			recognition.interimResults = false;
-			recognition.lang = 'en-US';
-			micOn = true;
-			recognition.start();
+			var recognition = new webkitSpeechRecognition()
+			recognition.continuous = false
+			recognition.interimResults = false
+			recognition.lang = 'en-US'
+			micOn = true
+			recognition.start()
 			recognition.onresult = function (e) {
-				suggestionsOn = false;
-				searchTerm = e.results[0][0].transcript;
-				recognition.stop();
-				micOn = false;
-				goto('/searchResults?searchTerm=' + searchTerm + '&category=All&pagination=1');
-			};
+				suggestionsOn = false
+				searchTerm = e.results[0][0].transcript
+				recognition.stop()
+				micOn = false
+				goto('/searchResults?searchTerm=' + searchTerm + '&category=All&pagination=1')
+			}
 			recognition.onerror = function (e) {
-				recognition.stop();
-				micOn = false;
-			};
+				recognition.stop()
+				micOn = false
+			}
 		}
 	}
 </script>
@@ -62,9 +62,9 @@
 					'&category=' +
 					category +
 					'&pagination=' +
-					pagination
-			);
-			suggestionsOn = false;
+					pagination,
+			)
+			suggestionsOn = false
 		}
 	}}
 >
@@ -78,8 +78,8 @@
 	<input
 		value={searchTerm}
 		on:input={function (event) {
-			searchTerm = event.target.value;
-			suggestionsOn = true;
+			searchTerm = event.target.value
+			suggestionsOn = true
 		}}
 		list="suggestions"
 		type="text"
@@ -89,7 +89,7 @@
 	{#if searchTerm.trim() != ''}
 		<button
 			on:click|preventDefault={function () {
-				searchTerm = '';
+				searchTerm = ''
 			}}
 			type="button"
 			class="absolute inset-y-0 right-16 w-10 max-w-min items-center justify-center"
@@ -113,10 +113,10 @@
 										'&category=' +
 										category +
 										'&pagination=' +
-										pagination
-								);
-								suggestionsOn = false;
-								searchTerm = suggestion.title;
+										pagination,
+								)
+								suggestionsOn = false
+								searchTerm = suggestion.title
 							}
 						}}
 						type="button"

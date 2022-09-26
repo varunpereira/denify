@@ -1,19 +1,17 @@
 <script>
-	import axios from 'axios';
-	import { onMount } from 'svelte';
-	import { auth } from '@src/provs/store.js';
-	import cookie from 'js-cookie';
-	import { goto } from '$app/navigation';
+	import axios from 'axios'
+	import { onMount } from 'svelte'
+	import { auth } from '@src/provs/store.js'
+	import cookie from 'js-cookie'
+	import { goto } from '$app/navigation'
 
-	var error = null;
+	var error = null
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
-			$auth = JSON.parse(cookie.get('auth'));
+			$auth = JSON.parse(cookie.get('auth'))
 		}
-	});
-
-	
+	})
 </script>
 
 <svelte:head><title>About - Denify</title></svelte:head>

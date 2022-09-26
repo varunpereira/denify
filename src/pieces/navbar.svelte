@@ -4,17 +4,17 @@
 		ShoppingCartIcon,
 		MenuIcon,
 		UserIcon,
-		ChevronDownIcon
-	} from 'svelte-feather-icons';
-	import { auth } from '@src/provs/store.js';
-	import cookie from 'js-cookie';
-	import { goto } from '$app/navigation';
-	import SearchBar from '@src/pieces/searchbar.svelte';
+		ChevronDownIcon,
+	} from 'svelte-feather-icons'
+	import { auth } from '@src/provs/store.js'
+	import cookie from 'js-cookie'
+	import { goto } from '$app/navigation'
+	import SearchBar from '@src/pieces/searchbar.svelte'
 
-	var dropdownSelected = false;
-	var menuStatus = false;
-	var width = null;
-	var accountList = [];
+	var dropdownSelected = false
+	var menuStatus = false
+	var width = null
+	var accountList = []
 
 	$: if ($auth.user) {
 		accountList = [
@@ -23,14 +23,14 @@
 			{ href: '/account/info', title: 'Info' },
 			{ href: '/account/payments', title: 'Payments' },
 			{ href: '/account/sales', title: 'Sales' },
-			{ href: '/account/reviews', title: 'Reviews' }
-		];
+			{ href: '/account/reviews', title: 'Reviews' },
+		]
 	}
 
 	function signOut() {
-		cookie.remove('auth');
-		$auth = {};
-		goto('/');
+		cookie.remove('auth')
+		$auth = {}
+		goto('/')
 	}
 </script>
 
@@ -41,7 +41,7 @@
 		<p class="text-xl">
 			<button
 				on:click={function () {
-					goto('/');
+					goto('/')
 				}}
 				class="flex font-bold no-underline hover:text-gray-300 pt-1"
 			>
@@ -51,7 +51,7 @@
 		</p>
 		<button
 			on:click|preventDefault={function () {
-				menuStatus = !menuStatus;
+				menuStatus = !menuStatus
 			}}
 			class=""
 		>
@@ -69,7 +69,7 @@
 				<div class="nav-item mr-5">
 					<button
 						on:click={function () {
-							goto('/product/sell');
+							goto('/product/sell')
 						}}
 						class="block py-2  no-underline hover:text-gray-300 "
 					>
@@ -79,7 +79,7 @@
 				<div class="nav-item mr-3">
 					<button
 						on:click={function () {
-							goto('/cart');
+							goto('/cart')
 						}}
 						class="block flex py-2  no-underline hover:text-gray-300 md:border-none md:p-0"
 					>
@@ -93,7 +93,7 @@
 					<div class="rounded-sm hover:text-gray-300 md:mx-2 relative">
 						<button
 							on:click|preventDefault={function () {
-								dropdownSelected = !dropdownSelected;
+								dropdownSelected = !dropdownSelected
 							}}
 							class="h-8 rounded-full pt-2 md:pt-0 md:flex md:flex-wrap md:justify-center"
 						>
@@ -110,15 +110,15 @@
 								{#each accountList as account}
 									<button
 										on:click={function () {
-											goto(account.href);
-											dropdownSelected = !dropdownSelected;
+											goto(account.href)
+											dropdownSelected = !dropdownSelected
 										}}
 										class="block py-2 rounded hover:text-gray-300">{account.title}</button
 									>
 								{/each}
 								<button
 									on:click|preventDefault={function () {
-										signOut();
+										signOut()
 									}}
 									class="w-full text-left block py-2 rounded hover:text-gray-300"
 								>
@@ -131,7 +131,7 @@
 			{:else}
 				<button
 					on:click={function () {
-						goto('/signin');
+						goto('/signin')
 					}}
 					class="nav-item pb-1 pt-1 rounded-b hover:text-gray-300 flex-none"
 				>

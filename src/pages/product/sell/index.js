@@ -1,23 +1,23 @@
-import db from '@src/provs/db';
-import productModel from '@src/prots/product';
+import db from '@src/provs/db'
+import productModel from '@src/prots/product'
 
-db();
+db()
 
 export async function post({ request }) {
 	try {
-		var formData = await request.json();
-		formData['approved'] = 'pending';
-		var product = await new productModel(formData).save();
+		var formData = await request.json()
+		formData['approved'] = 'pending'
+		var product = await new productModel(formData).save()
 		return {
 			body: {
-				product
-			}
-		};
+				product,
+			},
+		}
 	} catch (error) {
 		return {
 			body: {
-				error: error.message
-			}
-		};
+				error: error.message,
+			},
+		}
 	}
 }

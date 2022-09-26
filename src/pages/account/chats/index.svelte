@@ -1,42 +1,42 @@
 <script>
-	import axios from 'axios';
-	import { auth } from '@src/provs/store.js';
-	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
-	import cookie from 'js-cookie';
-	import { goto } from '$app/navigation';
-	import { ArrowUpCircleIcon } from 'svelte-feather-icons';
+	import axios from 'axios'
+	import { auth } from '@src/provs/store.js'
+	import { onMount } from 'svelte'
+	import { page } from '$app/stores'
+	import cookie from 'js-cookie'
+	import { goto } from '$app/navigation'
+	import { ArrowUpCircleIcon } from 'svelte-feather-icons'
 
-	var messages = null;
-	var recipEmail = $page.url.searchParams.get('recipEmail');
-	var error = null;
-	var message = '';
+	var messages = null
+	var recipEmail = $page.url.searchParams.get('recipEmail')
+	var error = null
+	var message = ''
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
-			$auth = JSON.parse(cookie.get('auth'));
+			$auth = JSON.parse(cookie.get('auth'))
 		}
 		var res = await axios.post($page.url.pathname, {
 			email: JSON.parse(cookie.get('auth')).user.email,
-			recipEmail
-		});
+			recipEmail,
+		})
 		if (res.data.error) {
-			goto('/account/chats/contacts');
+			goto('/account/chats/contacts')
 		}
-		messages = res.data.messages.reverse();
-	});
+		messages = res.data.messages.reverse()
+	})
 
 	async function sendMessage() {
 		var res = await axios.post($page.url.pathname + '/putMessage', {
 			email: JSON.parse(cookie.get('auth')).user.email,
 			recipEmail,
-			message
-		});
+			message,
+		})
 		if (res.data.error) {
-			goto('/account/chats/contacts');
+			goto('/account/chats/contacts')
 		}
-		messages = res.data.messages.reverse();
-		message = '';
+		messages = res.data.messages.reverse()
+		message = ''
 	}
 </script>
 
@@ -75,12 +75,16 @@
 		</div>
 
 		<form
-			on:submit|preventDefault={function (){sendMessage()}}
+			on:submit|preventDefault={function () {
+				sendMessage()
+			}}
 			class="relative rounded-b-full p-2"
 		>
 			<input
 				value={message}
-				on:input|preventDefault={function (event) {message = event.target.value}}
+				on:input|preventDefault={function (event) {
+					message = event.target.value
+				}}
 				type="text"
 				class="border border-gray-400 w-full min-w-max rounded-full bg-white py-2 pl-4 text-sm text-black outline-none"
 				placeholder="type message"

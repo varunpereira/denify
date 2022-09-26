@@ -1,17 +1,17 @@
 <script>
-	import axios from 'axios';
-	import { auth } from '@src/provs/store.js';
-	import { goto } from '$app/navigation';
-	import cookie from 'js-cookie';
-	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
+	import axios from 'axios'
+	import { auth } from '@src/provs/store.js'
+	import { goto } from '$app/navigation'
+	import cookie from 'js-cookie'
+	import { onMount } from 'svelte'
+	import { page } from '$app/stores'
 
-	var formData = null;
-	var error = null;
+	var formData = null
+	var error = null
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
-			$auth = JSON.parse(cookie.get('auth'));
+			$auth = JSON.parse(cookie.get('auth'))
 		}
 		formData = {
 			email: $auth.user.email,
@@ -20,29 +20,29 @@
 			price: 0,
 			images: [
 				{
-					url: 'https://res.cloudinary.com/devatchannel/image/upload/v1605318911/nextjs_media/nelvbtwdbk1vjvhufort.jpg'
-				}
+					url: 'https://res.cloudinary.com/devatchannel/image/upload/v1605318911/nextjs_media/nelvbtwdbk1vjvhufort.jpg',
+				},
 			],
 			category: 'test',
 			stock: 0,
-			sold: 0
-		};
-	});
+			sold: 0,
+		}
+	})
 
 	function formInput(event) {
-		var{ name, value } = event.target;
-		formData = { ...formData, [name]: value };
+		var { name, value } = event.target
+		formData = { ...formData, [name]: value }
 	}
 
 	async function formSubmit() {
 		try {
-			var res = await axios.post($page.url.pathname, formData);
+			var res = await axios.post($page.url.pathname, formData)
 			if (res.data.error) {
-				return;
+				return
 			}
-			goto('/product/sell/status?productId=' + res.data.product._id);
+			goto('/product/sell/status?productId=' + res.data.product._id)
 		} catch (resError) {
-			console.log(resError.response.data.error);
+			console.log(resError.response.data.error)
 		}
 	}
 </script>

@@ -1,43 +1,43 @@
 <script>
-	import axios from 'axios';
-	import cookie from 'js-cookie';
-	import { goto } from '$app/navigation';
-	import { onMount } from 'svelte';
-	import { auth } from '@src/provs/store.js';
-	import { page } from '$app/stores';
+	import axios from 'axios'
+	import cookie from 'js-cookie'
+	import { goto } from '$app/navigation'
+	import { onMount } from 'svelte'
+	import { auth } from '@src/provs/store.js'
+	import { page } from '$app/stores'
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
-			$auth = JSON.parse(cookie.get('auth'));
+			$auth = JSON.parse(cookie.get('auth'))
 		}
-	});
+	})
 
-	var formData = { email: '', password: '' };
-	var error = '';
+	var formData = { email: '', password: '' }
+	var error = ''
 
 	function formInput(event) {
-		var { name, value } = event.target;
-		formData = { ...formData, [name]: value };
+		var { name, value } = event.target
+		formData = { ...formData, [name]: value }
 	}
 
 	async function formSubmit(event) {
-		var res = await axios.post($page.url.pathname, formData);
+		var res = await axios.post($page.url.pathname, formData)
 		if (res.data.error) {
-			error = res.data.error;
-			return;
+			error = res.data.error
+			return
 		}
 		$auth = {
 			accessToken: res.data.accessToken,
 			user: res.data.user,
-			cartQuantity: res.data.cartQuantity
-		};
+			cartQuantity: res.data.cartQuantity,
+		}
 		cookie.set('auth', JSON.stringify($auth), {
 			// 7 days
 			expires: 7,
 			secure: true,
-			sameSite: 'strict'
-		});
-		goto('/');
+			sameSite: 'strict',
+		})
+		goto('/')
 	}
 </script>
 
@@ -48,7 +48,7 @@
 		<p class="mb-8 text-center text-3xl">Sign in</p>
 		<form
 			on:submit|preventDefault={function () {
-				formSubmit();
+				formSubmit()
 			}}
 		>
 			<input
@@ -81,7 +81,7 @@
 		Don't have an account?
 		<button
 			on:click={function () {
-				goto('/signup');
+				goto('/signup')
 			}}
 			class="border-blue text-blue border-b no-underline">Sign up</button
 		>

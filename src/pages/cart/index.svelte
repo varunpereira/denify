@@ -1,37 +1,37 @@
 <script>
-	import { onMount } from 'svelte';
-	import axios from 'axios';
-	import { auth } from '@src/provs/store.js';
-	import { TrashIcon } from 'svelte-feather-icons';
-	import { goto } from '$app/navigation';
-	import cookie from 'js-cookie';
-	import { page } from '$app/stores';
+	import { onMount } from 'svelte'
+	import axios from 'axios'
+	import { auth } from '@src/provs/store.js'
+	import { TrashIcon } from 'svelte-feather-icons'
+	import { goto } from '$app/navigation'
+	import cookie from 'js-cookie'
+	import { page } from '$app/stores'
 
-	var error = null;
-	var cart = null;
-	var fetch = false;
+	var error = null
+	var cart = null
+	var fetch = false
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
-			$auth = JSON.parse(cookie.get('auth'));
+			$auth = JSON.parse(cookie.get('auth'))
 		}
-		getCart();
-	});
+		getCart()
+	})
 
 	async function getCart() {
 		var res = await axios.post($page.url.pathname, {
-			email: JSON.parse(cookie.get('auth')).user.email
-		});
+			email: JSON.parse(cookie.get('auth')).user.email,
+		})
 		if (res.data.error) {
-			error = res.data.error;
-			return;
+			error = res.data.error
+			return
 		}
-		cart = res.data.cart;
+		cart = res.data.cart
 	}
 
 	$: if (fetch == true) {
-		getCart();
-		fetch = false;
+		getCart()
+		fetch = false
 	}
 
 	async function removeProduct(product) {
@@ -39,23 +39,23 @@
 			email: $auth.user.email,
 			productId: product.productId,
 			productQuantity: product.productQuantity,
-			productPrice: product.productPrice
-		};
-		var res = await axios.post($page.url.pathname + '/setDec', productData);
+			productPrice: product.productPrice,
+		}
+		var res = await axios.post($page.url.pathname + '/setDec', productData)
 		if (res.data.error) {
-			console.log('error');
-			return;
+			console.log('error')
+			return
 		}
 		// cart = res.data.cart;
-		fetch = true;
-		$auth = { ...$auth, cartQuantity: $auth.cartQuantity - product.productQuantity };
-		cookie.set('auth', JSON.stringify($auth));
+		fetch = true
+		$auth = { ...$auth, cartQuantity: $auth.cartQuantity - product.productQuantity }
+		cookie.set('auth', JSON.stringify($auth))
 	}
 
 	async function checkout() {
 		if (cart.quantity <= 0) {
-			error = 'Cart empty. Please add a product.';
-			return;
+			error = 'Cart empty. Please add a product.'
+			return
 		}
 		var products = cart.products.map(function (product) {
 			return {
@@ -63,14 +63,14 @@
 				description: product.productId,
 				amount: product.productPrice * 100,
 				quantity: product.productQuantity,
-				currency: 'aud'
-			};
-		});
+				currency: 'aud',
+			}
+		})
 		var res = await axios.post($page.url.pathname + '/getStripeCheckoutSession', {
 			orderId: cart._id,
-			items: products
-		});
-		goto(res.data.session.url);
+			items: products,
+		})
+		goto(res.data.session.url)
 	}
 </script>
 
@@ -100,7 +100,7 @@
 						<div class="ml-4 flex flex-grow flex-col justify-between">
 							<button
 								on:click={function () {
-									goto('/product?productId=' + product.productId);
+									goto('/product?productId=' + product.productId)
 								}}
 								class="flex hover:underline"
 							>
@@ -120,7 +120,7 @@
 					</p>
 					<button
 						on:click|preventDefault={function () {
-							removeProduct(product);
+							removeProduct(product)
 						}}
 						class="w-1/5 text-center text-sm font-semibold hover:text-red-600"
 					>
@@ -151,7 +151,7 @@
 				</div>
 				<button
 					on:click|preventDefault={function () {
-						checkout();
+						checkout()
 					}}
 					type="button"
 					class="w-full rounded bg-black py-3  text-sm font-semibold uppercase text-white hover:bg-gray-600"

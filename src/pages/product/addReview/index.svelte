@@ -1,60 +1,60 @@
 <script>
-	import axios from 'axios';
-	import cookie from 'js-cookie';
-	import { goto } from '$app/navigation';
-	import { onMount } from 'svelte';
-	import { auth } from '@src/provs/store.js';
-	import { page } from '$app/stores';
+	import axios from 'axios'
+	import cookie from 'js-cookie'
+	import { goto } from '$app/navigation'
+	import { onMount } from 'svelte'
+	import { auth } from '@src/provs/store.js'
+	import { page } from '$app/stores'
 
-	var formValues = null;
-	var product = null;
-	var error = '';
-	var productId = $page.url.searchParams.get('productId');
-	var formOptions = [1, 2, 3, 4, 5];
-	var selected = null;
+	var formValues = null
+	var product = null
+	var error = ''
+	var productId = $page.url.searchParams.get('productId')
+	var formOptions = [1, 2, 3, 4, 5]
+	var selected = null
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
-			$auth = JSON.parse(cookie.get('auth'));
+			$auth = JSON.parse(cookie.get('auth'))
 		}
 		var res = await axios.post($page.url.pathname, {
-			productId
-		});
+			productId,
+		})
 		if (res.data.error) {
-			error = res.data.error;
+			error = res.data.error
 		}
-		product = res.data.product;
+		product = res.data.product
 		formValues = {
 			rating: '',
 			description: '',
 			email: JSON.parse(cookie.get('auth')).user.email,
-			productId: productId
-		};
-	});
+			productId: productId,
+		}
+	})
 
 	function formInput(event) {
-		var { name, value } = event.target;
-		formValues = { ...formValues, [name]: value };
+		var { name, value } = event.target
+		formValues = { ...formValues, [name]: value }
 	}
 	function formChange() {
-		formValues = { ...formValues, rating: selected };
+		formValues = { ...formValues, rating: selected }
 	}
 
 	async function formSubmit() {
 		if (formValues.rating == '') {
-			error = 'Must select rating.';
-			return;
+			error = 'Must select rating.'
+			return
 		}
 
 		try {
-			var res = await axios.post($page.url.pathname + '/putReview', formValues);
+			var res = await axios.post($page.url.pathname + '/putReview', formValues)
 			if (res.data.err) {
-				error = res.data.err;
-				return;
+				error = res.data.err
+				return
 			}
-			goto('/product?productId=' + product._id);
+			goto('/product?productId=' + product._id)
 		} catch (resError) {
-			console.log(resError);
+			console.log(resError)
 		}
 	}
 </script>
@@ -85,7 +85,7 @@
 				/>
 				<button
 					on:click|preventDefault={function () {
-						formSubmit();
+						formSubmit()
 					}}
 					type="submit"
 					class="hover:bg-green-dark my-1 w-full rounded bg-black py-3 text-center text-white outline-none"

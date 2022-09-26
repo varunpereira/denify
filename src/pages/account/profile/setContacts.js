@@ -1,46 +1,43 @@
-import db from '@src/provs/db';
-import chatModel from '@src/prots/chat';
-import userModel from '@src/prots/user';
+import db from '@src/provs/db'
+import chatModel from '@src/prots/chat'
+import userModel from '@src/prots/user'
 
-
-db();
+db()
 
 export async function post({ request }) {
-	var { email, recipEmail } = await request.json();
+	var { email, recipEmail } = await request.json()
 	var find = await userModel.findOne({
 		email,
-		contacts : { $all: [recipEmail] } 
-	});
+		contacts: { $all: [recipEmail] },
+	})
 	// accepts contact req automatically
 	if (find == null) {
 		var update1 = await userModel.updateOne(
 			{
-				email: email
+				email: email,
 			},
 			{
 				$push: {
-					contacts: recipEmail
-				}
-			}
-		);
+					contacts: recipEmail,
+				},
+			},
+		)
 		var update2 = await userModel.updateOne(
 			{
-				email: recipEmail
+				email: recipEmail,
 			},
 			{
 				$push: {
-					contacts: email
-				}
-			}
-		);
+					contacts: email,
+				},
+			},
+		)
 		var createChat = await new chatModel({
 			email1: email,
-			email2: recipEmail
-		}).save();
+			email2: recipEmail,
+		}).save()
 	}
 	return {
-		body: {
-		}
-	};
-	
+		body: {},
+	}
 }

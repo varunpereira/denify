@@ -1,40 +1,40 @@
 <script>
-	import axios from 'axios';
-	import { onMount } from 'svelte';
-	import { auth } from '@src/provs/store.js';
-	import cookie from 'js-cookie';
-	import { goto } from '$app/navigation';
-	import Product from '@src/pieces/product.svelte';
-	import { TrendingUpIcon } from 'svelte-feather-icons';
-	import { pic } from '@src/provs/homePic.js';
+	import axios from 'axios'
+	import { onMount } from 'svelte'
+	import { auth } from '@src/provs/store.js'
+	import cookie from 'js-cookie'
+	import { goto } from '$app/navigation'
+	import Product from '@src/pieces/product.svelte'
+	import { TrendingUpIcon } from 'svelte-feather-icons'
+	import { pic } from '@src/provs/homePic.js'
 
-	var products = null;
-	var error = null;
-	var picIndex = 0;
+	var products = null
+	var error = null
+	var picIndex = 0
 
 	onMount(async function () {
 		if (cookie.get('auth')) {
-			$auth = JSON.parse(cookie.get('auth'));
+			$auth = JSON.parse(cookie.get('auth'))
 		}
-		getProducts();
-	});
+		getProducts()
+	})
 
 	async function getProducts() {
-		var res = await axios.post('/');
+		var res = await axios.post('/')
 		if (res.data.error) {
-			error = res.data.error;
+			error = res.data.error
 		}
-		products = res.data.trendingProducts;
+		products = res.data.trendingProducts
 	}
 
 	$: {
 		setTimeout(function () {
 			if (picIndex == pic.length - 1) {
-				picIndex = 0;
+				picIndex = 0
 			} else {
-				picIndex += 1;
+				picIndex += 1
 			}
-		}, 2000);
+		}, 2000)
 	}
 </script>
 
