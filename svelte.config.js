@@ -1,5 +1,5 @@
-import path from 'path';
-import adapter from '@sveltejs/adapter-auto';
+import path from 'path'
+import adapter from '@sveltejs/adapter-auto'
 
 var config = {
 	kit: {
@@ -7,14 +7,15 @@ var config = {
 		vite: {
 			resolve: {
 				alias: {
-					'@src': path.resolve('./src')
-				}
-			}
+					'@src': path.resolve('./src'),
+				},
+			},
 		},
 		files: {
 			routes: 'src/pages',
 			template: 'src/prog.html',
-		}
-	}
-};
-export default config;
+			assets: 'src/static',
+		},
+	},
+}
+export default config
