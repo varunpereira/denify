@@ -13,7 +13,7 @@ var config = {
 		},
 		files: {
 			routes: 'src/page',
-			template: 'src/prog/struct.html',
+			template: 'src/prev/struct.html',
 			assets: 'src/prop',
 		},
 	},
