@@ -12,9 +12,9 @@ var config = {
 			},
 		},
 		files: {
-			routes: 'src/pages',
+			routes: 'src/page',
 			template: 'src/prog.html',
-			assets: 'src/static',
+			assets: 'src/prop',
 		},
 	},
 }
