@@ -13,7 +13,7 @@ var config = {
 		},
 		files: {
 			routes: 'src/pages',
-			template: 'src/app.html',
+			template: 'src/prog.html',
 		}
 	}
 };

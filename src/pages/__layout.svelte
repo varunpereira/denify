@@ -1,5 +1,5 @@
 <script>
-	import '@src/app.css'
+	import '@src/prog.css'
 	import NavBar from '@src/pieces/navbar.svelte'
 	import Footer from '@src/pieces/footer.svelte'
 </script>
