@@ -1,6 +1,6 @@
 <script>
 	import { StarIcon, PlusIcon, MinusIcon } from 'svelte-feather-icons'
-	import { auth } from '@src/prov/store.js'
+	import { auth } from '@src/prev/store.js'
 	import axios from 'axios'
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'

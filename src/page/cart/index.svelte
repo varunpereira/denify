@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte'
 	import axios from 'axios'
-	import { auth } from '@src/prov/store.js'
+	import { auth } from '@src/prev/store.js'
 	import { TrashIcon } from 'svelte-feather-icons'
 	import { goto } from '$app/navigation'
 	import cookie from 'js-cookie'

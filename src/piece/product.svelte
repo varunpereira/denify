@@ -1,6 +1,6 @@
 <script>
 	import axios from 'axios'
-	import { auth } from '@src/prov/store.js'
+	import { auth } from '@src/prev/store.js'
 	import cookie from 'js-cookie'
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'

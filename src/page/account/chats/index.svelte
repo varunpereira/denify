@@ -1,6 +1,6 @@
 <script>
 	import axios from 'axios'
-	import { auth } from '@src/prov/store.js'
+	import { auth } from '@src/prev/store.js'
 	import { onMount } from 'svelte'
 	import { page } from '$app/stores'
 	import cookie from 'js-cookie'
