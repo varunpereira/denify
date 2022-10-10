@@ -2,9 +2,10 @@ import db from '@src/routes/db/connect.js'
 import userModel from '@src/routes/model/user.js'
 import sgMail from '@sendgrid/mail'
 import { json } from '@sveltejs/kit'
+import { sendgridApiKey } from '$env/static/private'
 
 db()
-sgMail.setApiKey(import.meta.env.VITE_sendgridApiKey)
+sgMail.setApiKey(sendgridApiKey)
 
 export async function POST({ request }) {
 	var formValues = await request.json()

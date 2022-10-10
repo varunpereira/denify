@@ -1,6 +1,6 @@
 import adapter from '@sveltejs/adapter-auto'
 
-const config = {
+var config = {
 	kit: {
 		adapter: adapter(),
 	},

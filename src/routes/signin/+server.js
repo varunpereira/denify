@@ -4,6 +4,8 @@ import orderModel from '@src/routes/model/order.js'
 import bcryptjs from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { json } from '@sveltejs/kit'
+import { mongodbUri } from '$env/static/private'
+
 
 db()
 
@@ -23,10 +25,10 @@ export async function POST({ request }) {
 		)
 	}
 
-	var accessToken = jwt.sign({ id: user.email }, import.meta.env.VITE_mongodbUri, {
+	var accessToken = jwt.sign({ id: user.email }, mongodbUri, {
 		expiresIn: '15m',
 	})
-	var refreshToken = jwt.sign({ id: user.email }, import.meta.env.VITE_mongodbUri, {
+	var refreshToken = jwt.sign({ id: user.email }, mongodbUri, {
 		expiresIn: '7d',
 	})
 

@@ -1,11 +1,12 @@
 import mongoose from 'mongoose'
+import { mongodbUri } from '$env/static/private'
 
 export default function db() {
 	if (mongoose.connections[0].readyState) {
 		console.log('Already connected.')
 		return
 	}
-	mongoose.connect(import.meta.env.VITE_mongodbUri, function (error) {
+	mongoose.connect(mongodbUri, function (error) {
 		if (error) {
 			console.log(error)
 			return

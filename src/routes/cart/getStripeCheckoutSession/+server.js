@@ -1,7 +1,8 @@
 import Stripe from 'stripe'
 import { json } from '@sveltejs/kit'
+import { stripeSecretKey, domain } from '$env/static/private'
 
-var stripe = new Stripe(import.meta.env.VITE_stripeSecretKey, {
+var stripe = new Stripe(stripeSecretKey, {
 	apiVersion: '2020-08-27',
 })
 
@@ -12,21 +13,15 @@ export async function POST({ request }) {
 			mode: 'payment',
 			payment_method_types: ['card'],
 			line_items: items ?? [],
-			success_url: `${
-				import.meta.env.VITE_domain
-			}/cart/paid?orderId=${orderId}&checkoutSessionId={CHECKOUT_SESSION_ID}`,
-			cancel_url: `${import.meta.env.VITE_domain}/cart`,
+			success_url: `${domain}/cart/paid?orderId=${orderId}&checkoutSessionId={CHECKOUT_SESSION_ID}`,
+			cancel_url: `${domain}/cart`,
 		})
 		return json({
-			
-				session,
-			},
-		)
+			session,
+		})
 	} catch (error) {
 		return json({
-			
-				message: error.message,
-			},
-		)
+			message: error.message,
+		})
 	}
 }

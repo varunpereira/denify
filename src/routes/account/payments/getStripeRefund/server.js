@@ -1,9 +1,9 @@
 import Stripe from 'stripe'
 import orderModel from '@src/routes/model/order.js'
 import { json } from '@sveltejs/kit'
+import { stripeSecretKey } from '$env/static/private'
 
-
-var stripe = new Stripe(import.meta.env.VITE_stripeSecretKey, {
+var stripe = new Stripe(stripeSecretKey, {
 	apiVersion: '2020-08-27',
 })
 
