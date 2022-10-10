@@ -1,0 +1,89 @@
+<script>
+	import axios from 'axios'
+	import cookie from 'js-cookie'
+	import { goto } from '$app/navigation'
+	import { onMount } from 'svelte'
+	import { auth } from '@src/app.js'
+	import { page } from '$app/stores'
+
+	onMount(async function () {
+		if (cookie.get('auth')) {
+			$auth = JSON.parse(cookie.get('auth'))
+		}
+	})
+
+	var formData = { email: '', password: '' }
+	var error = ''
+
+	function formInput(event) {
+		var { name, value } = event.target
+		formData = { ...formData, [name]: value }
+	}
+
+	async function formSubmit(event) {
+		var res = await axios.post($page.url.pathname, formData)
+		if (res.data.error) {
+			error = res.data.error
+			return
+		}
+		$auth = {
+			accessToken: res.data.accessToken,
+			user: res.data.user,
+			cartQuantity: res.data.cartQuantity,
+		}
+		cookie.set('auth', JSON.stringify($auth), {
+			// 7 days
+			expires: 7,
+			secure: true,
+			sameSite: 'strict',
+		})
+		goto('/')
+	}
+</script>
+
+<svelte:head><title>Sign in - Denify</title></svelte:head>
+
+<div class="container mx-auto flex max-w-sm flex-1 flex-col items-center justify-center px-2">
+	<div class="w-full rounded bg-white px-6 py-8 text-black shadow-md">
+		<p class="mb-8 text-center text-3xl">Sign in</p>
+		<form
+			on:submit|preventDefault={function () {
+				formSubmit()
+			}}
+		>
+			<input
+				name={'email'}
+				value={formData.email}
+				on:input|preventDefault={formInput}
+				type="text"
+				placeholder="Email"
+				class="border-grey-light mb-4 block w-full rounded border p-3"
+			/>
+			<input
+				name={'password'}
+				value={formData.password}
+				on:input|preventDefault={formInput}
+				type="password"
+				placeholder="Password"
+				class="border-grey-light mb-4 block w-full rounded border p-3"
+			/>
+			<button
+				type="submit"
+				class="hover:bg-green-dark my-1 w-full rounded bg-black py-3 text-center text-white outline-none"
+			>
+				Sign in
+			</button>
+		</form>
+		<div class="mt-10 text-red-500">{error}</div>
+	</div>
+
+	<div class="text-grey-dark mt-6">
+		Don't have an account?
+		<button
+			on:click={function () {
+				goto('/signup')
+			}}
+			class="border-blue text-blue border-b no-underline">Sign up</button
+		>
+	</div>
+</div>
