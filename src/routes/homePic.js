@@ -1,3 +1,4 @@
+
 export var pic = [
 	'/home/0.png',
 	// '/home/1.jpg',
