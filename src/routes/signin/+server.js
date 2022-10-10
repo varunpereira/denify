@@ -4,7 +4,6 @@ import orderModel from '@src/routes/model/order.js'
 import bcryptjs from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import { json } from '@sveltejs/kit'
-import { json } from '@sveltejs/kit'
 
 db()
 
