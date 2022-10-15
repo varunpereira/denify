@@ -12,7 +12,7 @@
 	var error = null
 	var message = ''
 
-	onMount(async function () {
+	onMount(async () => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}
@@ -26,7 +26,7 @@
 		messages = res.data.messages
 	})
 
-	async function sendMessage() {
+	var sendMessage = async () => {
 		var res = await axios.post($page.url.pathname + '/putMessage', {
 			email: JSON.parse(cookie.get('auth')).user.email,
 			recipEmail,
@@ -75,7 +75,7 @@
 		</div>
 
 		<form
-			on:submit|preventDefault={function () {
+			on:submit|preventDefault={() => {
 				sendMessage()
 			}}
 			class="relative rounded-b-full p-2"

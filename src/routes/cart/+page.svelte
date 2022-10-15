@@ -11,7 +11,7 @@
 	var cart = null
 	var fetch = false
 
-	onMount(async function () {
+	onMount(async () => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}
@@ -99,7 +99,7 @@
 					<div class="flex w-2/5">
 						<div class="ml-4 flex flex-grow flex-col justify-between">
 							<button
-								on:click={function () {
+								on:click={() => {
 									goto('/product?productId=' + product.productId)
 								}}
 								class="flex hover:underline"
@@ -119,7 +119,7 @@
 						${product.productQuantity * product.productPrice}
 					</p>
 					<button
-						on:click|preventDefault={function () {
+						on:click|preventDefault={() => {
 							removeProduct(product)
 						}}
 						class="w-1/5 text-center text-sm font-semibold hover:text-red-600"
@@ -150,7 +150,7 @@
 					<p>${cart.price}</p>
 				</div>
 				<button
-					on:click|preventDefault={function () {
+					on:click|preventDefault={() => {
 						checkout()
 					}}
 					type="button"

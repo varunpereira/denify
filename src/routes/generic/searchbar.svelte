@@ -54,7 +54,7 @@
 
 <form
 	class="relative w-full mr-5 w-full min-w-min md:flex text-black"
-	on:submit|preventDefault={function () {
+	on:submit|preventDefault={() => {
 		if (searchTerm.trim() != '') {
 			goto(
 				'/searchResults?searchTerm=' +
@@ -87,7 +87,7 @@
 	/>
 	{#if searchTerm.trim() != ''}
 		<button
-			on:click|preventDefault={function () {
+			on:click|preventDefault={() => {
 				searchTerm = ''
 			}}
 			type="button"
@@ -104,7 +104,7 @@
 				<div class="pb-2" />
 				{#each suggestions as suggestion}
 					<button
-						on:click={function () {
+						on:click={() => {
 							if (searchTerm.trim() != '') {
 								goto(
 									'/searchResults?searchTerm=' +

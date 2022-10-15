@@ -1,10 +1,10 @@
-import db from '@src/routes/db/connect.js'
+import { db } from '@src/routes/db/connect.js'
 import userModel from '@src/routes/model/user.js'
 import { json } from '@sveltejs/kit'
 
 db()
 
-export async function POST({ request }) {
+export var POST = async ({ request }) => {
 	var { email } = await request.json()
 	var error = null
 	var user = await userModel.findOne({

@@ -1,4 +1,4 @@
-import db from '@src/routes/db/connect.js'
+import { db } from '@src/routes/db/connect.js'
 import userModel from '@src/routes/model/user.js'
 import orderModel from '@src/routes/model/order.js'
 import bcryptjs from 'bcryptjs'
@@ -8,7 +8,7 @@ import { mongodbUri } from '$env/static/private'
 
 db()
 
-export async function POST({ request }) {
+export var POST = async ({ request }) => {
 	var { email, password } = await request.json()
 	var user = await userModel.findOne({ email })
 	if (user == null) {

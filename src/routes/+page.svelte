@@ -12,14 +12,14 @@
 	var error = null
 	var picIndex = 0
 
-	onMount(async function () {
+	onMount(async () => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}
 		getProducts()
 	})
 
-	async function getProducts() {
+	var getProducts = async () => {
 		var res = await axios.post('/')
 		if (res.data.error) {
 			error = res.data.error
@@ -28,7 +28,7 @@
 	}
 
 	$: {
-		setTimeout(function () {
+		setTimeout(() => {
 			if (picIndex == pic.length - 1) {
 				picIndex = 0
 			} else {

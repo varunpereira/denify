@@ -6,7 +6,7 @@
 	import { auth } from '@src/app.js'
 	import { page } from '$app/stores'
 
-	onMount(async function () {
+	onMount(async () => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}
@@ -42,7 +42,7 @@
 	<div class="w-full rounded bg-white px-6 py-8 text-black shadow-md">
 		<p class="mb-8 text-center text-3xl">Sign in</p>
 		<form
-			on:submit|preventDefault={function () {
+			on:submit|preventDefault={() => {
 				formSubmit()
 			}}
 		>
@@ -71,7 +71,7 @@
 	<div class="text-grey-dark mt-6">
 		Don't have an account?
 		<button
-			on:click={function () {
+			on:click={() => {
 				goto('/signup')
 			}}
 			class="border-blue text-blue border-b no-underline">Sign up</button

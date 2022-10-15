@@ -10,7 +10,7 @@
 	var orders = null
 	var error = null
 
-	onMount(async function () {
+	onMount(async () => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}
@@ -69,7 +69,7 @@
 							<tr key={order._id} class="my-4 text-black">
 								<td>
 									<button
-										on:click={function () {
+										on:click={() => {
 											goto('/account/payments/order?orderId=' + order._id)
 										}}
 										class="hover:underline"
@@ -85,7 +85,7 @@
 									{:else}
 										<button
 											class="hover:underline"
-											on:click|preventDefault={function () {
+											on:click|preventDefault={() => {
 												refund(order.checkoutSessionId)
 											}}
 										>

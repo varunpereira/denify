@@ -11,7 +11,7 @@
 	var error = null
 	var orderId = $page.url.searchParams.get('orderId')
 
-	onMount(async function () {
+	onMount(async () => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}

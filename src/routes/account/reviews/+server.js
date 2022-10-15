@@ -1,11 +1,11 @@
-import db from '@src/routes/db/connect.js'
+import { db } from '@src/routes/db/connect.js'
 import reviewModel from '@src/routes/model/review.js'
 import { json } from '@sveltejs/kit'
 
 
 db()
 
-export async function POST({ request }) {
+export var POST = async ({ request }) => {
 	var { email } = await request.json()
 	var reviews = await reviewModel.find({
 		email,

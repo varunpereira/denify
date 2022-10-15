@@ -10,7 +10,7 @@
 	var productId = $page.url.searchParams.get('productId').trim()
 	var product = null
 
-	onMount(async function () {
+	onMount(async () => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}

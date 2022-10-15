@@ -14,7 +14,7 @@
 	var orderQuantity = 1
 	var productId = $page.url.searchParams.get('productId')
 
-	onMount(async function () {
+	onMount(async () => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}
@@ -118,7 +118,7 @@
 				{#each product.images as image, index}
 					{#if index == tab && index <= 6}
 						<img
-							on:click={function () {
+							on:click={() => {
 								tab = index
 							}}
 							class={'w-12 h-12 mb-2 object-cover rounded-lg border-2 border-orange-400'}
@@ -127,7 +127,7 @@
 						/>
 					{:else if index != tab && index <= 6}
 						<img
-							on:click={function () {
+							on:click={() => {
 								tab = index
 							}}
 							class={'w-12 h-12 mb-2 object-cover rounded-lg'}
@@ -148,7 +148,7 @@
 				{product.title}
 			</p>
 			<button
-				on:click={function () {
+				on:click={() => {
 					goto('#reviews')
 				}}
 				class="hover:text-gray-300 mb-6"
@@ -163,7 +163,7 @@
 				<div class="flex justify-start">
 					<p class="mr-1">Seller:</p>
 					<button
-						on:click={function () {
+						on:click={() => {
 							goto('/account/profile?email=' + product.email)
 						}}
 						class="hover:text-gray-300"
@@ -181,7 +181,7 @@
 				<button on:click={plusButton}><PlusIcon class="h-6 w-6 pt-[10px]" /></button>
 			</div>
 			<button
-				on:click={function () {
+				on:click={() => {
 					addToCart(product)
 				}}
 				class="mt-5 flex w-24 items-center justify-center rounded bg-white py-4 text-black hover:bg-gray-400"
@@ -208,7 +208,7 @@
 				>
 					<p class="mb-2 font-bold tracking-tight text-gray-900 dark:text-white">
 						<button
-							on:click={function () {
+							on:click={() => {
 								goto('/account/profile?email=' + review.email)
 							}}
 							class="hover:text-gray-600"

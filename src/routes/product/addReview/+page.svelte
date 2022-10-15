@@ -13,7 +13,7 @@
 	var formOptions = [1, 2, 3, 4, 5]
 	var selected = null
 
-	onMount(async function () {
+	onMount(async () => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}
@@ -84,7 +84,7 @@
 					class="border-grey-light mb-4 w-full rounded border p-3"
 				/>
 				<button
-					on:click|preventDefault={function () {
+					on:click|preventDefault={() => {
 						formSubmit()
 					}}
 					type="submit"

@@ -12,7 +12,7 @@
 	var error = null
 	var pages = null
 
-	onMount(function () {
+	onMount(() => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}
@@ -62,7 +62,7 @@
 	</div>
 	<div class="w-full relative z-0 inline-flex -space-x-px rounded-md shadow-sm">
 		<button
-			on:click={function () {
+			on:click={() => {
 				if (Number($page.url.searchParams.get('pagination').trim()) > 1) {
 					var pagination = String(Number($page.url.searchParams.get('pagination').trim()) - 1)
 					goto(
@@ -87,7 +87,7 @@
 				</button>
 			{:else}
 				<button
-					on:click={function () {
+					on:click={() => {
 						var pagination = String(index + 1)
 						goto(
 							'/searchResults?searchTerm=' +
@@ -104,7 +104,7 @@
 			{/if}
 		{/each}
 		<button
-			on:click={function () {
+			on:click={() => {
 				if (Number($page.url.searchParams.get('pagination').trim()) < pages) {
 					var pagination = String(Number($page.url.searchParams.get('pagination').trim()) + 1)
 					goto(

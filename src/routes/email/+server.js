@@ -1,4 +1,4 @@
-import db from '@src/routes/db/connect.js'
+import { db } from '@src/routes/db/connect.js'
 import userModel from '@src/routes/model/user.js'
 import sgMail from '@sendgrid/mail'
 import { json } from '@sveltejs/kit'
@@ -7,7 +7,7 @@ import { sendgridApiKey } from '$env/static/private'
 db()
 sgMail.setApiKey(sendgridApiKey)
 
-export async function POST({ request }) {
+export var POST = async ({ request }) => {
 	var formValues = await request.json()
 	var msg = {
 		to: 'laughlifelong@gmail.com',
@@ -18,7 +18,7 @@ export async function POST({ request }) {
 	}
 	sgMail
 		.send(msg)
-		.then(function () {
+		.then(() => {
 			console.log('Email sent')
 		})
 		.catch(function (error) {

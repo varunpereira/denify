@@ -32,7 +32,7 @@
 </script>
 
 <button
-	on:click={function () {
+	on:click={() => {
 		goto('/product?productId=' + product._id)
 	}}
 	class="mb-4 mr-4 max-w-[16rem] max-h-[32rem] text-sm rounded-lg bg-white hover:bg-gray-300 "
@@ -53,7 +53,7 @@
 			{product.description}
 		</p>
 		<button
-			on:click|preventDefault={function () {
+			on:click|preventDefault={() => {
 				addToCart()
 			}}
 			class="cursor-pointer inline-flex w-full items-center justify-center rounded-lg bg-black py-2 m font-medium text-white "

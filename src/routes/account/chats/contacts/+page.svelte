@@ -10,7 +10,7 @@
 	var user = null
 	var error = null
 
-	onMount(async function () {
+	onMount(async () => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}
@@ -33,7 +33,7 @@
 		{#each user.contacts as contact, index}
 			<button
 				key={index}
-				on:click={function () {
+				on:click={() => {
 					goto('/account/chats?recipEmail=' + contact)
 				}}
 			>

@@ -7,7 +7,7 @@
 	<div class="md:flex md:justify-between mb-6">
 		<div class="mb-6 md:mb-0">
 			<button
-				on:click={function () {
+				on:click={() => {
 					goto('/')
 				}}
 				class="flex items-center hover:text-gray-300"
@@ -22,7 +22,7 @@
 				<div class=" ">
 					<div class="mb-4">
 						<button
-							on:click={function () {
+							on:click={() => {
 								goto('/about')
 							}}
 							class="hover:text-gray-300">About</button
@@ -35,7 +35,7 @@
 				<div class=" ">
 					<div class="mb-[10px]">
 						<button
-							on:click={function () {
+							on:click={() => {
 								window.open('https://www.instagram.com/denify.shop/')
 							}}
 							class="hover:text-gray-300"><InstagramIcon class="w-[20px] h-[20px]" /></button
@@ -43,7 +43,7 @@
 					</div>
 					<div>
 						<button
-							on:click={function () {
+							on:click={() => {
 								window.open('https://www.instagram.com/denify.shop/')
 							}}
 							class="hover:text-gray-300"
@@ -58,7 +58,7 @@
 				<div class=" ">
 					<div class="mb-4">
 						<button
-							on:click={function () {
+							on:click={() => {
 								window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 							}}
 							class="hover:text-gray-300">Privacy Policy</button
@@ -66,7 +66,7 @@
 					</div>
 					<div>
 						<button
-							on:click={function () {
+							on:click={() => {
 								window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 							}}
 							class="hover:text-gray-300"

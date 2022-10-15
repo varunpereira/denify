@@ -15,7 +15,7 @@
 	var email = $page.url.searchParams.get('email')
 	var newPagination = false
 
-	onMount(async function () {
+	onMount(async () => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}
@@ -61,7 +61,7 @@
 {#if products && email}
 	<p class="mb-5 text-lg font-semibold">{email}</p>
 	<button
-		on:click|preventDefault={function () {
+		on:click|preventDefault={() => {
 			sendMessage()
 		}}
 		class="flex justify-start mb-5 hover:text-gray-300 cursor-pointer"
@@ -81,7 +81,7 @@
 	</div>
 	<div class="w-full relative z-0 inline-flex -space-x-px rounded-md shadow-sm">
 		<button
-			on:click={function () {
+			on:click={() => {
 				if (pagination > 1) {
 					pagination -= 1
 					newPagination = true
@@ -94,7 +94,7 @@
 		{#each Array(pages) as _, index}
 			{#if pagination == index + 1}
 				<button
-					on:click={function () {
+					on:click={() => {
 						pagination = index + 1
 						newPagination = true
 					}}
@@ -103,7 +103,7 @@
 				</button>
 			{:else}
 				<button
-					on:click={function () {
+					on:click={() => {
 						pagination = index + 1
 						newPagination = true
 					}}
@@ -113,7 +113,7 @@
 			{/if}
 		{/each}
 		<button
-			on:click={function () {
+			on:click={() => {
 				if (pagination < pages) {
 					pagination += 1
 					newPagination = true

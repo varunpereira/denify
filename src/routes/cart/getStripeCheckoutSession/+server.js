@@ -6,7 +6,7 @@ var stripe = new Stripe(stripeSecretKey, {
 	apiVersion: '2020-08-27',
 })
 
-export async function POST({ request }) {
+export var POST = async ({ request }) => {
 	var { orderId, items } = await request.json()
 	try {
 		var session = await stripe.checkout.sessions.create({

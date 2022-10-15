@@ -10,7 +10,7 @@
 	var reviews = null
 	var error = null
 
-	onMount(async function () {
+	onMount(async () => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}

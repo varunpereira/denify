@@ -40,7 +40,7 @@
 	<div class="md:mr-5 mb-1 px-0 flex items-center justify-between ">
 		<p class="text-xl">
 			<button
-				on:click={function () {
+				on:click={() => {
 					goto('/')
 				}}
 				class="flex font-bold no-underline hover:text-gray-300 pt-1"
@@ -50,7 +50,7 @@
 			</button>
 		</p>
 		<button
-			on:click|preventDefault={function () {
+			on:click|preventDefault={() => {
 				menuStatus = !menuStatus
 			}}
 			class=""
@@ -68,7 +68,7 @@
 			{#if $auth.user}
 				<div class="nav-item mr-5">
 					<button
-						on:click={function () {
+						on:click={() => {
 							goto('/product/sell')
 						}}
 						class="block py-2  no-underline hover:text-gray-300 "
@@ -78,7 +78,7 @@
 				</div>
 				<div class="nav-item mr-3">
 					<button
-						on:click={function () {
+						on:click={() => {
 							goto('/cart')
 						}}
 						class="block flex py-2  no-underline hover:text-gray-300 md:border-none md:p-0"
@@ -92,7 +92,7 @@
 				<div class="nav-item flow-root md:pb-3">
 					<div class="rounded-sm hover:text-gray-300 md:mx-2 relative">
 						<button
-							on:click|preventDefault={function () {
+							on:click|preventDefault={() => {
 								dropdownSelected = !dropdownSelected
 							}}
 							class="h-8 rounded-full pt-2 md:pt-0 md:flex md:flex-wrap md:justify-center"
@@ -109,7 +109,7 @@
 							>
 								{#each accountList as account}
 									<button
-										on:click={function () {
+										on:click={() => {
 											goto(account.href)
 											dropdownSelected = !dropdownSelected
 										}}
@@ -117,7 +117,7 @@
 									>
 								{/each}
 								<button
-									on:click|preventDefault={function () {
+									on:click|preventDefault={() => {
 										signOut()
 									}}
 									class="w-full text-left block py-2 rounded hover:text-gray-300"
@@ -130,7 +130,7 @@
 				</div>
 			{:else}
 				<button
-					on:click={function () {
+					on:click={() => {
 						goto('/signin')
 					}}
 					class="nav-item pb-1 pt-1 rounded-b hover:text-gray-300 flex-none"

@@ -1,4 +1,4 @@
-import db from '@src/routes/db/connect.js'
+import { db } from '@src/routes/db/connect.js'
 import productModel from '@src/routes/model/product.js'
 import { json } from '@sveltejs/kit'
 
@@ -6,7 +6,7 @@ db()
 
 export var products = []
 
-export async function POST({ request }) {
+export var POST = async ({ request }) => {
 	products = await productModel.find({
 		approved: 'true',
 	})
@@ -19,7 +19,7 @@ export async function POST({ request }) {
 	})
 }
 
-export function getTrendingProducts(range, outputCount) {
+export var getTrendingProducts = (range, outputCount) => {
 	var arr = []
 	for (var i = 0; i < range; i += 1) {
 		arr.push(i)

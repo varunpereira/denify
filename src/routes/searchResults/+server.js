@@ -1,10 +1,10 @@
-import db from '@src/routes/db/connect.js'
+import { db } from '@src/routes/db/connect.js'
 import productModel from '@src/routes/model/product.js'
 import { json } from '@sveltejs/kit'
 
 db()
 
-export async function POST({ request }) {
+export var POST = async ({ request }) => {
 	var { searchTerm, category, pagination } = await request.json()
 	pagination = Number(pagination)
 	var products = []

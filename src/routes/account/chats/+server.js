@@ -1,10 +1,10 @@
-import db from '@src/routes/db/connect.js'
+import { db } from '@src/routes/db/connect.js'
 import chatModel from '@src/routes/model/chat.js'
 import { json } from '@sveltejs/kit'
 
 db()
 
-export async function POST({ request }) {
+export var POST = async ({ request }) => {
 	var { email, recipEmail } = await request.json()
 	var email1 = email
 	var email2 = recipEmail

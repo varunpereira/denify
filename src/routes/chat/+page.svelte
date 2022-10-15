@@ -6,7 +6,7 @@
 	var username = ''
 	var messages = []
 
-	onMount(function () {
+	onMount(() => {
 		websocketFrontend.on('name', function (name) {
 			username = name
 		})
@@ -50,7 +50,7 @@
 		</div>
 
 		<form
-			on:submit|preventDefault={function () {
+			on:submit|preventDefault={() => {
 				sendMessage()
 			}}
 			class="px-6 py-4 border-t border-zinc-800 bg-zinc-700 text-white shrink-0 flex items-center"
