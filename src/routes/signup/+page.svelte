@@ -12,21 +12,16 @@
 		}
 	})
 
-	var formValues = { email: '', password: '', confirmPassword: '' }
+	var formData = { email: '', password: '', confirmPassword: '' }
 	var error = ''
 
-	function formInput(event) {
-		var { name, value } = event.target
-		formValues = { ...formValues, [name]: value }
-	}
-
 	async function formSubmit() {
-		if (formValues.password != formValues.confirmPassword) {
+		if (formData.password != formData.confirmPassword) {
 			error = 'Passwords dont match'
 			return
 		}
 
-		var res = await axios.post($page.url.pathname, formValues)
+		var res = await axios.post($page.url.pathname, formData)
 		if (res.data.error) {
 			error = res.data.error
 			return
@@ -57,27 +52,21 @@
 			}}
 		>
 			<input
-				name={'email'}
-				value={formValues.email}
-				on:input|preventDefault={formInput}
+				bind:value={formData.email}
 				type="text"
 				placeholder="Email"
 				required
 				class="border-grey-light mb-4 block w-full rounded border p-3"
 			/>
 			<input
-				name={'password'}
-				value={formValues.password}
-				on:input|preventDefault={formInput}
+				bind:value={formData.password}
 				type="password"
 				placeholder="Password"
 				required
 				class="border-grey-light mb-4 block w-full rounded border p-3"
 			/>
 			<input
-				name={'confirmPassword'}
-				value={formValues.confirmPassword}
-				on:input|preventDefault={formInput}
+				bind:value={formData.confirmPassword}
 				type="password"
 				placeholder="Confirm Password"
 				required

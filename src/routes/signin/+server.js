@@ -6,7 +6,6 @@ import jwt from 'jsonwebtoken'
 import { json } from '@sveltejs/kit'
 import { mongodbUri } from '$env/static/private'
 
-
 db()
 
 export async function POST({ request }) {
@@ -14,15 +13,15 @@ export async function POST({ request }) {
 	var user = await userModel.findOne({ email })
 	if (user == null) {
 		return json({
-			 error: 'This user does not exist.' },
-		)
+			error: 'This user does not exist.',
+		})
 	}
 
 	var isMatch = bcryptjs.compareSync(password, user.password)
 	if (!isMatch) {
 		return json({
-			 error: 'Incorrect password.' },
-		)
+			error: 'Incorrect password.',
+		})
 	}
 
 	var accessToken = jwt.sign({ id: user.email }, mongodbUri, {
@@ -38,10 +37,9 @@ export async function POST({ request }) {
 	})
 
 	return json({
-			refreshToken,
-			accessToken,
-			user,
-			cartQuantity: cart.quantity,
-		},
-	)
+		accessToken,
+		refreshToken,
+		user,
+		cartQuantity: cart.quantity,
+	})
 }

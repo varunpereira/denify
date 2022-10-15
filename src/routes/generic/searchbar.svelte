@@ -76,9 +76,8 @@
 		{/each}
 	</select>
 	<input
-		value={searchTerm}
+		bind:value={searchTerm}
 		on:input={function (event) {
-			searchTerm = event.target.value
 			suggestionsOn = true
 		}}
 		list="suggestions"

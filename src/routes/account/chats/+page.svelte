@@ -23,7 +23,7 @@
 		if (res.data.error) {
 			goto('/account/chats/contacts')
 		}
-		messages = res.data.messages.reverse()
+		messages = res.data.messages
 	})
 
 	async function sendMessage() {
@@ -35,7 +35,7 @@
 		if (res.data.error) {
 			goto('/account/chats/contacts')
 		}
-		messages = res.data.messages.reverse()
+		messages = res.data.messages
 		message = ''
 	}
 </script>
@@ -81,10 +81,7 @@
 			class="relative rounded-b-full p-2"
 		>
 			<input
-				value={message}
-				on:input|preventDefault={function (event) {
-					message = event.target.value
-				}}
+				bind:value={message}
 				type="text"
 				class="border border-gray-400 w-full min-w-max rounded-full bg-white py-2 pl-4 text-sm text-black outline-none"
 				placeholder="type message"

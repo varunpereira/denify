@@ -6,7 +6,7 @@
 	import axios from 'axios'
 	import { page } from '$app/stores'
 
-	var formValues = { email: '', subject: '', msg: '' }
+	var formData = { email: '', subject: '', msg: '' }
 	var error = ''
 
 	onMount(async function () {
@@ -15,13 +15,8 @@
 		}
 	})
 
-	function formInput(event) {
-		var { name, value } = event.target
-		formValues = { ...formValues, [name]: value }
-	}
-
 	async function formSubmit() {
-		var res = await axios.post($page.url.pathname, formValues)
+		var res = await axios.post($page.url.pathname, formData)
 		if (res.data.error) {
 			error = res.data.error
 			return
@@ -40,25 +35,19 @@
 			}}
 		>
 			<input
-				name={'email'}
-				value={formValues.email}
-				on:input|preventDefault={formInput}
+				bind:value={formData.email}
 				type="text"
-				placeholder="Email"
+				placehFolder="Email"
 				class="border-grey-light mb-4 block w-full rounded border p-3"
 			/>
 			<input
-				name={'subject'}
-				value={formValues.subject}
-				on:input|preventDefault={formInput}
+				bind:value={formData.subject}
 				type="text"
 				placeholder="Subject"
 				class="border-grey-light mb-4 block w-full rounded border p-3"
 			/>
 			<textarea
-				name={'msg'}
-				value={formValues.msg}
-				on:input|preventDefault={formInput}
+				bind:value={formData.msg}
 				type="text"
 				placeholder="Message"
 				class="border-grey-light mb-4 block w-full rounded border p-3"

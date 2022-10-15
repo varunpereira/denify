@@ -50,7 +50,6 @@
 		</div>
 
 		<form
-			action="#"
 			on:submit|preventDefault={function () {
 				sendMessage()
 			}}

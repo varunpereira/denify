@@ -15,12 +15,7 @@
 	var formData = { email: '', password: '' }
 	var error = ''
 
-	function formInput(event) {
-		var { name, value } = event.target
-		formData = { ...formData, [name]: value }
-	}
-
-	async function formSubmit(event) {
+	async function formSubmit() {
 		var res = await axios.post($page.url.pathname, formData)
 		if (res.data.error) {
 			error = res.data.error
@@ -52,17 +47,13 @@
 			}}
 		>
 			<input
-				name={'email'}
-				value={formData.email}
-				on:input|preventDefault={formInput}
+				bind:value={formData.email}
 				type="text"
 				placeholder="Email"
 				class="border-grey-light mb-4 block w-full rounded border p-3"
 			/>
 			<input
-				name={'password'}
-				value={formData.password}
-				on:input|preventDefault={formInput}
+				bind:value={formData.password}
 				type="password"
 				placeholder="Password"
 				class="border-grey-light mb-4 block w-full rounded border p-3"

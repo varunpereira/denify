@@ -38,8 +38,7 @@ export async function POST({ request }) {
 	} else {
 		messages = update1.messages
 	}
-	return json( {
-			messages,
-		},
-	)
+	return json({
+		messages: messages.reverse(),
+	})
 }

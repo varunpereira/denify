@@ -102,7 +102,6 @@
 
 	function addReview() {
 		if (!$auth.user) {
-			console.log(JSON.stringify($auth))
 			goto('/signin')
 			return
 		}
@@ -173,22 +172,18 @@
 				</div>
 			</div>
 			<div class="mt-5 mb-3">
-				<button on:click|preventDefault={minusButton}
-					><MinusIcon class="h-6 w-6 pt-[10px]" /></button
-				>
+				<button on:click={minusButton}><MinusIcon class="h-6 w-6 pt-[10px]" /></button>
 				<input
-					on:input|preventDefault={orderQuantityChange}
+					on:input={orderQuantityChange}
 					value={orderQuantity}
 					class="mx-2 w-10 h-8 rounded-sm text-center text-black flex-justify-start"
-					type="text"
 				/>
-				<button on:click|preventDefault={plusButton}><PlusIcon class="h-6 w-6 pt-[10px]" /></button>
+				<button on:click={plusButton}><PlusIcon class="h-6 w-6 pt-[10px]" /></button>
 			</div>
 			<button
-				on:click|preventDefault={function () {
+				on:click={function () {
 					addToCart(product)
 				}}
-				type="button"
 				class="mt-5 flex w-24 items-center justify-center rounded bg-white py-4 text-black hover:bg-gray-400"
 			>
 				Add to Cart
@@ -199,7 +194,7 @@
 		</div>
 	</div>
 	<p class="mb-5 mt-20 text-xl font-semibold">Reviews</p>
-	<button on:click|preventDefault={addReview} class="text-sm font-semibold hover:text-gray-300">
+	<button on:click={addReview} class="text-sm font-semibold hover:text-gray-300">
 		Add a Review
 	</button>
 	<div id="reviews" class="mt-5 flex flex-wrap">
