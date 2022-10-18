@@ -14,8 +14,8 @@ export var POST = async ({ request }) => {
 	var findUser = await userModel.findOne({ email })
 	if (findUser) {
 		return json({
-			 error: 'This email already exists.' },
-		)
+			error: 'This email already exists.',
+		})
 	}
 
 	var passwordHash = bcryptjs.hashSync(password, 12)
@@ -43,10 +43,9 @@ export var POST = async ({ request }) => {
 	var user = await userModel.findOne({ email })
 
 	return json({
-			refreshToken,
-			accessToken,
-			cartQuantity: cart.quantity,
-			user,
-		},
-	)
+		refreshToken,
+		accessToken,
+		cartQuantity: cart.quantity,
+		user,
+	})
 }
