@@ -6,6 +6,8 @@
 - stripe notifcations done with webhooks
 - fix style based on web design principles
 - category should be array
+- cors since anyone can access endpoints
+- use express so can have path based routes instead of file based for be
 
 
 
