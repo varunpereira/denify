@@ -12,14 +12,13 @@
 	var tab = 0
 	var error = null
 	var orderQuantity = 1
-	var productId = $page.url.searchParams.get('productId')
 
 	onMount(async () => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}
 		var res = await axios.post($page.url.pathname, {
-			productId,
+			productId: $page.url.searchParams.get('productId'),
 		})
 		if (res.data.error) {
 			error = res.data.error
@@ -27,20 +26,6 @@
 		product = res.data.product
 		reviews = res.data.reviews
 	})
-
-	$: {
-		axios
-			.post($page.url.pathname, {
-				productId,
-			})
-			.then(function (res) {
-				if (res.data.error) {
-					error = res.data.error
-				}
-				product = res.data.product
-				reviews = res.data.reviews
-			})
-	}
 
 	async function addToCart(productItem) {
 		if (!$auth.user) {
