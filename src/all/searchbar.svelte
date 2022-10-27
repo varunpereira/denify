@@ -12,12 +12,12 @@
 	var suggestionsOn = false
 	var micOn = false
 
-	// suggestions
+	suggestions
 	$: if (suggestionsOn == true) {
 		suggestions = 'loading'
 		axios
 			.post('/searchResults', {
-				searchTerm,
+				searchTerm: searchTerm.trim(),
 				category,
 				pagination,
 			})

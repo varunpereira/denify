@@ -11,6 +11,7 @@
 	var products = null
 	var error = null
 	var pages = null
+	var pageLoaded = false
 
 	onMount(() => {
 		if (cookie.get('auth')) {
@@ -29,9 +30,10 @@
 				pages = res.data.pages
 				products = res.data.products
 			})
+		pageLoaded = true
 	})
 
-	$: {
+	$: if (pageLoaded == true) {
 		axios
 			.post($page.url.pathname, {
 				searchTerm: $page.url.searchParams.get('searchTerm').trim(),
