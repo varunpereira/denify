@@ -7,8 +7,8 @@
 	var searchTerm = $page.url.searchParams.get('searchTerm') || ''
 	var categoryList = ['All', 'Tech']
 	var category = categoryList[0]
-	var suggestions = 'loading'
 	var pagination = '1'
+	var suggestions = 'loading'
 	var suggestionsOn = false
 	var micOn = false
 
@@ -17,18 +17,18 @@
 		suggestions = 'loading'
 		axios
 			.post('/searchResults', {
-				searchTerm: searchTerm.trim(),
-				category: category.trim(),
-				pagination: pagination.trim(),
+				searchTerm,
+				category,
+				pagination,
 			})
-			.then(function (res) {
+			.then((res) => {
 				if (res.data.error) {
 					error = res.data.error
 				}
 				suggestions = res.data.products.slice(0, 8)
 			})
 	}
-	
+
 	var startDictation = () => {
 		if (window.hasOwnProperty('webkitSpeechRecognition')) {
 			var recognition = new webkitSpeechRecognition()

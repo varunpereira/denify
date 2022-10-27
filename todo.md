@@ -8,6 +8,8 @@
 - category should be array
 - cors since anyone can access endpoints
 - use express so can have path based routes instead of file based for be
+- o auth so can also sign in with google
+- sanity for file storage?
 
 
 
