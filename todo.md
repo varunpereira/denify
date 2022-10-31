@@ -10,7 +10,6 @@
 - use express so can have path based routes instead of file based for be
 - o auth so can also sign in with google
 - sanity for file storage?
-- add google maps, youtube video to about page
 
 
 
