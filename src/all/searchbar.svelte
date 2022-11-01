@@ -68,7 +68,7 @@
 		}
 	}}
 >
-	<select bind:value={category} class="absolute inset-y-0 rounded-l-lg outline-none">
+	<select bind:value={category} class="absolute inset-y-0 rounded-l-xl outline-none">
 		{#each categoryList as category}
 			<option value={category} class="w-10 bg-gray-100 py-2 px-4">
 				{category}
@@ -83,7 +83,7 @@
 		list="suggestions"
 		type="text"
 		placeholder="search"
-		class="rounded-l-lg rounded-r-lg w-full min-w-max bg-white py-2 pl-16 text-sm leading-tight text-black outline-none"
+		class="rounded-l-xl rounded-r-xl w-full min-w-max bg-white py-2 pl-16 text-sm leading-tight text-black outline-none"
 	/>
 	{#if searchTerm.trim() != ''}
 		<button
@@ -95,13 +95,12 @@
 		>
 			<XIcon class="h-4 w-4 text-black" />
 		</button>
-		<div class="absolute top-7 w-full bg-white rounded-b-lg">
+		<div class="absolute top-10 w-full bg-white rounded-t-xl rounded-b-xl">
 			{#if suggestions == 'loading' && suggestionsOn == true}
 				<p class="pl-2">Loading...</p>
 			{:else if suggestions.length == 0 && suggestionsOn == true}
 				<p class="pl-2">No results found.</p>
 			{:else if suggestions.length > 0 && suggestionsOn == true}
-				<div class="pb-2" />
 				{#each suggestions as suggestion}
 					<button
 						on:click={() => {
@@ -119,7 +118,7 @@
 							}
 						}}
 						type="button"
-						class="block py-2 px-2 hover:bg-gray-300 hover:rounded-lg w-full text-left"
+						class="block py-2 px-2 hover:bg-gray-300 hover:rounded-xl w-full text-left"
 					>
 						{suggestion.title}
 					</button>

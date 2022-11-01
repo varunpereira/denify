@@ -40,7 +40,7 @@
 
 <svelte:head><title>Home - Denify</title></svelte:head>
 
-<img src={pic[picIndex]} alt="" class="w-full rounded-md mb-4" />
+<img src={pic[picIndex]} alt="" class="w-full rounded-xl mb-4" />
 
 <div class="flex justify-center">
 	<TrendingUpIcon class="w-6 h-6 mr-2 mt-1" />

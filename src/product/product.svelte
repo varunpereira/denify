@@ -35,10 +35,10 @@
 	on:click={() => {
 		goto('/product?productId=' + product._id)
 	}}
-	class="mb-4 mr-4 max-w-[16rem] max-h-[32rem] text-sm rounded-lg bg-white hover:bg-gray-300 "
+	class="mb-4 mr-4 max-w-[16rem] max-h-[32rem] text-sm rounded-xl bg-white hover:bg-gray-300 "
 >
 	<img
-		class="h-44 w-96 rounded-t-lg object-cover"
+		class="h-44 w-96 rounded-t-xl object-cover"
 		src={product.images[0].url}
 		alt={product.images[0].url}
 	/>
@@ -56,7 +56,7 @@
 			on:click|preventDefault={() => {
 				addToCart()
 			}}
-			class="cursor-pointer inline-flex w-full items-center justify-center rounded-lg bg-black py-2 m font-medium text-white "
+			class="cursor-pointer inline-flex w-full items-center justify-center rounded-xl bg-black py-2 m font-medium text-white "
 		>
 			Add to Cart
 		</button>

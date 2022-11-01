@@ -1,7 +1,7 @@
 import { sveltekit } from '@sveltejs/kit/vite'
 import path from 'path'
 
-const config = {
+var config = {
 	plugins: [sveltekit()],
 	server: {
 		cors: false,
