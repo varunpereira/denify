@@ -7,7 +7,9 @@
 - fix style based on web design principles
 - category should be array
 - cors since anyone can access endpoints
-- use express so can have path based routes instead of file based for be
+- use npm svelte-navigator for path based fe routes
+- use express so can have path based routes instead of file based for be,
+else use api folder if file based be routes
 - o auth so can also sign in with google
 - sanity for file storage?
 

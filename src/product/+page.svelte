@@ -128,7 +128,7 @@
 				alt={product.images[tab].url}
 			/>
 		</div>
-		<div class="md:ml-4">
+		<div class="lg:ml-4 mt-4 lg:mt-0">
 			<p class="mb-6 text-xl font-semibold">
 				{product.title}
 			</p>
