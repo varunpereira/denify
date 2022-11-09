@@ -1,12 +1,20 @@
 import { db } from '@src/prov/db/connect.js'
 import productModel from '@src/prov/model/product.js'
 import { json } from '@sveltejs/kit'
+import { PUBLIC_apiSecret } from '$env/static/public'
 
 db()
 
 export var products = []
 
 export var POST = async ({ request }) => {
+	var { apiSecret } = await request.json()
+
+	// security
+	if (apiSecret != PUBLIC_apiSecret) {
+		return
+	}
+
 	products = await productModel.find({
 		approved: 'true',
 	})

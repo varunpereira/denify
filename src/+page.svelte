@@ -7,6 +7,7 @@
 	import Product from '@src/product/product.svelte'
 	import { TrendingUpIcon } from 'svelte-feather-icons'
 	import { pic } from '@src/homePic.js'
+	import { PUBLIC_apiSecret } from '$env/static/public'
 
 	var products = null
 	var error = null
@@ -20,7 +21,7 @@
 	})
 
 	var getProducts = async () => {
-		var res = await axios.post('/')
+		var res = await axios.post('/', { apiSecret: PUBLIC_apiSecret })
 		if (res.data.error) {
 			error = res.data.error
 		}
