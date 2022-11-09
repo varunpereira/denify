@@ -13,7 +13,7 @@ export var POST = async ({ request }) => {
 	// cors
 	if (request.url != domain) {
 		return json({
-			authorised: false,
+			authorised: false, domain: request.url,
 		})
 	}
 	var { email, password } = await request.json()
