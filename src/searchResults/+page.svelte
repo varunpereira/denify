@@ -37,6 +37,7 @@
 	$: if (pageLoaded == true) {
 		axios
 			.post($page.url.pathname, {
+				$apiSecret,
 				searchTerm: $page.url.searchParams.get('searchTerm').trim(),
 				category: $page.url.searchParams.get('category').trim(),
 				pagination: $page.url.searchParams.get('pagination').trim(),
