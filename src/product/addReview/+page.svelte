@@ -3,7 +3,7 @@
 	import cookie from 'js-cookie'
 	import { goto } from '$app/navigation'
 	import { onMount } from 'svelte'
-	import { auth } from '@src/all/store.js'
+	import { auth, apiSecret } from '@src/all/store.js'
 	import { page } from '$app/stores'
 
 	var formValues = null
@@ -18,6 +18,7 @@
 			$auth = JSON.parse(cookie.get('auth'))
 		}
 		var res = await axios.post($page.url.pathname, {
+			$apiSecret,
 			productId,
 		})
 		if (res.data.error) {
@@ -43,7 +44,7 @@
 		}
 
 		try {
-			var res = await axios.post($page.url.pathname + '/putReview', {formValues})
+			var res = await axios.post($page.url.pathname + '/putReview', { $apiSecret, formValues })
 			if (res.data.err) {
 				error = res.data.err
 				return

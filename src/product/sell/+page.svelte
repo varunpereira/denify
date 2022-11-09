@@ -1,6 +1,6 @@
 <script>
 	import axios from 'axios'
-	import { auth } from '@src/all/store.js'
+	import { auth, apiSecret } from '@src/all/store.js'
 	import { goto } from '$app/navigation'
 	import cookie from 'js-cookie'
 	import { onMount } from 'svelte'
@@ -30,7 +30,7 @@
 
 	async function formSubmit() {
 		try {
-			var res = await axios.post($page.url.pathname, { form: formData })
+			var res = await axios.post($page.url.pathname, { $apiSecret, form: formData })
 			if (res.data.error) {
 				return
 			}

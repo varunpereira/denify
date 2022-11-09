@@ -10,8 +10,8 @@ db()
 sgMail.setApiKey(sendgridApiKey)
 
 export var POST = async ({ request }) => {
-	var {$apiSecret} = await request.json()
-// api security
+	var { $apiSecret, formData } = await request.json()
+	// api security
 	var isMatch = bcryptjs.compareSync(PUBLIC_apiSecret, $apiSecret)
 	if (isMatch == false) {
 		return json({
@@ -34,7 +34,5 @@ export var POST = async ({ request }) => {
 		.catch(function (error) {
 			console.error(error)
 		})
-	return json({
-		},
-	)
+	return json({})
 }

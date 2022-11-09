@@ -1,6 +1,6 @@
 <script>
 	import { StarIcon, PlusIcon, MinusIcon } from 'svelte-feather-icons'
-	import { auth } from '@src/all/store.js'
+	import { auth, apiSecret } from '@src/all/store.js'
 	import axios from 'axios'
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
@@ -18,6 +18,7 @@
 			$auth = JSON.parse(cookie.get('auth'))
 		}
 		var res = await axios.post($page.url.pathname, {
+			$apiSecret,
 			productId: $page.url.searchParams.get('productId'),
 		})
 		if (res.data.error) {
@@ -37,6 +38,7 @@
 			return
 		}
 		var res = await axios.post($page.url.pathname + '/setInc', {
+			$apiSecret,
 			email: $auth.user.email,
 			product: productItem,
 			productQuantity: orderQuantity,

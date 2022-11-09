@@ -1,7 +1,7 @@
 <script>
 	import axios from 'axios'
 	import Product from '@src/product/product.svelte'
-	import { auth } from '@src/all/store.js'
+	import { auth, apiSecret } from '@src/all/store.js'
 	import { onMount } from 'svelte'
 	import { page } from '$app/stores'
 	import cookie from 'js-cookie'
@@ -24,6 +24,7 @@
 
 	async function getProducts() {
 		var res = await axios.post($page.url.pathname, {
+			$apiSecret,
 			email,
 			pagination,
 		})
@@ -49,6 +50,7 @@
 			return
 		}
 		var res = await axios.post($page.url.pathname + '/setContacts', {
+			$apiSecret,
 			email: $auth.user.email,
 			recipEmail: email,
 		})

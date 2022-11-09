@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte'
 	import axios from 'axios'
-	import { auth } from '@src/all/store.js'
+	import { auth, apiSecret } from '@src/all/store.js'
 	import { goto } from '$app/navigation'
 	import cookie from 'js-cookie'
 	import { page } from '$app/stores'
@@ -16,6 +16,7 @@
 
 		var checkoutSessionId = $page.url.searchParams.get('checkoutSessionId')
 		var res = await axios.post($page.url.pathname, {
+			$apiSecret,
 			email: JSON.parse(cookie.get('auth')).user.email,
 			checkoutSessionId,
 		})

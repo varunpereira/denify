@@ -1,7 +1,7 @@
 <script>
 	import axios from 'axios'
 	import Product from '@src/product/product.svelte'
-	import { auth } from '@src/all/store.js'
+	import { auth, apiSecret } from '@src/all/store.js'
 	import { onMount } from 'svelte'
 	import { page } from '$app/stores'
 	import cookie from 'js-cookie'
@@ -15,6 +15,7 @@
 			$auth = JSON.parse(cookie.get('auth'))
 		}
 		var res = await axios.post($page.url.pathname, {
+			$apiSecret,
 			email: JSON.parse(cookie.get('auth')).user.email,
 		})
 		if (res.data.error) {

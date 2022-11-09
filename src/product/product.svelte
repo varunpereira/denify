@@ -1,6 +1,6 @@
 <script>
 	import axios from 'axios'
-	import { auth } from '@src/all/store.js'
+	import { auth, apiSecret } from '@src/all/store.js'
 	import cookie from 'js-cookie'
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
@@ -19,6 +19,7 @@
 			return
 		}
 		var res = axios.post($page.url.pathname + '/setInc', {
+			$apiSecret,
 			email: $auth.user.email,
 			product,
 			productQuantity: 1,
