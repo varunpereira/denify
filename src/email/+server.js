@@ -11,7 +11,7 @@ sgMail.setApiKey(sendgridApiKey)
 
 export var POST = async ({ request }) => {
 	// cors
-	if (request.url != domain && request.url != devDomain) {
+	if (request.url != domain) {
 		return json({
 			authorised: false,
 		})
