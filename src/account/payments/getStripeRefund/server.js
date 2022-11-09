@@ -10,9 +10,7 @@ var stripe = new Stripe(stripeSecretKey, {
 export var POST = async ({ request }) => {
 	// cors
 	if (request.url != domain) {
-		return json({
-			authorised: false, domain: request.url,
-		})
+		
 	}
 	var { email, checkoutSessionId } = await request.json()
 

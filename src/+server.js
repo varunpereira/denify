@@ -10,10 +10,10 @@ export var products = []
 export var POST = async ({ request }) => {
 	// cors
 	if (request.url != domain) {
-		return json({
-			authorised: false,
-			domain: request.url,
-		})
+		// return json({
+		// 	authorised: false,
+		// 	domain: request.url,
+		// })
 	}
 
 	products = await productModel.find({

@@ -10,9 +10,7 @@ db()
 export var POST = async ({ request }) => {
 	// cors
 	if (request.url != domain) {
-		return json({
-			authorised: false, domain: request.url,
-		})
+		
 	}
 	try {
 		var { productId } = await request.json()
