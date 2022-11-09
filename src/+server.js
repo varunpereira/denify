@@ -1,19 +1,15 @@
 import { db } from '@src/prov/db/connect.js'
+import { domain, devDomain } from '$env/static/private'
 import productModel from '@src/prov/model/product.js'
 import { json } from '@sveltejs/kit'
-import bcryptjs from 'bcryptjs'
-import { PUBLIC_apiSecret } from '$env/static/public'
 
 db()
 
 export var products = []
 
 export var POST = async ({ request }) => {
-	var { $apiSecret } = await request.json()
-
-	// api security
-	var isMatch = bcryptjs.compareSync(PUBLIC_apiSecret, $apiSecret)
-	if (isMatch == false) {
+	// cors
+	if (request.url != domain && request.url != devDomain) {
 		return json({
 			authorised: false,
 		})

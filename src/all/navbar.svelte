@@ -6,7 +6,7 @@
 		UserIcon,
 		ChevronDownIcon,
 	} from 'svelte-feather-icons'
-	import { auth, apiSecret } from '@src/all/store.js'
+	import { auth } from '@src/all/store.js'
 	import cookie from 'js-cookie'
 	import { goto } from '$app/navigation'
 	import SearchBar from '@src/all/searchbar.svelte'

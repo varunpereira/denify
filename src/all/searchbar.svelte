@@ -3,7 +3,6 @@
 	import { SearchIcon, XIcon, MicIcon } from 'svelte-feather-icons'
 	import axios from 'axios'
 	import { page } from '$app/stores'
-	import { apiSecret } from '@src/all/store.js'
 
 	var searchTerm = $page.url.searchParams.get('searchTerm') || ''
 	var categoryList = ['All', 'Tech']
@@ -18,7 +17,6 @@
 		suggestions = 'loading'
 		axios
 			.post('/searchResults', {
-				$apiSecret,
 				searchTerm: searchTerm.trim(),
 				category,
 				pagination,

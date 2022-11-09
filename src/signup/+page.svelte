@@ -3,7 +3,7 @@
 	import cookie from 'js-cookie'
 	import { goto } from '$app/navigation'
 	import { onMount } from 'svelte'
-	import { auth, apiSecret } from '@src/all/store.js'
+	import { auth } from '@src/all/store.js'
 	import { page } from '$app/stores'
 
 	onMount(async () => {
@@ -12,7 +12,7 @@
 		}
 	})
 
-	var formData = { $apiSecret, email: '', password: '', confirmPassword: '' }
+	var formData = { email: '', password: '', confirmPassword: '' }
 	var error = ''
 
 	async function formSubmit() {

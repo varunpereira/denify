@@ -1,7 +1,7 @@
 <script>
 	import axios from 'axios'
 	import { onMount } from 'svelte'
-	import { auth, apiSecret } from '@src/all/store.js'
+	import { auth } from '@src/all/store.js'
 	import cookie from 'js-cookie'
 	import { goto } from '$app/navigation'
 

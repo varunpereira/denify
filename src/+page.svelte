@@ -1,7 +1,7 @@
 <script>
 	import axios from 'axios'
 	import { onMount } from 'svelte'
-	import { auth, apiSecret } from '@src/all/store.js'
+	import { auth } from '@src/all/store.js'
 	import cookie from 'js-cookie'
 	import { goto } from '$app/navigation'
 	import Product from '@src/product/product.svelte'
@@ -21,7 +21,7 @@
 	})
 
 	var getProducts = async () => {
-		var res = await axios.post('/', { $apiSecret })
+		var res = await axios.post('/')
 		if (res.data.authorised == false) {
 			return
 		}

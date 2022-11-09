@@ -1,20 +1,19 @@
 import { db } from '@src/prov/db/connect.js'
-import bcryptjs from 'bcryptjs'
-import { PUBLIC_apiSecret } from '$env/static/public'
+import { domain, devDomain } from '$env/static/private'
+
 import productModel from '@src/prov/model/product.js'
 import { json } from '@sveltejs/kit'
 
 db()
 
 export var POST = async ({ request }) => {
-	var { $apiSecret, email, pagination } = await request.json()
-// api security
-	var isMatch = bcryptjs.compareSync(PUBLIC_apiSecret, $apiSecret)
-	if (isMatch == false) {
+	// cors
+	if (request.url != domain && request.url != devDomain) {
 		return json({
 			authorised: false,
 		})
 	}
+	var { email, pagination } = await request.json()
 
 	var products = await productModel.find({
 		email,
@@ -26,8 +25,7 @@ export var POST = async ({ request }) => {
 	var upper = productsPerPage * pagination
 	products = products.slice(lower, upper)
 	return json({
-			products,
-			pages,
-		},
-	)
+		products,
+		pages,
+	})
 }

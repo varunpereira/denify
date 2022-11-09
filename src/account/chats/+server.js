@@ -1,20 +1,20 @@
 import { db } from '@src/prov/db/connect.js'
+import { domain, devDomain } from '$env/static/private'
 import chatModel from '@src/prov/model/chat.js'
 import { json } from '@sveltejs/kit'
-import bcryptjs from 'bcryptjs'
-import { PUBLIC_apiSecret } from '$env/static/public'
+
 
 db()
 
 export var POST = async ({ request }) => {
-	var { $apiSecret, email, recipEmail } = await request.json()
-// api security
-	var isMatch = bcryptjs.compareSync(PUBLIC_apiSecret, $apiSecret)
-	if (isMatch == false) {
+	// cors
+	if (request.url != domain && request.url != devDomain) {
 		return json({
 			authorised: false,
 		})
 	}
+
+	var { email, recipEmail } = await request.json()
 
 	var email1 = email
 	var email2 = recipEmail

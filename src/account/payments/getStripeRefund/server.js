@@ -8,14 +8,13 @@ var stripe = new Stripe(stripeSecretKey, {
 })
 
 export var POST = async ({ request }) => {
-	var { $apiSecret, email, checkoutSessionId } = await request.json()
-// api security
-	var isMatch = bcryptjs.compareSync(PUBLIC_apiSecret, $apiSecret)
-	if (isMatch == false) {
+	// cors
+	if (request.url != domain && request.url != devDomain) {
 		return json({
 			authorised: false,
 		})
 	}
+	var { email, checkoutSessionId } = await request.json()
 
 	try {
 		var checkout_session = await stripe.checkout.sessions.retrieve(checkoutSessionId)
@@ -34,14 +33,12 @@ export var POST = async ({ request }) => {
 			email,
 			current: false,
 		})
-		return json( {
-				orders,
-			},
-		)
+		return json({
+			orders,
+		})
 	} catch (error) {
 		return json({
-				message: error.message,
-			},
-		)
+			message: error.message,
+		})
 	}
 }

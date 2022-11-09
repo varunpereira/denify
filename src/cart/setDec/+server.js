@@ -1,6 +1,6 @@
 import { db } from '@src/prov/db/connect.js'
-import bcryptjs from 'bcryptjs'
-import { PUBLIC_apiSecret } from '$env/static/public'
+import { domain, devDomain } from '$env/static/private'
+
 import orderModel from '@src/prov/model/order.js'
 import productModel from '@src/prov/model/product.js'
 import { json } from '@sveltejs/kit'
@@ -8,14 +8,13 @@ import { json } from '@sveltejs/kit'
 db()
 
 export var POST = async ({ request }) => {
-	var { $apiSecret, email, productId, productPrice, productQuantity } = await request.json()
-// api security
-	var isMatch = bcryptjs.compareSync(PUBLIC_apiSecret, $apiSecret)
-	if (isMatch == false) {
+	// cors
+	if (request.url != domain && request.url != devDomain) {
 		return json({
 			authorised: false,
 		})
 	}
+	var { email, productId, productPrice, productQuantity } = await request.json()
 
 	var updateProduct = await productModel.updateOne(
 		{ _id: productId },
@@ -35,12 +34,10 @@ export var POST = async ({ request }) => {
 	)
 	if (cart.modifiedCount == 0) {
 		return json({
-				err: 'No current order found for that email.',
-			},
-		)
+			err: 'No current order found for that email.',
+		})
 	}
 	return json({
-			cart,
-		},
-	)
+		cart,
+	})
 }

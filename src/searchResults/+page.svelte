@@ -1,7 +1,7 @@
 <script>
 	import axios from 'axios'
 	import Product from '@src/product/product.svelte'
-	import { auth, apiSecret } from '@src/all/store.js'
+	import { auth } from '@src/all/store.js'
 	import { onMount } from 'svelte'
 	import { page } from '$app/stores'
 	import cookie from 'js-cookie'
@@ -19,7 +19,6 @@
 		}
 		axios
 			.post($page.url.pathname, {
-				$apiSecret,
 				searchTerm: $page.url.searchParams.get('searchTerm').trim(),
 				category: $page.url.searchParams.get('category').trim(),
 				pagination: $page.url.searchParams.get('pagination').trim(),
@@ -37,7 +36,6 @@
 	$: if (pageLoaded == true) {
 		axios
 			.post($page.url.pathname, {
-				$apiSecret,
 				searchTerm: $page.url.searchParams.get('searchTerm').trim(),
 				category: $page.url.searchParams.get('category').trim(),
 				pagination: $page.url.searchParams.get('pagination').trim(),
