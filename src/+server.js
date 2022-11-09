@@ -12,6 +12,7 @@ export var POST = async ({ request }) => {
 	if (request.url != domain) {
 		return json({
 			authorised: false,
+			domain: request.url,
 		})
 	}
 
