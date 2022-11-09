@@ -1,7 +1,6 @@
 import { db } from '@src/prov/db/connect.js'
 import { domain, devDomain } from '$env/static/private'
 import bcryptjs from 'bcryptjs'
-
 import userModel from '@src/prov/model/user.js'
 import orderModel from '@src/prov/model/order.js'
 import jwt from 'jsonwebtoken'
