@@ -1,6 +1,7 @@
 import { db } from '@src/prov/db/connect.js'
 import productModel from '@src/prov/model/product.js'
 import { json } from '@sveltejs/kit'
+import bcryptjs from 'bcryptjs'
 import { PUBLIC_apiSecret } from '$env/static/public'
 
 db()
@@ -8,11 +9,14 @@ db()
 export var products = []
 
 export var POST = async ({ request }) => {
-	var { apiSecret } = await request.json()
+	var { $apiSecret } = await request.json()
 
-	// security
-	if (apiSecret != PUBLIC_apiSecret) {
-		return
+	// api security
+	var isMatch = bcryptjs.compareSync(PUBLIC_apiSecret, $apiSecret)
+	if (isMatch == false) {
+		return json({
+			authorised: false,
+		})
 	}
 
 	products = await productModel.find({

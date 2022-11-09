@@ -1,4 +1,6 @@
 import { db } from '@src/prov/db/connect.js'
+import bcryptjs from 'bcryptjs'
+import { PUBLIC_apiSecret } from '$env/static/public'
 import userModel from '@src/prov/model/user.js'
 import orderModel from '@src/prov/model/order.js'
 import bcryptjs from 'bcryptjs'
@@ -9,7 +11,15 @@ import { mongodbUri } from '$env/static/private'
 db()
 
 export var POST = async ({ request }) => {
-	var { email, password } = await request.json()
+	var { $apiSecret, email, password } = await request.json()
+// api security
+	var isMatch = bcryptjs.compareSync(PUBLIC_apiSecret, $apiSecret)
+	if (isMatch == false) {
+		return json({
+			authorised: false,
+		})
+	}
+
 	var user = await userModel.findOne({ email })
 	if (user == null) {
 		return json({

@@ -1,13 +1,12 @@
 <script>
 	import axios from 'axios'
 	import { onMount } from 'svelte'
-	import { auth } from '@src/all/store.js'
+	import { auth, apiSecret } from '@src/all/store.js'
 	import cookie from 'js-cookie'
 	import { goto } from '$app/navigation'
 	import Product from '@src/product/product.svelte'
 	import { TrendingUpIcon } from 'svelte-feather-icons'
 	import { pic } from '@src/homePic.js'
-	import { PUBLIC_apiSecret } from '$env/static/public'
 
 	var products = null
 	var error = null
@@ -17,11 +16,15 @@
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}
+
 		getProducts()
 	})
 
 	var getProducts = async () => {
-		var res = await axios.post('/', { apiSecret: PUBLIC_apiSecret })
+		var res = await axios.post('/', { $apiSecret })
+		if (res.data.authorised == false) {
+			return
+		}
 		if (res.data.error) {
 			error = res.data.error
 		}

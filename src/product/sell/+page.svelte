@@ -6,37 +6,31 @@
 	import { onMount } from 'svelte'
 	import { page } from '$app/stores'
 
-	var formData = null
+	var formData = {
+		title: 'test',
+		description: 'test',
+		price: 0,
+		images: [
+			{
+				url: 'https://res.cloudinary.com/devatchannel/image/upload/v1605318911/nextjs_media/nelvbtwdbk1vjvhufort.jpg',
+			},
+		],
+		category: 'test',
+		stock: 0,
+		sold: 0,
+	}
 	var error = null
 
 	onMount(async () => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
 		}
-		formData = {
-			email: $auth.user.email,
-			title: 'test',
-			description: 'test',
-			price: 0,
-			images: [
-				{
-					url: 'https://res.cloudinary.com/devatchannel/image/upload/v1605318911/nextjs_media/nelvbtwdbk1vjvhufort.jpg',
-				},
-			],
-			category: 'test',
-			stock: 0,
-			sold: 0,
-		}
+		formData['email'] = $auth.user.email
 	})
-
-	function formInput(event) {
-		var { name, value } = event.target
-		formData = { ...formData, [name]: value }
-	}
 
 	async function formSubmit() {
 		try {
-			var res = await axios.post($page.url.pathname, formData)
+			var res = await axios.post($page.url.pathname, { form: formData })
 			if (res.data.error) {
 				return
 			}
@@ -56,33 +50,25 @@
 		<p class="mb-8 text-center text-2xl">Sell a Product</p>
 		<p>Title</p>
 		<input
-			name="title"
-			value={formData.title}
-			on:input={formInput}
+			bind:value={formData.title}
 			type="text"
 			class="border-grey-light mb-4 block w-full rounded border p-3"
 		/>
 		<p>Description</p>
 		<input
-			name="description"
-			value={formData.description}
-			on:input={formInput}
+			bind:value={formData.description}
 			type="text"
 			class="border-grey-light mb-4 w-full rounded border p-3"
 		/>
 		<p>Price</p>
 		<input
-			name="price"
-			value={formData.price}
-			on:input={formInput}
+			bind:value={formData.price}
 			type="text"
 			class="border-grey-light mb-4 block w-full rounded border p-3"
 		/>
 		<p>Stock</p>
 		<input
-			name="stock"
-			value={formData.stock}
-			on:input={formInput}
+			bind:value={formData.stock}
 			type="text"
 			class="border-grey-light mb-4 block w-full rounded border p-3"
 		/>

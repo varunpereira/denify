@@ -8,7 +8,15 @@ var stripe = new Stripe(stripeSecretKey, {
 })
 
 export var POST = async ({ request }) => {
-	var { email, checkoutSessionId } = await request.json()
+	var { $apiSecret, email, checkoutSessionId } = await request.json()
+// api security
+	var isMatch = bcryptjs.compareSync(PUBLIC_apiSecret, $apiSecret)
+	if (isMatch == false) {
+		return json({
+			authorised: false,
+		})
+	}
+
 	try {
 		var checkout_session = await stripe.checkout.sessions.retrieve(checkoutSessionId)
 		var refund = await stripe.refunds.create({

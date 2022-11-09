@@ -32,10 +32,6 @@
 		}
 	})
 
-	function formInput(event) {
-		var { name, value } = event.target
-		formValues = { ...formValues, [name]: value }
-	}
 	function formChange() {
 		formValues = { ...formValues, rating: selected }
 	}
@@ -47,7 +43,7 @@
 		}
 
 		try {
-			var res = await axios.post($page.url.pathname + '/putReview', formValues)
+			var res = await axios.post($page.url.pathname + '/putReview', {formValues})
 			if (res.data.err) {
 				error = res.data.err
 				return
@@ -76,9 +72,7 @@
 				</select>
 				<p>Description</p>
 				<input
-					name="description"
-					value={formValues.description}
-					on:input={formInput}
+					bind:value={formValues.description}
 					type="text"
 					required
 					class="border-grey-light mb-4 w-full rounded border p-3"
