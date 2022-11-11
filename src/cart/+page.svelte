@@ -76,9 +76,13 @@
 		cookie.set('auth', JSON.stringify($auth))
 	}
 
-	async function checkout() {
+	async function pay() {
 		if (cart.quantity <= 0) {
 			error = 'Cart empty. Please add a product.'
+			return
+		}
+		if (!$auth.user) {
+			goto('/signin')
 			return
 		}
 		var products = cart.products.map(function (product) {
@@ -171,7 +175,7 @@
 			<div class="mt-10">
 				<button
 					on:click|preventDefault={() => {
-						checkout()
+						pay()
 					}}
 					type="button"
 					class="max-w-sm rounded bg-black py-3 container mx-auto text-sm font-semibold text-white hover:bg-gray-600"

@@ -1,6 +1,6 @@
 <script>
 	import { StarIcon, PlusIcon, MinusIcon } from 'svelte-feather-icons'
-	import { auth } from '@src/all/store.js'
+	import { auth, signedOutCart } from '@src/all/store.js'
 	import axios from 'axios'
 	import { goto } from '$app/navigation'
 	import { page } from '$app/stores'
@@ -28,14 +28,52 @@
 	})
 
 	async function addToCart(productItem) {
-		if (!$auth.user) {
-			goto('/signin')
-			return
-		}
 		if (orderQuantity < 1 || orderQuantity > product.stock) {
 			error = 'Quantity not available from current stock levels.'
 			return
 		}
+
+		if (!$auth.user) {
+			var products = $signedOutCart.products
+			if (products.length == 0) {
+				products = [
+					...products,
+					{
+						productId: product._id,
+						productQuantity: orderQuantity,
+						productPrice: product.price,
+						productTitle: product.title,
+					},
+				]
+			} else {
+				var initQuantity = 0
+				for (var i = 0; i < products.length; i += 1) {
+					// already exists
+					if (product._id == products[i].productId) {
+						initQuantity = products[i].productQuantity
+						products.splice(i, 1)
+					}
+				}
+				products = [
+					...products,
+					{
+						productId: product._id,
+						productQuantity: initQuantity + orderQuantity,
+						productPrice: product.price,
+						productTitle: product.title,
+					},
+				]
+			}
+			$signedOutCart = {
+				...$signedOutCart,
+				price: $signedOutCart.price + product.price * orderQuantity,
+				quantity: $signedOutCart.quantity + orderQuantity,
+				products: products,
+			}
+			cookie.set('signedOutCart', JSON.stringify($signedOutCart))
+			return
+		}
+
 		var res = await axios.post($page.url.pathname + '/setInc', {
 			email: $auth.user.email,
 			product: productItem,
