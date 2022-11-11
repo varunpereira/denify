@@ -6,7 +6,7 @@
 		UserIcon,
 		ChevronDownIcon,
 	} from 'svelte-feather-icons'
-	import { auth } from '@src/all/store.js'
+	import { auth, signedOutCart } from '@src/all/store.js'
 	import cookie from 'js-cookie'
 	import { goto } from '$app/navigation'
 	import SearchBar from '@src/all/searchbar.svelte'
@@ -133,9 +133,20 @@
 					on:click={() => {
 						goto('/signin')
 					}}
-					class="nav-item pb-1 pt-1 rounded-b hover:text-gray-300 flex-none"
+					class="py-1 hover:text-gray-300 flex-none"
 				>
 					Sign in
+				</button>
+				<button
+					on:click={() => {
+						goto('/cart')
+					}}
+					class="ml-3 py-2 flex hover:text-gray-300"
+				>
+					<ShoppingCartIcon class="h-5 w-5" />
+					<sup class="justify-end font-bold">
+						{$signedOutCart.quantity}
+					</sup>
 				</button>
 			{/if}
 		</div>

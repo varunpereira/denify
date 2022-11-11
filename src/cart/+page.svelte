@@ -1,7 +1,7 @@
 <script>
 	import { onMount } from 'svelte'
 	import axios from 'axios'
-	import { auth } from '@src/all/store.js'
+	import { auth, signedOutCart } from '@src/all/store.js'
 	import { TrashIcon } from 'svelte-feather-icons'
 	import { goto } from '$app/navigation'
 	import cookie from 'js-cookie'
@@ -14,8 +14,10 @@
 	onMount(async () => {
 		if (cookie.get('auth')) {
 			$auth = JSON.parse(cookie.get('auth'))
+			getCart()
+		} else {
+			cart = $signedOutCart
 		}
-		getCart()
 	})
 
 	async function getCart() {
@@ -30,11 +32,33 @@
 	}
 
 	$: if (fetch == true) {
-		getCart()
+		if (!$auth.user) {
+			cart = $signedOutCart
+		} else {
+			getCart()
+		}
 		fetch = false
 	}
 
 	async function removeProduct(product) {
+		if (!$auth.user) {
+			var products = $signedOutCart.products
+			for (var i = 0; i < products.length; i += 1) {
+				if (product.productId == products[i].productId) {
+					products.splice(i, 1)
+				}
+			}
+			$signedOutCart = {
+				...$signedOutCart,
+				price: $signedOutCart.price - product.productPrice,
+				quantity: $signedOutCart.quantity - product.productQuantity,
+				products: products,
+			}
+			fetch = true
+			cookie.set('signedOutCart', JSON.stringify($signedOutCart))
+			return
+		}
+
 		var productData = {
 			email: $auth.user.email,
 			productId: product.productId,
@@ -46,9 +70,9 @@
 			console.log('error')
 			return
 		}
+		$auth = { ...$auth, cartQuantity: $auth.cartQuantity - product.productQuantity }
 		// cart = res.data.cart;
 		fetch = true
-		$auth = { ...$auth, cartQuantity: $auth.cartQuantity - product.productQuantity }
 		cookie.set('auth', JSON.stringify($auth))
 	}
 
@@ -84,14 +108,10 @@
 				<p class="text-2xl font-semibold">{cart.quantity} Items</p>
 			</div>
 			<div class="mt-10 mb-5 flex">
-				<p class="w-2/5 text-xs font-semibold uppercase text-gray-600">Product Details</p>
-				<p class="w-1/5 text-center text-center text-xs font-semibold uppercase text-gray-600">
-					Quantity
-				</p>
-				<p class="w-1/5 text-center text-center text-xs font-semibold uppercase text-gray-600">
-					Total
-				</p>
-				<p class="w-1/5 text-center text-center text-xs font-semibold uppercase text-gray-600" />
+				<p class="w-2/5 text-xs font-semibold text-gray-600">Product Details</p>
+				<p class="w-1/5 text-center text-center text-xs font-semibold text-gray-600">Quantity</p>
+				<p class="w-1/5 text-center text-center text-xs font-semibold text-gray-600">Total</p>
+				<p class="w-1/5 text-center text-center text-xs font-semibold text-gray-600" />
 			</div>
 
 			{#each cart.products as product}
@@ -130,38 +150,39 @@
 			{/each}
 		</div>
 
-		<div id="summary" class="px-8 py-10">
+		<div id="summary" class="px-8 pt-10 pb-10">
 			<p class="border-b pb-8 text-2xl font-semibold">Order Summary</p>
 			<div class="mt-10 mb-5 flex justify-between">
-				<p class="text-sm font-semibold uppercase">
+				<p class="text-sm font-semibold">
 					Items {cart.quantity}
 				</p>
 				<p class="text-sm font-semibold">${cart.price}</p>
 			</div>
 			<div>
-				<p class="mb-3 inline-block text-sm font-medium uppercase">Shipping</p>
+				<p class="mb-3 inline-block text-sm font-medium">Shipping</p>
 				<select class="block w-full p-2 text-sm text-gray-600">
 					<option>Standard shipping - Free</option>
 				</select>
 			</div>
-			<div class="mt-8 border-t">
-				<div class="flex justify-between py-6 text-sm font-semibold uppercase">
-					<p>Total cost</p>
-					<p>${cart.price}</p>
-				</div>
+			<div class="mt-8 border-t flex justify-between py-6 text-sm font-semibold">
+				<p>Total Cost</p>
+				<p>${cart.price}</p>
+			</div>
+			<div class="mt-10">
 				<button
 					on:click|preventDefault={() => {
 						checkout()
 					}}
 					type="button"
-					class="w-full rounded bg-black py-3  text-sm font-semibold uppercase text-white hover:bg-gray-600"
+					class="max-w-sm rounded bg-black py-3 container mx-auto text-sm font-semibold text-white hover:bg-gray-600"
 				>
 					Proceed to Payment
 				</button>
-				{#if error}
-					<div class="mt-10 text-red-500">{error}</div>
-				{/if}
 			</div>
+
+			{#if error}
+				<div class="mt-10 h-10 text-red-500">{error}</div>
+			{/if}
 		</div>
 	</div>
 {:else}
