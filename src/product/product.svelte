@@ -27,20 +27,25 @@
 					},
 				]
 			} else {
+				var initQuantity = 0
+				var initPrice = 0
 				for (var i = 0; i < products.length; i += 1) {
-					if (product._id != products[i].productId) {
-						products = [
-							...products,
-							{
-								productId: product._id,
-								productQuantity: 1,
-								productPrice: product.price * 1,
-								productTitle: product.title,
-							},
-						]
-					} else {
+					// already exists
+					if (product._id == products[i].productId) {
+						initQuantity = products[i].productQuantity
+						initPrice = products[i].productPrice
+						products.splice(i, 1)
 					}
 				}
+				products = [
+					...products,
+					{
+						productId: product._id,
+						productQuantity: initQuantity + 1,
+						productPrice: product.price * (initQuantity + 1),
+						productTitle: product.title,
+					},
+				]
 			}
 			$signedOutCart = {
 				...$signedOutCart,
