@@ -1,8 +1,8 @@
-import adapter from '@sveltejs/adapter-auto'
+import vercel from '@sveltejs/adapter-vercel'
 
 var config = {
 	kit: {
-		adapter: adapter(),
+		adapter: vercel(),
 		files: {
 			routes: 'src/',
 			appTemplate: 'src/all/struct.html',
