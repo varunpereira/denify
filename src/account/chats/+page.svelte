@@ -43,7 +43,7 @@
 <svelte:head><title>Account Chat - Denify</title></svelte:head>
 
 {#if messages}
-	<div class="rounded-3xl bg-white text-black md:mx-40 ">
+	<div class="rounded-3xl border border-gray-600 text-black md:mx-40 ">
 		<p
 			class="flex justify-center rounded-t-3xl border-b border-gray-400 py-2 text-xl font-semibold"
 		>

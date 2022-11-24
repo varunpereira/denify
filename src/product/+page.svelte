@@ -144,7 +144,7 @@
 							on:click={() => {
 								tab = index
 							}}
-							class={'w-12 h-12 mb-2 object-cover rounded-lg border-2 border-orange-400'}
+							class={'w-12 h-12 mb-2 object-contain rounded-lg bg-gray-200 cursor-pointer border border-black'}
 							src={image.url}
 							alt={image.url}
 						/>
@@ -153,7 +153,7 @@
 							on:click={() => {
 								tab = index
 							}}
-							class={'w-12 h-12 mb-2 object-cover rounded-lg'}
+							class={'w-12 h-12 mb-2 object-contain rounded-lg bg-gray-200 cursor-pointer'}
 							src={image.url}
 							alt={image.url}
 						/>
@@ -161,7 +161,7 @@
 				{/each}
 			</div>
 			<img
-				class="w-[328px] h-[328px] md:w-[496px] md:h-[496px] object-contain rounded-lg border border-white"
+				class="w-[328px] h-[328px] md:w-[496px] md:h-[496px] object-contain rounded-lg bg-gray-200"
 				src={product.images[tab].url}
 				alt={product.images[tab].url}
 			/>
@@ -207,7 +207,7 @@
 				on:click={() => {
 					addToCart(product)
 				}}
-				class="mt-5 flex w-24 items-center justify-center rounded bg-white py-4 text-black hover:bg-gray-400"
+				class="mt-5 flex w-24 items-center justify-center rounded bg-gray-200 py-4 text-black hover:bg-gray-400"
 			>
 				Add to Cart
 			</button>
@@ -227,9 +227,9 @@
 			{#each reviews as review}
 				<div
 					key={review._id}
-					class="mr-10 mb-10 h-40 w-40 max-w-sm rounded-lg border border-gray-200 bg-white p-3"
+					class="mr-10 mb-10 h-40 w-40 max-w-sm rounded-lg bg-gray-200 p-3"
 				>
-					<p class="mb-2 font-bold tracking-tight text-gray-900 dark:text-white">
+					<p class="mb-2 font-semibold tracking-tight">
 						<button
 							on:click={() => {
 								goto('/account/profile?email=' + review.email)
@@ -246,7 +246,7 @@
 							<StarIcon class="w-4 h-4 stroke-black" />
 						{/each}
 					</div>
-					<p class="mb-2 min-h-full text-xs font-normal text-gray-700">
+					<p class="mb-2 min-h-full text-xs font-normal">
 						{review.description}
 					</p>
 				</div>

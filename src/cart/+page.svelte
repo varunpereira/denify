@@ -105,8 +105,8 @@
 <svelte:head><title>Cart - Denify</title></svelte:head>
 
 {#if cart}
-	<div class="mx-auto my-10 rounded-lg bg-white text-black shadow-md">
-		<div class="rounded-lg bg-white px-10 py-10">
+	<div class="mx-auto my-10 rounded-lg bg-gray-100 text-black shadow-2xl">
+		<div class="rounded-lg px-10 py-10">
 			<div class="flex justify-between border-b pb-8">
 				<p class="text-2xl font-semibold">Shopping Cart</p>
 				<p class="text-2xl font-semibold">{cart.quantity} Items</p>

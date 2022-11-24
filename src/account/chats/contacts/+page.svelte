@@ -28,7 +28,7 @@
 <svelte:head><title>Account Contacts - Denify</title></svelte:head>
 
 {#if user}
-	<div class="rounded-lg bg-white pb-2  text-black">
+	<div class="rounded-lg pb-2 bg-white text-black">
 		<p class="mb-5 pt-4 pl-2 text-lg font-semibold">Your Messages</p>
 		{#each user.contacts as contact, index}
 			<button

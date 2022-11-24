@@ -10,7 +10,7 @@
 				on:click={() => {
 					goto('/')
 				}}
-				class="flex items-center hover:text-gray-300"
+				class="flex items-center hover:text-gray-700"
 			>
 				<ShoppingBagIcon class="w-6 h-6 mr-1" />
 				<p class="self-center text-2xl font-semibold whitespace-nowrap">Denify</p>
@@ -25,7 +25,7 @@
 							on:click={() => {
 								goto('/about')
 							}}
-							class="hover:text-gray-300">About</button
+							class="hover:text-gray-700">About</button
 						>
 					</div>
 				</div>
@@ -38,7 +38,7 @@
 							on:click={() => {
 								window.open('https://www.instagram.com/denify.shop/')
 							}}
-							class="hover:text-gray-300"><InstagramIcon class="w-[20px] h-[20px]" /></button
+							class="hover:text-gray-700"><InstagramIcon class="w-[20px] h-[20px]" /></button
 						>
 					</div>
 					<div>
@@ -46,7 +46,7 @@
 							on:click={() => {
 								window.open('https://www.instagram.com/denify.shop/')
 							}}
-							class="hover:text-gray-300"
+							class="hover:text-gray-700"
 						>
 							<MailIcon class="w-[20px] h-[20px]" />
 						</button>
@@ -61,7 +61,7 @@
 							on:click={() => {
 								window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 							}}
-							class="hover:text-gray-300">Privacy Policy</button
+							class="hover:text-gray-700">Privacy Policy</button
 						>
 					</div>
 					<div>
@@ -69,7 +69,7 @@
 							on:click={() => {
 								window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ')
 							}}
-							class="hover:text-gray-300"
+							class="hover:text-gray-700"
 							>Terms &amp; Conditions
 						</button>
 					</div>

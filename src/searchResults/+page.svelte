@@ -84,7 +84,7 @@
 		{#each Array(pages) as _, index}
 			{#if Number($page.url.searchParams.get('pagination').trim()) == index + 1}
 				<button
-					class="relative z-10 inline-flex items-center border border-gray-500 bg-gray-300 px-4 py-2 text-sm font-medium text-indigo-600"
+					class="relative z-10 inline-flex items-center border border-gray-300 bg-gray-200 px-4 py-2 text-sm font-medium"
 					>{index + 1}
 				</button>
 			{:else}
@@ -100,7 +100,7 @@
 								pagination,
 						)
 					}}
-					class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50"
+					class="relative inline-flex items-center border border-gray-300 bg-white px-4 py-2 text-sm font-medium hover:bg-gray-200"
 					>{index + 1}
 				</button>
 			{/if}

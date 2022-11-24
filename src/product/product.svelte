@@ -68,7 +68,7 @@
 	}
 </script>
 
-<div class="mb-4 mr-4 max-w-[16rem] max-h-[32rem] text-sm rounded-xl bg-white hover:bg-gray-100">
+<div class="mb-4 mr-4 max-w-[16rem] max-h-[32rem] text-sm rounded-xl bg-gray-100 hover:bg-gray-200">
 	<img
 		class="h-44 w-96 rounded-t-xl object-cover"
 		src={product.images[0].url}
