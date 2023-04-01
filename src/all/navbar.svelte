@@ -36,7 +36,7 @@
 
 <svelte:window bind:innerWidth={width} />
 
-<div class="relative bg-white min-w-min py-2 text-xs md:flex md:items-center md:justify-between">
+<div class="px-4 md:px-10 min-w-[400px] relative bg-white min-w-min py-2 text-xs md:flex md:items-center md:justify-between">
 	<div class="md:mr-5 mb-1 px-0 flex items-center justify-between ">
 		<p class="text-xl">
 			<button

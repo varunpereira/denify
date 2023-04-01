@@ -135,7 +135,7 @@
 <svelte:head><title>Product Details - Denify</title></svelte:head>
 
 {#if product && reviews}
-	<div class="lg:flex justify-start ">
+	<div class="lg:flex justify-start py-6">
 		<div class="flex justify-start">
 			<div class="mr-2 flex-none">
 				{#each product.images as image, index}
@@ -144,7 +144,7 @@
 							on:click={() => {
 								tab = index
 							}}
-							class={'w-12 h-12 mb-2 object-contain rounded-lg bg-gray-200 cursor-pointer border border-black'}
+							class={'w-12 h-12 mb-2 object-contain rounded-lg bg-white cursor-pointer border border-black'}
 							src={image.url}
 							alt={image.url}
 						/>
@@ -153,7 +153,7 @@
 							on:click={() => {
 								tab = index
 							}}
-							class={'w-12 h-12 mb-2 object-contain rounded-lg bg-gray-200 cursor-pointer'}
+							class={'w-12 h-12 mb-2 object-contain rounded-lg bg-white cursor-pointer'}
 							src={image.url}
 							alt={image.url}
 						/>
@@ -161,7 +161,7 @@
 				{/each}
 			</div>
 			<img
-				class="w-[328px] h-[328px] md:w-[496px] md:h-[496px] object-contain rounded-lg bg-gray-200"
+				class="w-[328px] h-[328px] md:w-[496px] md:h-[496px] object-contain rounded-lg bg-white"
 				src={product.images[tab].url}
 				alt={product.images[tab].url}
 			/>
@@ -207,7 +207,7 @@
 				on:click={() => {
 					addToCart(product)
 				}}
-				class="mt-5 flex w-24 items-center justify-center rounded bg-gray-200 py-4 text-black hover:bg-gray-400"
+				class="mt-5 flex w-24 items-center justify-center rounded bg-white py-4 text-black hover:bg-gray-400"
 			>
 				Add to Cart
 			</button>
@@ -227,7 +227,7 @@
 			{#each reviews as review}
 				<div
 					key={review._id}
-					class="mr-10 mb-10 h-40 w-40 max-w-sm rounded-lg bg-gray-200 p-3"
+					class="mr-10 mb-10 h-40 w-40 max-w-sm rounded-lg bg-white p-3"
 				>
 					<p class="mb-2 font-semibold tracking-tight">
 						<button

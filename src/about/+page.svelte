@@ -16,8 +16,8 @@
 
 <svelte:head><title>About - Denify</title></svelte:head>
 
-<div class="">
-	<p class="flex justify-center text-xl font-semibold ">Our Mission</p>
+<div class="mt-6">
+	<p class="flex justify-center text-xl font-semibold">Our Mission</p>
 	<div class="flex justify-start">
 		<img
 			src="https://www.ahh.biz/boycott-amazon/images/boycott-amazon-today.jpg"
@@ -52,7 +52,7 @@
 	</div>
 </div>
 
-<div class="">
+<div class="mb-6">
 	<p class="flex justify-center mt-5 text-xl font-semibold ">Our Office</p>
 	<div class="flex justify-start">
 		<iframe

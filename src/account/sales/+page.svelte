@@ -27,7 +27,7 @@
 <svelte:head><title>Account Sales - Denify</title></svelte:head>
 
 {#if products}
-	<div class="rounded-lg bg-white pl-2 text-black ">
+	<div class="my-6 p-6 rounded-lg bg-white pl-2 text-black ">
 		<p class="text-2xl font-semibold">Your Products</p>
 
 		<div class="p-3">

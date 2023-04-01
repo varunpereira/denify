@@ -28,7 +28,7 @@
 <svelte:head><title>Account Payment Order Details - Denify</title></svelte:head>
 
 {#if order}
-	<div class="rounded-lg bg-white text-black ">
+	<div class="my-6 p-6 rounded-lg bg-white text-black ">
 		<p class="text-lg font-semibold">Past Order Details</p>
 		<p>Order ID: {order._id}</p>
 		<p>Order Quantity: {order.quantity}</p>

@@ -45,7 +45,7 @@
 
 {#if formData}
 	<form
-		class="container mx-auto flex max-w-md flex-1 flex-col  px-2 w-full rounded bg-white  px-20 py-8 text-black"
+		class="my-6 container mx-auto flex max-w-md flex-1 flex-col  px-2 w-full rounded bg-white  px-20 py-8 text-black"
 	>
 		<p class="mb-8 text-center text-2xl">Sell a Product</p>
 		<p>Title</p>

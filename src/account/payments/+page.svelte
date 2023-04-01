@@ -39,7 +39,7 @@
 
 {#if orders}
 	<div
-		class="flex h-full w-full flex-col justify-center  rounded-sm border border-gray-200 bg-white pl-2 text-black shadow-lg"
+		class="my-6 py-6 flex h-full w-full flex-col justify-center  rounded-sm border border-gray-200 bg-white pl-2 text-black shadow-lg"
 	>
 		<p class="text-lg font-semibold">Order History</p>
 		<div class="p-3">

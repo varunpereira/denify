@@ -27,7 +27,7 @@
 <svelte:head><title>Account Reviews - Denify</title></svelte:head>
 
 {#if reviews}
-	<div class="pl-2 rounded-lg bg-white text-black ">
+	<div class="my-6 p-6 pl-2 rounded-lg bg-white text-black ">
 		<p class="text-2xl font-semibold">Reviews</p>
 		<div class="p-3">
 			<div class="overflow-x-auto">

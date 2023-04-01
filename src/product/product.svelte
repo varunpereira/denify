@@ -79,7 +79,7 @@
 			on:click={() => {
 				goto('/product?productId=' + product._id)
 			}}
-			class="h-16 font-bold tracking-tight text-gray-900 flex justify-start hover:underline"
+			class="h-16 font-bold tracking-tight text-gray-900 flex justify-start text-start hover:underline"
 		>
 			{product.title}
 		</button>

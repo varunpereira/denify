@@ -183,10 +183,7 @@
 					Proceed to Payment
 				</button>
 			</div>
-
-			{#if error}
-				<div class="mt-10 h-10 text-red-500">{error}</div>
-			{/if}
+				<div class="mt-10 h-12 text-red-500">{error ? error : ''}</div>
 		</div>
 	</div>
 {:else}

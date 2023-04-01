@@ -53,7 +53,7 @@
 <svelte:head><title>Search Results - Denify</title></svelte:head>
 
 {#if products}
-	<div class="flex flex-wrap w-full text-white">
+	<div class="flex flex-wrap w-full text-white pt-6">
 		{#if products.length == 0}
 			<p>No Products found.</p>
 		{:else}
@@ -62,7 +62,7 @@
 			{/each}
 		{/if}
 	</div>
-	<div class="w-full relative z-0 inline-flex -space-x-px rounded-md shadow-sm">
+	<div class="w-full relative z-0 inline-flex -space-x-px rounded-md shadow-sm pb-6">
 		<button
 			on:click={() => {
 				if (Number($page.url.searchParams.get('pagination').trim()) > 1) {

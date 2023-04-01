@@ -3,7 +3,7 @@
 	import { goto } from '$app/navigation'
 </script>
 
-<div class="py-4">
+<div class="py-4 bg-white px-4 md:px-10 min-w-[400px] ">
 	<div class="md:flex md:justify-between mb-6">
 		<div class="mb-6 md:mb-0">
 			<button

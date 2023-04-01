@@ -27,7 +27,7 @@
 <svelte:head><title>Account Info - Denify</title></svelte:head>
 
 {#if user}
-	<div class="rounded-lg bg-white pl-2 text-black">
+	<div class="my-6 p-6 rounded-lg bg-white pl-2 text-black">
 		<p class=" text-lg font-semibold">Account Details</p>
 		<div>
 			<p>

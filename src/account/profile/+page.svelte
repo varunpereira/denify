@@ -59,7 +59,7 @@
 <svelte:head><title>Account Profile - {email} - Denify</title></svelte:head>
 
 {#if products && email}
-	<p class="mb-5 text-lg font-semibold">{email}</p>
+	<p class="mb-5 text-lg font-semibold pt-6">{email}</p>
 	<button
 		on:click|preventDefault={() => {
 			sendMessage()
@@ -79,7 +79,7 @@
 			{/each}
 		{/if}
 	</div>
-	<div class="w-full relative z-0 inline-flex -space-x-px rounded-md shadow-sm">
+	<div class="w-full relative z-0 inline-flex -space-x-px rounded-md shadow-sm pb-6">
 		<button
 			on:click={() => {
 				if (pagination > 1) {
